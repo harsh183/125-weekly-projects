@@ -1,13 +1,13 @@
 # Site settings
-title: "On Software Engineering, Mathematics<br>and Philosophy"
-author: "Hugo Sereno Ferreira"
-description: "This is a blog about software, some mathematics, and the occasional philosophy. Not necessarily in that order."
-keywords: "Software Engineering, Mathematics, Philosophy, Scala, Epistemology, Existentialism, Programming, Machine-Learning, Artificial Intelligence, Statistics, Probability, Puzzles"
-biography: "I am a Professor of Software Engineering at the <a href='http://www.fe.up.pt'>Faculty of Engineering</a>, University of Porto and Senior Researcher at <a href='https://www.inesctec.pt'>INESC TEC</a>. Here you can find my <a href='/assets/thesis.pdf'>PhD Thesis</a> and my <a href='/assets/cv.pdf'>Résumé</a>."
-colophon: "© MMXIII — MMXVI by Hugo Sereno Ferreira.<br>Content available under <a href='http://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons (BY-NC-SA)</a> unless otherwise noted.<br>This site is hosted at <a href='https://pages.github.com/'>Github Pages</a> and created with <a href='http://jekyllrb.com/'>Jekyll</a>."
+title: "CS 125 Summer of Side Projects"
+author: "CS 125 Staff"
+description: "2 months of guided side projects to give people some experience with practical programming and building their portfolios during Summer 2021 online."
+keywords: "Software Engineering, Side Projects, Web Bots, JavaScript, TypeScript, Python"
+biography: "Just older students trying "
+colophon: "© 2021 — 2021<br>Theme and content available under <a href='http://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons (BY-NC-SA)</a> unless otherwise noted.<br>This site is hosted at <a href='https://netlify.com/'>Netlify</a> and created with <a href='http://jekyllrb.com/'>Jekyll</a>."
 
 baseurl: ""
-url: "http://hugosereno.eu"
+url: "https://125summer.netlify.app/"
 
 twitter_username: ferreira_hugo
 github_username: hugoferreira
@@ -18,4 +18,4 @@ google-analytics: UA-69060-5
 simple_search: http://google.com/search
 markdown: kramdown
 highlighter: rouge
-permalink: /blog/:year/:month/:day/:title/
+permalink: /:title/
