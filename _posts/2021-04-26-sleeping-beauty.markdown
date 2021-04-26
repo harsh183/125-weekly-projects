@@ -1,0 +1,16 @@
+---
+layout: post
+title: Chatbots
+date: 2021-04-26
+comments: true
+external-url:
+categories: Python
+---
+
+With the pandemic we all started using chat more than ever before for our families, friends, classes and even work. What if we could make cool bots we could show off to people and make it do something useful? A Facebook bot for your store, a Discord bot for your friends or a Slack bot for your clubs and jobs. The possibilities are endless.
+
+If you've never done Python before, here is a start. Coming from Java or C++, this can seem almost underwhelming but Python allows you do to so many of the same things with a lot less work. This does have disadvantages, but this trait of python makes it an ideal language for trying new ideas and iterating on them quickly.
+
+```python
+print("Hello World")
+```
