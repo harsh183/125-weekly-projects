@@ -7,4 +7,4 @@ gem "jekyll-feed", "~> 0.6"
 
 gem 'github-pages'
 gem 'bundler'
-gem 'minitest
+gem 'minitest'
