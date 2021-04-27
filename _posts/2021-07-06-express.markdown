@@ -4,7 +4,7 @@ title: Backend with ExpressJS
 date: 2021-07-06
 comments: true
 external-url:
-categories: Python
+categories: TypeScript
 ---
 
 Any web site has two parts, a frontend and a backend. A backend handles our logic and data storage and communciates via URLs but instead of sending web pages it only sends data.
