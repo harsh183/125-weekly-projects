@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Web Browser Extension 
-date: 2021-06-29
+date: 2020-06-29
 comments: true
 external-url:
 categories: TypeScript
