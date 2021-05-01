@@ -1,5 +1,7 @@
 # CS 125 Summer of Side Projects
 
+Sign up: https://forms.gle/N727zpCZKj3KiZW17
+
 2 months of guided side projects to give people some experience with practical programming and building their portfolios for students at UIUC during Summer 2021.
 
 ## Commitment 
