@@ -41,7 +41,7 @@ Monday: Turn in projects by making a forum post with a link and GitHub. Peer + s
   * Tools: Debugger
 
 ### Month 2: JavaScript and Typescript
-* Week 1 (June 29): Greasemonkey/Tampermonkey/Web Browser extension (JavaS
+* Week 1 (June 29): Greasemonkey/Tampermonkey/Web Browser extension (JavaScript)
   * Tools: Browser Inspect Element, Eslint
 * Week 2 (July 6): Express JS backend to do something simple w/ Docker
   * Tools: Chai automated testing, GitHub CI/CD
