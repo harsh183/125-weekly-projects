@@ -37,7 +37,7 @@ Monday: Turn in projects by making a forum post with a link and GitHub. Peer + s
   * Tools: Command line, git
 * Week 3 (June 15): pyGame for a simple interactive game
   * Tools: Pylint
-* Week 4 (June 22): web bots (selenium)
+* Week 4 (June 22): web bots (beautifulsoup)
   * Tools: Debugger
 
 ### Month 2: JavaScript and Typescript
