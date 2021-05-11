@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Final Portfolio 
-date: 2020-07-06
+date: 2020-07-20
 comments: true
 external-url:
 categories: TypeScript
