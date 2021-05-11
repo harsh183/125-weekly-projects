@@ -53,7 +53,7 @@ layout: default
       {% for category in categories %}
       <h3>On {{ category | first }}</h3>
       <p>{% for posts in category %} 
-		{% for post in posts reversed limit:5 %}
+		{% for post in posts reversed limit:5 %} <!-- https://stackoverflow.com/a/12574250 -->
             <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>{% if forloop.last == false %},&nbsp;&nbsp;{% endif %}
         {% endfor %} {% endfor %}  </p>
       {% endfor %}
