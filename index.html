@@ -52,8 +52,8 @@ layout: default
       {% assign categories = site.categories | sort %}
       {% for category in categories %}
       <h3>On {{ category | first }}</h3>
-      <p>{% for posts in sorted %} 
-		{% for post in sorted reversed limit:5 %}
+      <p>{% for posts in category %} 
+		{% for post in posts reversed limit:5 %}
             <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>{% if forloop.last == false %},&nbsp;&nbsp;{% endif %}
         {% endfor %} {% endfor %}  </p>
       {% endfor %}
