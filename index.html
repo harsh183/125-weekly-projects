@@ -52,7 +52,7 @@ layout: default
       {% assign categories = site.categories | sort %}
       {% for category in categories %}
       <h3>On {{ category | first }}</h3>
-	  {% assign sorted = category | reverse %}
+	  {% assign sorted = category | sort: 'date' | reverse %}
       <p>{% for posts in sorted %} {% for post in posts %}
             <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>{% if forloop.last == false %},&nbsp;&nbsp;{% endif %}
         {% endfor %} {% endfor %}  </p>
