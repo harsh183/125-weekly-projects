@@ -12,7 +12,7 @@ Web Browsers are probably the application we use the most, yet it's not always t
 To first learn `TypeScript` we start from `JavaScript`. 
 
 ```js
-console.log("Hello JavaScript");
+console.log("Hello Web Browser Extentions");
 ```
 
 ## Motivation

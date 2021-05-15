@@ -12,7 +12,7 @@ With the pandemic we all started using chat more than ever before for our famili
 If you've never done Python before, here is a start. Coming from Java or C++, this can seem almost underwhelming but Python allows you do to so many of the same things with a lot less work. This does have disadvantages, but this trait of python makes it an ideal language for trying new ideas and iterating on them quickly.
 
 ```python
-print("Hello World")
+print("Hello Chatbots")
 ```
 
 ## Motivation
