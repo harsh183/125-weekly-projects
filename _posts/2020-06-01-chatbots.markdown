@@ -21,9 +21,19 @@ print("Hello Chatbots")
 
 ## Tools
 
-* Micro (my reasoning is quite similar to [this](https://drawabox.com/article/ink))
+* Micro
 
 * Github
+
+## Setup
+
+I will expect this part is done before the workshop, but don't worry if you're not done since we're recording everything and all the material is there as text on the website too.
+
+1. If you're on Windows I *highly* reccomend getting WSL2 (WSL 1 is also fine but slower). For historical reasons, the command line in Windows is just not as good as Mac or Linux. Eventually they just said, "Hey what if we had full* Linux *on* Windows."
+
+2. Install a recent version of Python (3.7+) on your computer and make sure to enable `pip` as well. <!-- TODO: Add more detail from web bot workshop maybe --> 
+
+3. Set up the `micro` text editor or other command line text editor of choice. See the page I wrote for [micro](/micro) for more detailed instructions.
 
 ## Learn More
 
