@@ -40,8 +40,8 @@ Monday: Turn in projects by making a forum post with a link and GitHub. Peer + s
 
 * Week 1 (June 1): Discord/Slack Chatbot (Tools: Github, Micro)
 * Week 2 (June 8): Fancy command line interface (Tools: Command line, `git`)
-* Week 3 (June 15): pyGame for a simple interactive game (Tools: Pylint)
-* Week 4 (June 22): web bots (beautifulsoup) (Tools: Debugger)
+* Week 3 (June 15): `pygame` for a simple interactive game (Tools: `Pylint`)
+* Week 4 (June 22): web bots (`beautifulsoup`) (Tools: Debugger `pdb`)
 
 ### Month 2: JavaScript and Typescript
 * Week 1 (June 29): Greasemonkey/Tampermonkey/Web Browser extension - JavaScript (Tools: Browser Inspect Element, Eslint)
