@@ -19,13 +19,21 @@ print("Hello Chatbots")
 
 [Introduction to Learn Python the Hard Way](https://learnpythonthehardway.org/python3/intro.html) - this is honestly advice I feel everyone new to CS should read and follow.
 
+So keeping that in mind. For this entire website: 
+
+### How to learn programming the proper way
+
+* Every single piece of code that I show you will type by hand. No copy paste, no "I can see what it does it's pretty obvious.", no "I already know this, let me move on." I want you to do this to make sure that you actually process all this. Only copy paste if I tell you that you can. Trust me, this may feel like a small difference but I'll say this will reduce the effectiveness of whatever you learn to about 10%.
+* Attention to detail: comes from the last point, but when you type everything and look at everything you are forced to concentrate on what you are doing. Pay attention to the difference between 5 and "5" for example. Programming is highly precise and especially in languages like Python every tiny detail matters.
+
+
 ## Tools
 
 * Micro
 
 * Github
 
-## Setup
+## Getting Ready
 
 I will expect this part is done before the workshop, but don't worry if you're not done since we're recording everything and all the material is there as text on the website too.
 
@@ -34,6 +42,25 @@ I will expect this part is done before the workshop, but don't worry if you're n
 2. Install a recent version of Python (3.7+) on your computer and make sure to enable `pip` as well. <!-- TODO: Add more detail from web bot workshop maybe --> 
 
 3. Set up the `micro` text editor or other command line text editor of choice. See the page I wrote for [micro](/micro) for more detailed instructions.
+
+4. Install discord.py
+    ```sh
+    $ pip install discord.py
+    ```
+
+## Workshop
+
+1. Create discord account if you don't have one.
+
+2. Create a test discord server (sometimes called a guild)
+
+3. Copy over the auth setup in some environment variable 
+
+4. Set up a connected message.
+
+5. Respond to a hello message.
+
+6. Create a function that we just pass things to abstract out the logic (loose coupling)
 
 ## Learn More
 
@@ -45,3 +72,30 @@ I will expect this part is done before the workshop, but don't worry if you're n
 
 ## Ideas
 
+Feel free to come up with anything as long as it is chatbot related. These are some things to help you get started but feel free to come up with more. Don't worry if it's already done or there is someone else doing it, the point is learning and fun :).
+
+* Think of a bot you've seen in real life, could you recrete a simple subset of features?
+
+* Maybe a bot that could give information on something, like recipies or your favorite sports team?
+
+* Or helps a bot that can have basic conversation with you. Could it help you break down tasks or help you with a gratitude journal like setup? 
+
+* Maybe a bot that can automate something you find annoying? So you can use it to fire off commands to do some task.
+
+* The bot doesn't have to be a discord bot, you can make it on Slack, Facebook, IRC, or basically and chat service out there. 
+
+## Requirements
+
+These aren't hard requirements, but you should try your best to hit all of them.
+
+* The chatbot connects to a real chat service. Including, but not limited to: Discord, Slack, Telegram, IRC, Facebook.
+
+* The bot has different responses based on different inputs.
+
+* It displays a message on connnecting.
+
+* There are at least two test cases where you test parts of the bots behavior out.
+
+* This has to be available on a site like Github (feel free to use alternatives though)
+
+* Show images/animations/videos of your bot in action in a `README.md` file in your repository.

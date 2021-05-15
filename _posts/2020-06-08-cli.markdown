@@ -26,6 +26,12 @@ This is a more sombre and serious recording instead of the typical emotional pep
 
 Don't worry if you don't know what your purpose is right there, and what this means can be different for everyone. Over the next few months start to reflect and chart out your goals of what you want to do and the steps you want to take from there. Feel free to message any of the staff or create a forum post if you want to talk it out too.
 
+## Getting Ready 
+
+1. Learn a bit of git on the commmand line. You can use any intro tutorial but [this web browser one](https://learngitbranching.js.org/) looks good.
+
+2. Go over the basics of test driven development with `pytest` in this tutorial on [the site](/testing101). Code along everything just to get an idea of why we test andn how to create your workflow around tests. While I don't want all projects to have extensive tests (but it is a good habit), having just 3-5 tests makes a lot of difference. 
+
 ## Learn More
 
 * [Plumbum scripting](https://iscinumpy.gitlab.io/post/plumbum-scripting/) - learn more about the library we used to interact with the actual system programs.
@@ -35,3 +41,15 @@ Don't worry if you don't know what your purpose is right there, and what this me
 * [Python Command Line Apps](https://www.davidfischer.name/2017/01/python-command-line-apps/) - some theory on the aspects of command line apps as well as library reccomendations.
 
 ## Ideas
+
+Feel free to come up with anything as long as it is a fancy command line interface. These are some things to help you get started but feel free to come up with more. Don't worry if it's already done or there is someone else doing it, the point is learning and fun :).
+
+* Is there some commmand line application you found was annoying or hard to use? How about making a better one?
+
+* Maybe the chatbot from last week could also be available in command line form? Could you spice it up with fancy menu selectors or ASCII displays?
+
+* Maybe you can use this to automate some workflow task you have by combining some steps together with `plumbum`. One of the greatest things about command lines is just using each program as a modular piece on to the next.
+
+## Requirements
+
+* It has to be a command line application

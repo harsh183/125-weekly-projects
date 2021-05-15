@@ -24,3 +24,5 @@ Comic: [CHRIS HADFIELD: An astronaut’s advice](http://www.zenpencils.com/comic
 
 
 ## Ideas
+
+## Requirements
