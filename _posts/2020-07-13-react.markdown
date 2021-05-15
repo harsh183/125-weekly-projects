@@ -19,4 +19,8 @@ console.log("Hello React");
 
 > at least half of the time you spend drawing must be devoted to drawing purely for its own sake. Not to learn, not to improve, not to develop your skills, not even to apply what you've already learned. There are no restrictions on medium, no specific techniques you must use, no subject matter you must focus on.
 
+## Learn more
+
+
+
 ## Ideas

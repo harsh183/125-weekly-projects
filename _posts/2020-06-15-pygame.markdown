@@ -23,4 +23,12 @@ print("Hello pygame!")
 pip install pygame
 ```
 
+## Learn more
+
+* [Geeks for Geeks: Introduction to pygame](https://www.geeksforgeeks.org/introduction-to-pygame/) - simple intro for getting started and they have 2-3 other articles that are worth checking out as well.
+
+* [Real Python: PyGame: A Primer on Game Programming in Python](https://realpython.com/pygame-a-primer/) - good extensive intro on pygame that goes over a lot of things
+
+* Pygame official examples [code](https://github.com/pygame/pygame/tree/main/examples) and [documentation](https://www.pygame.org/docs/ref/examples.html) - here are a lot of sample games and their code. Some might be simpler than others but you can run all of them, poke around and even modify them to get how things work. Some of this stuff can be advanced but it's a great way to learn. 
+
 ## Ideas
