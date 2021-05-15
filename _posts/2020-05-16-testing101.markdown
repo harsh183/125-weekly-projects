@@ -1,0 +1,383 @@
+---
+layout: post
+title: Testing 101 (with pytest)
+date: 2020-15-01
+comments: true
+external-url:
+categories: Tools
+---
+
+So far you've been writing your programs amd running them time and time again doing that. A constant cycle of change-run-repeat until it works.
+
+Which works fine until
+* you have hundreds of scenarios and inputs
+* the program takes quite long to run and it starts eating up too much time
+* you accidently break your program and don't even realize (billions lost, rockets dailing, people dying)
+* you get annoyed
+
+Programmers are smart, and they are lazy. A powerful combination. So they automated it.
+
+This is a complex topic with entire professions ans teams dedicated to this, but even knowing the basics go quite a far way and willfeel unnatural at first but as time goes by will feel quite natural. Also considering the very low standards on testing companies and open source projects just knowing the partfrom this chapter will make you a much better programmer.
+
+## assert
+
+The basis of testing is generally comparing what value should be versus what the program returns. We do this via `assert`.
+
+```python
+>>> sum([1, 2]) # this is a builtin function
+3
+>>> assert sum([1, 2]) == 3
+>>> # if there is no output means everything was fine
+>>> assert sum([1, 2]) == 4
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AssertionError
+```
+
+The entire principle of an assert is checking the condition and complaining if things are not right. Look at the code above and try to figure this out on your own.
+
+```python
+assert <condition>
+```
+
+Try to think of this like a special if statement. Just like if statements you give it some conditon that gives a boolean (either trie or false) and based on that it varies on how it acts. So when the condition above is `true` then it moves on and if it's false it gives an `AssertionError`
+
+### Why not use if conditions
+
+(Actual student question)
+
+I did mention above that these are like a special type of if condition. So it is actually possible to get something similar with if conditions. The reasons not to do this are:
+
+* The syntax gets clunky - additional indentation and lots of ifs floating around.
+
+* The assert syntax lets you use test runners which will show you helpful messages like number of tests passed vs number of tests failed. This matters more when the number of tests get much larger.
+
+## assert with messages
+
+Now just giving a condition on it's own is often just not enough because when 
+things go wrong it often just says `AssertionError`. And when it's a large
+row of test cases it starts becoming an issue. So we can include a message to
+be more helpful.
+
+```python
+assert <condition>, "this message is only shown when the assert fails"
+```
+
+A more real example (this time with a file more realistically):
+
+```python
+# sum_two_numbers.py
+def sum(a, b):
+    return a
+
+assert sum(0, 0) == 0, "0 + 0 should be 0"
+assert sum(3, 0) == 3, "3 + 0 should be 3" 
+assert sum(0, 5) == 5, "0 + 5 should be 5"
+print("All tests passed")
+```
+
+And when the program fails it displays `AssertionError: 0 + 5 should be 5`, now we now how to fix 
+it. That's more helpful.
+
+## Red-green-refactor
+
+Test Driven Development is a development pattern where you write the tests for 
+the code before you work and then keep working till your tests pass. Now this 
+isn't useful in every single scenario but many times it will help you develop
+faster and understand your problem better. 
+
+This pattern is split up into 
+
+* red - the code is not working as some or all tests are failing. 
+  Many test programs show actual red.
+
+* green - the code is now working and all tests pass.
+  Likewise some test programs show green output.
+
+* refactor - now that you are confident that you have tests to make sure no 
+  regressions happen (breaking existing code) you can keep adding on improvements
+  confidently
+
+This is common with many industry and open source projects, and this kind of 
+mindset can help with programming. Of course the order doesn't have to be too
+strict, many times it's hard to write tests before the code, but other times it
+becomes easier writing the code than the tests.
+
+Let's walk through an example. This will show you a good outline on general problem
+solving alongside tests.
+
+Suppose I am tasked with writing a function that multiplies all the numbers of 
+a list together.  It should give `None` if the list is empty (similar to `null` 
+or `nil` from other languages). Assume all numbers are integers.
+
+### Red
+
+The first step of problem solving is just understanding the question itself. 
+Without even thinking about the answer just understanding what one even has 
+to do. This plays well with TDD approach. For this we can break up the problem
+into 'test cases' which are what inputs and conditions should have what result
+(verified by asserts).  
+
+For each requirement we can derive a series of test cases 
+* Multiplies all numbers of the list
+  - A simple basic case - `[1, 1, 1]` should give `1` 
+  - Even giving one zero will give the final result as zero - `[0, 4253, -342]` should give `0`
+  - Negative numbers should be supported properly - `[-1, 4, 20]` should give `-80`
+  - Any list with one item should give itself - `[42]` should give `42`
+
+* Giving `None` (these types of requirements are called edge cases - what to deal
+  with unexpected results)
+  - The basic case - `[]` should give `None`
+  
+Notice how I have not even written code or even thought about the solution just
+yet. Even going through this I was able to understand my problem better and 
+some approaches on how I would solve the problem might have even popped up in
+my head. 
+
+Time to put this in code. 
+
+```python
+# multiply_list.py
+def multiply(list):
+    return 0 # Placeholder
+
+def test_multiply():
+    assert multiply([1, 1, 1]) == 1, "Simple basic case should give 1"
+    assert multiply([0, 4253, -342]) == 0, "Inclusion of zeros should give zero"
+    assert multiply([-1, 4, 20]) == -80, "Negative numbers should work"
+    assert multiply([42]) == 42, "Single number should return itself"
+    assert multiply([]) is None, "Emtpy list should give None" 
+    # Note: For checking None we use `is` over ==
+
+test_multiply()
+print("All tests passed")
+```
+
+Take a moment to look at how we took our written test cases into the code. Each 
+different point became it's own assert. While this doesn't guaruntee that our
+program works we know for sure it supports atleast these cases. Generally when
+you want to make sure a certain set of requirements are fit you can write specific
+test cases around those.
+
+Running our program
+```
+$ python3 multiply_list.py
+Traceback (most recent call last):
+  File "multiply_list.py", line 13, in <module>
+    test_multiply()
+  File "multiply_list.py", line 6, in test_multiply
+    assert multiply([1, 1, 1]) == 1, "Simple basic case should give 1"
+AssertionError: Simple basic case should give 1
+```
+
+Now this gives us a starting point. We now know which case fails with input `[1, 1, 1`]
+expecting the output of `1` for `Simple basic case`. When you write good sets of test cases
+it gives enough motivation to how to go about a problem piece by piece, as the different 
+parts breaks up a bigger problem into a smaller problem. 
+
+This stage is *RED* - not working - tests not passing
+
+### Green
+
+Now I take one attempt at writing the `multiply(list)` function for the normal cases
+```python
+def multiply(list):
+    product = 1
+    for i in range(len(list)):
+        product = product * list[i]
+
+    return product
+
+```
+
+giving the output 
+```python
+Traceback (most recent call last):
+  File "multiply_list.py", line 20, in <module>
+    test_multiply()
+  File "multiply_list.py", line 17, in test_multiply
+    assert multiply([]) is None, "Emtpy list should give None"
+AssertionError: Emtpy list should give None
+
+```
+
+Since I'm getting a different test fail I know I have fixed the previous one. Fixing the 
+empty list case we get:
+
+```python
+def multiply(list):
+    if len(list) == 0:
+        return None
+
+    product = 1
+    for i in range(len(list)):
+        product = product * list[i]
+
+    return product
+
+```
+
+giving the output
+```
+All tests passed
+```
+
+This stage is *GREEN* - working - tests passing 
+
+### Refactor 
+
+Now what if we want to change it. Maybe we want to improve the code quality 
+or change arond some stuff. Then what we do is keep adding newer features and
+running the test code again and again to make sure we don't break anything in 
+a similar red green cycle.
+
+Lets say I realize I can use a for to directly go over the list instead of using
+`range()` and indexes.
+
+```python
+def multiply(list):
+    if len(list) == 0:
+        return None
+
+    product = 1
+    for item in list:
+        product = product * item
+
+    return product
+```
+
+now when I run the same code I get
+```
+All tests passed
+```
+
+This means I know the code that I wrote works and didn't break anything. 
+So because I took more time to write tests at the start of the process,
+now I can keep developing faster because I have to spend lesser time
+running the same program again and again with the same inputs so I get work
+done faster.
+
+This isn't possible all the time but quite often and this type of development
+often sets apart the great developers from the good ones.
+
+## Test runners
+
+Now raw asserts are nice but they are also quite limited. For which we have test runnerswhich provide a better way to run test cases.
+
+* Supporting many assert fails, usually the failure of one case crashes the program
+* Counting of fail and pass tests
+* Easier syntax for more complex features.
+* Actual red and green output for visual cues.
+
+In practice you will use one of these, either one you setup your self or one that comes
+built it with something like `django` or `flask`. 
+
+I have picked pytest for it's simplicity for teaching, and there are many others
+that exist. The way I'll approach it is quite indicative of how testing is done 
+in general and you can follow the some approach with other test runners and 
+programming languages. 
+
+### pytest
+
+```bash
+$ pip3 install pytest
+```
+
+Interestingly it supports the `multiply_list.py` file we wrote earlier as is 
+without changing anything. How it works is that it looks for any function that
+starts with `test` like our
+```python
+def test_multiply():
+    assert multiply([1, 1, 1]) == 1, "Simple basic case should give 1"
+    assert multiply([0, 4253, -342]) == 0, "Inclusion of zeros should give zero"
+    assert multiply([-1, 4, 20]) == -80, "Negative numbers should work"
+    assert multiply([42]) == 42, "Single number should return itself"
+    assert multiply([]) is None, "Emtpy list should give None"
+    # Note: For checking None we use `is` over ==
+
+```
+
+And it runs like
+```bash
+$ pytest multiply_list.py
+======================================= test session starts =================================
+platform linux -- Python 3.6.7, pytest-5.0.1, py-1.8.0, pluggy-0.12.0
+rootdir: /home/harsh183/Experiments/saloni-teaching
+collected 1 item
+
+multiply_list.py .                                                                   [100%]
+
+=====================================1 passed in 0.02 seconds ===============================
+
+```
+
+and the last line being in color output (green here), try running it yourself to see.
+
+And even better it doesn't run your main program itself, so that means you can
+still keep all your `print()` and `input()` functions in your program without 
+changing anything. I added at the end of the program.
+```python
+print("pytest actually even ignores all the normal print output")
+print("so you can blend in your normal program and tests in the same file")
+print("isn't that neat!")
+```
+
+which only appear when I run it normally with `$ python3 multiply_list.py`
+```
+pytest actually even ignores all the normal print output
+so you can blend in your normal program and tests in the same file
+isn't that neat!
+```
+
+Basically it means testing doesn't have to interrupt your workflow or structure
+of your program at all. All you have to provide a test function and pytest does 
+the rest.
+
+So all we have to do for using pytest is 
+* having the test function start from `test` like `test_multiply` or `test_solution`
+  pytest will discover it by that
+* use normal asserts just like how you would do it normally
+* when you want to run the program run it like `$ python3 program_name.py` and when you want
+  to test it run it like `$ pytest program_name.py`
+
+### Fancier asserts
+
+You might also encounter other types of asserts like `assertEqual`, `assertFalse`, `assertIn` etc. They are just easier syntax (often programmers will use the term syntax sugar). You can just use simple asserts for most part and others when you are more comfortable with them. Often they are parts of different runners so it will vary what you can use. `assert` should be there in pretty much everything and I'll cover just that.
+
+## Separating test files
+
+So far we were writing everything in one file which is quite okay for small programs, exercises etc. More often it is kept in seperate files. This is quite easy to do and some frameworks will even do it for you. If you have the time I highly suggest doing this for anything that's more than 10-15 lines of code. 
+
+Usually it will be either called something like `test.py` or `tests.py`. If there is a large amount of tests then it will be in a folder called `test/` or `tests/`
+
+See [this tutorial](https://www.codementor.io/sheena/python-path-virtualenv-import-for-beginners-du107r3o1) for a basic idea on imports. 
+
+## When to use what
+
+Rule of thumb is using a test runner for almost every case since that setup works out neater
+and is much better for larger projects and working with teams. Sometimes when it's just scripts
+or small hacky experiments you can use `assert` within the same file. For sanity checks it's
+okay so long as you remove it later. That said, if you can adding tests can go a long way 
+and earn you gratitude from you and your future self.
+
+## Exercises
+
+One more round of red-green-refactor to give you more practice of the workflow. 
+
+1. Find the in a list of integers. 
+* A mode is the item that occurs the most ex. `[1, 1, 2, 3]` will be `1` because it occurs the most
+* For an empty list I want you to give `None`
+
+I want you to use `pytest` and the same red green workflow I showed earlier in this unit with that breaking up steps and writing. It should look very similar to the structure I used. In general this is a good approach for problem solving and it gets better with practice.
+
+## Learn more
+
+* [Great and quite more extensive guide on Python testing](https://realpython.com/python-testing/) *Highly reccomended*
+
+* [Given-when-then](https://pythontesting.net/strategy/given-when-then-2/) - How to approach writing tests in a given X when Y happens then Z should happen. *Highly reccomended*
+
+* [How not to test](https://pythontesting.net/strategy/complete-coverage-testing/) - Dangers of overtesting and understanding how testing everything isn't the best approach
+
+* [Why most unit testing is waste](https://pythontesting.net/strategy/why-most-unit-testing-is-waste/)
+
+* [Another good list of resources](https://pythontesting.net/start-here)
