@@ -14,3 +14,13 @@ If you've never done Python before, here is a start. Coming from Java or C++, th
 ```python
 print("Hello World")
 ```
+
+## Motivation
+
+[Introduction to Learn Python the Hard Way](https://learnpythonthehardway.org/python3/intro.html) - this is honestly advice I feel everyone new to CS should read and follow.
+
+## Tools
+
+* Micro (my reasoning is quite similar to [this](https://drawabox.com/article/ink))
+
+* Github

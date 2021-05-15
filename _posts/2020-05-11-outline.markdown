@@ -38,23 +38,16 @@ Monday: Turn in projects by making a forum post with a link and GitHub. Peer + s
 
 ### Month 1: Python
 
-* Week 1 (June 1): Discord/Slack Chatbot June 1
-  * Tools: Github, Micro
-* Week 2 (June 8): Fancy command line interface
-  * Tools: Command line, git
-* Week 3 (June 15): pyGame for a simple interactive game
-  * Tools: Pylint
-* Week 4 (June 22): web bots (beautifulsoup)
-  * Tools: Debugger
+* Week 1 (June 1): Discord/Slack Chatbot (Tools: Github, Micro)
+* Week 2 (June 8): Fancy command line interface (Tools: Command line, `git`)
+* Week 3 (June 15): pyGame for a simple interactive game (Tools: Pylint)
+* Week 4 (June 22): web bots (beautifulsoup) (Tools: Debugger)
 
 ### Month 2: JavaScript and Typescript
-* Week 1 (June 29): Greasemonkey/Tampermonkey/Web Browser extension (JavaScript)
-  * Tools: Browser Inspect Element, Eslint
-* Week 2 (July 6): Express JS backend to do something simple w/ Docker
-  * Tools: Chai automated testing, GitHub CI/CD
-* Week 3 (July 13): React frontend around some existing API
-  * Tools: Postman/Postwoman/Insomnia, Testing
-* Week 4 (July 20): Portfolio site with all the 6 projects from earlier (Gatsby)
+* Week 1 (June 29): Greasemonkey/Tampermonkey/Web Browser extension - JavaScript (Tools: Browser Inspect Element, Eslint)
+* Week 2 (July 6): Express JS backend to do something simple w/ Docker (Tools: Chai automated testing, GitHub CI/CD)
+* Week 3 (July 13): React frontend around some existing API (Tools: Postman/Postwoman/Insomnia, Testing)
+* Week 4 (July 20): Portfolio site with all the 6 projects from earlier
 * Wrap up (July 26)
 
 ## Weekly Projects

@@ -10,3 +10,12 @@ categories: TypeScript
 Any web site has two parts, a frontend and a backend. A backend handles our logic and data storage and communciates via URLs but instead of sending web pages it only sends data.
 
 Here let's create something simple with `Express` to show a basic backend service in action. 
+
+```ts
+console.log("Hello express");
+```
+
+## Motivation
+
+[Hackers and Painters](http://www.paulgraham.com/hp.html) - A bit old but perhaps my favorite essay of all time on the nature of CS and how we work. This essay links it to creative work over the typical idea of applied math, scientists or engineers. It's a long essay but definitely worth revisiting every few months and by one of the most iconic people in the tech startup space today for starting YCombinator.
+

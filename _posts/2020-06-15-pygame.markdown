@@ -13,6 +13,10 @@ Many people got into CS by playing games and wanting to make more, and a lot did
 print("Hello pygame!")
 ```
 
+## Motivation
+
+* Comic: [IRA GLASS: Advice for beginners](http://www.zenpencils.com/comic/90-ira-glass-advice-for-beginners/)
+
 ## Install
 
 ```bash

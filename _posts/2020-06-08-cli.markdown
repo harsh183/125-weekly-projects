@@ -14,3 +14,15 @@ How about we make things a little prettier and easier for people to use?
 ```python
 print("Hello command line")
 ```
+
+## Motivation
+
+An 18 minute audio recording made specially for this summer session by [Donovan Keme](https://github.com/digitalextremist) my mentor last summer who broadened my perspective on tech entirely. His open source Ruby work has been part of almost [450 million downloads](https://rubygems.org/profiles/digitalextremist) and he's very innvolved with the community.
+
+This is a more sombre and serious recording instead of the typical emotional pep talk but it's important to consider in your journey after several months about learning about technology. At this point it is the right time to start thinking about what role technology plays in the world and what is the purpose you want to achieve with technology. 
+
+[Recording link](https://extremist.digital/audio/126-m20210504083039-5tp5-harsh.mp3
+)
+
+Don't worry if you don't know what your purpose is right there, and what this means can be different for everyone. Over the next few months start to reflect and chart out your goals of what you want to do and the steps you want to take from there. Feel free to message any of the staff or create a forum post if you want to talk it out too.
+

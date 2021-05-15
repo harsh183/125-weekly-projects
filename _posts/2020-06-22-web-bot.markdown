@@ -12,3 +12,7 @@ Automation is quite fun! What if we could do fancy stuff with the web browser?
 ```python
 print("Hello Browser")
 ```
+
+## Motivation
+
+[On the Subject of Talent](https://drawabox.com/article/talent) - this is advice for artists, but in my experience a lot of good art advice also applies to programming. We are more alike than what a lot of people realize.
