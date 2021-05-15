@@ -22,3 +22,5 @@ print("Hello pygame!")
 ```bash
 pip install pygame
 ```
+
+## Ideas

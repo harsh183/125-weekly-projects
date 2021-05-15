@@ -16,3 +16,5 @@ console.log("Hello portfolio");
 ## Motivation
 
 Comic: [JOHN GREEN: Make gifts for people](http://www.zenpencils.com/comic/119-john-green-make-gifts-for-people/)
+
+## Ideas

@@ -24,3 +24,14 @@ print("Hello World")
 * Micro (my reasoning is quite similar to [this](https://drawabox.com/article/ink))
 
 * Github
+
+## Learn More
+
+* [FreeCodeCamp: How to Create a Discord Bot for Free with Python – Full Tutorial](https://www.freecodecamp.org/news/create-a-discord-bot-with-python/) - good starter tutorial
+
+* [Real Python: How to Make a Discord Bot in Python](https://realpython.com/how-to-make-a-discord-bot-python/) - this is the most comprehensive tutorial I liked
+
+* [towards data science - How to build your own AI Chatbot on Discord?](https://towardsdatascience.com/how-to-build-your-own-ai-chatbot-on-discord-c6b3468189f4) - more advanced but this shows how you can start mixing in AI with chatbots as well
+
+## Ideas
+

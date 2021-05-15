@@ -26,3 +26,12 @@ This is a more sombre and serious recording instead of the typical emotional pep
 
 Don't worry if you don't know what your purpose is right there, and what this means can be different for everyone. Over the next few months start to reflect and chart out your goals of what you want to do and the steps you want to take from there. Feel free to message any of the staff or create a forum post if you want to talk it out too.
 
+## Learn More
+
+* [Plumbum scripting](https://iscinumpy.gitlab.io/post/plumbum-scripting/) - learn more about the library we used to interact with the actual system programs.
+
+* [Building Beautiful Command Line Interfaces with Python](https://codeburst.io/building-beautiful-command-line-interfaces-with-python-26c7e1bb54df) - good introduction to a lot of pretty command line things out there.
+
+* [Python Command Line Apps](https://www.davidfischer.name/2017/01/python-command-line-apps/) - some theory on the aspects of command line apps as well as library reccomendations.
+
+## Ideas

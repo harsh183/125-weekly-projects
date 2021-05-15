@@ -18,3 +18,5 @@ console.log("Hello JavaScript");
 ## Motivation
 
 Comic: [CHRIS HADFIELD: An astronaut’s advice](http://www.zenpencils.com/comic/106-chris-hadfield-an-astronauts-advice/)
+
+## Ideas
