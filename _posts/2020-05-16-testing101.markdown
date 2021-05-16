@@ -12,10 +12,10 @@ So far you've been writing your programs amd running them time and time again do
 Which works fine until
 * you have hundreds of scenarios and inputs
 * the program takes quite long to run and it starts eating up too much time
-* you accidently break your program and don't even realize (billions lost, rockets dailing, people dying)
+* you accidently break your program and don't even realize - [trillions lost](https://www.techrepublic.com/article/report-software-failure-caused-1-7-trillion-in-financial-losses-in-2017/), [rockets failing](https://www.bugsnag.com/blog/bug-day-ariane-5-disaster), [people dying](https://www.bbc.com/news/technology-54175359).
 * you get annoyed
 
-Programmers are smart, and they are lazy. A powerful combination. So they automated it.
+Programmers are smart. Programmers are lazy. A powerful combination. So they automated it.
 
 This is a complex topic with entire professions ans teams dedicated to this, but even knowing the basics go quite a far way and willfeel unnatural at first but as time goes by will feel quite natural. Also considering the very low standards on testing companies and open source projects just knowing the partfrom this chapter will make you a much better programmer.
 
@@ -280,7 +280,7 @@ programming languages.
 ### pytest
 
 ```bash
-$ pip3 install pytest
+$ pip install pytest
 ```
 
 Interestingly it supports the `multiply_list.py` file we wrote earlier as is 
