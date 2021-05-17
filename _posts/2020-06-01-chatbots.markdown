@@ -7,9 +7,9 @@ external-url:
 categories: Python
 ---
 
-With the pandemic we all started using chat more than ever before for our families, friends, classes and even work. What if we could make cool bots we could show off to people and make it do something useful? A Facebook bot for your store, a Discord bot for your friends or a Slack bot for your clubs and jobs. The possibilities are endless.
+With the pandemic, we all started using online chatting applications more than ever before to communicate with our families, friends, and even classes and work. What if we could make cool bots for these chats? A Facebook bot for your store, a Discord bot for your friends, or a Slack bot for your clubs and jobs. The possibilities are endless.
 
-If you've never done Python before, here is a start. Coming from Java or C++, this can seem almost underwhelming but Python allows you do to so many of the same things with a lot less work. This does have disadvantages, but this trait of python makes it an ideal language for trying new ideas and iterating on them quickly.
+If you've never done Python before, here is a start. Coming from Java or C++, this might seem almost underwhelming, but Python allows you do to so many of the same things with a lot less work. This does have disadvantages, but this trait of Python makes it a great language for trying new ideas and adding to them quickly.
 
 ```python
 print("Hello Chatbots")
@@ -17,14 +17,14 @@ print("Hello Chatbots")
 
 ## Motivation
 
-[Introduction to Learn Python the Hard Way](https://learnpythonthehardway.org/python3/intro.html) - this is honestly advice I feel everyone new to CS should read and follow.
+[Introduction to Learn Python the Hard Way](https://learnpythonthehardway.org/python3/intro.html) - This is advice I honestly feel everyone new to CS should read and follow.
 
-So keeping that in mind. For this entire website: 
+Keeping that in mind, for this website: 
 
 ### How to learn programming the proper way
 
-* Every single piece of code that I show you will type by hand. No copy paste, no "I can see what it does it's pretty obvious.", no "I already know this, let me move on." I want you to do this to make sure that you actually process all this. Only copy paste if I tell you that you can. Trust me, this may feel like a small difference but I'll say this will reduce the effectiveness of whatever you learn to about 10%.
-* Attention to detail: comes from the last point, but when you type everything and look at everything you are forced to concentrate on what you are doing. Pay attention to the difference between 5 and "5" for example. Programming is highly precise and especially in languages like Python every tiny detail matters.
+* Every single piece of code that I show, you will type by hand. No copy pasting, no "I can see what it does, it's obvious", no "I already know this, let me move on". I want you to do this to make sure that you actually process what we're learning together. You can only copy paste if I tell you that you can. Trust me. It may feel like a small difference, but not following along like this will reduce the effectiveness of whatever you learn tenfold.
+* Attention to detail: this comes from the last point, but when you type everything out yourself and look at it closely, you're forced to concentrate on what you're doing. For example, consider the difference between 5 and "5". Programming is highly precise, and errors like these can create bugs that can be quite difficult to track down if you're not prepared for them. Especially in languages like Python, every tiny detail matters.
 
 
 ## Tools
@@ -35,13 +35,13 @@ So keeping that in mind. For this entire website:
 
 ## Getting Ready
 
-I will expect this part is done before the workshop, but don't worry if you're not done since we're recording everything and all the material is there as text on the website too.
+You should finish this part before the workshop, but don't worry if you're not done since we're recording everything. All the material is written as text on the website as well.
 
-1. If you're on Windows I *highly* reccomend getting WSL2 (WSL 1 is also fine but slower). For historical reasons, the command line in Windows is just not as good as Mac or Linux. Eventually they just said, "Hey what if we had full* Linux *on* Windows."
+1. If you're on Windows, I *highly* reccomend getting WSL2 (WSL 1 is also fine, just slower). For historical reasons, the command line in Windows is just not as good as Mac or Linux. Eventually, they just said, "Hey what if we had full* Linux *on* Windows?" Thus, WSL.
 
 2. Install a recent version of Python (3.7+) on your computer and make sure to enable `pip` as well. <!-- TODO: Add more detail from web bot workshop maybe --> 
 
-3. Set up the `micro` text editor or other command line text editor of choice. See the page I wrote for [micro](/micro) for more detailed instructions.
+3. Set up the `micro` text editor or a different command line text editor of your choice. See the page I wrote for [micro](/micro) for more detailed instructions.
 
 4. Install discord.py
     ```sh
@@ -50,17 +50,17 @@ I will expect this part is done before the workshop, but don't worry if you're n
 
 ## Workshop
 
-1. Create discord account if you don't have one.
+1. Create a Discord account if you don't have one.
 
-2. Create a test discord server (sometimes called a guild)
+2. Create a test Discord server (sometimes called a guild).
 
-3. Copy over the auth setup in some environment variable 
+3. Copy over the auth setup in some environment variable.
 
-4. Set up a connected message.
+4. Set up a "connected" message.
 
-5. Respond to a hello message.
+5. Respond to a "hello" message.
 
-6. Create a function that we just pass things to abstract out the logic (loose coupling)
+6. Create a function that we can pass things to in order to abstract out the logic (loose coupling).
 
 ## Learn More
 
@@ -72,30 +72,30 @@ I will expect this part is done before the workshop, but don't worry if you're n
 
 ## Ideas
 
-Feel free to come up with anything as long as it is chatbot related. These are some things to help you get started but feel free to come up with more. Don't worry if it's already done or there is someone else doing it, the point is learning and fun :).
+Feel free to come up with anything you want as long as it's chatbot related. Here are some ideas to help you get started, but feel free to come up with more. Don't worry if it's already been done or if someone else is doing it. The point is learning and fun. :)
 
-* Think of a bot you've seen in real life, could you recrete a simple subset of features?
+* Think of a bot you've seen in real life. Could you recrete a simple subset of its features?
 
-* Maybe a bot that could give information on something, like recipies or your favorite sports team?
+* Maybe a bot that could provide the user information, like recipes or your sports teams?
 
-* Or helps a bot that can have basic conversation with you. Could it help you break down tasks or help you with a gratitude journal like setup? 
+* Or maybe a bot that can have basic conversation with you. Could it help you break down tasks or provide you with a gratitude journal? 
 
 * Maybe a bot that can automate something you find annoying? So you can use it to fire off commands to do some task.
 
-* The bot doesn't have to be a discord bot, you can make it on Slack, Facebook, IRC, or basically and chat service out there. 
+* The bot doesn't have to be a Discord bot. You can make it on Slack, Facebook, IRC, or basically any chat service out there. 
 
 ## Requirements
 
 These aren't hard requirements, but you should try your best to hit all of them.
 
-* The chatbot connects to a real chat service. Including, but not limited to: Discord, Slack, Telegram, IRC, Facebook.
+* The chatbot connects to a real chat service, including, but not limited to: Discord, Slack, Telegram, IRC, Facebook.
 
-* The bot has different responses based on different inputs.
+* It has different responses based on different inputs.
 
 * It displays a message on connnecting.
 
 * There are at least two test cases where you test parts of the bots behavior out.
 
-* This has to be available on a site like Github (feel free to use alternatives though)
+* This has to be available on a site like Github (feel free to use alternatives like GitLab if you prefer).
 
 * Show images/animations/videos of your bot in action in a `README.md` file in your repository.
