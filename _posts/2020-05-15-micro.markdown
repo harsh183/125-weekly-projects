@@ -51,7 +51,7 @@ used to and simple mouse inputs. I like it for its simplicity.
 
 If you've never used a command line text editor before, I highly reccomend micro because it makes you pay attention to the details of your code. You can use it as a stepping stone to more powerful editors like `vim` or `emacs`. It also has good mouse support, which is really helpful when starting out.
 
-In a way, my reasoning is quite similar to [making artists start with fine liners](https://drawabox.com/article/ink) because it makes people pay attention to what they're writing without relying on assistive tools too much. (On a side note, Sakura and Steadler fine liners are great.)
+In a way, my reasoning is quite similar to [making artists start with fine liners](https://drawabox.com/article/ink) because it makes people pay attention to what they're writing without relying on assistive tools too much.
 
 ## Download
 
