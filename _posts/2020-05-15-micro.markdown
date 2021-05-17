@@ -51,7 +51,7 @@ are used to and simple mouse stuff. I like it for it's simplicity.
 
 If you've never used a command line text editor before I highly reccomend this since it makes you pay attention to the details of your code and you can use it as a stepping stone to more powerful editors like `vim` or `emacs`. It also has good mouse support which is really helpful when starting out.
 
-In a way, my reasoning is quite similar to [making artists start with fine liners](https://drawabox.com/article/ink) because it makes people pay attention to what they're writing and not rely on assistive tools too much. (On a side )
+In a way, my reasoning is quite similar to [making artists start with fine liners](https://drawabox.com/article/ink) because it makes people pay attention to what they're writing and not rely on assistive tools too much. (On a side note Sakura and Steadler fine liners are great)
 
 ## Download
 
@@ -76,22 +76,33 @@ $ snap install micro --classic
 must be installed. Please see the section on [Linux clipboard support](https://github.com/zyedidia/micro#linux-clipboard-support)
 further below.
 
-Micro is also available through other package managers on Linux such as apt, dnf, AUR, Nix, and package managers
-for other operating systems. These packages are not guaranteed to be up-to-date.
+Micro is also available through other package managers on Linux such as apt, dnf, AUR, Nix, and package managers for other operating systems. These packages are not guaranteed to be up-to-date.
 
 ## Linux: Available in distro-specific package managers.
-    * `$ apt install micro` (Ubuntu 20.04 `focal`, and Debian `unstable | testing | buster-backports`). At the moment, this package (2.0.1-1) is outdated and has a known bug where debug mode is enabled.
-    * `$ dnf install micro` (Fedora).
-    * `$ pacman -S micro` (Arch Linux).
-    * `$ eopkg install micro` (Solus).
-    * See [wiki](https://github.com/zyedidia/micro/wiki/Installing-Micro) for details about CRUX, Termux.
+
+* `$ apt install micro` (Ubuntu 20.04 `focal`, and Debian `unstable | testing | buster-backports`). At the moment, this package (2.0.1-1) is outdated and has a known bug where debug mode is enabled.
+
+* `$ dnf install micro` (Fedora).
+
+* `$ pacman -S micro` (Arch Linux).
+
+* `$ eopkg install micro` (Solus).
+
+* See [wiki](https://github.com/zyedidia/micro/wiki/Installing-Micro) for details about CRUX, Termux.
+
 ## Windows: [Chocolatey](https://chocolatey.org) and [Scoop](https://github.com/lukesampson/scoop).
-    * `$ choco install micro`.
-    * `$ scoop install micro`.
+
+* `$ choco install micro`.
+
+* `$ scoop install micro`.
+
 ## OpenBSD: Available in the ports tree and also available as a binary package.
-    * `$ pkd_add -v micro`.
+
+* `$ pkd_add -v micro`.
+
 ## NetBSD, macOS, Linux, Illumos, etc. with [pkgsrc](http://www.pkgsrc.org/)-current:
-    * `$ pkg_add micro`
+
+* `$ pkg_add micro`
 
 If none of this works try
 
