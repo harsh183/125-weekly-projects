@@ -10,8 +10,8 @@ categories: Tools
 There are different levels of editors that programmers use while writing their 
 programs. I'll explain a couple.
 
-* Interactive shell - you write out a single line of code and see the result. Great for experimenting, but these can get tiring for real programs. Python has a nice one called IDLE. These are also called REPL 
-(Read-Evaluate-Print-Loop).
+* Interactive shell - you write out a single line of code and see the result. Great for experimenting, but these can get tiring for real programs. Python has a nice one called IDLE. These are also called REPL (Read-Evaluate-Print-Loop).
+E.g. most built in interactive shells for programming languages. For Python just type `python` with nothing else and web browsers have a js shell on their dev tools (F12).
 
 * Text editor - these are for writing out programs as files. You write out
 the entire program and then execute it. These often have syntax highlighting
@@ -30,7 +30,7 @@ lines at  time (generally 4-5). These are mostly used for statistics,
 machine learning and other data work because they can show plots and tables very 
 nicely. We'll use these when we get to data work, so don't worry about this
 yet.
-Ex. R Notebooks, Jupyter Notebooks. 
+E.g. R Notebooks, Jupyter Notebooks. 
 
 ## What you will learn
 
