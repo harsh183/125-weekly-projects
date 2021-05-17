@@ -123,7 +123,7 @@ See more on their [website](https://micro-editor.github.io/) and [documentation]
    ```
 
 2. Code
-   Here's an example of a program. Type this out. You can write any python program this way
+   Here's an example of a program. Type this out. You can write any Python program this way.
    ```python
    print("Hello, World!")
    ```
