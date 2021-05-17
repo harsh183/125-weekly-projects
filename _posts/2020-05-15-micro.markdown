@@ -12,48 +12,50 @@ categories: Tools
 There are different levels of editors that programmers use while writing their 
 programs. I'll explain a couple.
 
-* Interactive shell - you write out a single line of code and see the result - great for experimenting but it gets tiring for real programs  Python has a nice one called IDLE. These are called REPL 
-(Read-Evaluate-Print-Loop) as well.
+* Interactive shell - you write out a single line of code and see the result. Great for experimenting, but these can get tiring for real programs. Python has a nice one called IDLE. These are also called REPL 
+(Read-Evaluate-Print-Loop).
 
 * Text editor - these are for writing out programs as files. You write out
 the entire program and then execute it. These often have syntax highlighting
-and some special language support. Generally these are quite simple and barebones.
-Ex. Nano, micro, vim, emacs. 
+and some special language support. Generally, these are quite simple and barebones.
+E.g. Nano, micro, vim, emacs. 
 
-* IDE - stands for Integrated Development Environment - these have file exploring,
-terminals, code editors, tools, generators, git etc. and many of the tools 
-programmers use in one application for high productivity. These are great and I
+* IDE - stands for Integrated Development Environment. These have file exploring,
+terminals, code editors, generators, git, and many other tools 
+programmers use, all in one application for high productivity. These are great and I
 love them, but I suggest against these for people starting out precisely because
-they do so much. I will get you moving up in that direction soon enough though.
-Ex. Visual Studio, PyCharm, IntelliJ
+they do so much. I will get you moving up in that direction soon enough.
+E.g. Visual Studio, PyCharm, IntelliJ
 
-* Notebooks - These are interactive shells but you can execute a bunch of 
-lines at a time (4-5 generally), and these are mostly used for statistics,
-machine learning and other data work because it shows plots and tables very 
-nicely. We'll do some of this when we get to data work, don't worry about this
+* Notebooks - These are interactive shells where you can execute multiple 
+lines at  time (generally 4-5). These are mostly used for statistics,
+machine learning and other data work because they can show plots and tables very 
+nicely. We'll use these when we get to data work, so don't worry about this
 yet.
-Ex. R notebooks, Jupyter notebook. 
+Ex. R Notebooks, Jupyter Notebooks. 
 
 ## What you will learn
 
-1. Micro - very simple and great to start with
-3. Visual Studio Code - a bridge between text editors and IDEs 
+1. Micro - a text editor. Very simple and great to start with.
+3. Visual Studio Code - a bridge between text editors and IDEs.
 
-I'll introduce VSCode when we start `JavaScript` and `TypeScript`. Right now let's learn micro.
+I'll introduce VSCode when we start `JavaScript` and `TypeScript`. For now, let's learn micro.
 
 # Micro
 
-Micro's 1000x improvement from another standard text editor called nano.
+Micro is a 1000x improvement from another standard text editor called nano.
 
-I like it because it's quite simple yet it's pretty decent for getting started 
-without much of a learning curve. You can use simple keyboard shortcuts you
-are used to and simple mouse stuff. I like it for it's simplicity.
+I like it because it's quite simple, and it's pretty decent for getting started 
+without much of a learning curve. You can use simple keyboard shortcuts that you're already 
+used to and simple mouse inputs. I like it for its simplicity.
 
-If you've never used a command line text editor before I highly reccomend this since it makes you pay attention to the details of your code and you can use it as a stepping stone to more powerful editors like `vim` or `emacs`. It also has good mouse support which is really helpful when starting out.
+If you've never used a command line text editor before, I highly reccomend micro because it makes you pay attention to the details of your code. You can use it as a stepping stone to more powerful editors like `vim` or `emacs`. It also has good mouse support, which is really helpful when starting out.
 
-In a way, my reasoning is quite similar to [making artists start with fine liners](https://drawabox.com/article/ink) because it makes people pay attention to what they're writing and not rely on assistive tools too much. (On a side note Sakura and Steadler fine liners are great)
+In a way, my reasoning is quite similar to [making artists start with fine liners](https://drawabox.com/article/ink) because it makes people pay attention to what they're writing without relying on assistive tools too much. (On a side note, Sakura and Steadler fine liners are great.)
 
 ## Download
+
+**Note that when there is a `$` in instructions, it means to run it in the command line.**
 
 ### Package managers
 
@@ -104,15 +106,13 @@ Micro is also available through other package managers on Linux such as apt, dnf
 
 * `$ pkg_add micro`
 
-If none of this works try
+If none of this works, try
 
 ```
 $ curl https://getmic.ro | bash
 ```
 
-See more on their [website](https://micro-editor.github.io/) and [documentatation](https://github.com/zyedidia/micro#installation) where the above stuff is adapted from.
-
-**Note that when there is a `$` in instructions it means run it in the command line.**
+See more on their [website](https://micro-editor.github.io/) and [documentation](https://github.com/zyedidia/micro#installation), where the above information is adapted from.
 
 ## Using it
 
@@ -125,7 +125,7 @@ See more on their [website](https://micro-editor.github.io/) and [documentatatio
 2. Code
    Here's an example of a program. Type this out. You can write any python program this way
    ```python
-   print("Hello World")
+   print("Hello, World!")
    ```
 
 3. Save. Hit Command+S on your keyboard to save the program.
@@ -133,23 +133,24 @@ See more on their [website](https://micro-editor.github.io/) and [documentatatio
 4. Quit. Hit Command+Q and you're back. If you forgot to save it'll ask you
 y/n to decide if you want to save.
 
-5. Run your program. You can execute any python program using `python <name of file>`
+5. Run your program. You can execute any Python program using `python <name of file>` or `python3 <name of file>`, depending on which version of Python you're using.
    ```bash
+   $ python hello.py
    $ python3 hello.py
    ```
    Which shows the output
    ```
-   Hello World
+   Hello, World!
    ```
 
 ## Exercise
 
-Write a program that adds two numbers which are colleced via user input on *micro*. The whole
-point is to give you practice with using the editor. Remember we use `input()` to collect keyboard input in python.
+Write a program that adds two numbers which are colleced via user input on *micro*. The point of this 
+is to give you practice using the editor. Remember that in Python, we use `input()` to collect keyboard input.
 
-The output will look something like
+The output should look something like
 ```
-Enter one number: 5
-Enter one more number: 20
-The sum: 25
+Enter the first number: 5
+Enter the second number: 20
+The sum is 25!
 ```

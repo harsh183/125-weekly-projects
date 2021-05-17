@@ -7,13 +7,13 @@ external-url:
 categories: Info
 ---
 
-Go do a project.
+"Go do a project."
 
-Good advice but is it really a useful thing to hear?
+Good advice, but is it really a useful thing to hear?
 
 Sign up: https://forms.gle/N727zpCZKj3KiZW17
 
-Two months of guided side projects to give people some experience with practical programming and building their portfolios for students at UIUC during Summer 2021.
+The CS 125 Summer of Side Projects is two months of guided side projects to give people some experience with practical programming and building their portfolios. It's meant for UIUC students during Summer 2021.
 
 ## Commitment 
 
@@ -22,19 +22,19 @@ Two months of guided side projects to give people some experience with practical
 ## Target Audience
 
 * Rising sophomores at UIUC 
-* Finished CS 125 
-* Did not get an internship/research/job over the summer (or got cancelled)
-* Less experienced in CS
+* Who have finished CS 125 
+* Who did not get an internship/research/job over the summer (or it was cancelled)
+* Who are less experienced in CS
 * Who have never programmed outside class 
-* Who feel lost when told ‘go do side projects’
+* Who feel lost when told to "go do side projects"
 * Who want to build a portfolio for job/transfer/research applications
-* Don’t want to get rusty over the summer
+* Who want to practice over the summer
 
 ## Weekly schedule
 
-Tuesday: Introduce topic on a web page with some writeup, link to resources, and live Zoom/workshop/code-along, if any
+Tuesday: Introduce topic on a web page with a writeup, links to resources, and live Zoom sessions/workshops/code-alongs, if any.
 
-Wednesday: Google form or similar to submit an idea with an MVP and nice-to-have features.
+Wednesday: Submit an idea through a Google form (or similar) with an MVP and nice-to-have features.
 
 Monday: Turn in projects by making a forum post with a link and GitHub. Peer + staff feedback.
 
@@ -55,14 +55,14 @@ Monday: Turn in projects by making a forum post with a link and GitHub. Peer + s
 * Wrap up (July 26)
 
 ## Weekly Projects
-Mostly simple projects around the theme of the week that we’ll help students narrow down on an MVP + nice-to-haves. We can guide people towards a workflow similar to this: [How to Plan and Build a Programming Project - A Legitimate Guide for Beginners](https://peterlunch.com/how-to-plan-and-build-a-programming-project/).
+We will do (mostly) simple projects around the theme of the week. We'll help students narrow down on their MVP and nice-to-haves. We can guide people towards a workflow similar to this: [How to Plan and Build a Programming Project - A Legitimate Guide for Beginners](https://peterlunch.com/how-to-plan-and-build-a-programming-project/).
 
-For people who have only programmed in class, getting started with side projects is hard, and they’re not at the skill level to fully work on something more ambitious such as courseware or 1-2 month long projects. People don’t always know how to find the right tutorials or they feel overwhelmed by scoping out projects, so we’ll provide a structure around that.
+For people who have only programmed in class, getting started with side projects is hard, and they may not be at the skill level to work on something more ambitious like courseware or one-to-two month-long projects. People don’t always know how to find the right tutorials, or they may feel overwhelmed by scoping out projects. We’ll provide a structure around that.
 
-Difficulty-wise, the projects will be intro CS level in complexity, so this is more about learning how to use new libraries, languages, tools and APIs they have not done before. It’s also about learning how to break a large project into smaller pieces and understanding how to go towards an MVP.
+Difficulty-wise, the projects will be intro CS level in complexity, so this is more about learning how to use new libraries, languages, tools and APIs. It’s also about learning how to break a large project into smaller pieces and understanding how to go towards an MVP.
 
 ## Portfolio
-Inspired by art school courses, we think it’s a good idea to have the end result as a portfolio they have to show off to their friends, family and even recruiters. This will be in the form of a personal website as well as a Github profile. 
+Inspired by art school courses, we want students to have their end result as a portfolio they can show off to their friends, family and even recruiters. This will be in the form of a personal website and a Github profile. 
 
 We’ll show people how to talk about these on a resume and how to bring these up in interviews as well.
 
@@ -78,4 +78,4 @@ Students will learn about
 
 ## Forum
 
-We will use the [CS 125 Forum](https://cs125-forum.cs.illinois.edu/) with some categories created for just this.
+We will use the [CS 125 Forum](https://cs125-forum.cs.illinois.edu/) with some categories created for this.
