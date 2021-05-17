@@ -46,7 +46,7 @@ Feel free to come up with anything you want as long as it's chatbot related. Her
 
 * Is there some commmand line application you found annoying or hard to use? How would you improve it?
 
-* Maybe the chatbot from last week could also be available in command line form? Could you spice it up with fancy menu selectors or ASCII displays?
+* Maybe the chatbot from last week could also be available in command line form. Could you spice it up with fancy menu selectors or ASCII displays?
 
 * Maybe you can use this to automate some workflow task you have by combining some steps together with `plumbum`. One of the greatest things about command lines is that you can use each program as a modular piece on to the next.
 
