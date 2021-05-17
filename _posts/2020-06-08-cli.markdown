@@ -7,7 +7,7 @@ external-url:
 categories: Python
 ---
 
-You might have seen programmers everywhere using the command line for all sorts of daily tasks. It looks kind of unfriendly and ugly right?
+You might have seen programmers everywhere using the command line for all sorts of daily tasks. It looks kind of unfriendly and complicated, right?
 
 How about we make things a little prettier and easier for people to use?
 
@@ -17,39 +17,39 @@ print("Hello command line")
 
 ## Motivation
 
-An 18 minute audio recording made specially for this summer session by [Donovan Keme](https://github.com/digitalextremist) my mentor last summer who broadened my perspective on tech entirely. His open source Ruby work has been part of almost [450 million downloads](https://rubygems.org/profiles/digitalextremist) and he's very innvolved with the community.
+Here's an 18 minute audio recording made specially for this summer session by [Donovan Keme](https://github.com/digitalextremist), my mentor last summer who broadened my perspective on tech entirely. His open source Ruby work has been part of almost [450 million downloads](https://rubygems.org/profiles/digitalextremist), and he's very involved with the community.
 
-This is a more sombre and serious recording instead of the typical emotional pep talk but it's important to consider in your journey after several months about learning about technology. At this point it is the right time to start thinking about what role technology plays in the world and what is the purpose you want to achieve with technology. 
+This is a more somber and serious recording instead of the typical emotional pep talk, but it's important to consider in your journey after several months about learning about technology. At this point, it's the right time to start thinking about what role technology plays in the world and what purpose you want to achieve with technology. 
 
 [Recording link](https://extremist.digital/audio/126-m20210504083039-5tp5-harsh.mp3
 )
 
-Don't worry if you don't know what your purpose is right there, and what this means can be different for everyone. Over the next few months start to reflect and chart out your goals of what you want to do and the steps you want to take from there. Feel free to message any of the staff or create a forum post if you want to talk it out too.
+Don't worry if you don't know what your purpose is right now. What this means can be different for everyone. Over the next few months, start to reflect and chart out your goals of what you want to do and the steps you want to take from there. Feel free to message any of the staff or create a forum post if you want to talk about it too.
 
 ## Getting Ready 
 
-1. Learn a bit of git on the commmand line. You can use any intro tutorial but [this web browser one](https://learngitbranching.js.org/) looks good.
+1. Learn a bit of git on the commmand line. You can use any intro tutorial, but [this web browser one](https://learngitbranching.js.org/) looks good.
 
-2. Go over the basics of test driven development with `pytest` in this tutorial on [the site](/testing101). Code along everything just to get an idea of why we test andn how to create your workflow around tests. While I don't want all projects to have extensive tests (but it is a good habit), having just 3-5 tests makes a lot of difference. 
+2. Go over the basics of test driven development with `pytest` in this tutorial on [the site](/testing101). Code along everything just to get an idea of why we test and how to create your workflow around tests. While I don't want all projects to have extensive tests (although it is a good habit), having even just 3-5 tests makes a huge difference. 
 
 ## Learn More
 
-* [Plumbum scripting](https://iscinumpy.gitlab.io/post/plumbum-scripting/) - learn more about the library we used to interact with the actual system programs.
+* [Plumbum scripting](https://iscinumpy.gitlab.io/post/plumbum-scripting/) - learn more about the library we'll to interact with the actual system programs.
 
-* [Building Beautiful Command Line Interfaces with Python](https://codeburst.io/building-beautiful-command-line-interfaces-with-python-26c7e1bb54df) - good introduction to a lot of pretty command line things out there.
+* [Building Beautiful Command Line Interfaces with Python](https://codeburst.io/building-beautiful-command-line-interfaces-with-python-26c7e1bb54df) - a good introduction to pretty command line interfaces, with some examples!
 
-* [Python Command Line Apps](https://www.davidfischer.name/2017/01/python-command-line-apps/) - some theory on the aspects of command line apps as well as library reccomendations.
+* [Python Command Line Apps](https://www.davidfischer.name/2017/01/python-command-line-apps/) - some theory on the aspects of command line apps, as well as library recommendations.
 
 ## Ideas
 
-Feel free to come up with anything as long as it is a fancy command line interface. These are some things to help you get started but feel free to come up with more. Don't worry if it's already done or there is someone else doing it, the point is learning and fun :).
+Feel free to come up with anything you want as long as it's chatbot related. Here are some ideas to help you get started, but feel free to come up with more. Don't worry if it's already been done or if someone else is doing it. The point is learning and fun. :)
 
-* Is there some commmand line application you found was annoying or hard to use? How about making a better one?
+* Is there some commmand line application you found annoying or hard to use? How would you improve it?
 
 * Maybe the chatbot from last week could also be available in command line form? Could you spice it up with fancy menu selectors or ASCII displays?
 
-* Maybe you can use this to automate some workflow task you have by combining some steps together with `plumbum`. One of the greatest things about command lines is just using each program as a modular piece on to the next.
+* Maybe you can use this to automate some workflow task you have by combining some steps together with `plumbum`. One of the greatest things about command lines is that you can use each program as a modular piece on to the next.
 
 ## Requirements
 
-* It has to be a command line application
+* It has to be a command line application.
