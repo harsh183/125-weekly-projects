@@ -7,8 +7,6 @@ external-url:
 categories: Tools
 ---
 
-## What all is there
-
 There are different levels of editors that programmers use while writing their 
 programs. I'll explain a couple.
 
