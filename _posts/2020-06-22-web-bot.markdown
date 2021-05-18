@@ -31,11 +31,11 @@ Hosted by: Harsh Deep
 
 ## Learn more
 
-* wacky web bots thing
+* A few weeks ago I held a workshop on Web Bots as well where I covered `webbrowser` and `selenium`. I _highly_ reccomend those. [Slides](https://wacky-web-bots.netlify.app/dist/125.html), [Code](https://github.com/harsh183/sail21-whacky-web-bots/tree/main/workshop_code/cs125) and [Video](https://www.youtube.com/watch?v=07YsSpcDjHI).
 
-* scrapy
+* `scrapy` is a more serious framework for writing web scraping spiders in python. Take a look at a starter tutorial [here](https://docs.scrapy.org/en/latest/intro/tutorial.html)
 
-* testing + web browser stuff
+* Web bots are commonly used for testing. [pytest-selenium](https://pytest-selenium.readthedocs.io/en/latest/user_guide.html) combines `pytest` with `selenium`. Here is another guide on [beautifulsoup testing](https://www.tutorialspoint.com/python_web_scraping/python_web_scraping_testing_with_scrapers.htm) which combines it with `unittest`.
 
 ## Ideas
 
