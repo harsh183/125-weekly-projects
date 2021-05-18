@@ -28,7 +28,7 @@ Wednesday: Google form or similar to submit an idea with an MVP and nice-to-have
 Monday: Turn in projects by making a forum post with a link and GitHub. Peer + staff feedback.
 
 ## Calendar 
-Tentative schedule can be found <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FChicago&amp;src=Y19zcHVhdHZnb3Zwa3Z0ZWx1aXM3MzBicGJyY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%234285F4" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no">Here</iframe>
+Schedule can be found [here](https://calendar.google.com/calendar/u/0/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America/Chicago&src=Y19zcHVhdHZnb3Zwa3Z0ZWx1aXM3MzBicGJyY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%234285F4)
 
 ## Outline
 
