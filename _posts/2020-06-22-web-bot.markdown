@@ -19,9 +19,23 @@ Hosted by: Harsh Deep
 
 [On the Subject of Talent](https://drawabox.com/article/talent) - this is advice for artists, but in my experience, a lot of good art advice also applies to programming. We are more alike than a lot of people realize.
 
+## Workshop
+
+* cs 225 slide+notes downloader (though can be adapted to basically any course) - use similar approaches for any of your classes
+* we start at home page
+* we extract and find the lecture button url
+* we request that
+* for each week we create a folder called `week<n>` where n is 1.16
+* we get the date we save `<date>_slides.pdf` and `<date>_handout.pdf` where date is what we scraped
+
+
 ## Learn more
 
+* wacky web bots thing
 
+* scrapy
+
+* testing + web browser stuff
 
 ## Ideas
 

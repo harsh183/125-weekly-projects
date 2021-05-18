@@ -27,9 +27,14 @@ pip install pygame
 
 ## Workshop
 
+
+* Social distancing the game :))
+* So you are a dot 
+* and there is a circle around the dot
+* you have to avoid people marked red with circles around them to not get covid19
 * so this will just be getting started here is some starter code of some basic game 
 * sprite that moves around while avoiding red (tested positive) and yellow (unsure so it's a 30% chance)
-* but you don't avoid green - I'll use this to teach sprite groups and collision detection 
+* but you don't avoid green - vaccinated or masks (basically this is sprite groups)
 * teach about framerate (30 vs 60 vs 144)
 
 ## Learn more
