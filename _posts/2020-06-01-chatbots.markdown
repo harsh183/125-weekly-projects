@@ -105,3 +105,5 @@ These aren't hard requirements, but you should try your best to hit all of them.
 * This has to be available on a site like Github (feel free to use alternatives like GitLab if you prefer).
 
 * Show images/animations/videos of your bot in action in a `README.md` file in your repository.
+
+* Has to use a Open Source license via a `LICENSE` file

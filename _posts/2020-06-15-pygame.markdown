@@ -56,8 +56,10 @@ Feel free to come up with anything you want as long as it's chatbot related. Her
 <!-- TODO: add more -->
 ## Requirements
 
-* It should use pygame.
+* It should use `pygame`.
 
 * You should show it off in your README.md file, with animations/video and an explanation of the game.
+
+* Has to use a Open Source license via a `LICENSE` file
 
 <!-- TODO: add more -->
