@@ -15,6 +15,8 @@ How about we make things a little prettier and easier for people to use?
 print("Hello command line")
 ```
 
+Hosted by: Harsh Deep
+
 ## Motivation
 
 Here's an 18 minute audio recording made specially for this summer session by [Donovan Keme](https://github.com/digitalextremist), my mentor last summer who broadened my perspective on tech entirely. His open source Ruby work has been part of almost [450 million downloads](https://rubygems.org/profiles/digitalextremist), and he's very involved with the community.
@@ -31,6 +33,15 @@ Don't worry if you don't know what your purpose is right now. What this means ca
 1. Learn a bit of git on the commmand line. You can use any intro tutorial, but [this web browser one](https://learngitbranching.js.org/) looks good.
 
 2. Go over the basics of test driven development with `pytest` in this tutorial on [the site](/testing101). Code along everything just to get an idea of why we test and how to create your workflow around tests. While I don't want all projects to have extensive tests (although it is a good habit), having even just 3-5 tests makes a huge difference. 
+
+## Workshop
+
+* do fancy ascii art display first 
+* then show how to use plumbum to run command line stuff. Take `ls` and store the output in a string 
+* split the string to get a list of files and folders 
+* now display it in a command line GUI checkbox format 
+* once people hit enter give that list to git add 
+* have optional command line argument for commit `-c`
 
 ## Learn More
 

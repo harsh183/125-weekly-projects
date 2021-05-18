@@ -13,6 +13,8 @@ Many people got into CS by playing video games and wanting to make more. Even if
 print("Hello pygame!")
 ```
 
+Hosted by: Harsh Deep
+
 ## Motivation
 
 * Comic: [IRA GLASS: Advice for beginners](http://www.zenpencils.com/comic/90-ira-glass-advice-for-beginners/)
@@ -22,6 +24,13 @@ print("Hello pygame!")
 ```bash
 pip install pygame
 ```
+
+## Workshop
+
+* so this will just be getting started here is some starter code of some basic game 
+* sprite that moves around while avoiding red (tested positive) and yellow (unsure so it's a 30% chance)
+* but you don't avoid green - I'll use this to teach sprite groups and collision detection 
+* teach about framerate (30 vs 60 vs 144)
 
 ## Learn more
 

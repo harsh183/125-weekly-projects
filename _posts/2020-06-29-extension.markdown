@@ -15,13 +15,15 @@ To first learn `TypeScript` we start from `JavaScript`.
 console.log("Hello Web Browser Extentions");
 ```
 
+Hosted by: Harsh Deep
+
 ## Motivation
 
 Comic: [CHRIS HADFIELD: An astronaut’s advice](http://www.zenpencils.com/comic/106-chris-hadfield-an-astronauts-advice/)
 
+## Workshop
+
 ## Learn more
-
-
 
 ## Ideas
 

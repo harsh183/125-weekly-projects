@@ -13,6 +13,8 @@ Now we complete two halves of a whole using `React` to create a basic frontend.
 console.log("Hello React");
 ```
 
+Hosted by: Jackie Chan
+
 ## Motivation
 
 [The 50% rule](https://drawabox.com/lesson/0/2/50percent) - also good artist advice
