@@ -34,9 +34,11 @@ Don't worry if you don't know what your purpose is right now. What this means ca
 
 2. Go over the basics of test driven development with `pytest` in this tutorial on [the site](/testing101). Code along everything just to get an idea of why we test and how to create your workflow around tests. While I don't want all projects to have extensive tests (although it is a good habit), having even just 3-5 tests makes a huge difference. 
 
+3. Learn a few basics of how a command line works. [Here is a quick crash course](https://www.vikingcodeschool.com/web-development-basics/a-command-line-crash-course) with links to resources to learn even more. The command line is intimidating, but once you get used to it, you'll wonder how you lived without it. It's part of almost every programmer's toolbox.
+
 ## Workshop
 
-Our goal is to make a fancy git add command line application that has a nice interactive interface. We display a list of files that can be added and then have the user select. Then we provide them an option to commit the file as well.
+Our goal is to make a fancy git add CLI with a nice interactive interface. We display a list of files that can be added and then have the user select. Then we provide them an option to commit the file as well.
 
 Note: I've done this on an Ubuntu `20.04` system. Your progress won't be drastically different but you may need to adjust depending on how your OS does things. Feel free to post forum questions in case there are any problems. I used `python 3.8.5`.
 
