@@ -35,11 +35,11 @@ Schedule can be found [here](https://calendar.google.com/calendar/u/0/embed?heig
 ### Month 1: Python
 
 * Week 1 (June 1): Discord/Slack Chatbot June 1
-  * Tools: Github, Micro
+  * Tools: Github, VSCode, pylint
 * Week 2 (June 8): Fancy command line interface
   * Tools: Command line, git
 * Week 3 (June 15): pyGame for a simple interactive game
-  * Tools: Pylint
+  * Tools: CI/CD
 * Week 4 (June 22): web bots (beautifulsoup)
   * Tools: Debugger
 
