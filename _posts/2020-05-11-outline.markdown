@@ -13,7 +13,7 @@ categories: Info
 
 Good advice, but is it really a useful thing to hear?
 
-Sign up: https://forms.gle/N727zpCZKj3KiZW17
+Sign up: [google form](https://forms.gle/N727zpCZKj3KiZW17)
 
 The CS 125 Summer of Side Projects is two months of guided side projects to give people some experience with practical programming and building their portfolios. It's meant for UIUC students during Summer 2021.
 
@@ -50,6 +50,7 @@ Monday: Turn in projects by making a forum post with a link and GitHub. Peer + s
 * Week 4 (June 22): web bots (`beautifulsoup`) (Tools: Debugger `pdb`)
 
 ### Month 2: JavaScript and Typescript
+
 * Week 1 (June 29): Greasemonkey/Tampermonkey/Web Browser extension - JavaScript (Tools: Browser Inspect Element, Eslint)
 * Week 2 (July 6): Express JS backend to do something simple w/ Docker (Tools: Chai automated testing, GitHub CI/CD)
 * Week 3 (July 13): React frontend around some existing API (Tools: Postman/Postwoman/Insomnia, Testing)
@@ -57,6 +58,7 @@ Monday: Turn in projects by making a forum post with a link and GitHub. Peer + s
 * Wrap up (July 26)
 
 ## Weekly Projects
+
 We will do (mostly) simple projects around the theme of the week. We'll help students narrow down on their MVP and nice-to-haves. We can guide people towards a workflow similar to this: [How to Plan and Build a Programming Project - A Legitimate Guide for Beginners](https://peterlunch.com/how-to-plan-and-build-a-programming-project/).
 
 For people who have only programmed in class, getting started with side projects is hard, and they may not be at the skill level to work on something more ambitious like courseware or one-to-two month-long projects. People don’t always know how to find the right tutorials, or they may feel overwhelmed by scoping out projects. We’ll provide a structure around that.
@@ -64,6 +66,7 @@ For people who have only programmed in class, getting started with side projects
 Difficulty-wise, the projects will be intro CS level in complexity, so this is more about learning how to use new libraries, languages, tools and APIs. It’s also about learning how to break a large project into smaller pieces and understanding how to go towards an MVP.
 
 ## Portfolio
+
 Inspired by art school courses, we want students to have their end result as a portfolio they can show off to their friends, family and even recruiters. This will be in the form of a personal website and a Github profile. 
 
 We’ll show people how to talk about these on a resume and how to bring these up in interviews as well.
@@ -71,6 +74,7 @@ We’ll show people how to talk about these on a resume and how to bring these u
 ## GitHub
 
 Students will learn about
+
 * Basic git commands from the command line
 * Navigating GitHub website
 * Using GitHub issues/projects
