@@ -38,7 +38,7 @@ Don't worry if you don't know what your purpose is right now. What this means ca
 
 Our goal is to make a fancy git add command line application that has a nice interactive interface. We display a list of files that can be added and then have the user select. Then we provide them an option to commit the file as well.
 
-Note: I've done this on an Ubuntu system. Your progress won't be drastically different but you may need to adjust depending on how your OS does things. Feel free to post forum questions in case there are any problems.
+Note: I've done this on an Ubuntu `20.04` system. Your progress won't be drastically different but you may need to adjust depending on how your OS does things. Feel free to post forum questions in case there are any problems. I used `python 3.8.5`.
 
 ### Libraries
 
@@ -353,7 +353,7 @@ and running tests should still give green
 
 ```
 $ pytest fgit.py
-```.
+```
 
 Our full code at this stage should be 
 
@@ -392,40 +392,347 @@ Note: This is a simple test for teaching reasons. In real life you should write 
 
 ## Fancy Menu Selectors
 
+Now we want to create a checkbox like system you can go up and down on. We use `PyInquirer` to ask. The format for checkbox questions is similar to this [example](https://github.com/CITGuru/PyInquirer/blob/master/examples/checkbox.py) from their documentation. 
+
+Here I will show another style of testing which I call "green-refactor". Sometimes creating a failing test first is quite tedious so I create the feature and then add a test for it. Over time you'll figure out your style of how to do things. 
+
 ### Green
+
+First we create a new function for generating the questions in the right format
+
+```python
+def generate_questions(files):
+    questions = [{
+        'type': 'checkbox',
+        'name': 'files',
+        'message': 'What would you like to commit',
+        'choices': [{'name': file} for file in files],   
+    }]
+    return questions
+```
+
+For generating our `'choices'` we use Python [List Comprehension](https://www.programiz.com/python-programming/list-comprehension) which is one of my favorite features from the language.
+
+We add the import for `prompt`
+```python
+from PyInquirer import prompt
+```
+
+Note: This might lead to a `pytest` warning complaining that it won't 
+
+In our `main` function we slot this in and just print to see if we got the right output.
+
+```python
+def main(self):
+        print_banner("Git fancy add")
+        files = get_files()
+
+        questions = generate_questions(files)
+        answers = prompt(questions)
+        print(answers['files'])
+```
+
+The output now shows that we get the user choices in an array.
+
+```
+? What would you like to commit  done (2 selections)
+['file3.txt', 'requirements.txt']
+```
+
+Now to write a test for this. We can put it in the bottom like the other one.
+
+```python
+def test_generate_questions():
+    files = ["best.rb", "good.kt", "small.py"]
+    questions = generate_questions(files)
+    assert len(questions) == 1 # one question
+    assert questions['type'] == 'checkbox' # has to be a checkbox
+    assert len(questions['choices']) == len(questions) # same size as files
+```
+
+If we run the test (`$ pytest fgit.py`) we should get everything passing.
 
 ### Refactor
 
+Now that we have a test acting as a safety net, we can refactor with confidence. Remembering our difficulties from earlier, we decide to add a `strip()` to each menu option. With luck this shouldn't break everything.
+
+```python
+def generate_questions(files):
+    questions = [{
+        'type': 'checkbox',
+        'name': 'files',
+        'message': 'What would you like to commit',
+        'choices': [{'name': file.strip()} for file in files],   
+    }]
+    return questions
+```
+
+If we run `pytest fgit.py` we're still good.
+
+At this point our full file should be
+
+```python
+from pyfiglet import Figlet
+from plumbum import cli
+from plumbum.cmd import ls
+
+from PyInquirer import prompt
+
+def print_banner(text):
+    print(Figlet(font='slant').renderText(text))
+
+def get_files():
+    ls_output = ls().strip()
+    files = ls_output.split("\n")
+    return files
+
+def generate_questions(files):
+    questions = [{
+        'type': 'checkbox',
+        'name': 'files',
+        'message': 'What would you like to commit',
+        'choices': [{'name': file.strip()} for file in files],   
+    }]
+    return questions
+
+class FancyGitAdd(cli.Application):
+    VERSION = "1.3"
+    # commit = cli.Flag(['c', 'commit'], help="Commits the added files as well")
+
+    def main(self):
+        print_banner("Git fancy add")
+        files = get_files()
+
+        questions = generate_questions(files)
+        answers = prompt(questions)
+        print(answers['files'])
+        # if (self.commit):
+            # print("I see you also want to commit")
+
+if __name__ == "__main__":
+    FancyGitAdd()
+
+### TESTS
+
+def test_get_files():
+    files = get_files()
+    assert len(files) == 5
+
+def test_generate_questions():
+    files = ["best.rb", "good.kt", "small.py"]
+    questions = generate_questions(files)
+    assert len(questions) == 1 # one question
+
+    question = questions[0]
+    assert question['type'] == 'checkbox' # has to be a checkbox
+    assert len(question['choices']) == len(files) # same size as files
+```
+
 ## Calling Git Add
 
-* now display it in a command line GUI checkbox format 
-* once people hit enter give that list to git add 
-* have optional command line argument for commit `-c`
+Now that we have the list of files to add, let's actually pass it to `git`.
+
+Similar to `ls`, we take advantage of `plumbum.cmd`.
+
+```python
+from plumbum.cmd import ls, git
+```
+
+```python
+def main(self):
+    print_banner("Git fancy add")
+    files = get_files()
+
+    questions = generate_questions(files)
+    answers = prompt(questions)
+    git('add', answers['files'])
+```
+
+And if we run this and check the `git status` output we can see that our program worked.
+
+```
+$ python3 fgit.py
+   _______ __     ____                                    __    __
+  / ____(_) /_   / __/___ _____  _______  __   ____ _____/ /___/ /
+ / / __/ / __/  / /_/ __ `/ __ \/ ___/ / / /  / __ `/ __  / __  /
+/ /_/ / / /_   / __/ /_/ / / / / /__/ /_/ /  / /_/ / /_/ / /_/ /
+\____/_/\__/  /_/  \__,_/_/ /_/\___/\__, /   \__,_/\__,_/\__,_/
+                                   /____/
+
+? What would you like to commit  [fgit.py]
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   fgit.py
+```
+
+## Commit flag
+
+Now what if we wanted to let people `git commit` once their job was done as well. They can add `-c`/`--commit` if they want their work 
+
+Normally I'd commit something like this (ideally with a more helpful message)
+```
+$ git commit -m "add files"
+``` 
+
+Luckily for us, `plumbum` makes adding another flag relatively easy. If we use `cli.Flag` then the result will be attached to `self` and we can use it in our program.
+
+```python
+class FancyGitAdd(cli.Application):
+    VERSION = "1.3"
+    commit = cli.Flag(['c', 'commit'], help="Commits the added files as well")
+
+    def main(self):
+        print_banner("Git fancy add")
+        files = get_files()
+
+        questions = generate_questions(files)
+        answers = prompt(questions)
+        git('add', answers['files'])
+        if self.commit:
+            git('commit', '-m', 'add files')
+```
+
+and when we run it we can verify with `git log`
+```
+$ python fgit.py -c
+   _______ __     ____                                    __    __
+  / ____(_) /_   / __/___ _____  _______  __   ____ _____/ /___/ /
+ / / __/ / __/  / /_/ __ `/ __ \/ ___/ / / /  / __ `/ __  / __  /
+/ /_/ / / /_   / __/ /_/ / / / / /__/ /_/ /  / /_/ / /_/ / /_/ /
+\____/_/\__/  /_/  \__,_/_/ /_/\___/\__, /   \__,_/\__,_/\__,_/
+                                   /____/
+
+? What would you like to commit  [fgit.py]
+$ git log
+commit 7dd8feb673ae8a71f9a6d04ea5604336eda67b56 (HEAD -> main)
+Author: Harsh Deep <>
+Date:   Tue May 18 21:13:16 2021 -0500
+
+    add files
+```
+
+The help output will also show the input for the new option.
+
+```
+$ python fgit.py --help
+fgit.py 1.3
+
+Usage:
+    fgit.py [SWITCHES]
+
+Meta-switches:
+    -h, --help         Prints this help message and quits
+    --help-all         Prints help messages of all sub-commands and quits
+    -v, --version      Prints the program's version and quits
+
+Switches:
+    -c, --commit       Commits the added files as well
+
+```
+
+## Final Code
+
+```python
+from pyfiglet import Figlet
+from plumbum import cli
+from plumbum.cmd import ls, git
+
+from PyInquirer import prompt
+
+def print_banner(text):
+    print(Figlet(font='slant').renderText(text))
+
+def get_files():
+    ls_output = ls().strip()
+    files = ls_output.split("\n")
+    return files
+
+def generate_questions(files):
+    questions = [{
+        'type': 'checkbox',
+        'name': 'files',
+        'message': 'What would you like to commit',
+        'choices': [{'name': file.strip()} for file in files],   
+    }]
+    return questions
+
+class FancyGitAdd(cli.Application):
+    VERSION = "1.3"
+    commit = cli.Flag(['c', 'commit'], help="Commits the added files as well")
+
+    def main(self):
+        print_banner("Git fancy add")
+        files = get_files()
+
+        questions = generate_questions(files)
+        answers = prompt(questions)
+        git('add', answers['files'])
+        if self.commit:
+            git('commit', '-m', 'add files')
+
+if __name__ == "__main__":
+    FancyGitAdd()
+
+### TESTS
+
+def test_get_files():
+    files = get_files()
+    assert len(files) == 5
+
+def test_generate_questions():
+    files = ["best.rb", "good.kt", "small.py"]
+    questions = generate_questions(files)
+    assert len(questions) == 1 # one question
+
+    question = questions[0]
+    assert question['type'] == 'checkbox' # has to be a checkbox
+    assert len(question['choices']) == len(files) # same size as files
+```
+
+Running `$pytest fgit.py` should have all tests passing. (Don't worry about warnings)
 
 ## Exercise
 
-* Add a optional command line argument called `-p` for running `git push` at the end of the program.
+* Add a optional command line flag (also called switch) called `-p`/`--push` for running `git push` at the end of the program.
 
 ## Learn More
 
-* [Plumbum scripting](https://iscinumpy.gitlab.io/post/plumbum-scripting/) - learn more about the library we'll to interact with the actual system programs.
+* [Plumbum scripting](https://iscinumpy.gitlab.io/post/plumbum-scripting/) - learn more about the library use to interact with the actual system programs.
 
-* [Building Beautiful Command Line Interfaces with Python](https://codeburst.io/building-beautiful-command-line-interfaces-with-python-26c7e1bb54df) - a good introduction to pretty command line interfaces, with some examples!
+* [Building Beautiful Command Line Interfaces with Python](https://codeburst.io/building-beautiful-command-line-interfaces-with-python-26c7e1bb54df) - a good introduction to pretty command line libraries. Examples included!
 
 * [Python Command Line Apps](https://www.davidfischer.name/2017/01/python-command-line-apps/) - some theory on the aspects of command line apps, as well as library recommendations.
 
 ## Ideas
 
-Feel free to come up with anything you want as long as it's chatbot related. Here are some ideas to help you get started, but feel free to come up with more. Don't worry if it's already been done or if someone else is doing it. The point is learning and fun. :)
+Feel free to come up with anything you want as long as it's cli related. Here are some ideas to help you get started, but feel free to come up with more. Don't worry if it's already been done or if someone else is doing it. The point is learning and fun. :)
+
+* Take some application you commonly use daily and try to make a command line version: gratitude journals, weather updates or getting scores from a sports team of your choice.
 
 * Is there some commmand line application you found annoying or hard to use? How would you improve it?
 
 * Maybe the chatbot from last week could also be available in command line form. Could you spice it up with fancy menu selectors or ASCII displays?
 
-* Maybe you can use this to automate some workflow task you have by combining some steps together with `plumbum`. One of the greatest things about command lines is that you can use each program as a modular piece on to the next.
+* Maybe you can use this to automate some workflow task you have by combining some steps together with `plumbum`. One of the greatest things about command lines is that you can use each program as a modular piece to compose very powerful utilities.
 
 ## Requirements
 
-* It has to be a command line application.
+* Can run from your command line.
+
+* Have a version number.
+
+* It has to have a have a working `-h/--help` option.
+
+* It has to accept at least one custom flag.
+
+* There should be at least two test cases.
+
+* Has to have a `README` where you explain how it works along with pictures/animations/vidoes.
+
+* Fix as many `pylint` errors as you can. Some errors are weird or might take a long time to fix but the rest you definitiely should.
 
 * Has to use a Open Source license via a `LICENSE` file
