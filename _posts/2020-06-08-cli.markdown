@@ -230,13 +230,10 @@ def get_files():
 
 class FancyGitAdd(cli.Application):
     VERSION = "1.3"
-    # commit = cli.Flag(['c', 'commit'], help="Commits the added files as well")
 
     def main(self):
         print_banner("Git fancy add")
         files = get_files()
-        # if (self.commit):
-            # print("I see you also want to commit")
 
 if __name__ == "__main__":
     FancyGitAdd()
@@ -374,13 +371,10 @@ def get_files():
 
 class FancyGitAdd(cli.Application):
     VERSION = "1.3"
-    # commit = cli.Flag(['c', 'commit'], help="Commits the added files as well")
 
     def main(self):
         print_banner("Git fancy add")
         files = get_files()
-        # if (self.commit):
-            # print("I see you also want to commit")
 
 if __name__ == "__main__":
     FancyGitAdd()
@@ -499,7 +493,6 @@ def generate_questions(files):
 
 class FancyGitAdd(cli.Application):
     VERSION = "1.3"
-    # commit = cli.Flag(['c', 'commit'], help="Commits the added files as well")
 
     def main(self):
         print_banner("Git fancy add")
@@ -508,8 +501,6 @@ class FancyGitAdd(cli.Application):
         questions = generate_questions(files)
         answers = prompt(questions)
         print(answers['files'])
-        # if (self.commit):
-            # print("I see you also want to commit")
 
 if __name__ == "__main__":
     FancyGitAdd()
