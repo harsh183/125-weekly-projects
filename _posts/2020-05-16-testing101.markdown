@@ -7,9 +7,12 @@ external-url:
 categories: Tools
 ---
 
+<!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
+
 So far you've been writing your programs amd running them time and time again doing that. A constant cycle of change-run-repeat until it works.
 
 Which works fine until
+
 * you have hundreds of scenarios and inputs
 * the program takes quite long to run and it starts eating up too much time
 * you accidently break your program and don't even realize - [trillions lost](https://www.techrepublic.com/article/report-software-failure-caused-1-7-trillion-in-financial-losses-in-2017/), [rockets failing](https://www.bugsnag.com/blog/bug-day-ariane-5-disaster), [people dying](https://www.bbc.com/news/technology-54175359).
@@ -76,29 +79,29 @@ assert sum(0, 5) == 5, "0 + 5 should be 5"
 print("All tests passed")
 ```
 
-And when the program fails it displays `AssertionError: 0 + 5 should be 5`, now we now how to fix 
+And when the program fails it displays `AssertionError: 0 + 5 should be 5`, now we now how to fix
 it. That's more helpful.
 
 ## Red-green-refactor
 
-Test Driven Development is a development pattern where you write the tests for 
-the code before you work and then keep working till your tests pass. Now this 
+Test Driven Development is a development pattern where you write the tests for
+the code before you work and then keep working till your tests pass. Now this
 isn't useful in every single scenario but many times it will help you develop
-faster and understand your problem better. 
+faster and understand your problem better.
 
-This pattern is split up into 
+This pattern is split up into
 
-* red - the code is not working as some or all tests are failing. 
+* red - the code is not working as some or all tests are failing.
   Many test programs show actual red.
 
 * green - the code is now working and all tests pass.
   Likewise some test programs show green output.
 
-* refactor - now that you are confident that you have tests to make sure no 
+* refactor - now that you are confident that you have tests to make sure no
   regressions happen (breaking existing code) you can keep adding on improvements
   confidently
 
-This is common with many industry and open source projects, and this kind of 
+This is common with many industry and open source projects, and this kind of
 mindset can help with programming. Of course the order doesn't have to be too
 strict, many times it's hard to write tests before the code, but other times it
 becomes easier writing the code than the tests.
@@ -106,8 +109,8 @@ becomes easier writing the code than the tests.
 Let's walk through an example. This will show you a good outline on general problem
 solving alongside tests.
 
-Suppose I am tasked with writing a function that multiplies all the numbers of 
-a list together.  It should give `None` if the list is empty (similar to `null` 
+Suppose I am tasked with writing a function that multiplies all the numbers of
+a list together.  It should give `None` if the list is empty (similar to `null`
 or `nil` from other languages). Assume all numbers are integers.
 
 ### Red
@@ -118,7 +121,8 @@ to do. This plays well with TDD approach. For this we can break up the problem
 into 'test cases' which are what inputs and conditions should have what result
 (verified by asserts).  
 
-For each requirement we can derive a series of test cases 
+For each requirement we can derive a series of test cases
+
 * Multiplies all numbers of the list
   - A simple basic case - `[1, 1, 1]` should give `1` 
   - Even giving one zero will give the final result as zero - `[0, 4253, -342]` should give `0`
@@ -130,11 +134,11 @@ For each requirement we can derive a series of test cases
   - The basic case - `[]` should give `None`
   
 Notice how I have not even written code or even thought about the solution just
-yet. Even going through this I was able to understand my problem better and 
+yet. Even going through this I was able to understand my problem better and
 some approaches on how I would solve the problem might have even popped up in
-my head. 
+my head.
 
-Time to put this in code. 
+Time to put this in code.
 
 ```python
 # multiply_list.py
@@ -160,6 +164,7 @@ you want to make sure a certain set of requirements are fit you can write specif
 test cases around those.
 
 Running our program
+
 ```
 $ python3 multiply_list.py
 Traceback (most recent call last):
@@ -172,14 +177,15 @@ AssertionError: Simple basic case should give 1
 
 Now this gives us a starting point. We now know which case fails with input `[1, 1, 1`]
 expecting the output of `1` for `Simple basic case`. When you write good sets of test cases
-it gives enough motivation to how to go about a problem piece by piece, as the different 
-parts breaks up a bigger problem into a smaller problem. 
+it gives enough motivation to how to go about a problem piece by piece, as the different
+parts breaks up a bigger problem into a smaller problem.
 
 This stage is *RED* - not working - tests not passing
 
 ### Green
 
 Now I take one attempt at writing the `multiply(list)` function for the normal cases
+
 ```python
 def multiply(list):
     product = 1
@@ -190,7 +196,8 @@ def multiply(list):
 
 ```
 
-giving the output 
+giving the output
+
 ```python
 Traceback (most recent call last):
   File "multiply_list.py", line 20, in <module>
@@ -218,6 +225,7 @@ def multiply(list):
 ```
 
 giving the output
+
 ```
 All tests passed
 ```
@@ -247,6 +255,7 @@ def multiply(list):
 ```
 
 now when I run the same code I get
+
 ```
 All tests passed
 ```
@@ -286,6 +295,7 @@ $ pip install pytest
 Interestingly it supports the `multiply_list.py` file we wrote earlier as is 
 without changing anything. How it works is that it looks for any function that
 starts with `test` like our
+
 ```python
 def test_multiply():
     assert multiply([1, 1, 1]) == 1, "Simple basic case should give 1"
@@ -298,6 +308,7 @@ def test_multiply():
 ```
 
 And it runs like
+
 ```bash
 $ pytest multiply_list.py
 ======================================= test session starts =================================
@@ -314,8 +325,10 @@ multiply_list.py .                                                              
 and the last line being in color output (green here), try running it yourself to see.
 
 And even better it doesn't run your main program itself, so that means you can
-still keep all your `print()` and `input()` functions in your program without 
+still keep all your `print()` and `input()` functions in your program without
+
 changing anything. I added at the end of the program.
+
 ```python
 print("pytest actually even ignores all the normal print output")
 print("so you can blend in your normal program and tests in the same file")
@@ -323,7 +336,8 @@ print("isn't that neat!")
 ```
 
 which only appear when I run it normally with `$ python3 multiply_list.py`
-```
+
+```txt
 pytest actually even ignores all the normal print output
 so you can blend in your normal program and tests in the same file
 isn't that neat!
@@ -333,7 +347,8 @@ Basically it means testing doesn't have to interrupt your workflow or structure
 of your program at all. All you have to provide a test function and pytest does 
 the rest.
 
-So all we have to do for using pytest is 
+So all we have to do for using pytest is
+
 * having the test function start from `test` like `test_multiply` or `test_solution`
   pytest will discover it by that
 * use normal asserts just like how you would do it normally
@@ -350,21 +365,22 @@ So far we were writing everything in one file which is quite okay for small prog
 
 Usually it will be either called something like `test.py` or `tests.py`. If there is a large amount of tests then it will be in a folder called `test/` or `tests/`
 
-See [this tutorial](https://www.codementor.io/sheena/python-path-virtualenv-import-for-beginners-du107r3o1) for a basic idea on imports. 
+See [this tutorial](https://www.codementor.io/sheena/python-path-virtualenv-import-for-beginners-du107r3o1) for a basic idea on imports.
 
 ## When to use what
 
 Rule of thumb is using a test runner for almost every case since that setup works out neater
 and is much better for larger projects and working with teams. Sometimes when it's just scripts
 or small hacky experiments you can use `assert` within the same file. For sanity checks it's
-okay so long as you remove it later. That said, if you can adding tests can go a long way 
+okay so long as you remove it later. That said, if you can adding tests can go a long way
 and earn you gratitude from you and your future self.
 
 ## Exercises
 
-One more round of red-green-refactor to give you more practice of the workflow. 
+One more round of red-green-refactor to give you more practice of the workflow.
 
-1. Find the in a list of integers. 
+**Find the in a list of integers.**
+
 * A mode is the item that occurs the most ex. `[1, 1, 2, 3]` will be `1` because it occurs the most
 * For an empty list I want you to give `None`
 

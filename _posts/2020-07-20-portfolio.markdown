@@ -7,6 +7,8 @@ external-url:
 categories: TypeScript
 ---
 
+<!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
+
 Time to bring together all the things we've done so far and start setting up our final portfolio to show off to friends, family, companies and to our future selves.
 
 ```ts
@@ -20,8 +22,6 @@ Hosted by: Monika Para
 Comic: [JOHN GREEN: Make gifts for people](http://www.zenpencils.com/comic/119-john-green-make-gifts-for-people/)
 
 ## Learn more
-
-
 
 ## Ideas
 

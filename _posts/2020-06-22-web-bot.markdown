@@ -7,6 +7,8 @@ external-url:
 categories: Python
 ---
 
+<!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
+
 Automation is fun! What if we could do fancy stuff through automation with the web browser?
 
 ```python
@@ -27,7 +29,6 @@ Hosted by: Harsh Deep
 * we request that
 * for each week we create a folder called `week<n>` where n is 1.16
 * we get the date we save `<date>_slides.pdf` and `<date>_handout.pdf` where date is what we scraped
-
 
 ## Learn more
 

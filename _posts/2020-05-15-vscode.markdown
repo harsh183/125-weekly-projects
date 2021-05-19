@@ -7,6 +7,8 @@ external-url:
 categories: Tools
 ---
 
+<!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
+
 There are different levels of editors that programmers use while writing their programs. I'll explain a couple.
 
 * Interactive shell - you write out a single line of code and see the result. Great for experimenting, but these can get tiring for real programs. These are also called REPL (Read-Evaluate-Print-Loop).
@@ -37,19 +39,18 @@ We picked Visual Studio Code sinc a bridge between text editors and IDEs. It isn
 
 The language support for `Python`, `JavaScript` and `TypeScript` is quite strong, and there are multiple extensions that can help you out as well.
 
-
 ## Download
 
 Follow the instructions [here](https://code.visualstudio.com/docs/setup/setup-overview) and web search any specific errors you find. Feel free to ask around on the forum if you're still stuck.
 
 ## Using it
 
-1. Opening VSCode can be done like any normal application or by typing `code` in the command line. 
+1. Opening VSCode can be done like any normal application or by typing `code` in the command line.
    I usually give it `.` as an argument to open the IDE in the current folder I am in.
 
    ```bash
-   $ code .
-    
+   $ code . 
+   $
    ```
 
 2. Create a new file in the folder. You can click on the name of a folder (if any) and it will show a bar with a create file button. You can also try Control/CMD+N to create a new file and then pick `Python` as a language.

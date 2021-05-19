@@ -7,6 +7,8 @@ external-url:
 categories: Info
 ---
 
+<!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
+
 "Go do a project."
 
 Good advice, but is it really a useful thing to hear?

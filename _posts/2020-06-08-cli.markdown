@@ -7,6 +7,8 @@ external-url:
 categories: Python
 ---
 
+<!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
+
 You might have seen programmers everywhere using the command line for all sorts of daily tasks. It looks kind of unfriendly and complicated, right?
 
 How about we make things a little prettier and easier for people to use?
@@ -21,18 +23,18 @@ Hosted by: Harsh Deep
 
 Here's an 18 minute audio recording made specially for this summer session by [Donovan Keme](https://github.com/digitalextremist), my mentor last summer who broadened my perspective on tech entirely. His open source Ruby work has been part of almost [450 million downloads](https://rubygems.org/profiles/digitalextremist), and he's very involved with the community.
 
-This is a more somber and serious recording instead of the typical emotional pep talk, but it's important to consider in your journey after several months about learning about technology. At this point, it's the right time to start thinking about what role technology plays in the world and what purpose you want to achieve with technology. 
+This is a more somber and serious recording instead of the typical emotional pep talk, but it's important to consider in your journey after several months about learning about technology. At this point, it's the right time to start thinking about what role technology plays in the world and what purpose you want to achieve with technology.
 
 [Recording link](https://extremist.digital/audio/126-m20210504083039-5tp5-harsh.mp3
 )
 
 Don't worry if you don't know what your purpose is right now. What this means can be different for everyone. Over the next few months, start to reflect and chart out your goals of what you want to do and the steps you want to take from there. Feel free to message any of the staff or create a forum post if you want to talk about it too.
 
-## Getting Ready 
+## Getting Ready
 
 1. Learn a bit of git on the commmand line. You can use any intro tutorial, but [this web browser one](https://learngitbranching.js.org/) looks good.
 
-2. Go over the basics of test driven development with `pytest` in this tutorial on [the site](/testing101). Code along everything just to get an idea of why we test and how to create your workflow around tests. While I don't want all projects to have extensive tests (although it is a good habit), having even just 3-5 tests makes a huge difference. 
+2. Go over the basics of test driven development with `pytest` in this tutorial on [the site](/testing101). Code along everything just to get an idea of why we test and how to create your workflow around tests. While I don't want all projects to have extensive tests (although it is a good habit), having even just 3-5 tests makes a huge difference.
 
 3. Learn a few basics of how a command line works. [Here is a quick crash course](https://www.vikingcodeschool.com/web-development-basics/a-command-line-crash-course) with links to resources to learn even more. The command line is intimidating, but once you get used to it, you'll wonder how you lived without it. It's part of almost every programmer's toolbox.
 
@@ -44,7 +46,7 @@ Note: I've done this on an Ubuntu `20.04` system. Your progress won't be drastic
 
 ### Libraries
 
-Create a file called `requirements.txt` and fill it with this. This is a common convention in Python projects for listing all the libraries required. 
+Create a file called `requirements.txt` and fill it with this. This is a common convention in Python projects for listing all the libraries required.
 
 ```txt
 pyinquirer
@@ -55,9 +57,11 @@ pytest
 ```
 
 Once you've saved this file, to install you just have to run (if you use `python3` to excute commands this will be `pip3`).
+
 ```bash
 $ pip install -r requirements.txt
-``` 
+[install output]
+```
 
 The `-r` flag tells `pip` to look at `requirements.txt` and install everything in it.
 
@@ -73,7 +77,7 @@ Let me explain how we're using each library.
 
 Create a file called `fgit.py`.
 
-We use `cli` from the `plumbum` library to create the base template for our command line application. 
+We use `cli` from the `plumbum` library to create the base template for our command line application.
 
 ```python
 from plumbum import cli
@@ -89,7 +93,7 @@ if __name__ == "__main__":
 
 Now if we run this we get our starter message.
 
-```
+```bash
 $ python fgit.py
 Welcome to Fancy Git Add!
 ```
@@ -98,8 +102,9 @@ The reason we have a `__name__ == "__main__"` condition is because our program w
 
 Basically, without that, our tests will not work and give a screenful of nasty errors. We haven't written any tests yet but just to sanity check.
 
-```
+```bash
 $ pytest fgit.py
+[tests pass]
 ```
 
 Which will tell us everything is good and no test ran.
@@ -110,7 +115,7 @@ Almost every major command line program lets you ask for help using `-h` or `--h
 
 Lets see what we get out of the box thanks to `plumbum`.
 
-```
+```bash
 $ python fgit.py --help
 Usage:
     fgit.py [SWITCHES]
@@ -136,8 +141,9 @@ if __name__ == "__main__":
     FancyGitAdd()  
 ```
 
-This gets our version number display working nicely: 
-```
+This gets our version number display working nicely:
+
+```bash
 $ python fgit.py --version
 fgit.py 1.3
 $ python fgit.py -h
@@ -174,7 +180,7 @@ if __name__ == "__main__":
     FancyGitAdd()
 ```
 
-We create a function `print_banner(text)` to print our ASCII banner on our screen based on the [pyfiglet documentation](https://github.com/pwaller/pyfiglet). 
+We create a function `print_banner(text)` to print our ASCII banner on our screen based on the [pyfiglet documentation](https://github.com/pwaller/pyfiglet).
 
 In general, it's a good practice to have extracted out functions (like this one) so that we can create more layers of abstraction for readability or testing. The command line application doesn't need to bother itself with the details of _how_ we print a banner, just that it gets printed.
 
@@ -183,7 +189,8 @@ In general, it's a good practice to have extracted out functions (like this one)
 One of the most common commands we ever use in the command line is called `ls` to list all files in the current folder.
 
 Let's try it out to get a list of 5 items I have (your system might vary but adjust accordingly)
-```
+
+```bash
 $ ls
 __pycache__  fgit.py  file3.txt  requirements.txt  test_folder
 ```
@@ -192,18 +199,19 @@ Lets use this as a chance to show off red-green-refactor with `pytest`.
 
 ### Red
 
-For testing around I'm creating a folder called `test_folder` with two files `file1.txt` and `file2.txt`. I'm also adding a `file3.txt` outside the folder. You can create whatever sample files you like. 
+For testing around I'm creating a folder called `test_folder` with two files `file1.txt` and `file2.txt`. I'm also adding a `file3.txt` outside the folder. You can create whatever sample files you like.
 
-If you want to do the same thing as I am doing using `mkdir` (create directory), `cd` (change directory), and `touch` (create file or update last edited) 
+If you want to do the same thing as I am doing using `mkdir` (create directory), `cd` (change directory), and `touch` (create file or update last edited)
 
-```
+```bash
 $ mkdir test_folder
 $ touch test_folder/file1.txt test_folder/file2.txt file3.txt
+$
 ```
 
 The end result looks something like this: (generated via a command line program called [tree](https://linux.die.net/man/1/tree)).
 
-```
+```bash
 $ tree
 .
 ├── __pycache__
@@ -245,8 +253,9 @@ def test_get_files():
     assert len(files) == 5
 ```
 
-Which if we now test 
-```
+Which if we now test
+
+```bash
 $ pytest fgit.py
     def test_get_files():
         files = get_files()
@@ -284,8 +293,9 @@ def test_get_files():
     assert len(files) == 5
 ```
 
-and the output snippet we get is 
-```
+and the output snippet we get is
+
+```txt
 start __pycache__
 fgit.py
 file3.txt
@@ -312,16 +322,18 @@ def test_get_files():
 
 Now if we run this with `pytest` it will give green.
 
-```
+```bash
 $ pytest fgit.py
+[test pass]
 ```
 
 ### Refactor
 
 One we have a working test for a feature, we can refactor (improve) our code with confidence. The test cases act as a safety net.
 
-If we run our program 
-```
+If we run our program
+
+```bash
 $ python fgit.py
    _______ __     ____                                    __    __
   / ____(_) /_   / __/___ _____  _______  __   ____ _____/ /___/ /
@@ -350,11 +362,12 @@ def get_files():
 
 and running tests should still give green
 
-```
+```bash
 $ pytest fgit.py
+[tests pass]
 ```
 
-Our full code at this stage should be 
+Our full code at this stage should be
 
 ```python
 from pyfiglet import Figlet
@@ -388,9 +401,9 @@ Note: This is a simple test for teaching reasons. In real life you should write 
 
 ## Fancy Menu Selectors
 
-Now we want to create a checkbox like system you can go up and down on. We use `PyInquirer` to ask. The format for checkbox questions is similar to this [example](https://github.com/CITGuru/PyInquirer/blob/master/examples/checkbox.py) from their documentation. 
+Now we want to create a checkbox like system you can go up and down on. We use `PyInquirer` to ask. The format for checkbox questions is similar to this [example](https://github.com/CITGuru/PyInquirer/blob/master/examples/checkbox.py) from their documentation.
 
-Here I will show another style of testing which I call "green-refactor". Sometimes creating a failing test first is quite tedious so I create the feature and then add a test for it. Over time you'll figure out your style of how to do things. 
+Here I will show another style of testing which I call "green-refactor". Sometimes creating a failing test first is quite tedious so I create the feature and then add a test for it. Over time you'll figure out your style of how to do things.
 
 ### Green
 
@@ -410,11 +423,12 @@ def generate_questions(files):
 For generating our `'choices'` we use Python [List Comprehension](https://www.programiz.com/python-programming/list-comprehension) which is one of my favorite features from the language.
 
 We add the import for `prompt`
+
 ```python
 from PyInquirer import prompt
 ```
 
-Note: This might lead to a `pytest` warning complaining that it won't 
+Note: This might lead to a `pytest` warning complaining that it won't
 
 In our `main` function we slot this in and just print to see if we got the right output.
 
@@ -430,7 +444,7 @@ def main(self):
 
 The output now shows that we get the user choices in an array.
 
-```
+```txt
 ? What would you like to commit  done (2 selections)
 ['file3.txt', 'requirements.txt']
 ```
@@ -543,7 +557,7 @@ def main(self):
 
 And if we run this and check the `git status` output we can see that our program worked.
 
-```
+```bash
 $ python3 fgit.py
    _______ __     ____                                    __    __
   / ____(_) /_   / __/___ _____  _______  __   ____ _____/ /___/ /
@@ -564,12 +578,14 @@ Changes to be committed:
 
 ## Commit flag
 
-Now what if we wanted to let people `git commit` once their job was done as well. They can add `-c`/`--commit` if they want their work 
+Now what if we wanted to let people `git commit` once their job was done as well. They can add `-c`/`--commit` to enable that.
 
 Normally I'd commit something like this (ideally with a more helpful message)
-```
+
+```bash
 $ git commit -m "add files"
-``` 
+$
+```
 
 Luckily for us, `plumbum` makes adding another flag relatively easy. If we use `cli.Flag` then the result will be attached to `self` and we can use it in our program.
 
@@ -590,7 +606,8 @@ class FancyGitAdd(cli.Application):
 ```
 
 and when we run it we can verify with `git log`
-```
+
+```bash
 $ python fgit.py -c
    _______ __     ____                                    __    __
   / ____(_) /_   / __/___ _____  _______  __   ____ _____/ /___/ /
@@ -610,7 +627,7 @@ Date:   Tue May 18 21:13:16 2021 -0500
 
 The help output will also show the input for the new option.
 
-```
+```bash
 $ python fgit.py --help
 fgit.py 1.3
 
