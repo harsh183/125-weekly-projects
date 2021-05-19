@@ -38,6 +38,8 @@ Don't worry if you don't know what your purpose is right now. What this means ca
 
 Our goal is to make a fancy git add command line application that has a nice interactive interface. We display a list of files that can be added and then have the user select. Then we provide them an option to commit the file as well.
 
+Note: I've done this on an Ubuntu system. Your progress won't be drastically different but you may need to adjust depending on how your OS does things. Feel free to post forum questions in case there are any problems.
+
 ### Libraries
 
 Create a file called `requirements.txt` and fill it with this. This is a common convention in Python projects for listing all the libraries required. 
@@ -178,13 +180,13 @@ In general, it's a good practice to have extracted out functions (like this one)
 
 One of the most common commands we ever use in the command line is called `ls` to list all files in the current folder.
 
-Let's try it out
+Let's try it out to get a list of 5 items I have (your system might vary but adjust accordingly)
 ```
 $ ls
-__pycache__  fgit.py  file3.txt  log.txt  requirements.txt  test_folder
+__pycache__  fgit.py  file3.txt  requirements.txt  test_folder
 ```
 
-Using `plumbum.cmd` we can import commands from the command line and use it within python. Lets use this as a chance to show off red-green-refactor. 
+Lets use this as a chance to show off red-green-refactor with `pytest`.
 
 ### Red
 
@@ -212,10 +214,190 @@ $ tree
     └── file2.txt
 ```
 
+Now lets come up with a function `get_files()` which will return a `List` of the files in the given directory. We write a stub for that function and write a test `test_get_files()` to test it.
 
+```python
+from pyfiglet import Figlet
+from plumbum import cli
 
-* then show how to use plumbum to run command line stuff. Take `ls` and store the output in a string 
-* split the string to get a list of files and folders 
+def print_banner(text):
+    print(Figlet(font='slant').renderText(text))
+
+def get_files():
+    return [] # empty list for now
+
+class FancyGitAdd(cli.Application):
+    VERSION = "1.3"
+    # commit = cli.Flag(['c', 'commit'], help="Commits the added files as well")
+
+    def main(self):
+        print_banner("Git fancy add")
+        files = get_files()
+        # if (self.commit):
+            # print("I see you also want to commit")
+
+if __name__ == "__main__":
+    FancyGitAdd()
+
+### TESTS
+
+def test_get_files():
+    files = get_files()
+    assert len(files) == 5
+```
+
+Which if we now test 
+```
+$ pytest fgit.py
+    def test_get_files():
+        files = get_files()
+>       assert len(files) == 5
+E       assert 0 == 5
+E        +  where 0 = len([])
+
+fgit.py:39: AssertionError
+```
+
+Which is what we expect. One we implement the feature this test will become green.
+
+### Green
+
+Using `plumbum.cmd` we can import commands from the command line and use it within python. This import lets us import basically any existing system command so that we can use it in our program.
+
+The first step of understanding how to process output of a command line program is just inspecting it. Here we just `print` it with a `"start"` and `"end"` to understand how the string processing is working.
+
+```python
+from pyfiglet import Figlet
+from plumbum import cli
+from plumbum.cmd import ls
+
+[...]
+
+def get_files():
+    ls_output = ls()
+    print("start", ls_output, "end")
+    return [] # empty list for now
+
+[...]
+
+def test_get_files():
+    files = get_files()
+    assert len(files) == 5
+```
+
+and the output snippet we get is 
+```
+start __pycache__
+fgit.py
+file3.txt
+requirements.txt
+test_folder
+ end
+```
+
+Looks like we have to split by line and take care of some whitespace around the start and end. We can use a combo of `strip` (strip is quite common to use when dealing with string output) and `split`. Our final funcion will be
+
+```python
+def get_files():
+    ls_output = ls().strip()
+    print("start", ls_output, "end")
+    files = ls_output.split("\n")
+    return files
+
+[...]
+
+def test_get_files():
+    files = get_files()
+    assert len(files) == 5
+```
+
+Now if we run this with `pytest` it will give green.
+
+```
+$ pytest fgit.py
+```
+
+### Refactor
+
+One we have a working test for a feature, we can refactor (improve) our code with confidence. The test cases act as a safety net.
+
+If we run our program 
+```
+$ python fgit.py
+   _______ __     ____                                    __    __
+  / ____(_) /_   / __/___ _____  _______  __   ____ _____/ /___/ /
+ / / __/ / __/  / /_/ __ `/ __ \/ ___/ / / /  / __ `/ __  / __  /
+/ /_/ / / /_   / __/ /_/ / / / / /__/ /_/ /  / /_/ / /_/ / /_/ /
+\____/_/\__/  /_/  \__,_/_/ /_/\___/\__, /   \__,_/\__,_/\__,_/
+                                   /____/
+
+start __pycache__
+fgit.py
+file3.txt
+requirements.txt
+test_folder end
+```
+
+The debug output still appears. A refactor step would be removing that and just checking if the tests work again.
+
+We update `get_files()`
+
+```python
+def get_files():
+    ls_output = ls().strip()
+    files = ls_output.split("\n")
+    return files
+```
+
+and running tests should still give green
+
+```
+$ pytest fgit.py
+```.
+
+Our full code at this stage should be 
+
+```python
+from pyfiglet import Figlet
+from plumbum import cli
+from plumbum.cmd import ls
+
+def print_banner(text):
+    print(Figlet(font='slant').renderText(text))
+
+def get_files():
+    ls_output = ls().strip()
+    files = ls_output.split("\n")
+    return files
+
+class FancyGitAdd(cli.Application):
+    VERSION = "1.3"
+    # commit = cli.Flag(['c', 'commit'], help="Commits the added files as well")
+
+    def main(self):
+        print_banner("Git fancy add")
+        files = get_files()
+        # if (self.commit):
+            # print("I see you also want to commit")
+
+if __name__ == "__main__":
+    FancyGitAdd()
+
+def test_get_files():
+    files = get_files()
+    assert len(files) == 5
+```
+
+Note: This is a simple test for teaching reasons. In real life you should write tests more robust since this can easily break if I have one more or one less file.
+
+## Fancy Menu Selectors
+
+### Green
+
+### Refactor
+
+## Calling Git Add
+
 * now display it in a command line GUI checkbox format 
 * once people hit enter give that list to git add 
 * have optional command line argument for commit `-c`

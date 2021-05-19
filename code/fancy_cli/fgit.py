@@ -8,12 +8,12 @@ from plumbum.cmd import ls
 #from pprint import pprint
 
 def print_banner(text):
-    print(Figlet(font='slant').renderText(text)) 
+    print(Figlet(font='slant').renderText(text))
 
-# def get_files():
-#     ls_output = ls() # todo: add strip in red green refactor
-#     files = ls_output.split("\n")
-#     return files
+def get_files():
+    ls_output = ls().strip()
+    files = ls_output.split("\n")
+    return files
 
 # def generate_questions(files, commit_flag):
 
@@ -23,11 +23,18 @@ class FancyGitAdd(cli.Application):
 
     def main(self):
         print_banner("Git fancy add")
+        files = get_files()
         # if (self.commit):
             # print("I see you also want to commit")
 
 if __name__ == "__main__":
     FancyGitAdd()
+
+### TESTS
+
+def test_get_files():
+    files = get_files()
+    assert len(files) == 5
 
 
 # fancy_ascii("Fancy Git Add")
