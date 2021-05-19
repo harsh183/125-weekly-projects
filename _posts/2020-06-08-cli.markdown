@@ -36,12 +36,193 @@ Don't worry if you don't know what your purpose is right now. What this means ca
 
 ## Workshop
 
-* do fancy ascii art display first 
+Our goal is to make a fancy git add command line application that has a nice interactive interface. We display a list of files that can be added and then have the user select. Then we provide them an option to commit the file as well.
+
+### Libraries
+
+Create a file called `requirements.txt` and fill it with this. This is a common convention in Python projects for listing all the libraries required. 
+
+```txt
+pyinquirer
+pyfiglet
+plumbum
+pylint
+pytest
+```
+
+Once you've saved this file, to install you just have to run (if you use `python3` to excute commands this will be `pip3`).
+```bash
+$ pip install -r requirements.txt
+``` 
+
+The `-r` flag tells `pip` to look at `requirements.txt` and install everything in it.
+
+Let me explain how we're using each library.
+
+* `pyinquirer` give us fancy interactive menu interfaces
+* `pyfiglet` gives us ASCII art displays
+* `plumbum` gives us a way of accepting input, displaying help information and calling existing system commands
+* `pylint` is for style checking
+* `pytest` is for simple testing
+
+### Get started
+
+Create a file called `fgit.py`.
+
+We use `cli` from the `plumbum` library to create the base template for our command line application. 
+
+```python
+from plumbum import cli
+
+class FancyGitAdd(cli.application):
+    def main(self):
+        print("Welcome to Fancy Git Add!")
+
+if __name__ == "__main__":
+    FancyGitAdd()
+
+```
+
+Now if we run this we get our starter message.
+
+```
+$ python fgit.py
+Welcome to Fancy Git Add!
+```
+
+The reason we have a `__name__ == "__main__"` condition is because our program will be run in different ways. When running the program normally through python the condition will be true and the stuff inside will run, but in other cases it won't.
+
+Basically, without that, our tests will not work and give a screenful of nasty errors. We haven't written any tests yet but just to sanity check.
+
+```
+$ pytest fgit.py
+```
+
+Which will tell us everything is good and no test ran.
+
+### Provide help
+
+Almost every major command line program lets you ask for help using `-h` or `--help`. This is good because things can be quite confusing otherwise. Writing good help messages for users is _highly reccomended_.
+
+Lets see what we get out of the box thanks to `plumbum`.
+
+```
+$ python fgit.py --help
+Usage:
+    fgit.py [SWITCHES]
+
+Meta-switches:
+    -h, --help         Prints this help message and quits
+    --help-all         Prints help messages of all sub-commands and quits
+    -v, --version      Prints the program's version and quits
+```
+
+Not a bad start. Now the first thing we can do is give our a version number. In a real program we will change the version number as we add new changes so that people know when to update.
+
+```python
+from plumbum import cli
+
+class FancyGitAdd(cli.Application):
+    VERSION = "1.3"
+
+    def main(self):
+        print("Welcome to Fancy Git Add")
+
+if __name__ == "__main__": 
+    FancyGitAdd()  
+```
+
+This gets our version number display working nicely: 
+```
+$ python fgit.py --version
+fgit.py 1.3
+$ python fgit.py -h
+fgit.py 1.3
+
+Usage:
+    fgit.py [SWITCHES]
+
+Meta-switches:
+    -h, --help         Prints this help message and quits
+    --help-all         Prints help messages of all sub-commands and quits
+    -v, --version      Prints the program's version and quits
+```
+
+Note: One character flags have a single dash `-` and are one letter long to be short. The longer flag is usually a word or phrase and has two dashes `-`.
+
+## Improve the display
+
+The text output from `print` does look nice but we want those fancy ASCII art displays. For this we're going to use `pyfiglet`
+
+```python
+from pyfiglet import Figlet
+
+def print_banner(text):
+    print(Figlet(font='slant').renderText(text))
+
+class FancyGitAdd(cli.Application):
+    VERSION = "1.3"
+
+    def main(self):
+        print_banner("Git fancy add")
+
+if __name__ == "__main__":
+    FancyGitAdd()
+```
+
+We create a function `print_banner(text)` to print our ASCII banner on our screen based on the [pyfiglet documentation](https://github.com/pwaller/pyfiglet). 
+
+In general, it's a good practice to have extracted out functions (like this one) so that we can create more layers of abstraction for readability or testing. The command line application doesn't need to bother itself with the details of _how_ we print a banner, just that it gets printed.
+
+## Collecting a list of files
+
+One of the most common commands we ever use in the command line is called `ls` to list all files in the current folder.
+
+Let's try it out
+```
+$ ls
+__pycache__  fgit.py  file3.txt  log.txt  requirements.txt  test_folder
+```
+
+Using `plumbum.cmd` we can import commands from the command line and use it within python. Lets use this as a chance to show off red-green-refactor. 
+
+### Red
+
+For testing around I'm creating a folder called `test_folder` with two files `file1.txt` and `file2.txt`. I'm also adding a `file3.txt` outside the folder. You can create whatever sample files you like. 
+
+If you want to do the same thing as I am doing using `mkdir` (create directory), `cd` (change directory), and `touch` (create file or update last edited) 
+
+```
+$ mkdir test_folder
+$ touch test_folder/file1.txt test_folder/file2.txt file3.txt
+```
+
+The end result looks something like this: (generated via a command line program called [tree](https://linux.die.net/man/1/tree)).
+
+```
+$ tree
+.
+├── __pycache__
+│   └── fgit.cpython-38-pytest-6.2.4.pyc
+├── fgit.py
+├── file3.txt
+├── requirements.txt
+└── test_folder
+    ├── file1.txt
+    └── file2.txt
+```
+
+
+
 * then show how to use plumbum to run command line stuff. Take `ls` and store the output in a string 
 * split the string to get a list of files and folders 
 * now display it in a command line GUI checkbox format 
 * once people hit enter give that list to git add 
 * have optional command line argument for commit `-c`
+
+## Exercise
+
+* Add a optional command line argument called `-p` for running `git push` at the end of the program.
 
 ## Learn More
 

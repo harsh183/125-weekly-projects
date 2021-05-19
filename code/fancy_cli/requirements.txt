@@ -1,0 +1,5 @@
+pyinquirer
+pyfiglet
+plumbum
+pylint
+pytest
