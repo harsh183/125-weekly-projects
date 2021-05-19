@@ -1,0 +1,106 @@
+---
+layout: post
+title: VSCode
+date: 2020-05-15
+comments: true
+external-url:
+categories: Tools
+---
+
+There are different levels of editors that programmers use while writing their programs. I'll explain a couple.
+
+* Interactive shell - you write out a single line of code and see the result. Great for experimenting, but these can get tiring for real programs. These are also called REPL (Read-Evaluate-Print-Loop).
+E.g. most built in interactive shells for programming languages. For Python just type `python` with nothing else and web browsers have a js shell on their dev tools (F12).
+
+* Text editor - these are for writing out programs as files. You write out
+the entire program and then execute it. These often have syntax highlighting
+and some special language support. Generally, these are quite simple and barebones.
+E.g. `nano`, `micro`, `vim`, `emacs`.
+
+* IDE - stands for Integrated Development Environment. These have file exploring,
+terminals, code editors, generators, git, and many other tools
+programmers use, all in one application for high productivity. These are great and I
+love them, but I suggest against these for people starting out precisely because
+they do so much. I will get you moving up in that direction soon enough.
+E.g. VSCode, Visual Studio, PyCharm, IntelliJ
+
+* Notebooks - These are interactive shells where you can execute multiple
+lines at  time (generally 4-5). These are mostly used for statistics,
+machine learning and other data work because they can show plots and tables very
+nicely. We'll use these when we get to data work, so don't worry about this
+yet.
+E.g. R Notebooks, Jupyter Notebooks.
+
+## VSCode
+
+We picked Visual Studio Code sinc a bridge between text editors and IDEs. It isn't the most heavy in terms of features and you can use it as a plain text editor pretty easily, but also take advantage of IDE-like features. It also works great with `WSL` and `ssh` systems and will be useful for a lot of UIUC CS classes as well. This is a good starting point for exploring the wide variety of programming tools out there.
+
+The language support for `Python`, `JavaScript` and `TypeScript` is quite strong, and there are multiple extensions that can help you out as well.
+
+
+## Download
+
+Follow the instructions [here](https://code.visualstudio.com/docs/setup/setup-overview) and web search any specific errors you find. Feel free to ask around on the forum if you're still stuck.
+
+## Using it
+
+1. Opening VSCode can be done like any normal application or by typing `code` in the command line. 
+   I usually give it `.` as an argument to open the IDE in the current folder I am in.
+
+   ```bash
+   $ code .
+    
+   ```
+
+2. Create a new file in the folder. You can click on the name of a folder (if any) and it will show a bar with a create file button. You can also try Control/CMD+N to create a new file and then pick `Python` as a language.
+
+3. Code
+   Here's an example of a program. Type this out. You can write any Python program this way.
+
+   ```python
+   print("Hello, World!")
+   ```
+
+4. Save. Hit Command+S on your keyboard to save the program. VSCode also has autosave which I think everyone should enable unless they have a good reason not to.
+
+5. Run your program. You can execute any Python program using `python <name of file>` or `python3 <name of file>`, depending on which version of Python you're using.
+
+   ```txt
+   $ python hello.py
+   Hello, World!
+   $ python3 hello.py
+   Hello, World!
+   ```
+
+   Which shows the output
+
+   ```txt
+   Hello, World!
+   ```
+
+Obviously VSCode has a lot more complex use, and the internet is a good place to find good tutorials. Honestly I think most of it you can learn as you go from trying things yourself though.
+
+## Extentions
+
+VSCode is also nice because of all the extentions it has. Feel free to explore around but here are a few recs from us
+
+* [Rainbow Brackets](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2) - very useful in matching brackets and dealing with nesting
+
+* [Python Official support](https://marketplace.visualstudio.com/items?itemName=ms-python.python) - collection of useful python things
+
+* [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - style checking (just like checkstyle) for JavaScript and TypeScript
+
+* [TabNine Autocomplete](https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode) - an experimental AI based take on autocomplete. The normal VSCode one is pretty good but this might work nicely for some people.
+
+## Exercise
+
+Write a program that adds two numbers which are colleced via user input on *VSCode*. The point of this
+is to give you practice using the editor. Remember that in Python, we use `input()` to collect keyboard input.
+
+The output should look something like
+
+```txt
+Enter the first number: 5
+Enter the second number: 20
+The sum is 25!
+```
