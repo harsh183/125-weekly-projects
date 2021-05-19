@@ -32,7 +32,7 @@ class FancyGitAdd(cli.Application):
         questions = generate_questions(files)
         answers = prompt(questions)
         git('add', answers['files'])
-        if (self.commit):
+        if self.commit:
             git('commit', '-m', 'add files')
 
 if __name__ == "__main__":
@@ -52,32 +52,3 @@ def test_generate_questions():
     question = questions[0]
     assert question['type'] == 'checkbox' # has to be a checkbox
     assert len(question['choices']) == len(files) # same size as files
-
-
-# fancy_ascii("Fancy Git Add")
-# files = get_files()
-# print("All files:")
-# print(files)
-
-# questions = [
-#     {
-#         'type': 'checkbox',
-#         'name': 'files',
-#         'message': 'What would you like to commit',
-#         'choices': [{'name': file} for file in files],
-#     }
-# ]
-# questions.append({
-#     'type': 'confirm',
-#     'message': 'Do you want to commit?',
-#     'name': 'commit',
-#     'default': False,
-# })
-
-# answers = prompt(questions)
-# # pprint(answers)
-
-# git('add', answers['files'])
-
-# if answers['commit']:
-#     git('commit', '-m', 'add files')
