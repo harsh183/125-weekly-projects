@@ -36,7 +36,7 @@ Set this up before we start.
 
 * VSCode [Our written guide](/micro) but otherwise the general intertnet is good to
 
-* `git` - install it
+* `git` - install it locally to make sure it works
 
 * Github - create an account
 
@@ -70,6 +70,10 @@ You should finish this part before the workshop, but don't worry if you're not d
 5. Respond to a "hello" message.
 
 6. Create a function that we can pass things to in order to abstract out the logic (loose coupling).
+
+## Open Source License 
+
+A lot of people incorrectly assume that just publicly posting a project on Github makes a project open source. However you have to explicitly add a License to your project. For all the projects you make, a **license is mandatory**.  
 
 ## Learn More
 
