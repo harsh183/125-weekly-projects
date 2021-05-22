@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fancy command line interface
+title: Fancy CLIs
 date: 2020-06-08
 comments: true
 external-url:

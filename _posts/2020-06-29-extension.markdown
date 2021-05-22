@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Web Browser Extension 
+title: Browser Extensions 
 date: 2020-06-29
 comments: true
 external-url:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Frontend with React
+title: Frontends
 date: 2020-07-13
 comments: true
 external-url:
