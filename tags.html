@@ -7,11 +7,11 @@ title: Tags
 {% assign alltags =  alldocs | map: 'tags' | join: ','  | split: ','  | group_by_exp: "tag","tag" %}
 
 <p>
-  Articles on similar topics are grouped together by tags. Click on any tag to find all the articles 'tagged' with that tag.
+  Click on any post to find all the pages 'tagged' with that tag.
 </p>
 <ul class="tag-box">
     {% for tag in alltags %}
-    	<li><a href="#{{ tag.name | slugify }}">{{ tag.name }} <span>{{ tag.size }}</span></a></li>
+    	<li><a href="#{{ tag.name | slugify }}">{{ tag.name }} - <span>{{ tag.size }}</span></a></li>
     {% endfor %}
   {% assign tags_list = nil %}
 </ul>

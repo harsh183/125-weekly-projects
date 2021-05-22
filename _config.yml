@@ -1,6 +1,6 @@
-title : Elementary - Jekyll Blog Theme
-name: 'Elementary Jekyll Theme'
-description: 'Simple, light weight, responsive jekyll theme for hackers'
+title : 125 Summer of Side Projects
+name: '125 Summer of Side Projects'
+description: '8 weeks of semi-guided side projects by CS 125 folks.'
 
 markdown: kramdown
 highlighter: rouge

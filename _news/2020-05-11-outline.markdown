@@ -4,7 +4,7 @@ title: Outline
 date: 2020-05-11
 comments: true
 external-url:
-categories: Info
+tag: Info
 ---
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->

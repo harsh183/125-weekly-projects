@@ -4,7 +4,7 @@ title: Testing 101 (with pytest)
 date: 2020-05-16
 comments: true
 external-url:
-categories: Tools
+tag: Tools
 ---
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
