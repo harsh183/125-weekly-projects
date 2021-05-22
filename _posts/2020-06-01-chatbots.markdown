@@ -73,7 +73,9 @@ You should finish this part before the workshop, but don't worry if you're not d
 
 ## Open Source License 
 
-A lot of people incorrectly assume that just publicly posting a project on Github makes a project open source. However you have to explicitly add a License to your project. For all the projects you make, a **license is mandatory**.  
+A lot of people incorrectly assume that just publicly posting a project on Github makes a project open source. However you have to explicitly add a License to your project. For all the projects you make, a **license is mandatory**. [Here](https://opensource.org/licenses) is a link to the guide to the popular open source licenses today. Adding one shouldn't take more than a few minutes.
+
+If you're unsure/lazy you can go for either MIT, ApacheV2, or GPL. 
 
 ## Learn More
 
