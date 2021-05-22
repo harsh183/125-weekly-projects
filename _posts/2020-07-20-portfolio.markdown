@@ -4,7 +4,7 @@ title: Final Portfolio
 date: 2020-07-20
 comments: true
 external-url:
-categories: TypeScript
+tag: TypeScript
 ---
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->

@@ -4,7 +4,7 @@ title: Web Browser Extension
 date: 2020-06-29
 comments: true
 external-url:
-categories: TypeScript
+tag: JavaScript
 ---
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->

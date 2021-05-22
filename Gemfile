@@ -1,10 +1,6 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 3.4"
-gem "jekyll-gist", "~> 1.4"
-gem "jekyll-paginate", "~> 1.1"
-gem "jekyll-feed", "~> 0.6"
-
-gem 'github-pages'
-gem 'bundler'
-gem 'minitest'
+group :jekyll_plugins do
+    gem "jekyll", "~> 4.0"
+end
+gem 'jekyll-sitemap'

@@ -4,7 +4,7 @@ title: Games
 date: 2020-06-15
 comments: true
 external-url:
-categories: Python
+tag: Python
 ---
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->

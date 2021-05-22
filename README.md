@@ -85,3 +85,7 @@ Students will learn about
 ## Forum
 
 We will use the [CS 125 Forum](https://cs125-forum.cs.illinois.edu/) with some categories created for just this.
+
+### Credits
+
+- Eric S Raymond (<http://www.catb.org/~esr/hacker-emblem/glider.png>) for the favicon

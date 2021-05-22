@@ -4,7 +4,7 @@ title: Chatbots
 date: 2020-06-01
 comments: true
 external-url:
-categories: Python
+tag: Python
 ---
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
@@ -52,7 +52,7 @@ You should finish this part before the workshop, but don't worry if you're not d
 
 4. Install discord.py
 
-    ```sh
+    ```js
     $ pip install discord.py
     [install output]
     ```

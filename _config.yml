@@ -1,21 +1,41 @@
-# Site settings
-title: "CS 125 Summer of Side Projects"
-author: "CS 125 Staff"
-description: "2 months of guided side projects to give people some experience with practical programming and building their portfolios during Summer 2021 online."
-keywords: "Software Engineering, Side Projects, Web Bots, Full Stack, Express, React, JavaScript, TypeScript, Python"
-biography: "Some people just want to watch the world learn."
-colophon: "© 2021 — 2021<br>Theme (by  Hugo Sereno Ferreira) and content available under <a href='http://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons (BY-NC-SA)</a> unless otherwise noted.<br>This site is hosted at <a href='https://netlify.com/'>Netlify</a> and created with <a href='http://jekyllrb.com/'>Jekyll</a>."
+title : Elementary - Jekyll Blog Theme
+name: 'Elementary Jekyll Theme'
+description: 'Simple, light weight, responsive jekyll theme for hackers'
 
-baseurl: ""
-url: "https://125summer.netlify.app/"
-
-twitter_username: ferreira_hugo
-github_username: hugoferreira
-linkedin_username: hugoserenoferreira
-facebook_username: hugo.sereno.ferreira
-google-analytics: UA-69060-5
-
-simple_search: http://google.com/search
 markdown: kramdown
 highlighter: rouge
-permalink: /:title/
+javascript_enabled: true
+
+featured_posts_title: Links
+featured_posts:
+  - url: '/ideas'
+    title: 'Advice on Ideas'
+  - url: '/workflow'
+    title: 'Advice on Workflow'
+  - url: 'https://cs125-forum.cs.illinois.edu/'
+    title: 'Forum'
+
+collections:
+  news:
+    title: Info
+    default_open: false
+    output: true
+  posts:
+    title: Workshops
+    default_open: true
+    output: true
+
+defaults:
+  - scope:
+      type: posts
+    values:
+      title: Essays
+      permalink: /:title
+  - scope:
+      type: news
+    values:
+      title: News
+      permalink: /:title
+
+plugins:
+  - jekyll-sitemap

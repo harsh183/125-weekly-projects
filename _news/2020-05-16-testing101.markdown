@@ -165,7 +165,7 @@ test cases around those.
 
 Running our program
 
-```
+```js
 $ python3 multiply_list.py
 Traceback (most recent call last):
   File "multiply_list.py", line 13, in <module>
@@ -288,7 +288,7 @@ programming languages.
 
 ### pytest
 
-```bash
+```js
 $ pip install pytest
 ```
 
@@ -309,7 +309,7 @@ def test_multiply():
 
 And it runs like
 
-```bash
+```js
 $ pytest multiply_list.py
 ======================================= test session starts =================================
 platform linux -- Python 3.6.7, pytest-5.0.1, py-1.8.0, pluggy-0.12.0
@@ -332,15 +332,14 @@ changing anything. I added at the end of the program.
 ```python
 print("pytest actually even ignores all the normal print output")
 print("so you can blend in your normal program and tests in the same file")
-print("isn't that neat!")
+
 ```
 
 which only appear when I run it normally with `$ python3 multiply_list.py`
 
-```txt
+```js
 pytest actually even ignores all the normal print output
 so you can blend in your normal program and tests in the same file
-isn't that neat!
 ```
 
 Basically it means testing doesn't have to interrupt your workflow or structure
