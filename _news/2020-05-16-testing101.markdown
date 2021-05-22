@@ -396,3 +396,5 @@ I want you to use `pytest` and the same red green workflow I showed earlier in t
 * [Why most unit testing is waste](https://pythontesting.net/strategy/why-most-unit-testing-is-waste/)
 
 * [Another good list of resources](https://pythontesting.net/start-here)
+
+Contributors: Harsh, Maaheen

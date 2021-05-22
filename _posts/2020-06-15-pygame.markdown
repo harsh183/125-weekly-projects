@@ -64,3 +64,5 @@ Feel free to come up with anything you want as long as it's chatbot related. Her
 * Has to use a Open Source license via a `LICENSE` file
 
 <!-- TODO: add more -->
+
+Contributors: Harsh, Maaheen

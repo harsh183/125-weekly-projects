@@ -85,3 +85,5 @@ Students will learn about
 ## Forum
 
 We will use the [CS 125 Forum](https://cs125-forum.cs.illinois.edu/) with some categories created for this.
+
+Contributors: Harsh, Monika, Maaheen

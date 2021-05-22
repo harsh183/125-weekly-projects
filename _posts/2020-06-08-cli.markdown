@@ -746,3 +746,5 @@ Feel free to come up with anything you want as long as it's cli related. Here ar
 * Fix as many `pylint` errors as you can. Some errors are weird or might take a long time to fix but the rest you definitiely should.
 
 * Has to use a Open Source license via a `LICENSE` file
+
+Contributors: Harsh, Maaheen

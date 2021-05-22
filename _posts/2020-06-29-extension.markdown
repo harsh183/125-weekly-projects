@@ -72,3 +72,5 @@ This part is optional but if you want to publish it on the store.
 * You should show it off in your README.md file, with animations/video and an explanation of the game.
 
 * Has to use a Open Source license via a `LICENSE` file
+
+Contributors: Harsh, Maaheen

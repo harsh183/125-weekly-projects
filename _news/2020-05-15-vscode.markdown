@@ -105,3 +105,5 @@ Enter the first number: 5
 Enter the second number: 20
 The sum is 25!
 ```
+
+Contributors: Harsh, Maaheen

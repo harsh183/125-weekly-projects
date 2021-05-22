@@ -30,3 +30,5 @@ Comic: [JOHN GREEN: Make gifts for people](http://www.zenpencils.com/comic/119-j
 * You should show it off in your README.md file, with animations/video and an explanation of the game.
 
 * Has to use a Open Source license via a `LICENSE` file
+
+Contributors: Harsh, Maaheen
