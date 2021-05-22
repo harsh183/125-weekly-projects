@@ -105,6 +105,6 @@
               pylint --disable=W0612 test.py
               ```
     ## Sources
-        - Pylint user guide: [http://pylint.pycqa.org/en/latest/user_guide/index.html](http://pylint.pycqa.org/en/latest/user_guide/index.html)
-        - [ Check the version of Python package / library | note.nkmk.me](https://note.nkmk.me/en/python-package-version/)
+    - Pylint user guide: [http://pylint.pycqa.org/en/latest/user_guide/index.html](http://pylint.pycqa.org/en/latest/user_guide/index.html)
+    - [ Check the version of Python package / library | note.nkmk.me](https://note.nkmk.me/en/python-package-version/)
 
