@@ -19,7 +19,7 @@
         ```
         - A module is just a file consisting of python code.
     - Then Pylint outputs a reports of errors like in the example below and gives you a code analysis score.
-        - ```python
+        - ```
           ##example output 
           myModule.py:144:0: C0103: Function name "isPalindrome" doesn't conform to snake_case naming style (invalid-name)
           myModule.py:144:0: C0116: Missing function or method docstring (missing-function-docstring)
