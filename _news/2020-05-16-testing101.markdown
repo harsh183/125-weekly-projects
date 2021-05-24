@@ -9,43 +9,43 @@ tag: Tools
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
 
-So far you've been writing your programs amd running them time and time again doing that. A constant cycle of change-run-repeat until it works.
+So far you've been writing your programs amd running them over and over until it works in a constant cycle of change-run-repeat.
 
-Which works fine until
+Which works fine until:
 
-* you have hundreds of scenarios and inputs
-* the program takes quite long to run and it starts eating up too much time
-* you accidently break your program and don't even realize - [trillions lost](https://www.techrepublic.com/article/report-software-failure-caused-1-7-trillion-in-financial-losses-in-2017/), [rockets failing](https://www.bugsnag.com/blog/bug-day-ariane-5-disaster), [people dying](https://www.bbc.com/news/technology-54175359).
-* you get annoyed
+* You have hundreds of scenarios and inputs
+* The program takes too long to run
+* You accidently break your program and don't even realize it until it's too late - [trillions lost](https://www.techrepublic.com/article/report-software-failure-caused-1-7-trillion-in-financial-losses-in-2017/), [rockets failing](https://www.bugsnag.com/blog/bug-day-ariane-5-disaster), [people dying](https://www.bbc.com/news/technology-54175359).
+* You get annoyed
 
-Programmers are smart. Programmers are lazy. A powerful combination. So they automated it.
+Programmers are smart, and programmers are lazy. A powerful combination. So they automated testing.
 
-This is a complex topic with entire professions ans teams dedicated to this, but even knowing the basics go quite a far way and willfeel unnatural at first but as time goes by will feel quite natural. Also considering the very low standards on testing companies and open source projects just knowing the partfrom this chapter will make you a much better programmer.
+This is a complex topic with entire professions and teams dedicated to it, but even knowing the basics go quite a far way. It may feel unnatural at first, but as time goes, that will change. Also, considering the very low standards of testing companies and open source projects, just knowing this information will immediately make you a much better programmer.
 
 ## assert
 
-The basis of testing is generally comparing what value should be versus what the program returns. We do this via `assert`.
+The basis of testing is generally comparing what a value should be with what the program returns. One way we can do this is via `assert`.
 
 ```python
 >>> sum([1, 2]) # this is a builtin function
 3
 >>> assert sum([1, 2]) == 3
->>> # if there is no output means everything was fine
+>>> # if there is no output, that means the calculation was correct
 >>> assert sum([1, 2]) == 4
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AssertionError
 ```
 
-The entire principle of an assert is checking the condition and complaining if things are not right. Look at the code above and try to figure this out on your own.
+The idea of an `assert` is for the computer to check some condition and complain if things aren't right. Look at the code above and try to figure out what happened on your own.
 
 ```python
 assert <condition>
 ```
 
-Try to think of this like a special if statement. Just like if statements you give it some conditon that gives a boolean (either trie or false) and based on that it varies on how it acts. So when the condition above is `true` then it moves on and if it's false it gives an `AssertionError`
+Try to think of `assert` like a special if statement. Just like if statements, you give `assert`s some conditon that resolves to a boolean (true or false), and based on that, it acts differently. When the condition is `true`, it moves on, but if it's false, it gives us an `AssertionError`
 
-### Why not use if conditions
+### Why not use if conditions?
 
 (Actual student question)
 
@@ -53,20 +53,18 @@ I did mention above that these are like a special type of if condition. So it is
 
 * The syntax gets clunky - additional indentation and lots of ifs floating around.
 
-* The assert syntax lets you use test runners which will show you helpful messages like number of tests passed vs number of tests failed. This matters more when the number of tests get much larger.
+* The `assert` syntax lets you use test runners, which will show you helpful messages like the number of tests passed vs the number of tests failed. This matters more when the number of tests gets much larger.
 
 ## assert with messages
 
-Now just giving a condition on it's own is often just not enough because when 
-things go wrong it often just says `AssertionError`. And when it's a large
-row of test cases it starts becoming an issue. So we can include a message to
-be more helpful.
+Just giving a condition on its own is often not enough. When 
+things go wrong, the program will just spit out `AssertionError`. And when we have multiple test cases, the vagueness of that statement can start becoming an issue. We can include a message in the `assert` statement to make it easier on ourselves.
 
 ```python
 assert <condition>, "this message is only shown when the assert fails"
 ```
 
-A more real example (this time with a file more realistically):
+An example with a more realistic file:
 
 ```python
 # sum_two_numbers.py
@@ -79,64 +77,55 @@ assert sum(0, 5) == 5, "0 + 5 should be 5"
 print("All tests passed")
 ```
 
-And when the program fails it displays `AssertionError: 0 + 5 should be 5`, now we now how to fix
-it. That's more helpful.
+And when the program fails, it displays `AssertionError: 0 + 5 should be 5`, so now we know exactly what line the program is going wrong on.
+That's more helpful.
 
 ## Red-green-refactor
 
-Test Driven Development is a development pattern where you write the tests for
-the code before you work and then keep working till your tests pass. Now this
-isn't useful in every single scenario but many times it will help you develop
-faster and understand your problem better.
+Test Driven Development is a development pattern where you write the tests for the code before you write the code itself, then you keep working until your tests pass. This isn't useful in every single scenario, but it will often help you develop faster and understand any bugs that come up better.
 
-This pattern is split up into
+This pattern is split up into:
 
-* red - the code is not working as some or all tests are failing.
-  Many test programs show actual red.
+* Red - the code is not working, some or all tests are failing.
+  Many test programs show the actual color red.
 
-* green - the code is now working and all tests pass.
-  Likewise some test programs show green output.
+* Green - the code is now working and all tests pass.
+  Likewise, some test programs show green output.
 
-* refactor - now that you are confident that you have tests to make sure no
-  regressions happen (breaking existing code) you can keep adding on improvements
-  confidently
+* Refactor - now that you are confident that your existing code works and that you have tests to ensure that it keeps working, you can add on improvements confidently.
 
 This is common with many industry and open source projects, and this kind of
-mindset can help with programming. Of course the order doesn't have to be too
-strict, many times it's hard to write tests before the code, but other times it
-becomes easier writing the code than the tests.
+mindset can help with your own projects as well. The order doesn't have to be too
+strict, since many times it may be difficult to write tests before code, but other times, writing tests first will be much easier.
 
-Let's walk through an example. This will show you a good outline on general problem
-solving alongside tests.
+Let's walk through an example. This will give you an outline on both general problem-solving and tests.
 
-Suppose I am tasked with writing a function that multiplies all the numbers of
-a list together.  It should give `None` if the list is empty (similar to `null`
+Suppose that I am tasked with writing a function that multiplies all the numbers in
+a list together.  It should return `None` if the list is empty (similar to `null`
 or `nil` from other languages). Assume all numbers are integers.
 
 ### Red
 
-The first step of problem solving is just understanding the question itself. 
-Without even thinking about the answer just understanding what one even has 
-to do. This plays well with TDD approach. For this we can break up the problem
-into 'test cases' which are what inputs and conditions should have what result
-(verified by asserts).  
+The first step of problem-solving is to understand the problem itself. 
+Before we think about the answer, we need to understand what the results should be.
+This plays well with the TDD approach. For this, we can break up the problem
+into 'test cases', which are some inputs and conditions with their expected results, all verified by `assert`s.  
 
-For each requirement we can derive a series of test cases
+For each requirement, we can derive a series of test cases:
 
 * Multiplies all numbers of the list
   - A simple basic case - `[1, 1, 1]` should give `1` 
-  - Even giving one zero will give the final result as zero - `[0, 4253, -342]` should give `0`
-  - Negative numbers should be supported properly - `[-1, 4, 20]` should give `-80`
-  - Any list with one item should give itself - `[42]` should give `42`
+  - Even giving one zero will give the final result as zero - `[0, 4253, -342]` should return `0`
+  - Negative numbers should be supported properly - `[-1, 4, 20]` should return `-80`
+  - Two negatives cancel each other out - `[-1, -4, 20]` should return `80` 
+  - Any list with one item should return itself - `[42]` should return `42`
 
-* Giving `None` (these types of requirements are called edge cases - what to deal
-  with unexpected results)
+* Inputting `None`: (these types of requirements are called edge cases - we can decide how to deal with unexpected results)
   - The basic case - `[]` should give `None`
   
-Notice how I have not even written code or even thought about the solution just
-yet. Even going through this I was able to understand my problem better and
-some approaches on how I would solve the problem might have even popped up in
-my head.
+Notice how I haven't written any code or even thought about the code
+yet. Even then, I was able to better understand my problem, and some approaches on how I can solve the problem might have even popped up in
+my head by this point.
 
 Time to put this in code.
 
@@ -158,12 +147,12 @@ print("All tests passed")
 ```
 
 Take a moment to look at how we took our written test cases into the code. Each 
-different point became it's own assert. While this doesn't guaruntee that our
-program works we know for sure it supports atleast these cases. Generally when
-you want to make sure a certain set of requirements are fit you can write specific
+different point became it's own assert. While this doesn't guarantee that our
+program works, we can know for sure that it supports at least these cases. Generally, when
+you want to make sure a certain set of requirements are fit, you can write specific
 test cases around those.
 
-Running our program
+Now let's run our program:
 
 ```js
 $ python3 multiply_list.py
@@ -175,12 +164,12 @@ Traceback (most recent call last):
 AssertionError: Simple basic case should give 1
 ```
 
-Now this gives us a starting point. We now know which case fails with input `[1, 1, 1`]
-expecting the output of `1` for `Simple basic case`. When you write good sets of test cases
-it gives enough motivation to how to go about a problem piece by piece, as the different
-parts breaks up a bigger problem into a smaller problem.
+Now this gives us a starting point. We now know which case fails with the input `[1, 1, 1`]
+expecting the output of `1` for `Simple basic case`. When you write good test cases,
+it becomes much easier to look at a problem piece by piece, as the different
+tests break up a large problem into multiple smaller problems.
 
-This stage is *RED* - not working - tests not passing
+This stage is *RED* - not working, as out tests aren't passing.
 
 ### Green
 
