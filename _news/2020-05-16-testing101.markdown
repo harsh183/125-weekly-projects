@@ -139,7 +139,7 @@ def test_multiply():
     assert multiply([0, 4253, -342]) == 0, "Inclusion of zeros should give zero"
     assert multiply([-1, 4, 20]) == -80, "Negative numbers should work"
     assert multiply([42]) == 42, "Single number should return itself"
-    assert multiply([]) is None, "Emtpy list should give None" 
+    assert multiply([]) is None, "Empty list should give None" 
     # Note: For checking None we use `is` over ==
 
 test_multiply()
@@ -147,7 +147,7 @@ print("All tests passed")
 ```
 
 Take a moment to look at how we took our written test cases into the code. Each 
-different point became it's own assert. While this doesn't guarantee that our
+different point became it's own `assert`. While this doesn't guarantee that our
 program works, we can know for sure that it supports at least these cases. Generally, when
 you want to make sure a certain set of requirements are fit, you can write specific
 test cases around those.
@@ -164,16 +164,15 @@ Traceback (most recent call last):
 AssertionError: Simple basic case should give 1
 ```
 
-Now this gives us a starting point. We now know which case fails with the input `[1, 1, 1`]
-expecting the output of `1` for `Simple basic case`. When you write good test cases,
+Now this gives us a starting point. We now know that the case with the input `[1, 1, 1`] isn't giving us the expected output of `1`. When you write good test cases,
 it becomes much easier to look at a problem piece by piece, as the different
 tests break up a large problem into multiple smaller problems.
 
-This stage is *RED* - not working, as out tests aren't passing.
+This stage is *RED* - not working, as our tests aren't passing.
 
 ### Green
 
-Now I take one attempt at writing the `multiply(list)` function for the normal cases
+Now let's try to write the `multiply(list)` function for the normal cases:
 
 ```python
 def multiply(list):
@@ -185,20 +184,19 @@ def multiply(list):
 
 ```
 
-giving the output
+When we run the test cases:
 
 ```python
 Traceback (most recent call last):
   File "multiply_list.py", line 20, in <module>
     test_multiply()
   File "multiply_list.py", line 17, in test_multiply
-    assert multiply([]) is None, "Emtpy list should give None"
-AssertionError: Emtpy list should give None
+    assert multiply([]) is None, "Empty list should give None"
+AssertionError: Empty list should give None
 
 ```
 
-Since I'm getting a different test fail I know I have fixed the previous one. Fixing the 
-empty list case we get:
+Since a different test is failing know, we know that we've passed the previous one. Now, let's fix the empty list case:
 
 ```python
 def multiply(list):
@@ -213,7 +211,7 @@ def multiply(list):
 
 ```
 
-giving the output
+Output of test cases:
 
 ```
 All tests passed
@@ -224,11 +222,9 @@ This stage is *GREEN* - working - tests passing
 ### Refactor 
 
 Now what if we want to change it. Maybe we want to improve the code quality 
-or change arond some stuff. Then what we do is keep adding newer features and
-running the test code again and again to make sure we don't break anything in 
-a similar red green cycle.
+or change arond some stuff. Then, we need to add or change whatever we need features and run the test code again and again. This will let us ensure that we don't break anything.
 
-Lets say I realize I can use a for to directly go over the list instead of using
+For example, let's say I decide to use a for loop to traverse the list instead of using
 `range()` and indexes.
 
 ```python
@@ -243,36 +239,36 @@ def multiply(list):
     return product
 ```
 
-now when I run the same code I get
+When I run this code, I get
 
 ```
 All tests passed
 ```
 
 This means I know the code that I wrote works and didn't break anything. 
-So because I took more time to write tests at the start of the process,
-now I can keep developing faster because I have to spend lesser time
-running the same program again and again with the same inputs so I get work
-done faster.
+Because I took the extra time to write tests at the beginning,
+I can spend less time testing each individual case. I can work faster this way.
 
-This isn't possible all the time but quite often and this type of development
+This isn't possible all the time, but this type of development
 often sets apart the great developers from the good ones.
 
 ## Test runners
 
-Now raw asserts are nice but they are also quite limited. For which we have test runnerswhich provide a better way to run test cases.
+Raw `assert`s are nice, but they're also quite limited. Instead of `assert`s, we can use test runners.
 
-* Supporting many assert fails, usually the failure of one case crashes the program
+Some nice features of test runners:
+
+* Supporting many Empty fails, usually the failure of one case crashes the program
 * Counting of fail and pass tests
 * Easier syntax for more complex features.
 * Actual red and green output for visual cues.
 
-In practice you will use one of these, either one you setup your self or one that comes
+In practice you will use one of these, either one you set up yourself or one that comes
 built it with something like `django` or `flask`. 
 
-I have picked pytest for it's simplicity for teaching, and there are many others
+I have picked pytest for it's simplicity, but there are many others
 that exist. The way I'll approach it is quite indicative of how testing is done 
-in general and you can follow the some approach with other test runners and 
+in general, and you can follow the some approach with other test runners and 
 programming languages. 
 
 ### pytest
@@ -283,7 +279,7 @@ $ pip install pytest
 
 Interestingly it supports the `multiply_list.py` file we wrote earlier as is 
 without changing anything. How it works is that it looks for any function that
-starts with `test` like our
+starts with `test`, like ours:
 
 ```python
 def test_multiply():
@@ -291,12 +287,12 @@ def test_multiply():
     assert multiply([0, 4253, -342]) == 0, "Inclusion of zeros should give zero"
     assert multiply([-1, 4, 20]) == -80, "Negative numbers should work"
     assert multiply([42]) == 42, "Single number should return itself"
-    assert multiply([]) is None, "Emtpy list should give None"
+    assert multiply([]) is None, "Empty list should give None"
     # Note: For checking None we use `is` over ==
 
 ```
 
-And it runs like
+And it runs like so.
 
 ```js
 $ pytest multiply_list.py
@@ -311,12 +307,10 @@ multiply_list.py .                                                              
 
 ```
 
-and the last line being in color output (green here), try running it yourself to see.
+The last line is the color output (green here). Try running it yourself to see.
 
-And even better it doesn't run your main program itself, so that means you can
-still keep all your `print()` and `input()` functions in your program without
-
-changing anything. I added at the end of the program.
+Even better, it doesn't run your main program itself, which means that you can
+keep all your `print()` and `input()` functions in your program without them interfering with your testing output. To demonstrate this, I added this to the end of the program:
 
 ```python
 print("pytest actually even ignores all the normal print output")
@@ -324,55 +318,51 @@ print("so you can blend in your normal program and tests in the same file")
 
 ```
 
-which only appear when I run it normally with `$ python3 multiply_list.py`
+which only appears when I run the program normally with `$ python3 multiply_list.py`. Output:
 
 ```js
 pytest actually even ignores all the normal print output
 so you can blend in your normal program and tests in the same file
 ```
 
-Basically it means testing doesn't have to interrupt your workflow or structure
-of your program at all. All you have to provide a test function and pytest does 
+This means that testing doesn't have to interrupt your workflow or the structure
+of your program at all. All you have to provide is a test function and pytest does 
 the rest.
 
-So all we have to do for using pytest is
+In summary, all we need to do for pytest is create a test function starting with `test`, e.g. `test_multiply`, `test_solution`, and pytest will automatically find it.
 
-* having the test function start from `test` like `test_multiply` or `test_solution`
-  pytest will discover it by that
-* use normal asserts just like how you would do it normally
-* when you want to run the program run it like `$ python3 program_name.py` and when you want
-  to test it run it like `$ pytest program_name.py`
+We can still use use normal `assert`s to interact with pytest.
+
+When we want to run the tests with pytest, we run it like `$ pytest program_name.py`.
 
 ### Fancier asserts
 
-You might also encounter other types of asserts like `assertEqual`, `assertFalse`, `assertIn` etc. They are just easier syntax (often programmers will use the term syntax sugar). You can just use simple asserts for most part and others when you are more comfortable with them. Often they are parts of different runners so it will vary what you can use. `assert` should be there in pretty much everything and I'll cover just that.
+You might also encounter other types of `assert`s, like `assertEqual`, `assertFalse`, `assertIn` etc. These just have easier syntax in some cases (often, programmers will use the term "syntax sugar"). You can just use simple `assert`s for most part, but you can use others if you're comfortable with them. Oftentimes, they are parts of different runners, so it will vary what you can use. `assert` should be there in pretty much everything, so we've only covered that.
 
 ## Separating test files
 
-So far we were writing everything in one file which is quite okay for small programs, exercises etc. More often it is kept in seperate files. This is quite easy to do and some frameworks will even do it for you. If you have the time I highly suggest doing this for anything that's more than 10-15 lines of code. 
+So far, we've been writing all our code in one file. This is okay for small programs and exercises, but typically, a program is kept in seperate files. This is quite easy to do, and some frameworks will even do it for you. If you have the time, I highly suggest doing this for anything that's more than 10-15 lines of code. 
 
-Usually it will be either called something like `test.py` or `tests.py`. If there is a large amount of tests then it will be in a folder called `test/` or `tests/`
+Usually, the testing file will be called either `test.py` or `tests.py`. If there is a large number of tests, then there might be multiple files in a folder called `test/` or `tests/`.
 
-See [this tutorial](https://www.codementor.io/sheena/python-path-virtualenv-import-for-beginners-du107r3o1) for a basic idea on imports.
+See [this tutorial](https://www.codementor.io/sheena/python-path-virtualenv-import-for-beginners-du107r3o1) for a basic overview of imports.
 
 ## When to use what
 
-Rule of thumb is using a test runner for almost every case since that setup works out neater
-and is much better for larger projects and working with teams. Sometimes when it's just scripts
-or small hacky experiments you can use `assert` within the same file. For sanity checks it's
-okay so long as you remove it later. That said, if you can adding tests can go a long way
-and earn you gratitude from you and your future self.
+The rule of thumb is to use a test runner for almost every case, since it's typically neater and better for larger projects and working with teams. Sometimes when it's just scripts
+or small hacky experiments, you can just use `assert` statements within the same file. For sanity checks, that's fine
+as long as you remove them later. That said, adding tests can go a long way, and your future self will thank you.
 
 ## Exercises
 
 One more round of red-green-refactor to give you more practice of the workflow.
 
-**Find the in a list of integers.**
+**Find the mode in a list of integers.**
 
-* A mode is the item that occurs the most ex. `[1, 1, 2, 3]` will be `1` because it occurs the most
-* For an empty list I want you to give `None`
+* The mode is the item that occurs the most in a given list. For example, in `[1, 1, 2, 3]`, the mode is `1`.
+* For an empty list, I want you to return `None`
 
-I want you to use `pytest` and the same red green workflow I showed earlier in this unit with that breaking up steps and writing. It should look very similar to the structure I used. In general this is a good approach for problem solving and it gets better with practice.
+Use `pytest` and the same red-green workflow I showed earlier in this unit. It should look very similar to the structure I used. In general, this is a good approach for problem solving. The more you practice, the more you'll improve!
 
 ## Learn more
 
