@@ -36,7 +36,7 @@ Comic: [CHRIS HADFIELD: An astronaut’s advice](http://www.zenpencils.com/comic
 * We retrieve the rows through `const rows = document.getElementsByTagName("tr");`
 
 * We can filter the rows to just get the info rows that we want, seeing that the start is from `uid` leading to
-<!-- typo? -->
+
   ```js
   rowArr = Array.from(rows);
   infoRows = rowArr.filter(row => row.id.startsWith("uid"));
