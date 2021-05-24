@@ -36,7 +36,7 @@ Set this up before we start.
 
 * VSCode [Our written guide](/micro) but otherwise the general intertnet is good to
 
-* `git` - install it locally to make sure it works
+* `git` - install it locally and enter `$ git --version` to check if it has installed in your terminal.
 
 * Github - create an account
 
@@ -44,32 +44,67 @@ Set this up before we start.
 
 You should finish this part before the workshop, but don't worry if you're not done since we're recording everything. All the material is written as text on the website as well.
 
-1. If you're on Windows, I *highly* reccomend getting WSL2 (WSL 1 is also fine, just slower). For historical reasons, the command line in Windows is just not as good as Mac or Linux. Eventually, they just said, "Hey what if we had full\* Linux *on* Windows?" Thus, WSL.
+1. If you're on Windows, I *highly* reccomend getting WSL2 (WSL 1 is also fine, just slower). For historical reasons, the command line in Windows is just not as good as Mac or Linux. Eventually, they just said, "Hey what if we had full\* Linux *on* Windows?" Thus, WSL. We will use the command line a fair amount here so it's a very good idea to have this set up.
 
 2. Install a recent version of Python (3.7+) on your computer and make sure to enable `pip` as well. <!-- TODO: Add more detail from web bot workshop maybe -->
 
-3. Set up the `micro` text editor or a different command line text editor of your choice. See the page I wrote for [micro](/micro) for more detailed instructions.
+3. Set up the VSCode or a different code editor of your choice. See the page we wrote for [VSCode](/vscode) for help.
 
-4. Install discord.py
+4. Install `discord.py`
 
     ```js
     $ pip install discord.py
     [install output]
     ```
 
+5. Create an account on [discord](https://discord.com). The principles of making chat bots are the same regardless of platform but discord has really nice support.
+
+6. Create a test Discord server (sometimes called a guild) that you will add your bot to. You can add it to a real server once it's working well but this is good for debugging. [Guide](https://www.howtogeek.com/318890/how-to-set-up-your-own-discord-chat-server/)
+
 ## Workshop
 
-1. Create a Discord account if you don't have one.
+First we create a new folder for the project by typing this into your command line. In general if there is a `$` before a code line it means run it on your command line. This is a convention not just for this site, but programming tutorials in general.
 
-2. Create a test Discord server (sometimes called a guild).
+```js
+$ mkdir first_discord_bot
+$ cd first_discord_bot
+```
 
-3. Copy over the auth setup in some environment variable.
+`mkdir` stands for make directory (another word for folder) and this is how we create a folder wherever we are. 
 
-4. Set up a "connected" message.
+`cd` stands for change directory. So here we're just creating a folder and switching to it. The command line prompt can only point to one folder at a time and this is how we change where it's pointing to.
 
-5. Respond to a "hello" message.
+Now we set up `git` in folder transforming our project into a `git` repository. 
 
-6. Create a function that we can pass things to in order to abstract out the logic (loose coupling).
+```js
+$ git init
+```
+
+You've probably seen `git` before, it basically adds time travel powers to your work. `git` lets you put your code on sites like [Gitlab](https://about.gitlab.com/), [Github](https://github.com/) and [sr.ht](https://sr.ht/).
+
+Now let's get started with the coding. Let's open VSCode:
+
+```js
+$ code .
+```
+
+Note: Don't worry too much about the command line or `git` just yet, more on that next week :)
+
+### Getting the bot token
+
+Note: [This tutorial](https://www.freecodecamp.org/news/create-a-discord-bot-with-python/) also has a good section on getting the discord bot token.
+
+1. Go to the discord [applications page](https://discord.com/developers/applications) on your *web browser*.
+
+2. Click on "New Application" and give it a nice name that you can recognize. Feel free to give an icon too but that's optional.
+
+3. Go to the Bot page on the side tab and click "Add Bot". This is the bot that we'll be coding and the user they see. Feel free to change the username but the default one should be fine.
+
+4. Scroll down to "TOKEN" and click the "Copy" button. This token is the password of sorts of your bot and is required for your program to log in. Tokens are a common pattern when dealing with APIs and external services (like discord here). 
+
+5. The important thing is that you should never, ever, share this token with anyone. One classic mistake people do is acidentally adding it on their online Git repository or stored somewhere that someone can just inspect browser state for it. This paper [paper](https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf) explains how hundreds of thousands of codebases have made this mistake. To deal with this we keep a seperate `BOT_TOKEN.txt` file and read from it.
+
+6. We 
 
 ## Open Source License 
 
@@ -103,13 +138,9 @@ Feel free to come up with anything you want as long as it's chatbot related. Her
 
 These aren't hard requirements, but you should try your best to hit all of them.
 
-* The chatbot connects to a real chat service, including, but not limited to: Discord, Slack, Telegram, IRC, Facebook.
+* The chat bot connects to a real chat service, including, but not limited to: Discord, Slack, Telegram, IRC, Facebook.
 
 * It has different responses based on different inputs.
-
-* It displays a message on connnecting.
-
-* There are at least two test cases where you test parts of the bots behavior out.
 
 * This has to be available on a site like Github (feel free to use alternatives like GitLab if you prefer).
 
