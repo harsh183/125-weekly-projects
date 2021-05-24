@@ -9,9 +9,9 @@ tag: JavaScript
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
 
-Web Browsers are probably the application we use the most, yet it's not always the best experience. What if we could improve it?
+Web browsers are among the applications we use the most, but they're not always the best experience. What if we could improve them?
 
-To first learn `TypeScript` we start from `JavaScript`.
+To first learn `TypeScript`, we'll start from `JavaScript`.
 
 ```js
 console.log("Hello Web Browser Extentions");
@@ -27,15 +27,15 @@ Comic: [CHRIS HADFIELD: An astronaut’s advice](http://www.zenpencils.com/comic
 
 ### Part 1 Direct Course Search
 
-* [Direct Course Search](https://gist.github.com/harsh183/4505b4870fb9a003abe5193e0f7b9c71) - just do this but simpler (string strip and then substring)
+* [Direct Course Search](https://gist.github.com/harsh183/4505b4870fb9a003abe5193e0f7b9c71) - do this, but simpler (string strip and then substring)
 
-* Exercise: be able to add a third term `fall/summer/winter` to get which term as well
+* Exercise: add a third term `Fall/Summer/Winter` to find a course's term as well
 
 ### Part 2 Linking the location displays to Google Maps
 
-* We get the rows `const rows = document.getElementsByTagName("tr");`
+* We retrieve the rows through `const rows = document.getElementsByTagName("tr");`
 
-* We filter the rows to just get the info rows we want seeing that the starting is from `uid` leading to
+* We can filter the rows to just get the info rows that we want, seeing that the start is from `uid` leading to
 
   ```js
   rowArr = Array.from(rows);
@@ -45,7 +45,7 @@ Comic: [CHRIS HADFIELD: An astronaut’s advice](http://www.zenpencils.com/comic
 
 * We look at the Google Maps API [documentation](https://developers.google.com/maps/documentation/urls/get-started#search-action) to get the pattern `https://www.google.com/maps/search/?api=1&query=WHAT_WE_WANT`
 
-* We generate a url like "https://www.google.com/maps/search/3039+Campus+Instructional+Facility+UIUC+USA", now lets create a function to do this
+* We generate a url like "https://www.google.com/maps/search/3039+Campus+Instructional+Facility+UIUC+USA". Now, let's create a function to do this.
 
 * use `.innerHTML` like
 
@@ -53,19 +53,26 @@ Comic: [CHRIS HADFIELD: An astronaut’s advice](http://www.zenpencils.com/comic
   infoRows[3].getElementsByClassName("app-meeting")[4].innerHTML = `<a target="blank" href="${"https://www.google.com/maps/search/3039+Campus+Instructional+Facility+UIUC+USA"}">${p}</a>`
   ```
 
-* Exercise: add some if condition to make sure we only create map urls for valid addresses (multiple approaches possible)
+* Exercise: add some if condition to make sure we only create map urls for valid addresses (multiple approaches are possible)
 
 ## Converting to a web browser extention
 
-This part is optional but if you want to publish it on the store.
+This part is optional, but if you want to publish it on the store:
 
-* Firefox guide
+* [Firefox guide](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension), [Firefox guide 2](https://extensionworkshop.com/documentation/publish/submitting-an-add-on/)
 
-* Chrome guide
+* [Chrome guide](https://developer.chrome.com/docs/webstore/publish/)
 
 ## Learn more
 
 ## Ideas
+
+* Is there something about your browser that could be done better? Maybe something that annoys you?
+
+* Is there something you'd find convenient or nice to have in a browser? For example, maybe a schedule, or a built-in alarm? 
+<!-- maybe remove this, if it'll lead to too many people doing exactly those things -->
+
+* Could you come up with an extension idea that relates to something else you've learned in this class or other places?
 
 ## Requirements
 

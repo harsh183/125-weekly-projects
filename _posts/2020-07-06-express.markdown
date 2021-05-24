@@ -9,9 +9,9 @@ tag: TypeScript
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
 
-Any web site has two parts, a frontend and a backend. A backend handles our logic and data storage and communciates via URLs but instead of sending web pages it only sends data.
+Any website has two parts: a frontend and a backend. The backend handles our logic and data storage and communciates via URLs, but instead of sending web pages, it only sends data.
 
-Here let's create something simple with `Express` to show a basic backend service in action.
+Now, let's create something simple with `Express` to show a basic backend service in action.
 
 ```ts
 console.log("Hello express");
@@ -21,7 +21,7 @@ Hosted by: Monika Para
 
 ## Motivation
 
-[Hackers and Painters](http://www.paulgraham.com/hp.html) - A bit old but perhaps my favorite essay of all time on the nature of CS and how we work. This essay links it to creative work over the typical idea of applied math, scientists or engineers. It's a long essay but definitely worth revisiting every few months and by one of the most iconic people in the tech startup space today for starting YCombinator.
+[Hackers and Painters](http://www.paulgraham.com/hp.html) - A bit old, but perhaps my favorite essay of all time on the nature of CS and how we work. This essay portrays computer science as creative work rather than the typical connection to applied math, science or engineering. It's a long essay but definitely worth revisiting every few months. Also, it was written by one of the most iconic people in the tech startup space for starting YCombinator, Paul Graham.
 
 ## Learn more
 
@@ -30,7 +30,7 @@ Hosted by: Monika Para
 ## Requirements
 
 * You should show it off in your README.md file, with animations/video and an explanation of the game.
-
+<!-- Game? -->
 * Has to use a Open Source license via a `LICENSE` file
 
 Contributors: Harsh, Maaheen
