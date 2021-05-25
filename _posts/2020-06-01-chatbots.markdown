@@ -233,6 +233,10 @@ Create a new browser extention that helps with social life! :slight_smile:
 
 Yours might not look the exact same since this is randomized. If you want to learn more about `random` in python check out [realpython - Generating Random Data in Python (Guide)](https://realpython.com/python-random/).
 
+#### Exercise
+
+* Have idea bot randomly pick a programming language as well. Don't worry if the combo makes sense, this is just to flesh out the program some more.
+
 ### Calculator bot
 
 Lets add another command `calc` that can do the standard 4 function calculator stuff. This is showing how to collect chatbot inputs and how to have branching accoringly.
@@ -269,6 +273,10 @@ async def calc(ctx, x: float, fn: str, y: float):
 ```
 
 then `discord.py` will make sure all the conversions are done automatically. To learn more about Python type annotaitons check out [Using Python's Type Annotations](https://dev.to/dstarner/using-pythons-type-annotations-4cfe) and [mypy](https://dropbox.tech/application/our-journey-to-type-checking-4-million-lines-of-python).
+
+#### Exercise
+
+Add `**` (to the power of) as an operator onto the `calc` command as well. This should be adding another level of branching. Example `!calc 5**3` should give `125.0`.
 
 ### Help information
 
