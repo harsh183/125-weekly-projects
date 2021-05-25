@@ -39,3 +39,4 @@ defaults:
 
 plugins:
   - jekyll-sitemap
+  - jekyll-toc

@@ -5,6 +5,7 @@ date: 2020-06-29
 comments: true
 external-url:
 tag: JavaScript
+toc: true
 ---
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
