@@ -37,7 +37,7 @@ Schedule can be found [here](https://calendar.google.com/calendar/u/0/embed?heig
 
 ### Month 1: Python
 
-* Week 1 (June 1): Discord/Slack Chatbot June 1
+* Week 1 (June 1): Discord/Slack Chatbot June 1 [code repo](https://github.com/harsh183/discord-chatbot-workshop)
   * Tools: Github, VSCode, pylint
 * Week 2 (June 8): Fancy command line interface
   * Tools: Command line, git
