@@ -22,12 +22,11 @@ Hosted by: Harsh Deep
 
 ## Motivation
 
-Here's an 18 minute audio recording made specially for this summer session by [Donovan Keme](https://github.com/digitalextremist), my mentor last summer who broadened my perspective on tech entirely. His open source Ruby work has been part of almost [450 million downloads](https://rubygems.org/profiles/digitalextremist), and he's very involved with the community.
+Here's an 18 minute audio recording made specially for this summer session by [Donovan Keme](https://github.com/digitalextremist), my mentor last summer who broadened my perspective on tech entirely. His open source Ruby work has almost [450 million downloads](https://rubygems.org/profiles/digitalextremist), and he's very involved with the community.
 
-This is a more somber and serious recording instead of the typical emotional pep talk, but it's important to consider in your journey after several months about learning about technology. At this point, it's the right time to start thinking about what role technology plays in the world and what purpose you want to achieve with technology.
+This is a more somber and serious recording instead of the typical pep talk, but it's important to consider in your journey after several months about learning about technology. At this point, it's the right time to start thinking about what role technology plays in the world and what purpose you want to achieve with technology.
 
-[Recording link](https://extremist.digital/audio/126-m20210504083039-5tp5-harsh.mp3
-)
+[Recording link](https://extremist.digital/audio/126-m20210504083039-5tp5-harsh.mp3)
 
 Don't worry if you don't know what your purpose is right now. What this means can be different for everyone. Over the next few months, start to reflect and chart out your goals of what you want to do and the steps you want to take from there. Feel free to message any of the staff or create a forum post if you want to talk about it too.
 
@@ -37,13 +36,13 @@ Don't worry if you don't know what your purpose is right now. What this means ca
 
 2. Go over the basics of test driven development with `pytest` in this tutorial on [the site](/testing101). Code along everything just to get an idea of why we test and how to create your workflow around tests. While I don't want all projects to have extensive tests (although it is a good habit), having even just 3-5 tests makes a huge difference.
 
-3. Learn a few basics of how a command line works. [Here is a quick crash course](https://www.vikingcodeschool.com/web-development-basics/a-command-line-crash-course) with links to resources to learn even more. The command line is intimidating, but once you get used to it, you'll wonder how you lived without it. It's part of almost every programmer's toolbox.
+3. Learn some basics of how a command line works. [Here is a quick crash course](https://www.vikingcodeschool.com/web-development-basics/a-command-line-crash-course) with links to resources to learn even more. The command line is intimidating, but once you get used to it, you'll wonder how you lived without it. It's part of almost every programmer's toolbox.
 
 ## Workshop
 
-Our goal is to make a fancy git add CLI with a nice interactive interface. We display a list of files that can be added and then have the user select. Then we provide them an option to commit the file as well.
+Our goal is to make a fancy git add CLI with a nice interactive interface. We want to display a list of files that can be added to git and then have the user select which ones they want. Then we provide them an option to commit the files as well.
 
-Note: I've done this on an Ubuntu `20.04` system. Your progress won't be drastically different but you may need to adjust depending on how your OS does things. Feel free to post forum questions in case there are any problems. I used `python 3.8.5`.
+Note: I've done this on an Ubuntu `20.04` system. Your progress shouldn't be drastically different, but you may need to adjust depending on how your OS does things. Feel free to post forum questions in case there are any problems. I used `python 3.8.5`.
 
 ### Libraries
 
@@ -57,7 +56,7 @@ pylint
 pytest
 ```
 
-Once you've saved this file, to install you just have to run (if you use `python3` to excute commands this will be `pip3`).
+Once you've saved this file, run the following to install them (if you use `python3` to execute commands, then use `pip3`):
 
 ```bash
 $ pip install -r requirements.txt
@@ -68,17 +67,17 @@ The `-r` flag tells `pip` to look at `requirements.txt` and install everything i
 
 Let me explain how we're using each library.
 
-* `pyinquirer` give us fancy interactive menu interfaces
-* `pyfiglet` gives us ASCII art displays
-* `plumbum` gives us a way of accepting input, displaying help information and calling existing system commands
-* `pylint` is for style checking
-* `pytest` is for simple testing
+* `pyinquirer` give us fancy interactive menu interfaces.
+* `pyfiglet` provides ASCII art displays.
+* `plumbum` gives us a way of accepting input, displaying help information and calling existing system commands.
+* `pylint` is for style checking.
+* `pytest` is for simple testing.
 
-### Get started
+### Get Started
 
 Create a file called `fgit.py`.
 
-We use `cli` from the `plumbum` library to create the base template for our command line application.
+We'll use `cli` from the `plumbum` library to create the base template for our command line application.
 
 ```python
 from plumbum import cli
@@ -92,29 +91,29 @@ if __name__ == "__main__":
 
 ```
 
-Now if we run this we get our starter message.
+Now when we run this, we get our starter message:
 
 ```bash
 $ python fgit.py
 Welcome to Fancy Git Add!
 ```
 
-The reason we have a `__name__ == "__main__"` condition is because our program will be run in different ways. When running the program normally through python the condition will be true and the stuff inside will run, but in other cases it won't.
+The reason we have a `__name__ == "__main__"` condition is because our program will be run in different ways. When running the program normally through Python, the condition will be true and the code inside will run, but in other cases it won't.
 
-Basically, without that, our tests will not work and give a screenful of nasty errors. We haven't written any tests yet but just to sanity check.
+Basically, without that, our tests will not work and give a screenful of nasty errors. We haven't written any tests yet, but just to sanity check:
 
 ```bash
 $ pytest fgit.py
 [tests pass]
 ```
 
-Which will tell us everything is good and no test ran.
+Which will tell us everything is good for now.
 
-### Provide help
+### Provide Help
 
-Almost every major command line program lets you ask for help using `-h` or `--help`. This is good because things can be quite confusing otherwise. Writing good help messages for users is _highly reccomended_.
+Almost every major command line program lets you ask for help using `-h` or `--help`. This is good because things can be quite confusing otherwise. Writing useful help messages for users is _highly recommended_.
 
-Lets see what we get out of the box thanks to `plumbum`.
+Lets see what we get out of the box from `plumbum`.
 
 ```bash
 $ python fgit.py --help
@@ -127,7 +126,7 @@ Meta-switches:
     -v, --version      Prints the program's version and quits
 ```
 
-Not a bad start. Now the first thing we can do is give our a version number. In a real program we will change the version number as we add new changes so that people know when to update.
+Not a bad start. Now we should give our program a version number. In the real world, remember to change the version number as you add new changes so that people know when to update.
 
 ```python
 from plumbum import cli
@@ -159,11 +158,11 @@ Meta-switches:
     -v, --version      Prints the program's version and quits
 ```
 
-Note: One character flags have a single dash `-` and are one letter long to be short. The longer flag is usually a word or phrase and has two dashes `-`.
+Note: One-character flags have a single dash `-` and are one letter long to be short. Longer flags (usually a word or phrase) have two dashes `-`.
 
 ## Improve the display
 
-The text output from `print` does look nice but we want those fancy ASCII art displays. For this we're going to use `pyfiglet`
+The text output from `print` does look nice, but we want those fancy ASCII art displays. For this we're going to use `pyfiglet`
 
 ```python
 from pyfiglet import Figlet
@@ -183,34 +182,33 @@ if __name__ == "__main__":
 
 We create a function `print_banner(text)` to print our ASCII banner on our screen based on the [pyfiglet documentation](https://github.com/pwaller/pyfiglet).
 
-In general, it's a good practice to have extracted out functions (like this one) so that we can create more layers of abstraction for readability or testing. The command line application doesn't need to bother itself with the details of _how_ we print a banner, just that it gets printed.
+In general, it's good practice to extract out functions (like this one) so that we can create more layers of abstraction for readability or testing. The command line application itself doesn't need to bother with the details of _how_ we print a banner, just that it gets printed.
 
-## Collecting a list of files
+## Collecting a List of Files
 
-One of the most common commands we ever use in the command line is called `ls` to list all files in the current folder.
+One of the most common commands in the command line is `ls`, which lists all files in the current folder.
 
-Let's try it out to get a list of 5 items I have (your system might vary but adjust accordingly)
+Let's try it out to get a list of 5 items I have (your system might vary, but adjust accordingly):
 
 ```bash
 $ ls
 __pycache__  fgit.py  file3.txt  requirements.txt  test_folder
 ```
 
-Lets use this as a chance to show off red-green-refactor with `pytest`.
+Lets use this as a chance to show off the red-green-refactor workflow (more details [here](/testing101)) with `pytest`.
 
 ### Red
 
-For testing around I'm creating a folder called `test_folder` with two files `file1.txt` and `file2.txt`. I'm also adding a `file3.txt` outside the folder. You can create whatever sample files you like.
+I'm creating a folder called `test_folder` with two files: `file1.txt` and `file2.txt`. I'm also adding a `file3.txt` outside the folder. You can create whatever sample files you like.
 
-If you want to do the same thing as I am doing using `mkdir` (create directory), `cd` (change directory), and `touch` (create file or update last edited)
+If you want to do it the same way I am, use `mkdir` (create directory), `cd` (change directory), and `touch` (create file or update last edited).
 
 ```bash
 $ mkdir test_folder
 $ touch test_folder/file1.txt test_folder/file2.txt file3.txt
-$
 ```
 
-The end result looks something like this: (generated via a command line program called [tree](https://linux.die.net/man/1/tree)).
+The end result looks something like this (generated via a command line program called [tree](https://linux.die.net/man/1/tree)):
 
 ```bash
 $ tree
@@ -254,7 +252,7 @@ def test_get_files():
     assert len(files) == 5
 ```
 
-Which if we now test
+Now let's run it with pytest:
 
 ```bash
 $ pytest fgit.py
@@ -267,13 +265,13 @@ E        +  where 0 = len([])
 fgit.py:39: AssertionError
 ```
 
-Which is what we expect. One we implement the feature this test will become green.
+This is what we expect. One we implement the feature, this test should become green.
 
 ### Green
 
-Using `plumbum.cmd` we can import commands from the command line and use it within python. This import lets us import basically any existing system command so that we can use it in our program.
+Using `plumbum.cmd`, we can import commands from the command line and use them within python. This import lets us import basically any existing system command so that we can use it in our program.
 
-The first step of understanding how to process output of a command line program is just inspecting it. Here we just `print` it with a `"start"` and `"end"` to understand how the string processing is working.
+The first step of understanding how to process output of a command line program is to inspect it. Here, we'll `print` it with the strings `"start"` and `"end"` to understand how the string processing is working.
 
 ```python
 from pyfiglet import Figlet
@@ -294,7 +292,7 @@ def test_get_files():
     assert len(files) == 5
 ```
 
-and the output snippet we get is
+And the output snippet we get is:
 
 ```txt
 start __pycache__
@@ -305,7 +303,7 @@ test_folder
  end
 ```
 
-Looks like we have to split by line and take care of some whitespace around the start and end. We can use a combo of `strip` (strip is quite common to use when dealing with string output) and `split`. Our final funcion will be
+Looks like we have to split by line and take care of some whitespace around the start and end. We can use a combo of `strip` (strip is quite common to use when dealing with string output) and `split`. Our final function will be:
 
 ```python
 def get_files():
@@ -321,7 +319,7 @@ def test_get_files():
     assert len(files) == 5
 ```
 
-Now if we run this with `pytest` it will give green.
+Now if we run this with `pytest`, the color will be green.
 
 ```bash
 $ pytest fgit.py
@@ -332,7 +330,7 @@ $ pytest fgit.py
 
 One we have a working test for a feature, we can refactor (improve) our code with confidence. The test cases act as a safety net.
 
-If we run our program
+If we run our program:
 
 ```bash
 $ python fgit.py
@@ -350,9 +348,9 @@ requirements.txt
 test_folder end
 ```
 
-The debug output still appears. A refactor step would be removing that and just checking if the tests work again.
+The debug output still appears. A refactor step would be removing that and checking if the tests still work.
 
-We update `get_files()`
+Let's update `get_files()`:
 
 ```python
 def get_files():
@@ -361,7 +359,7 @@ def get_files():
     return files
 ```
 
-and running tests should still give green
+Running the tests should still result in green:
 
 ```bash
 $ pytest fgit.py
@@ -398,17 +396,17 @@ def test_get_files():
     assert len(files) == 5
 ```
 
-Note: This is a simple test for teaching reasons. In real life you should write tests more robust since this can easily break if I have one more or one less file.
+Note: This is a simple test for teaching reasons. In real life you should write more robust tests since this could easily break if I have one more or one less file. We want to account for all edge cases and potential changes.
 
 ## Fancy Menu Selectors
 
-Now we want to create a checkbox like system you can go up and down on. We use `PyInquirer` to ask. The format for checkbox questions is similar to this [example](https://github.com/CITGuru/PyInquirer/blob/master/examples/checkbox.py) from their documentation.
+Now let's create a checkbox-like system that lets the user move up and down through the files. We'll use `PyInquirer` to ask. The format for checkbox questions is similar to this [example](https://github.com/CITGuru/PyInquirer/blob/master/examples/checkbox.py) from their documentation.
 
-Here I will show another style of testing which I call "green-refactor". Sometimes creating a failing test first is quite tedious so I create the feature and then add a test for it. Over time you'll figure out your style of how to do things.
+Here I will show another style of testing which I call "green-refactor". Sometimes creating a failing test first is quite tedious, so I create the feature and then add a test for it. Over time, you'll figure out your style of how to do things.
 
 ### Green
 
-First we create a new function for generating the questions in the right format
+First we create a new function for generating the questions in the right format:
 
 ```python
 def generate_questions(files):
@@ -421,7 +419,7 @@ def generate_questions(files):
     return questions
 ```
 
-For generating our `'choices'` we use Python [List Comprehension](https://www.programiz.com/python-programming/list-comprehension) which is one of my favorite features from the language.
+For generating our `'choices'`, we use [Python List Comprehension](https://www.programiz.com/python-programming/list-comprehension), which is one of my favorite features from the language.
 
 We add the import for `prompt`
 
