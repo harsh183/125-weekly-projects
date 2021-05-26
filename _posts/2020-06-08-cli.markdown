@@ -429,7 +429,7 @@ We add the import for `prompt`
 from PyInquirer import prompt
 ```
 
-Note: This might lead to a `pytest` warning complaining that it won't
+Note: This might lead to a `pytest` warning complaining about some deprecation but don't worry about it. It's a specific issue with `PyInquirer`.
 
 In our `main` function we slot this in and just print to see if we got the right output.
 
