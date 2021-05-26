@@ -5,9 +5,12 @@ date: 2020-06-01
 comments: true
 external-url:
 tag: Python
+toc: true
 ---
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
+
+[Code Repo](https://github.com/harsh183/discord-chatbot-workshop)
 
 With the pandemic, we all started using online chatting applications more than ever before to communicate with our families, friends, and even classes and work. What if we could make cool bots for these chats? A Facebook bot for your store, a Discord bot for your friends, or a Slack bot for your clubs and jobs. The possibilities are endless.
 
@@ -36,7 +39,7 @@ Set this up before we start.
 
 * VSCode [Our written guide](/micro) but otherwise the general intertnet is good to
 
-* `git` - install it locally to make sure it works
+* `git` - install it locally and enter `$ git --version` to check if it has installed in your terminal.
 
 * Github - create an account
 
@@ -44,44 +47,340 @@ Set this up before we start.
 
 You should finish this part before the workshop, but don't worry if you're not done since we're recording everything. All the material is written as text on the website as well.
 
-1. If you're on Windows, I *highly* reccomend getting WSL2 (WSL 1 is also fine, just slower). For historical reasons, the command line in Windows is just not as good as Mac or Linux. Eventually, they just said, "Hey what if we had full\* Linux *on* Windows?" Thus, WSL.
+1. If you're on Windows, I *highly* reccomend getting WSL2 (WSL 1 is also fine, just slower). For historical reasons, the command line in Windows is just not as good as Mac or Linux. Eventually, they just said, "Hey what if we had full\* Linux *on* Windows?" Thus, WSL. We will use the command line a fair amount here so it's a very good idea to have this set up.
 
 2. Install a recent version of Python (3.7+) on your computer and make sure to enable `pip` as well. <!-- TODO: Add more detail from web bot workshop maybe -->
 
-3. Set up the `micro` text editor or a different command line text editor of your choice. See the page I wrote for [micro](/micro) for more detailed instructions.
+3. Set up the VSCode or a different code editor of your choice. See the page we wrote for [VSCode](/vscode) for help.
 
-4. Install discord.py
+4. Install `discord.py`
 
     ```js
     $ pip install discord.py
     [install output]
     ```
 
+5. Create an account on [discord](https://discord.com). The principles of making chat bots are the same regardless of platform but discord has really nice support.
+
+6. Create a test Discord server (sometimes called a guild) that you will add your bot to. You can add it to a real server once it's working well but this is good for debugging. [Guide](https://www.howtogeek.com/318890/how-to-set-up-your-own-discord-chat-server/)
+
 ## Workshop
 
-1. Create a Discord account if you don't have one.
+First we create a new folder for the project by typing this into your command line. In general if there is a `$` before a code line it means run it on your command line. This is a convention not just for this site, but programming tutorials in general.
 
-2. Create a test Discord server (sometimes called a guild).
+```js
+$ mkdir first_discord_bot
+$ cd first_discord_bot
+```
 
-3. Copy over the auth setup in some environment variable.
+`mkdir` stands for make directory (another word for folder) and this is how we create a folder wherever we are. 
 
-4. Set up a "connected" message.
+`cd` stands for change directory. So here we're just creating a folder and switching to it. The command line prompt can only point to one folder at a time and this is how we change where it's pointing to.
 
-5. Respond to a "hello" message.
+Now we set up `git` in folder transforming our project into a `git` repository. 
 
-6. Create a function that we can pass things to in order to abstract out the logic (loose coupling).
+```js
+$ git init
+```
+
+You've probably seen `git` before, it basically adds time travel powers to your work. `git` lets you put your code on sites like [Gitlab](https://about.gitlab.com/), [Github](https://github.com/) and [sr.ht](https://sr.ht/).
+
+Now let's get started with the coding. Let's open VSCode:
+
+```js
+$ code .
+```
+
+Note: Don't worry too much about the command line or `git` just yet, more on that next week :)
+
+### Getting the bot token
+
+Note: [This tutorial](https://www.writebots.com/discord-bot-token/) also has a good section on getting the discord bot token.
+
+1. Go to the discord [applications page](https://discord.com/developers/applications) on your *web browser*.
+
+2. Click on "New Application" and give it a nice name that you can recognize. Feel free to give an icon too but that's optional.
+
+3. Go to the Bot page on the side tab and click "Add Bot". This is the bot that we'll be coding and the user they see. Feel free to change the username but the default one should be fine.
+
+4. Scroll down to "TOKEN" and click the "Copy" button. This token is the password of sorts of your bot and is required for your program to log in. Tokens are a common pattern when dealing with APIs and external services (like discord here). **If your token is leaked make sure to reset it.**
+
+5. The important thing is that you should never, ever, share this token with anyone. One classic mistake people do is acidentally adding it on their online Git repository or stored somewhere that someone can just inspect browser state for it. This paper [paper](https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf) explains how hundreds of thousands of codebases have made this mistake. To deal with this we keep a seperate file and read from it.
+
+6. On VSCode, create a file called `BOT_TOKEN.txt` where you can paste your token. Make sure the file only has one line.
+
+7. Create a file called `.gitignore` and in the first line add `BOT_TOKEN.txt`. This tells `git` to not consider this file and this will make sure your token does not end up on the public internet. **Once your repo is online, make sure to check yourself that your token isn't on to double check.**
+
+### Adding the Bot to the Test Server
+
+Basically our goal is to generate an invite link so we can add our bot user to our server. OAuth2 is a common web standard for managing authentication and identity on the internet.
+
+1. Back to the discord developers page. Go to the "OAuth2" tab.
+
+2. Under "OAuth2 URL Generator" go to "Scopes" and select the checkbox for "bot".
+
+3. Now we have to figure out the list of permissions for our bot. For your actual bot I highly suggest taking the time to understand this and what you need, but for the workshop check off "View Channels" under "General Permissions" and "Send Messages" under "Text Permissions".
+
+4. Based on what you checked off the invite url should have updated. Hit "Copy" and paste it in a new tab on your browser. 
+
+5. The page will ask you which server to add to. Be careful to pick the test server that you created.
+
+That's all the set up done. Now let's get to coding!
+
+### Idea bot
+
+Now the whole point of this 8 week program is learning how to make projects start to end. However [ideas are hard](/ideas), so what if we just had a discord bot that would tell you how to do it? We'd just type `!idea` and the bot will appear and give us a nice starting point to get moving. Let's get started with `bot.py` as shown below.
+
+```python
+from discord.ext import commands
+
+bot = commands.Bot(command_prefix='!')
+
+with open("BOT_TOKEN.txt", "r") as token_file:
+    TOKEN = token_file.read()
+    print("Token file read")
+    bot.run(TOKEN)
+```
+
+`discord.ext` is the library that handles a lot of the network heavy lifting, allowing us to focus on the bot logic itself. We're using the `commands` module which makes creating command bots (bots which respond to commands) quite easily. 
+
+The `command_prefix` option lets us pick how the bot's commands will be called. So if our  prefix was `$` and our command was called `version` then we'd type `$version` into the chatbox.
+
+Now let's try running it:
+
+```js
+$ python bot.py
+```
+
+(some systems might need `python3` instead based on your installation)
+
+If this runs with the only output as `Token file read` then the log in worked. If you got some error like `discord.errors.LoginFailure` then there was something wrong with the token you set up and I suggest going over the above steps again. When you're done running it you can hit control+C to exit.
+
+Now let's start working on our command.
+
+```python
+from discord.ext import commands
+
+bot = commands.Bot(command_prefix='!')
+
+@bot.command(name="idea")
+async def idea(ctx):
+    await ctx.send("Ideas are hard")
+
+with open("BOT_TOKEN.txt", "r") as token_file:
+    TOKEN = token_file.read()
+    print("Token file read")
+    bot.run(TOKEN)
+```
+
+Don't worry if you don't fully understand the syntax just yet. This new function combines quite a bit of python syntax that you might have seen here or there. Still, if you try reading it, you can figure out what this code does.
+
+The first concept is a decorator. Decorators modify the behavior of a function without changing anything from the inside. Here the decorator is saying this function called `idea` is actually a special function that should be called when the discord bot sees `!idea` in the chat. Check out [datacamp - decorators in python](https://www.datacamp.com/community/tutorials/decorators-python) to learn more.
+
+`async` is a keyword that indicates that this function can run asynchronously. `await` means that the given code might take a while to run where the program is just waiting, so adding `await` tells the program it can do other things in the meanwhile while waiting on this command. The rule of thumb is that if you want to call a `async` function then you have to add `await` before calling it. If your function uses `await` in the body then you would add `async` to the function signature. 
+
+This means we can run this command and then suspend it to do other things and come back. This is a key concept in computer science called concurrency and it's a pretty complicated idea you can learn more about [python docs asyncio](https://docs.python.org/3/library/asyncio-task.html) and [real python - async io](https://realpython.com/async-io-python/#the-10000-foot-view-of-async-io).
+
+`ctx` is a variable that stands for *context* and this abbreviation is a common convention for context in programming. Using `ctx.send()` can send messages into the chat but there are lots of things you can do with the context variable to interact with the chatroom.
+
+Anyways, lets run the program and leave it running. When you're done you can hit control+C to exit.
+
+```js
+$ python bot.py
+```
+
+Now if you go to your test server your bot should be now shown as online. If you type in `!idea` you will get back `Ideas are hard`. If this works that means our basic disocrd bot is working so far. Now let's flesh out the function a little.
+
+```python
+from discord.ext import commands
+import random
+
+bot = commands.Bot(command_prefix='!')
+
+@bot.command(name="idea")
+async def idea(ctx):
+    await ctx.send("Ideas are hard")
+    await ctx.send("Worry not, I think you should...")
+
+    topics = ['chat bot', 'cli', 'game', 'web bot', 'browser extention', 'api', 'web interface']
+    areas = ['note taking', 'social life', 'physical fitness', 'mental health', 'pet care']
+
+    idea = f'Create a new {random.choice(topics)} that helps with {random.choice(areas)}! :slight_smile:'
+    await ctx.send(idea)
+
+# make sure to create a token file (in real life use env variables)
+with open("BOT_TOKEN.txt", "r") as token_file:
+    TOKEN = token_file.read()
+    print("Token file read")
+    bot.run(TOKEN)
+```
+
+So now we're sending a couple of messages and using `random.choice()` to pick elements from a list.
+
+Now if you restart the bot (unfortunately it doesn't automatically update). To exit is Control+C and then you can start it up and leave it running.
+
+```js
+$ python bot.py
+```
+
+Now if we ask on the server `!idea` we get a response:
+
+```js
+Ideas are hard
+Worry not, I think you should...
+Create a new browser extention that helps with social life! :slight_smile:
+```
+
+Yours might not look the exact same since this is randomized. If you want to learn more about `random` in python check out [realpython - Generating Random Data in Python (Guide)](https://realpython.com/python-random/).
+
+#### Exercise
+
+* Have idea bot randomly pick a programming language as well. Don't worry if the combo makes sense, this is just to flesh out the program some more.
+
+### Calculator bot
+
+Lets add another command `calc` that can do the standard 4 function calculator stuff. This is showing how to collect chatbot inputs and how to have branching accoringly.
+
+```python
+@bot.command(name="calc")
+async def calc(ctx, x, fn, y):
+    x = float(x)
+    y = float(y)
+    if fn == '+':
+        await ctx.send(x + y)
+    elif fn == '-':
+        await ctx.send(x - y)
+    elif fn == '*':
+        await ctx.send(x * y)
+    elif fn == '/':
+        await ctx.send(x / y)
+    else:
+        await ctx.send("We only support 4 function operations")
+```
+
+Add we have to do is add more parameters after `ctx` and those will become the inputs to my program. So if I restart my bot
+
+```js
+$ python bot.py
+```
+
+and ask it `!calc 1 - 3` it responds with `-2.0`. 
+
+We can shorten this code a bit. Right now every input comes in as a python string (`str`) and then we convert the numbers into `float`s for computation. However, Python actually has optional type annotations (most don't know this) which we can use to our advantage. So if we change our function heading to
+
+```python
+async def calc(ctx, x: float, fn: str, y: float):
+```
+
+then `discord.py` will make sure all the conversions are done automatically. To learn more about Python type annotaitons check out [Using Python's Type Annotations](https://dev.to/dstarner/using-pythons-type-annotations-4cfe) and [mypy](https://dropbox.tech/application/our-journey-to-type-checking-4-million-lines-of-python).
+
+#### Exercise
+
+Add `**` (to the power of) as an operator onto the `calc` command as well. This should be adding another level of branching. Example `!calc 5**3` should give `125.0`.
+
+### Help information
+
+Using the decorators can also let us provide some help information for users trying to figure out how a bot works.
+
+```python
+@bot.command(name="idea", help="Get a side project idea")
+@bot.command(name="calc", help="Perform a calculation where fn is either +,-,*, or /")
+```
+
+and (after restart) if type `!help` we get
+
+```js
+No Category:
+  calc Perform a calculation where fn is either +,-,*, or /
+  help Shows this message
+  idea Get a side project idea
+
+Type !help command for more info on a command.
+You can also type !help category for more info on a category.
+```
+
+and if we check for a given command, for example, `!help calc`
+
+```js
+!calc <x> <fn> <y>
+
+Perform a calculation where fn is either +,-,*, or /
+```
+
+### Final Code
+
+Everything put together, our final code is:
+
+```python
+from discord.ext import commands
+import random
+
+bot = commands.Bot(command_prefix='!')
+
+@bot.command(name="idea", help="Get a side project idea")
+async def idea(ctx):
+    await ctx.send("Ideas are hard")
+    await ctx.send("Worry not, I think you should...")
+
+    topics = ['chat bot', 'cli', 'game', 'web bot', 'browser extention', 'api', 'web interface']
+    areas = ['note taking', 'social life', 'physical fitness', 'mental health', 'pet care']
+
+    idea = f'Create a new {random.choice(topics)} that helps with {random.choice(areas)}! :slight_smile:'
+    await ctx.send(idea)
+
+@bot.command(name="calc", help="Perform a calculation where fn is either +,-,*, or /")
+async def calc(ctx, x: float, fn: str, y: float):
+    if fn == '+':
+        await ctx.send(x + y)
+    elif fn == '-':
+        await ctx.send(x - y)
+    elif fn == '*':
+        await ctx.send(x * y)
+    elif fn == '/':
+        await ctx.send(x / y)
+    else:
+        await ctx.send("We only support 4 function operations")
+
+# make sure to create a token file (in real life use env variables)
+with open("BOT_TOKEN.txt", "r") as token_file:
+    TOKEN = token_file.read()
+    print("Token file read")
+    bot.run(TOKEN)
+```
+
+## Go Forth and Make Something
+
+Every week we're going to make one project themed on what we just did. This will have two stages.
+
+* idea - just come up with an idea and a set of features (MVP + sprikes) due every Wednesday. This will have a form linked at the bottom of each article.
+
+* project - submit a form and create a public forum post with your project every Monday. The form for this will also be linked at the bottom of each article.
 
 ## Open Source License 
 
-A lot of people incorrectly assume that just publicly posting a project on Github makes a project open source. However you have to explicitly add a License to your project. For all the projects you make, a **license is mandatory**.  
+A lot of people incorrectly assume that just publicly posting a project on Github makes a project open source. However you have to explicitly add a License to your project. For all the projects you make, a **license is mandatory**. [Here](https://opensource.org/licenses) is a link to the guide to the popular open source licenses today. Adding one shouldn't take more than a few minutes.
 
-## Learn More
+If you're unsure/lazy you can go for either MIT, ApacheV2, or GPL. 
+
+Having a proper open source license on your project now makes your project an open source project! Congrats and welcome to creating code for all of society.
+
+## Learn More About Chatbots
 
 * [FreeCodeCamp: How to Create a Discord Bot for Free with Python – Full Tutorial](https://www.freecodecamp.org/news/create-a-discord-bot-with-python/) - good starter tutorial
 
 * [Real Python: How to Make a Discord Bot in Python](https://realpython.com/how-to-make-a-discord-bot-python/) - this is the most comprehensive tutorial I liked
 
 * [towards data science - How to build your own AI Chatbot on Discord?](https://towardsdatascience.com/how-to-build-your-own-ai-chatbot-on-discord-c6b3468189f4) - more advanced but this shows how you can start mixing in AI with chatbots as well
+
+## Learn More About Python Concepts 
+
+* Decorators - [datacamp - decorators in python](https://www.datacamp.com/community/tutorials/decorators-python)
+
+* Concurrency - [python docs asyncio](https://docs.python.org/3/library/asyncio-task.html) and [real python - async io](https://realpython.com/async-io-python/#the-10000-foot-view-of-async-io).
+
+* Randomness - [realpython - Generating Random Data in Python (Guide)](https://realpython.com/python-random/).
+
+* Types - [Using Python's Type Annotations](https://dev.to/dstarner/using-pythons-type-annotations-4cfe) and [mypy](https://dropbox.tech/application/our-journey-to-type-checking-4-million-lines-of-python).
 
 ## Ideas
 
@@ -101,13 +400,11 @@ Feel free to come up with anything you want as long as it's chatbot related. Her
 
 These aren't hard requirements, but you should try your best to hit all of them.
 
-* The chatbot connects to a real chat service, including, but not limited to: Discord, Slack, Telegram, IRC, Facebook.
+* The chat bot connects to a real chat service, including, but not limited to: Discord, Slack, Telegram, IRC, Facebook.
 
 * It has different responses based on different inputs.
 
-* It displays a message on connnecting.
-
-* There are at least two test cases where you test parts of the bots behavior out.
+* Try to get your `pylint` score as good as possible. If you haven't used it before, checkout our guide at [/pylint](/pylint).
 
 * This has to be available on a site like Github (feel free to use alternatives like GitLab if you prefer).
 

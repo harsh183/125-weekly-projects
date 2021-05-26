@@ -5,6 +5,7 @@ date: 2020-06-08
 comments: true
 external-url:
 tag: Python
+toc: true
 ---
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
@@ -48,7 +49,7 @@ Note: I've done this on an Ubuntu `20.04` system. Your progress won't be drastic
 
 Create a file called `requirements.txt` and fill it with this. This is a common convention in Python projects for listing all the libraries required.
 
-```txt
+```js
 pyinquirer
 pyfiglet
 plumbum
