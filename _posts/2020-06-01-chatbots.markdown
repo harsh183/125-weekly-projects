@@ -49,7 +49,12 @@ You should finish this part before the workshop, but don't worry if you're not d
 
 1. If you're on Windows, I *highly* reccomend getting WSL2 (WSL1 is also fine, just slower). For historical reasons, the command line in Windows just isn't as good as that of Mac or Linux. Eventually, they just said, "Hey what if we had full Linux *on* Windows?" Thus, WSL. We will use the command line a fair amount here, so it's a very good idea to have this set up.
 
-2. Install a recent version of Python (3.7+) on your computer and make sure to enable `pip` as well. <!-- TODO: Add more detail from web bot workshop maybe -->
+2. Install a recent version of Python (3.7+) on your computer and make sure to enable `pip` as well. 
+   - Windows: https://www.python.org/downloads/windows/ (select installer and make sure to add to path). https://phoenixnap.com/kb/how-to-install-python-3-windows - this guide is pretty useful too.
+   - MacOSX: https://docs.python-guide.org/starting/install3/osx/ or try homebrew
+   - Linux: https://docs.python-guide.org/starting/install3/linux/ or try your distro package installer
+   - Do python --version to check which you got. If it says 2.x then you will have to use `python3 scriptname.py` and `pip3` otherwise you'll end  up using really older versions of stuff. 
+
 
 3. Set up VSCode or a different code editor of your choice. See the page we wrote for [VSCode](/vscode) for help.
 
