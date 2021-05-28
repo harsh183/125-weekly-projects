@@ -47,27 +47,29 @@ Set this up before we start.
 
 You should finish this part before the workshop, but don't worry if you're not done since we're recording everything. All the material is available as text on the website as well.
 
-1. If you're on Windows, I *highly* reccomend getting WSL2 (WSL1 is also fine, just slower). For historical reasons, the command line in Windows just isn't as good as that of Mac or Linux. Eventually, they just said, "Hey what if we had full Linux *on* Windows?" Thus, WSL. We will use the command line a fair amount here, so it's a very good idea to have this set up.
+1. Submit the [initial form](https://forms.gle/VtJoJ4YKqvDMz4417) which gives us an idea of who all are here. All the forms we're taking (initial form, final form, project forms) will be for internally tracking how we can improve our content, giving you personalized responses, and even making some fun visualizations around the end.
 
-2. Install a recent version of Python (3.7+) on your computer and make sure to enable `pip` as well. 
+2. If you're on Windows, I *highly* reccomend getting WSL2 (WSL1 is also fine, just slower). For historical reasons, the command line in Windows just isn't as good as that of Mac or Linux. Eventually, they just said, "Hey what if we had full Linux *on* Windows?" Thus, WSL. We will use the command line a fair amount here, so it's a very good idea to have this set up.
+
+3. Install a recent version of Python (3.7+) on your computer and make sure to enable `pip` as well. 
    - Windows: https://www.python.org/downloads/windows/ (select installer and make sure to add to path). https://phoenixnap.com/kb/how-to-install-python-3-windows - this guide is pretty useful too.
    - MacOSX: https://docs.python-guide.org/starting/install3/osx/ or try homebrew
    - Linux: https://docs.python-guide.org/starting/install3/linux/ or try your distro package installer
    - Do python --version to check which you got. If it says 2.x then you will have to use `python3 scriptname.py` and `pip3` otherwise you'll end  up using really older versions of stuff. 
 
 
-3. Set up VSCode or a different code editor of your choice. See the page we wrote for [VSCode](/vscode) for help.
+4. Set up VSCode or a different code editor of your choice. See the page we wrote for [VSCode](/vscode) for help.
 
-4. Install `discord.py`
+5. Install `discord.py`
 
     ```js
     $ pip install discord.py
     [install output]
     ```
 
-5. Create an account on [Discord](https://discord.com) if you don't have one already. The principles of making chat bots are the same regardless of platform, but Discord has especially nice support for this.
+6. Create an account on [Discord](https://discord.com) if you don't have one already. The principles of making chat bots are the same regardless of platform, but Discord has especially nice support for this.
 
-6. Create a test server on Discord (sometimes called a guild) that you will add your bot to. You can add the bot to a real server once it's working well, but this is good for debugging. [Here's a guide.](https://www.howtogeek.com/318890/how-to-set-up-your-own-discord-chat-server/)
+7. Create a test server on Discord (sometimes called a guild) that you will add your bot to. You can add the bot to a real server once it's working well, but this is good for debugging. [Here's a guide.](https://www.howtogeek.com/318890/how-to-set-up-your-own-discord-chat-server/)
 
 ## Workshop
 

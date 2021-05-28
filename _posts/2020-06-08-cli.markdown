@@ -34,7 +34,7 @@ Don't worry if you don't know what your purpose is right now. What this means ca
 
 1. Learn a bit of git on the commmand line. You can use any intro tutorial, but [this web browser one](https://learngitbranching.js.org/) looks good.
 
-2. Go over the basics of test driven development with `pytest` in this tutorial on [the site](/testing101). Code along everything just to get an idea of why we test and how to create your workflow around tests. While I don't want all projects to have extensive tests (although it is a good habit), having even just 3-5 tests makes a huge difference.
+2. Go over the basics of test driven development with `pytest` in this tutorial on [our site](/testing101). Code along everything just to get an idea of why we test and how to create your workflow around tests. While I don't want all projects to have extensive tests (although it is a good habit), having even just 3-5 tests makes a huge difference.
 
 3. Learn some basics of how a command line works. [Here is a quick crash course](https://www.vikingcodeschool.com/web-development-basics/a-command-line-crash-course) with links to resources to learn even more. The command line is intimidating, but once you get used to it, you'll wonder how you lived without it. It's part of almost every programmer's toolbox.
 

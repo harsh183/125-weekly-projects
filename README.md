@@ -84,7 +84,7 @@ Students will learn about
 
 ## Forum
 
-We will use the [CS 125 Forum](https://cs125-forum.cs.illinois.edu/) with some categories created for just this.
+We will use the [forum.125summer.tech](https://forum.125summer.tech/) with some categories created for just this.
 
 ### Credits
 

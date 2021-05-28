@@ -12,8 +12,12 @@ featured_posts:
     title: 'Advice on Ideas'
   - url: '/workflow'
     title: 'Advice on Workflow'
-  - url: 'https://cs125-forum.cs.illinois.edu/'
+  - url: 'https://forum.125summer.tech/'
     title: 'Forum'
+  - url: 'https://forms.gle/zFdy9ih8pzSLYYLk8'
+    title: Idea Form (by Wednesday Midnight)
+  - url: 'https://forms.gle/ctnVRrkqKb4Votrv7'
+    title: Project Submission Form (by Monday Midnight)
 
 collections:
   news:
