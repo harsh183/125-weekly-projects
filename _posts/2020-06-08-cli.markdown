@@ -716,6 +716,10 @@ Running `$pytest fgit.py` should have all tests passing. (Don't worry about warn
 
 * [Python Command Line Apps](https://www.davidfischer.name/2017/01/python-command-line-apps/) - Some theory on the aspects of command line apps, as well as library recommendations.
 
+## Ethics
+
+* [towards data science - The ethical automation toolkit](https://towardsdatascience.com/the-ethical-automation-toolkit-f1fd4281534e)
+
 ## Ideas
 
 Feel free to come up with anything you want as long as it's CLI related. Here are some ideas to help you get started, but feel free to come up with more. Don't worry if it's already been done or if someone else is doing it. The point is to learn and have fun. :)

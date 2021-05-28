@@ -10,7 +10,7 @@ toc: true
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
 
-[Code Repo](https://github.com/harsh183/discord-chatbot-workshop)
+[Code Repo](https://github.com/harsh183/discord-chatbot-workshop) - available post workshop
 
 With the pandemic, we all started using online chatting applications more than ever before to communicate with our families, friends, and even classes and work. What if we could make cool bots for these chats? A Facebook bot for your store, a Discord bot for your friends, or a Slack bot for your clubs and jobs. The possibilities are endless.
 
@@ -381,6 +381,10 @@ Having a proper open source license on your project makes your project an open s
 * Randomness - [realpython - Generating Random Data in Python (Guide)](https://realpython.com/python-random/).
 
 * Types - [Using Python's Type Annotations](https://dev.to/dstarner/using-pythons-type-annotations-4cfe) and [mypy](https://dropbox.tech/application/our-journey-to-type-checking-4-million-lines-of-python).
+
+## Ethics
+
+* [IBM - The code of ethics for AI and chatbots that every brand should follow](https://www.ibm.com/blogs/watson/2017/10/the-code-of-ethics-for-ai-and-chatbots-that-every-brand-should-follow/)
 
 ## Ideas
 
