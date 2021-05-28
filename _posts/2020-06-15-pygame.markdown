@@ -47,6 +47,10 @@ pip install pygame
 
 * Pygame official examples [code](https://github.com/pygame/pygame/tree/main/examples) and [documentation](https://www.pygame.org/docs/ref/examples.html) - here are a lot of sample games and their code. Some might be simpler than others. You can run all of them, poke around their code, and even modify it to understand how things work. Some of this stuff can be advanced, but it's a great way to learn.
 
+## Ethics
+
+* [What we still haven’t learned from Gamergate](https://www.vox.com/culture/2020/1/20/20808875/gamergate-lessons-cultural-impact-changes-harassment-laws) - the rise of gaming and gaming subcultures is a really cool way computer science has hit the world today, however, it also has had many issues with gender diversity in the past. Here's a hindsight look from a large scale issue from 2014 and what it led to after.
+
 ## Ideas
 
 Feel free to come up with anything you want as long as it's chatbot related. Here are some ideas to help you get started, but feel free to come up with more. Don't worry if it's already been done or if someone else is doing it. The point is learning and fun. :)

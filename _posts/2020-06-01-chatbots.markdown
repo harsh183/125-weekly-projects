@@ -384,7 +384,7 @@ Having a proper open source license on your project makes your project an open s
 
 ## Ethics
 
-* [IBM - The code of ethics for AI and chatbots that every brand should follow](https://www.ibm.com/blogs/watson/2017/10/the-code-of-ethics-for-ai-and-chatbots-that-every-brand-should-follow/)
+* [IBM - The code of ethics for AI and chatbots that every brand should follow](https://www.ibm.com/blogs/watson/2017/10/the-code-of-ethics-for-ai-and-chatbots-that-every-brand-should-follow/) - taking a look at guidelines and ethical considerations for chatbots
 
 ## Ideas
 

@@ -718,7 +718,7 @@ Running `$pytest fgit.py` should have all tests passing. (Don't worry about warn
 
 ## Ethics
 
-* [towards data science - The ethical automation toolkit](https://towardsdatascience.com/the-ethical-automation-toolkit-f1fd4281534e)
+* [towards data science - The ethical automation toolkit](https://towardsdatascience.com/the-ethical-automation-toolkit-f1fd4281534e) - this article starts with a nuanced views towards existing criticism towards automation and looking towards a framework towards ethical automation. 
 
 ## Ideas
 

@@ -39,6 +39,10 @@ Hosted by: Harsh Deep
 
 * Web bots are commonly used for testing. [pytest-selenium](https://pytest-selenium.readthedocs.io/en/latest/user_guide.html) combines `pytest` with `selenium`. Here is another guide on [beautifulsoup testing](https://www.tutorialspoint.com/python_web_scraping/python_web_scraping_testing_with_scrapers.htm) which combines it with `unittest`.
 
+## Ethics
+
+- [Forbes - The Social Impact Of Bad Bots And What To Do About Them](https://www.forbes.com/sites/forbestechcouncil/2020/12/04/the-social-impact-of-bad-bots-and-what-to-do-about-them/?sh=55a7348b59e0) - Bots have the potential to be used in bad ways, for example influencing politics or harassment.
+
 ## Ideas
 
 ## Requirements

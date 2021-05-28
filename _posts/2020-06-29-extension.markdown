@@ -66,12 +66,15 @@ This part is optional, but if you want to publish it on the store:
 
 ## Learn more
 
+## Ethics
+
+* [Techdirt - Facebook's Threat To NYU Researchers Is A Mistake, But It's The Inevitable Follow On To Overreaction To Cambridge Analytica](https://www.techdirt.com/articles/20201024/02131045571/facebooks-threat-to-nyu-researchers-is-mistake-inevitable-follow-to-overreaction-to-cambridge-analytica.shtml) - interesting article on the privacy and control over external browser extentions in a fight between NYU and Facebook.
+
 ## Ideas
 
 * Is there something about your browser that could be done better? Maybe something that annoys you?
 
-* Is there something you'd find convenient or nice to have in a browser? For example, maybe a schedule, or a built-in alarm? 
-<!-- maybe remove this, if it'll lead to too many people doing exactly those things -->
+* Is there something you'd find convenient or nice to have in a browser? Find something that you have to do outside yo
 
 * Could you come up with an extension idea that relates to something else you've learned in this class or other places?
 

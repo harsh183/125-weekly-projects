@@ -26,6 +26,10 @@ Hosted by: Monika Para
 
 ## Learn more
 
+## Ethics
+
+ - [MuleSoft Blog - Exploring the ethics of APIs](https://blogs.mulesoft.com/api-integration/strategy/ethics-of-apis/)
+
 ## Ideas
 
 ## Requirements
