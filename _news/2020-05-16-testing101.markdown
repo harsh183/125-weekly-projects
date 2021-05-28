@@ -1,3 +1,4 @@
+
 ---
 layout: post
 title: Testing 101 (with pytest)
@@ -10,18 +11,18 @@ toc: true
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
 
-So far you've been writing your programs amd running them over and over until it works in a constant cycle of change-run-repeat.
+So far, you've been writing your programs and running them over and over until it works in a constant cycle of change-run-repeat.
 
 Which works fine until:
 
 * You have hundreds of scenarios and inputs
 * The program takes too long to run
-* You accidently break your program and don't even realize it until it's too late - [trillions lost](https://www.techrepublic.com/article/report-software-failure-caused-1-7-trillion-in-financial-losses-in-2017/), [rockets failing](https://www.bugsnag.com/blog/bug-day-ariane-5-disaster), [people dying](https://www.bbc.com/news/technology-54175359).
+* You accidentally break your program and don't even realize it until it's too late - [trillions lost](https://www.techrepublic.com/article/report-software-failure-caused-1-7-trillion-in-financial-losses-in-2017/), [rockets failing](https://www.bugsnag.com/blog/bug-day-ariane-5-disaster), [people dying](https://www.bbc.com/news/technology-54175359).
 * You get annoyed
 
-Programmers are smart, and programmers are lazy. A powerful combination. So they automated testing.
+Programmers are smart and lazy - a powerful combination - so they automated testing.
 
-This is a complex topic with entire professions and teams dedicated to it, but even knowing the basics go quite a far way. It may feel unnatural at first, but as time goes, that will change. Also, considering the very low standards of testing companies and open source projects, just knowing this information will immediately make you a much better programmer.
+Testing is a complex topic with entire professions and teams dedicated to it, but even knowing the basics goes quite far. It may feel unnatural at first, but as time goes, that will change. Also, considering the meager standards of testing companies and open source projects, just knowing this information will immediately make you a much better programmer.
 
 ## assert
 
@@ -38,31 +39,30 @@ Traceback (most recent call last):
 AssertionError
 ```
 
-The idea of an `assert` is for the computer to check some condition and complain if things aren't right. Look at the code above and try to figure out what happened on your own.
+The idea of an `assert` is for the computer to check some conditions and complain if things aren't right. Look at the code above and try to figure out what happened on your own.
 
 ```python
 assert <condition>
 ```
 
-Try to think of `assert` like a special if statement. Just like if statements, you give `assert`s some conditon that resolves to a boolean (true or false), and based on that, it acts differently. When the condition is `true`, it moves on, but if it's false, it gives us an `AssertionError`
+Try to think of `assert` like a special if statement. Just like if statements, you give `assert`s some condition that resolves to a boolean (true or false), and based on that, it acts differently. When the condition is `true`, it moves on, but if it's false, it gives us an `AssertionError`.
 
 ### Why not use if conditions?
 
 (Actual student question)
 
-I did mention above that these are like a special type of if condition. So it is actually possible to get something similar with if conditions. The reasons not to do this are:
+I did mention above that these are like a particular type of if condition. So it is possible to get something similar with if conditions. The reasons not to do this are:
 
 * The syntax gets clunky - additional indentation and lots of ifs floating around.
 
-* The `assert` syntax lets you use test runners, which will show you helpful messages like the number of tests passed vs the number of tests failed. This matters more when the number of tests gets much larger.
+* The `assert` syntax lets you use test runners, which will show you helpful messages like the number of tests passed or failed. These messages help when the number of tests gets much more considerable.
 
 ## assert with messages
 
-Just giving a condition on its own is often not enough. When 
-things go wrong, the program will just spit out `AssertionError`. And when we have multiple test cases, the vagueness of that statement can start becoming an issue. We can include a message in the `assert` statement to make it easier on ourselves.
+Just giving a condition on its own is often not enough. When things go wrong, the program will just spit out `AssertionError`. And when we have multiple test cases, the vagueness of that statement can start becoming an issue. We can include a message in the `assert` statement to make it easier on ourselves.
 
 ```python
-assert <condition>, "this message is only shown when the assert fails"
+assert <condition>, "this message is only shown when the assert fails."
 ```
 
 An example with a more realistic file:
@@ -78,46 +78,42 @@ assert sum(0, 5) == 5, "0 + 5 should be 5"
 print("All tests passed")
 ```
 
-And when the program fails, it displays `AssertionError: 0 + 5 should be 5`, so now we know exactly what line the program is going wrong on.
+And when the program fails, it displays `AssertionError: 0 + 5 should be 5`, so now we know which test case the program is going wrong on.
 That's more helpful.
 
 ## Red-green-refactor
 
-Test Driven Development is a development pattern where you write the tests for the code before you write the code itself, then you keep working until your tests pass. This isn't useful in every single scenario, but it will often help you develop faster and understand any bugs that come up better.
+Test-Driven Development (TDD) is a development pattern where you write the tests for the code before you write the code itself, then you keep working until your tests pass. TDD isn't helpful in every single scenario, but it will often help you develop faster and understand any bugs that come up better.
 
 This pattern is split up into:
 
-* Red - the code is not working, some or all tests are failing.
+* Red - the code is not working. Some or all tests are failing.
   Many test programs show the actual color red.
 
-* Green - the code is now working and all tests pass.
+* Green - the code is now working, and all tests pass.
   Likewise, some test programs show green output.
 
 * Refactor - now that you are confident that your existing code works and that you have tests to ensure that it keeps working, you can add on improvements confidently.
 
-This is common with many industry and open source projects, and this kind of
-mindset can help with your own projects as well. The order doesn't have to be too
-strict, since many times it may be difficult to write tests before code, but other times, writing tests first will be much easier.
+This workflow is typical with many industry and open source projects, and this mindset can help with your projects. The order doesn't have to be too strict since it may be difficult to write tests before code, but other times, writing tests first will be much easier.
 
-Let's walk through an example. This will give you an outline on both general problem-solving and tests.
+Let's walk through an example. This example will give you an outline of both general problem-solving and tests.
 
-Suppose that I am tasked with writing a function that multiplies all the numbers in
-a list together.  It should return `None` if the list is empty (similar to `null`
-or `nil` from other languages). Assume all numbers are integers.
+Suppose that I am tasked with writing a function that multiplies all the numbers in a list together.  It should return `None` if the list is empty (similar to `null` or `nil` from other languages). Assume all numbers are integers.
 
 ### Red
 
 The first step of problem-solving is to understand the problem itself. 
 Before we think about the answer, we need to understand what the results should be.
 This plays well with the TDD approach. For this, we can break up the problem
-into 'test cases', which are some inputs and conditions with their expected results, all verified by `assert`s.  
+into test cases, which are some inputs and conditions with their expected results, all verified by `assert`s.  
 
 For each requirement, we can derive a series of test cases:
 
 * Multiplies all numbers of the list
-  - A simple basic case - `[1, 1, 1]` should give `1` 
+  - A simple basic case - `[1, 1, 1]` should give `1`
   - Even giving one zero will give the final result as zero - `[0, 4253, -342]` should return `0`
-  - Negative numbers should be supported properly - `[-1, 4, 20]` should return `-80`
+  - the function should support negative numbers properly - `[-1, 4, 20]` should return `-80`
   - Two negatives cancel each other out - `[-1, -4, 20]` should return `80` 
   - Any list with one item should return itself - `[42]` should return `42`
 
@@ -125,7 +121,7 @@ For each requirement, we can derive a series of test cases:
   - The basic case - `[]` should give `None`
   
 Notice how I haven't written any code or even thought about the code
-yet. Even then, I was able to better understand my problem, and some approaches on how I can solve the problem might have even popped up in
+yet. Even then, I understood my problem better, and some approaches on how I can solve the problem might have even popped up in
 my head by this point.
 
 Time to put this in code.
@@ -147,11 +143,7 @@ test_multiply()
 print("All tests passed")
 ```
 
-Take a moment to look at how we took our written test cases into the code. Each 
-different point became it's own `assert`. While this doesn't guarantee that our
-program works, we can know for sure that it supports at least these cases. Generally, when
-you want to make sure a certain set of requirements are fit, you can write specific
-test cases around those.
+Take a moment to look at how we took our written test cases into the code. Each different point became its own `assert`. While this doesn't guarantee that our program works, we can know that it supports at least these cases. Generally, when you want to make sure a particular set of requirements are fit, you can write specific test cases around those.
 
 Now let's run our program:
 
@@ -165,9 +157,7 @@ Traceback (most recent call last):
 AssertionError: Simple basic case should give 1
 ```
 
-Now this gives us a starting point. We now know that the case with the input `[1, 1, 1`] isn't giving us the expected output of `1`. When you write good test cases,
-it becomes much easier to look at a problem piece by piece, as the different
-tests break up a large problem into multiple smaller problems.
+Now this gives us a starting point. We now know that the case with the input `[1, 1, 1`] isn't giving us the expected output of `1`. When you write good test cases, it becomes easier to look at a problem piece by piece, as the different tests break up a large problem into multiple more minor problems.
 
 This stage is *RED* - not working, as our tests aren't passing.
 
@@ -197,7 +187,7 @@ AssertionError: Empty list should give None
 
 ```
 
-Since a different test is failing know, we know that we've passed the previous one. Now, let's fix the empty list case:
+Since a different test is failing now, we know that we've passed the previous one. Now, let's fix the empty list case:
 
 ```python
 def multiply(list):
@@ -212,18 +202,17 @@ def multiply(list):
 
 ```
 
-Output of test cases:
+The output of test cases:
 
 ```
 All tests passed
 ```
 
-This stage is *GREEN* - working - tests passing 
+This stage is *GREEN* - working - tests passing. 
 
 ### Refactor 
 
-Now what if we want to change it. Maybe we want to improve the code quality 
-or change arond some stuff. Then, we need to add or change whatever we need features and run the test code again and again. This will let us ensure that we don't break anything.
+Now, what if we want to change it. Maybe we want to improve the code quality or change around some stuff. Then, we need to add or change whatever we need features and run the test code again and again. This refactor step will let us ensure that we don't break anything.
 
 For example, let's say I decide to use a for loop to traverse the list instead of using
 `range()` and indexes.
@@ -248,10 +237,9 @@ All tests passed
 
 This means I know the code that I wrote works and didn't break anything. 
 Because I took the extra time to write tests at the beginning,
-I can spend less time testing each individual case. I can work faster this way.
+I can spend less time testing each case. I can work faster this way.
 
-This isn't possible all the time, but this type of development
-often sets apart the great developers from the good ones.
+Testing alongside programming isn't possible all the time, but this type of development often sets apart the great developers from the good ones.
 
 ## Test runners
 
@@ -262,15 +250,11 @@ Some nice features of test runners:
 * Supporting many Empty fails, usually the failure of one case crashes the program
 * Counting of fail and pass tests
 * Easier syntax for more complex features.
-* Actual red and green output for visual cues.
+* Actual red and green color output for visual cues.
 
-In practice you will use one of these, either one you set up yourself or one that comes
-built it with something like `django` or `flask`. 
+In practice, you will use one of these, either one you set up yourself or one that comes built-in with something like `django` or `flask`. 
 
-I have picked pytest for it's simplicity, but there are many others
-that exist. The way I'll approach it is quite indicative of how testing is done 
-in general, and you can follow the some approach with other test runners and 
-programming languages. 
+I have picked pytest for its simplicity, but many others exist. The way I'll approach it is pretty indicative of how testing is done in general, and you can follow the same approach with other test runners and programming languages. 
 
 ### pytest
 
@@ -319,39 +303,36 @@ print("so you can blend in your normal program and tests in the same file")
 
 ```
 
-which only appears when I run the program normally with `$ python3 multiply_list.py`. Output:
+This only appears when I run the program normally with `$ python3 multiply_list.py`. Output:
 
 ```js
 pytest actually even ignores all the normal print output
 so you can blend in your normal program and tests in the same file
 ```
 
-This means that testing doesn't have to interrupt your workflow or the structure
-of your program at all. All you have to provide is a test function and pytest does 
-the rest.
+This means that testing doesn't have to interrupt your workflow or the structure of your program at all. All you have to provide is a test function, and pytest does the rest.
 
-In summary, all we need to do for pytest is create a test function starting with `test`, e.g. `test_multiply`, `test_solution`, and pytest will automatically find it.
+In summary, all we need to do for pytest is create a test function starting with `test`, e.g., `test_multiply`, `test_solution`, and pytest will automatically find it.
 
-We can still use use normal `assert`s to interact with pytest.
+We can still use regular `assert`s to interact with pytest.
 
-When we want to run the tests with pytest, we run it like `$ pytest program_name.py`.
+When we run the tests with pytest, we run it like `$ pytest program_name.py`.
 
 ### Fancier asserts
 
-You might also encounter other types of `assert`s, like `assertEqual`, `assertFalse`, `assertIn` etc. These just have easier syntax in some cases (often, programmers will use the term "syntax sugar"). You can just use simple `assert`s for most part, but you can use others if you're comfortable with them. Oftentimes, they are parts of different runners, so it will vary what you can use. `assert` should be there in pretty much everything, so we've only covered that.
+You might also encounter other types of `assert`s, like `assertEqual`, `assertFalse`, `assertIn` etc. These just have easier syntax in some cases (often, programmers will use the term "syntax sugar"). You can just use simple `assert`s for the most part, but you can use others if you're comfortable with them. Frequently, they are parts of different runners, so it will vary what you can use. `assert` should be there in pretty much everything, so we've only covered that.
 
 ## Separating test files
 
-So far, we've been writing all our code in one file. This is okay for small programs and exercises, but typically, a program is kept in seperate files. This is quite easy to do, and some frameworks will even do it for you. If you have the time, I highly suggest doing this for anything that's more than 10-15 lines of code. 
+So far, we've been writing all our code in one file. This is okay for small programs and exercises, but typically, a program is kept in separate files. This is relatively easy to do, and some frameworks will even do it for you. If you have the time, I highly suggest doing this for anything that's more than 10-15 lines of code. 
 
-Usually, the testing file will be called either `test.py` or `tests.py`. If there is a large number of tests, then there might be multiple files in a folder called `test/` or `tests/`.
+Usually, the testing file will be called either `test.py` or `tests.py`. If there are many tests, then there might be multiple files in a folder called `test/` or `tests/`.
 
 See [this tutorial](https://www.codementor.io/sheena/python-path-virtualenv-import-for-beginners-du107r3o1) for a basic overview of imports.
 
 ## When to use what
 
-The rule of thumb is to use a test runner for almost every case, since it's typically neater and better for larger projects and working with teams. Sometimes when it's just scripts
-or small hacky experiments, you can just use `assert` statements within the same file. For sanity checks, that's fine
+The rule of thumb is to use a test runner for almost every case since it's typically neater and better for larger projects and working with teams. Sometimes when it's just scripts or small hacky experiments, you can just use `assert` statements within the same file. For sanity checks, that's fine
 as long as you remove them later. That said, adding tests can go a long way, and your future self will thank you.
 
 ## Exercises
@@ -363,18 +344,16 @@ One more round of red-green-refactor to give you more practice of the workflow.
 * The mode is the item that occurs the most in a given list. For example, in `[1, 1, 2, 3]`, the mode is `1`.
 * For an empty list, I want you to return `None`
 
-Use `pytest` and the same red-green workflow I showed earlier in this unit. It should look very similar to the structure I used. In general, this is a good approach for problem solving. The more you practice, the more you'll improve!
+Use `pytest` and the same red-green workflow I showed earlier in this unit. It should look very similar to the structure I used. In general, this is a good approach for problem-solving. The more you practice, the more you'll improve!
 
 ## Learn more
 
-* [Great and quite more extensive guide on Python testing](https://realpython.com/python-testing/) *Highly reccomended*
+* [Great and quite more extensive guide on Python testing](https://realpython.com/python-testing/) *Highly recommended*
 
-* [Given-when-then](https://pythontesting.net/strategy/given-when-then-2/) - How to approach writing tests in a given X when Y happens then Z should happen. *Highly reccomended*
+* [Given-when-then](https://pythontesting.net/strategy/given-when-then-2/) - How to approach writing tests in a given X when Y happens Z should happen. *Highly recommended*
 
 * [How not to test](https://pythontesting.net/strategy/complete-coverage-testing/) - Dangers of overtesting and understanding how testing everything isn't the best approach
 
 * [Why most unit testing is waste](https://pythontesting.net/strategy/why-most-unit-testing-is-waste/)
 
 * [Another good list of resources](https://pythontesting.net/start-here)
-
-Contributors: Harsh, Maaheen
