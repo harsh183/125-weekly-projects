@@ -12,9 +12,9 @@ toc: true
 
 [Code Repo](https://github.com/harsh183/discord-chatbot-workshop) - available post workshop
 
-With the pandemic, we all started using online chatting applications more than ever before to communicate with our families, friends, and even classes and work. What if we could make cool bots for these chats? A Facebook bot for your store, a Discord bot for your friends, or a Slack bot for your clubs and jobs. The possibilities are endless.
+We all started using online chatting applications more than ever before to communicate with our families, friends, and even classes and work with the pandemic. What if we could make cool bots for these chats?  Facebook bots for stores, Discord bots for your friends, or Slack bots for your clubs and jobs. The possibilities are endless.
 
-If you've never done Python before, here's a start. Coming from Java or C++, this might seem almost underwhelming, but Python allows you do to so many of the same things with a lot less work. This does have disadvantages, but this trait of Python makes it a great language for trying new ideas and adding to them quickly.
+If you've never done python before, here's a start. Coming from Java or C++, this might seem almost underwhelming, but python allows you to do so many of the same things with a lot less work. This brevity does have disadvantages, but this trait of python makes it an excellent language for trying new ideas and adding to them quickly.
 
 ```python
 print("Hello Chatbots")
@@ -30,8 +30,8 @@ Keeping that in mind, for this website:
 
 ### How to Learn Programming the Proper Way
 
-* Every single piece of code that I show, you will type by hand. No copy pasting, no "I can see what it does, it's obvious", no "I already know this, let me move on". I want you to do this to make sure that you actually process what we're learning together. You can only copy paste if I tell you that you can. Trust me. It may feel like a small difference, but not following along like this will reduce your learning tenfold.
-* Attention to detail: this comes from the last point, but when you type everything out yourself and look at it closely, you're forced to concentrate on what you're doing. For example, consider the difference between `5` and `"5"`. Programming is highly precise, and errors like these can create bugs that can be very difficult to track down if you're not prepared for them. Especially in languages like Python, every tiny detail matters.
+* Every single piece of code that I show, you will type by hand. No copy-pasting, no "I can see what it does, it's obvious," no "I already know this, let me move on." I want you to do this to make sure that you process what we're learning together. You can only copy-paste if I tell you that you can. Trust me. It may feel like a slight difference, but not following along like this will reduce your learning tenfold.
+* Attention to detail: this comes from the last point, but when you type everything out yourself and look at it closely, you're forced to concentrate on what you're doing. For example, consider the difference between `5` and `"5"`. Programming is exact, and errors like these can create bugs that can be very difficult to track down if you're not prepared for them, especially in languages like python, every tiny detail matters.
 
 ## Tools
 
@@ -47,50 +47,50 @@ Set this up before we start.
 
 You should finish this part before the workshop, but don't worry if you're not done since we're recording everything. All the material is available as text on the website as well.
 
-1. Submit the [initial form](https://forms.gle/VtJoJ4YKqvDMz4417) which gives us an idea of who all are here. All the forms we're taking (initial form, final form, project forms) will be for internally tracking how we can improve our content, giving you personalized responses, and even making some fun visualizations around the end.
+1. Submit the [initial form](https://forms.gle/VtJoJ4YKqvDMz4417), which gives us an idea of who all are here. All the forms we're taking (initial form, final form, project forms) will be for internally tracking how we can improve our content and giving you personalized responses. We might even make some fun visualizations in the end.
 
-2. If you're on Windows, I *highly* reccomend getting WSL2 (WSL1 is also fine, just slower). For historical reasons, the command line in Windows just isn't as good as that of Mac or Linux. Eventually, they just said, "Hey what if we had full Linux *on* Windows?" Thus, WSL. We will use the command line a fair amount here, so it's a very good idea to have this set up.
+2. If you're on Windows, I *highly* recommend getting WSL2 (WSL1 is also acceptable, just slower). For historical reasons, the command line in Windows isn't as good as that of Mac or Linux. Eventually, they just said, "Hey what if we had full Linux *on* Windows?" Thus, WSL. We will use the command line a fair amount here, so it's an excellent idea to set it up.
 
-3. Install a recent version of Python (3.7+) on your computer and make sure to enable `pip` as well. 
-   - Windows: https://www.python.org/downloads/windows/ (select installer and make sure to add to path). https://phoenixnap.com/kb/how-to-install-python-3-windows - this guide is pretty useful too.
+3. Install a recent version of python (3.7+) on your computer and make sure to enable `pip` as well. 
+   - Windows: https://www.python.org/downloads/windows/ (select installer and make sure to add to PATH). https://phoenixnap.com/kb/how-to-install-python-3-windows - this guide is pretty useful too.
    - MacOSX: https://docs.python-guide.org/starting/install3/osx/ or try homebrew
    - Linux: https://docs.python-guide.org/starting/install3/linux/ or try your distro package installer
-   - Do python --version to check which you got. If it says 2.x then you will have to use `python3 scriptname.py` and `pip3` otherwise you'll end  up using really older versions of stuff. 
+   - Do python --version to check which you got. If it says 2.x, then you will have to use `python3 scriptname.py` and `pip3`; otherwise, you'll end up using older versions of stuff. 
 
 
 4. Set up VSCode or a different code editor of your choice. See the page we wrote for [VSCode](/vscode) for help.
 
-5. Install `discord.py`
+5. Install `discord.py`.
 
     ```js
     $ pip install discord.py
     [install output]
     ```
 
-6. Create an account on [Discord](https://discord.com) if you don't have one already. The principles of making chat bots are the same regardless of platform, but Discord has especially nice support for this.
+6. Create an account on [Discord](https://discord.com) if you don't have one already. The principles of making chatbots are the same regardless of platform, but Discord has one of the best support.
 
 7. Create a test server on Discord (sometimes called a guild) that you will add your bot to. You can add the bot to a real server once it's working well, but this is good for debugging. [Here's a guide.](https://www.howtogeek.com/318890/how-to-set-up-your-own-discord-chat-server/)
 
 ## Workshop
 
-First, we'll create a new folder for the project by typing this into your command line. In general, if there is a `$` before a code line it means that you should run it on your command line. This is a convention not just for this site, but for programming tutorials in general.
+First, we'll create a new folder for the project by typing this into your command line. In general, if there is a `$` before a code line, it means that you should run it on your command line. This $ is a convention not just for this site but for programming tutorials in general.
 
 ```js
 $ mkdir first_discord_bot
 $ cd first_discord_bot
 ```
 
-`mkdir` stands for make directory (another word for folder). This is how we create a folder in our current directory. 
+`mkdir` stands for make directory (another word for folder). This command is how we create a folder in our current directory. 
 
-`cd` stands for change directory. Here, we've already created a folder, and now we're just entering it. The command line prompt can only point to one folder at a time, so this is how we change where it's pointing to.
+`cd` stands for change directory. Here, we've already created a folder, and now we're just entering it. The command-line prompt can only point to one folder at a time, so this is how we change where it's pointing.
 
-Now we set up `git` in the folder in order to transform our project into a `git` repository. 
+We set up `git` in the folder to transform our project into a `git` repository. 
 
 ```js
 $ git init
 ```
 
-You've probably seen `git` before. It basically adds time travel powers to your work. `git` lets you put your code on sites like [Gitlab](https://about.gitlab.com/), [Github](https://github.com/) and [sr.ht](https://sr.ht/).
+You've probably seen `git` before. It adds time travel powers to your work. `git` lets you put your code on sites like [Gitlab](https://about.gitlab.com/), [Github](https://github.com/) and [sr.ht](https://sr.ht/).
 
 Now let's get started with the coding. Let's open VSCode:
 
@@ -98,7 +98,7 @@ Now let's get started with the coding. Let's open VSCode:
 $ code .
 ```
 
-Note: Don't worry too much about the command line or `git` just yet, more on that next week :)
+Note: Don't worry too much about the command line or `git` just yet. More on that next week :)
 
 ### Getting the Bot Token
 
@@ -106,37 +106,36 @@ Note: [This tutorial](https://www.writebots.com/discord-bot-token/) also has a g
 
 1. Go to the [Discord applications page](https://discord.com/developers/applications) on your *web browser*.
 
-2. Click on "New Application" and give it a nice name that you can recognize. Feel free to give an icon too, if you want.
+2. Click on "New Application" and give it a nice name that you can recognize. Feel free to provide an icon, too, if you want.
 
-3. Go to the Bot page on the side tab and click "Add Bot". This is the bot that we'll be coding, and which users will see. Feel free to change its username, but the default one should be fine.
+3. Go to the Bot page on the side tab and click 'Add Bot'. This page is for the bot that we'll be coding that the users will see. Feel free to change its username, but the default one should be fine.
 
-4. Scroll down to "TOKEN" and click the "Copy" button. This token is like your bot's password, and it's required for your bot to log in. Tokens are a common pattern when dealing with APIs and external services (like Discord here). **If your token is leaked, make sure to reset it.**
+4. Scroll down to 'TOKEN' and click the 'Copy' button. This token is like your bot's password, and it's required for your bot to log in. Tokens are a typical pattern when dealing with APIs and external services (like Discord here). **If your token is leaked, make sure to reset it.**
+  * The important thing is that you should never, *ever* share this token. One classic mistake people make is accidentally adding it on their online Git repository or storing somewhere that someone can inspect the browser state for it. [This paper](https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf) explains how hundreds of thousands of codebases have made this mistake. We'll put the token in a separate file and read it from there to deal with this.
 
-* The important thing is that you should never, *ever* share this token. One classic mistake people do is accidentally adding it on their online Git repository or storing somewhere that someone can just inspect the browser state for it. [This paper](https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf) explains how hundreds of thousands of codebases have made this mistake. To deal with this, we'll put the token in a seperate file and read it from there.
+5. Now, we'll make the file for the token. In VSCode, create a file called `BOT_TOKEN.txt` and paste the token into it. Make sure the file only has one line for the token.
 
-5. Now we'll make the file for the token. In VSCode, create a file called `BOT_TOKEN.txt` and paste the token in it. Make sure the file only has one line for the token.
-
-6. Create a file called `.gitignore`. In the first line, add `BOT_TOKEN.txt`. This tells `git` to avoid this file, and this will make sure that your token doesn't end up on the public internet. **Once your repo is online, make sure to doublecheck yourself that your token isn't there just in case.**
+6. Create a file called `.gitignore`. In the first line, add `BOT_TOKEN.txt`. This file tells `git` to avoid this file and make sure that your token doesn't end up on the public internet. **Once your repo is online, make sure to doublecheck yourself that your token isn't there just in case.**
 
 ### Adding the Bot to the Test Server
 
-First, we need to generate an invite link so we can add our bot user to our server. To handle this, we'll use OAuth2, a common web standard for managing authentication and identity on the internet.
+First, we need to generate an invite link to add our bot user to our server. To handle this, we'll use OAuth2, a typical web standard for managing authentication and identity on the internet.
 
-1. Go back to the Discord developers page. Go to the "OAuth2" tab.
+1. Go back to the Discord developers page. Go to the 'OAuth2' tab.
 
-2. Under "OAuth2 URL Generator" go to "Scopes" and select the checkbox for "bot".
+2. Under 'OAuth2 URL Generator', go to 'Scopes' and select the 'bot' checkbox.
 
-3. Now we have to figure out the list of permissions for our bot. For your actual bot, I highly suggest taking the time to understand this so you can give it the permissions you need, but for the workshop, just check off "View Channels" under "General Permissions" and "Send Messages" under "Text Permissions".
+3. Now, we have to figure out the list of permissions for our bot. For your actual bot, I highly suggest taking the time to understand this so you can give it the permissions you need, but for the workshop, check off "View Channels" under "General Permissions" and 'Send Messages' under 'Text Permissions'.
 
-4. Based on what you checked off, the invite url should have updated. Hit "Copy" and paste it in a new tab on your browser. 
+4. Based on what you checked off, the invite URL should have updated. Hit 'Copy' and paste it in a new tab on your browser. 
 
-5. The page will ask you which server to add the bot to. Pick the test server that you created.
+5. The page will ask you which server to add the bot, and you should pick your test server that we created earlier.
 
-That's all the set up done. Now let's get to coding!
+That's all the setup done. Now let's get to coding!
 
 ### Idea bot
 
-Now, the whole point of this eight week program is to learn how to make projects from start to finish. However, [ideas are hard](/ideas), so for now, how about we just make a Discord bot that can give us ideas? We could just type `!idea`, and the bot will appear and give us a nice starting point to get moving. Let's get started with `bot.py` as shown below.
+The whole point of this eight-week program is to learn how to make projects from start to finish. However, [ideas are hard](/ideas), so for now, how about we make a Discord bot that can give us ideas? We could just type `!idea`, and the bot will appear and give us an excellent starting point to get moving. Let's get started with `bot.py` as shown below.
 
 ```python
 from discord.ext import commands
@@ -149,9 +148,9 @@ with open("BOT_TOKEN.txt", "r") as token_file:
     bot.run(TOKEN)
 ```
 
-`discord.ext` is the library that handles a lot of the network heavy lifting, allowing us to focus on the bot logic itself. We're using the `commands` module, which makes it easy to create command bots (bots which respond to commands). 
+`discord.py` is the library that handles many network heavy lifting, allowing us to focus on the bot logic itself. We're using the `commands` module, making it easy to create command bots (bots that respond to commands). 
 
-The `command_prefix` option lets us pick how the bot's commands will be called. So if our prefix was `$` and our command was called `version`, then we'd type `$version` into the chatbox to call the bot.
+The `command_prefix` option lets us pick how the bot's commands will be called. So if our prefix is `$` and our command is `version`, then we'd type `$version` into the chatbox to call the bot.
 
 Now let's try running it:
 
@@ -159,9 +158,9 @@ Now let's try running it:
 $ python bot.py
 ```
 
-(Some systems might need `python3` instead based on your installation)
+(Some systems might need `python3` instead of based on your installation)
 
-If this runs with the only output as `Token file read`, then the login worked. If you got an error like `discord.errors.LoginFailure`, then there was something wrong with the token you set up, and I suggest going over the above steps again. When you're done running it you can hit ctrl+c to exit.
+If this runs with the only output as `Token file read`, then the login worked. If you got an error like `discord.errors.LoginFailure`, there was something wrong with the token you set up, and I suggest going over the above steps again. When you're done running it, you can hit ctrl+c to exit.
 
 Now let's start working on our command.
 
@@ -182,21 +181,21 @@ with open("BOT_TOKEN.txt", "r") as token_file:
 
 Don't worry if you don't fully understand the syntax just yet. This new function combines quite a bit of python syntax that you might have seen here or there. Still, if you try reading it, you can figure out what this code does. Let's go over it together.
 
-The first concept is a decorator. Decorators modify the behavior of a function without changing anything from the inside. Here, the decorator is saying that this function called `idea` is actually a special function that should be called when the discord bot sees `!idea` in the chat. Check out [DataCamp - Decorators in Python](https://www.datacamp.com/community/tutorials/decorators-python) to learn more.
+The first concept is decorators. Decorators modify the behavior of a function without changing anything from the inside. Here, the decorator says that this function called `idea` is a particular function that should be called when the discord bot sees `!idea` in the chat. Check out [DataCamp - Decorators in Python](https://www.datacamp.com/community/tutorials/decorators-python) to learn more.
 
-`async` is a keyword that indicates that this function can run asynchronously. `await` tells the program that it can do other things in the meantime while waiting on this command, which is useful if the given code might take a while or if the program will need to wait for the command to execute. The rule of thumb is that if you want to call an `async` function, then you should `await` before calling it. If your function uses `await` in the body, then you would add `async` to the function signature. 
+`async` is a keyword that indicates that this function can run asynchronously. `await` tells the program that it can do other things in the meantime while waiting on this command, which is helpful if the given code might take a while or if the program will need to wait for the command to execute. The rule of thumb is that if you want to call an `async` function, then you should `await` before calling it. If your function uses `await` in the body, you add `async` to the function signature. 
 
-This means we can run this command and then suspend it to do other things and come back. This is a key concept in computer science called concurrency, and it's a pretty complicated idea. Here are some links so that you can learn more about it: [Python docs - asyncio](https://docs.python.org/3/library/asyncio-task.html) and [Real Python - Async IO](https://realpython.com/async-io-python/#the-10000-foot-view-of-async-io).
+Async+Await combo means we can run this command and then suspend it to do other things and come back. This type of programming is a key concept in computer science called concurrency, and it's a pretty complicated idea. Here are some links so that you can learn more about it: [Python docs - asyncio](https://docs.python.org/3/library/asyncio-task.html) and [Real Python - Async IO](https://realpython.com/async-io-python/#the-10000-foot-view-of-async-io).
 
-`ctx` is a variable that stands for *context*, and this abbreviation is a common convention for context in programming. Using `ctx.send()` can send messages into the chat, but there are lots of things you can do with the context variable to interact with the chatroom.
+`ctx` is a variable that stands for *context*, and this abbreviation is a standard convention for context in programming. Using `ctx.send()` can send messages into the chat, but you can do lots of things with the context variable to interact with the chatroom.
 
-Anyways, lets run the program and leave it running. When you're done you can hit ctrl+c to exit.
+Anyways, let's run the program and leave it running. When you're done, you can hit ctrl+c to exit.
 
 ```js
 $ python bot.py
 ```
 
-Now if you go to your test server your bot should be shown as online. If you type in `!idea` you will get back `Ideas are hard`. If this works, that means our basic Discord bot is working so far. Now let's flesh out the function a little.
+Now, if you go to your test server, the server should show your bot as online. If you type in `!idea`, you will get back `Ideas are hard`. If this works, that means our basic Discord bot is working so far. Now let's flesh out the function a little.
 
 ```python
 from discord.ext import commands
@@ -224,29 +223,29 @@ with open("BOT_TOKEN.txt", "r") as token_file:
 
 So now we're sending a couple of messages and using `random.choice()` to pick elements from a list.
 
-Now restart the bot (unfortunately it doesn't automatically update). Exit with ctrl+c, and then you can start it up again and leave it running.
+Now restart the bot (unfortunately, it doesn't automatically update). Exit with ctrl+c, and then you can start it up again and leave it running.
 
 ```js
 $ python bot.py
 ```
 
-Now if we post `!idea` on the server, we shouold get a response:
+Now, if we post `!idea` on the server, we should get a response:
 
 ```js
 Ideas are hard
 Worry not, I think you should...
-Create a new browser extention that helps with social life! :slight_smile:
+Create a new browser extension that helps with social life! :slight_smile:
 ```
 
-Yours might not look the exact same since this is randomized. If you want to learn more about `random` in Python, check out [Real Python - Generating Random Data in Python (Guide)](https://realpython.com/python-random/).
+Yours might not look the same since this is randomized. If you want to learn more about `random` in python, check out [Real Python - Generating Random Data in Python (Guide)](https://realpython.com/python-random/).
 
 #### Exercise
 
-* Have the idea bot randomly pick a programming language as well. Don't worry if the combo makes sense, this is just to flesh out the program some more.
+* Have the idea bot randomly pick a programming language as well. Don't worry if the combo makes sense. This is to flesh out the program some more.
 
 ### Calculator Bot
 
-Lets add another command `calc` that can do the standard four-function calculator stuff. This will help us learn how to collect chatbot inputs and how to have branching accordingly.
+Let's add another command, `calc`, that can do the standard four-function calculator stuff. This new command will help us learn how to collect chatbot inputs and how to have branching accordingly.
 
 ```python
 @bot.command(name="calc")
@@ -265,7 +264,7 @@ async def calc(ctx, x, fn, y):
         await ctx.send("We only support 4 function operations")
 ```
 
-All we have to do is add more parameters after `ctx` and those will become the inputs to the program. So if I restart my bot:
+We have to add more parameters after `ctx`, which will become the program's inputs. So if I restart my bot:
 
 ```js
 $ python bot.py
@@ -273,21 +272,21 @@ $ python bot.py
 
 And I ask it `!calc 1 - 3`, it responds with `-2.0`. 
 
-We can actually shorten this code a bit. Right now, every input comes in as a python string (`str`) and then we convert the numbers into `float`s for computation. However, Python actually has optional type annotations (most don't know this) which we can use to our advantage. So if we change our function heading to
+We can shorten this code a bit. Right now, every input comes in like a python string (`str`), and then we convert the numbers into `float`s for computation. However, python has optional type annotations (most don't know this), which we can use to our advantage. So if we change our function heading to
 
 ```python
 async def calc(ctx, x: float, fn: str, y: float):
 ```
 
-then `discord.py` will make sure all the conversions are done automatically. To learn more about Python type annotations, check out [Using Python's Type Annotations](https://dev.to/dstarner/using-pythons-type-annotations-4cfe) and [mypy](https://dropbox.tech/application/our-journey-to-type-checking-4-million-lines-of-python).
+Then `discord.py` will make sure all the conversions are done automatically. To learn more about Python type annotations, check out [Using Python's Type Annotations](https://dev.to/dstarner/using-pythons-type-annotations-4cfe) and [mypy](https://dropbox.tech/application/our-journey-to-type-checking-4-million-lines-of-python).
 
 #### Exercise
 
-Add `**` (to the power of) as an operator onto the `calc` command as well. This will probably involve adding another level of branching. Example: `!calc 5**3` should give us `125.0`.
+Add `**` (to the power of) as an operator onto the `calc` command as well. This option will probably involve adding another level of branching. Example: `!calc 5**3` should give us `125.0`.
 
 ### Help Information
 
-Using the decorators can also let us provide some help information for users trying to figure out how a bot works.
+Using the decorators can also provide helpful information for users trying to figure out how a bot works.
 
 ```python
 @bot.command(name="idea", help="Get a side project idea")
@@ -357,7 +356,7 @@ with open("BOT_TOKEN.txt", "r") as token_file:
 
 ## Go Forth and Make Something
 
-Every week, we're going to make one project themed on what we just did. This will have two stages.
+Every week, we're going to make one project themed on what we just did. This project workflow will have two stages.
 
 * Idea - come up with an idea and a set of features (MVP + sprinkles) due every Wednesday. There will be a form linked at the bottom of each article so that you can submit these.
 
@@ -365,11 +364,11 @@ Every week, we're going to make one project themed on what we just did. This wil
 
 ## Open Source License 
 
-A lot of people incorrectly assume that just publicly posting a project on Github makes a project open source. However you have to explicitly add a License to your project. For all the projects you make, **a license is mandatory**. [Here](https://opensource.org/licenses) is a guide to the more popular open source licenses today. Adding one shouldn't take more than a few minutes.
+Many people incorrectly assume that just publicly posting a project on Github makes a project open source. However, you have to add a License to your project explicitly. For all the projects you make, **a license is mandatory**. [Here](https://opensource.org/licenses) is a guide to the more popular open-source licenses today. Adding one shouldn't take more than a few minutes.
 
 If you're unsure/lazy, you can go for either MIT, ApacheV2, or GPL. 
 
-Having a proper open source license on your project makes your project an open source project! Congrats, and welcome to creating code for all of society.
+Having a proper open source license on your project makes your project an open-source project! Congrats, and welcome to creating code for all of society.
 
 ## Learn More About Chatbots
 
@@ -395,32 +394,32 @@ Having a proper open source license on your project makes your project an open s
 
 ## Ideas
 
-Feel free to come up with anything you want as long as it's chatbot related. Here are some ideas to help you get started, but feel free to come up with more. Don't worry if it's already been done or if someone else is doing it. The point is to learn and have fun. :)
+Feel free to come up with anything you want as long as it's chatbot-related. Here are some ideas to help you get started, but feel free to come up with more. Don't worry if it's already been done or if someone else is doing it. The point is to learn and have fun. :)
 
 * Think of a bot you've seen in real life. Could you recreate a simple subset of its features?
 
 * Maybe a bot that could provide the user information, like recipes or sports teams?
 
-* Or a bot that can have basic conversation with you. Could it help you break down tasks or provide you with a gratitude journal?
+* Or a bot that can have a basic conversation with you. Could it help you break down tasks or provide you with a gratitude journal?
 
-* Maybe a bot that can automate something you find annoying? So you can use it to fire off commands to do some task.
+* Maybe a bot that can automate something you find annoying? So you can use it to fire off commands to do some tasks.
 
-* The bot doesn't have to be a Discord bot. You can make it on Slack, Facebook, IRC, or basically any chat service out there.
+* The bot doesn't have to be a Discord bot. You can make it on Slack, Facebook, IRC, or any chat service out there.
 
 ## Requirements
 
-These aren't hard requirements, but you should try your best to hit all of them.
+These aren't strict requirements, but you should try your best to hit all of them.
 
-* The chat bot connects to a real chat service, including but not limited to: Discord, Slack, Telegram, IRC, Facebook.
+* The chatbot connects to a real chat service, including but not limited to: Discord, Slack, Telegram, IRC, Facebook.
 
-* It has different responses based on different inputs.
+* It has different responses based on various inputs.
 
-* Try to get your `pylint` score as good as possible. If you haven't used it before, checkout our guide at [/pylint](/pylint).
+* Try to get your `pylint` score as good as possible. If you haven't used it before, check our guide at [/pylint](/pylint).
 
 * This has to be available on a site like Github (feel free to use alternatives like GitLab if you prefer).
 
-* Show images/animations/videos of your bot in action in a `README.md` file in your repository.
+* Show your bot's images/animations/videos in action in a `README.md` file in your repository.
 
-* Has to use a Open Source license via a `LICENSE` file
+* Has to use an Open Source license via a `LICENSE` file
 
 Contributors: Harsh, Maaheen
