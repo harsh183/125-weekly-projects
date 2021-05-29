@@ -52,6 +52,6 @@ toc: true
       order(6,7,1)
       main()
       ```
-    - ` order(6,7,1) ` outputs ` 1 7 6 ` instead of what we want ` 1 6 7 `  but it's kind of hard to trace through the code to see where we went wrong so we can use the debugger to see which statements in the code we are using.
+    - `order(6,7,1)` outputs `1 7 6` instead of what we want `1 6 7`  but it's kind of hard to trace through the code to see where we went wrong so we can use the debugger to see which statements in the code we are using.
     - If you have typed this into a python cell (using #%%), Click "debug cell" and then click the step into (down arrow) button to step into each line of code. This helps us trace through the code and help us look at which line goes wrong.
     - If you have typed this into a python file, you need to add breakpoints into your code. A good place to add a breakpoint is at the line `  def order(value1,value2,value3):   ` and then click the drop down Run > Start Debugging or F5 and use the Step Into button.
