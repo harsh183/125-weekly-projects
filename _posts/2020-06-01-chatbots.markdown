@@ -52,11 +52,10 @@ You should finish this part before the workshop, but don't worry if you're not d
 2. If you're on Windows, I *highly* recommend getting WSL2 (WSL1 is also acceptable, just slower). For historical reasons, the command line in Windows isn't as good as that of Mac or Linux. Eventually, they just said, "Hey what if we had full Linux *on* Windows?" Thus, WSL. We will use the command line a fair amount here, so it's an excellent idea to set it up.
 
 3. Install a recent version of python (3.7+) on your computer and make sure to enable `pip` as well. 
-   - Windows: https://www.python.org/downloads/windows/ (select installer and make sure to add to PATH). https://phoenixnap.com/kb/how-to-install-python-3-windows - this guide is pretty useful too.
-   - MacOSX: https://docs.python-guide.org/starting/install3/osx/ or try homebrew
-   - Linux: https://docs.python-guide.org/starting/install3/linux/ or try your distro package installer
+   - [Windows Guide](https://www.python.org/downloads/windows/) (select installer and make sure to add to PATH). [This guide](https://phoenixnap.com/kb/how-to-install-python-3-windows) is pretty useful too.
+   - [MacOS Guide](https://docs.python-guide.org/starting/install3/osx/) or try homebrew with `brew install python`
+   - [Linux Gudide](https://docs.python-guide.org/starting/install3/linux/) or try your distro package installer
    - Do python --version to check which you got. If it says 2.x, then you will have to use `python3 scriptname.py` and `pip3`; otherwise, you'll end up using older versions of stuff. 
-
 
 4. Set up VSCode or a different code editor of your choice. See the page we wrote for [VSCode](/vscode) for help.
 
@@ -111,11 +110,12 @@ Note: [This tutorial](https://www.writebots.com/discord-bot-token/) also has a g
 3. Go to the Bot page on the side tab and click 'Add Bot'. This page is for the bot that we'll be coding that the users will see. Feel free to change its username, but the default one should be fine.
 
 4. Scroll down to 'TOKEN' and click the 'Copy' button. This token is like your bot's password, and it's required for your bot to log in. Tokens are a typical pattern when dealing with APIs and external services (like Discord here). **If your token is leaked, make sure to reset it.**
-  * The important thing is that you should never, *ever* share this token. One classic mistake people make is accidentally adding it on their online Git repository or storing somewhere that someone can inspect the browser state for it. [This paper](https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf) explains how hundreds of thousands of codebases have made this mistake. We'll put the token in a separate file and read it from there to deal with this.
 
-5. Now, we'll make the file for the token. In VSCode, create a file called `BOT_TOKEN.txt` and paste the token into it. Make sure the file only has one line for the token.
+5. The important thing is that you should never, *ever* share this token. One classic mistake people make is accidentally adding it on their online Git repository or storing somewhere that someone can inspect the browser state for it. [This paper](https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf) explains how hundreds of thousands of codebases have made this mistake. We'll put the token in a separate file and read it from there to deal with this.
 
-6. Create a file called `.gitignore`. In the first line, add `BOT_TOKEN.txt`. This file tells `git` to avoid this file and make sure that your token doesn't end up on the public internet. **Once your repo is online, make sure to doublecheck yourself that your token isn't there just in case.**
+6. Now, we'll make the file for the token. In VSCode, create a file called `BOT_TOKEN.txt` and paste the token into it. Make sure the file only has one line for the token.
+
+7. Create a file called `.gitignore`. In the first line, add `BOT_TOKEN.txt`. This file tells `git` to avoid this file and make sure that your token doesn't end up on the public internet. **Once your repo is online, make sure to doublecheck yourself that your token isn't there just in case.**
 
 ### Adding the Bot to the Test Server
 
@@ -312,6 +312,15 @@ And if we check for a given command, for example, `!help calc`:
 
 Perform a calculation where fn is either +,-,*, or /
 ```
+
+Now make sure to update everything with git
+
+```js
+$ git add bot.py .gitignore
+$ git commit -m "Create basic chatbot"
+```
+
+You can follow instructions on Github on how to add a `remote` and then using `git push` to upload it [here](https://docs.github.com/en/github/importing-your-projects-to-github/importing-source-code-to-github/adding-an-existing-project-to-github-using-the-command-line).
 
 ### Final Code
 
