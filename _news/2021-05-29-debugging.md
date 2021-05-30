@@ -22,7 +22,7 @@ toc: true
 ## Using `breakpoint()`  to figure out your next lines of code
 
 - Type ` breakpoint() ` in your code. Then, run your python file. This opens up a console in which you can do things. The console says ` (Pdb) ` at the beginning of each line which stands for Python debugger. In the console, you can test out lines of code. A great way to do this is in web bots to test different lines of code.
-- A good example of using `breakpoint()` can be found in the web bot workshop here [ CS125 Wacky Web Bots - YouTube](https://youtu.be/07YsSpcDjHI?t=2293)
+- A good example of using `breakpoint()` can be found in the web bot workshop here [CS125 Wacky Web Bots - YouTube](https://youtu.be/07YsSpcDjHI?t=2293) <!-- Could we link a video that has -->
 
 ## Use the Interactive Window to develop Python Scripts
 

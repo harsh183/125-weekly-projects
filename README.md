@@ -2,8 +2,6 @@
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
 
-Sign up: [google form](https://forms.gle/N727zpCZKj3KiZW17)
-
 Two months of guided side projects to give people some experience with practical programming and building their portfolios for students at UIUC during Summer 2021.
 
 ## Commitment 
@@ -14,7 +12,6 @@ Two months of guided side projects to give people some experience with practical
 
 * Rising sophomores at UIUC 
 * Finished CS 125 
-* Did not get an internship/research/job over the summer (or got cancelled)
 * Less experienced in CS
 * Who have never programmed outside class 
 * Who feel lost when told ‘go do side projects’

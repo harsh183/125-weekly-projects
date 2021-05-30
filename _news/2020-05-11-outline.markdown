@@ -26,7 +26,6 @@ The CS 125 Summer of Side Projects is two months of guided side projects to give
 
 * Rising sophomores at UIUC 
 * Who have finished CS 125 
-* Who did not get an internship/research/job over the summer (or it was cancelled)
 * Who are less experienced in CS
 * Who have never programmed outside class 
 * Who feel lost when told to "go do side projects"
