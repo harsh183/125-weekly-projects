@@ -10,10 +10,19 @@ cover: false
 <hr class="stylish"/>
 
 <main class="home-main">
+  <p>Welcome to CS 125 Summer of Side Projcts! All the times are in Chicago Time.</p>
+  <ul>
+    <li>Live Zoom Workshops every Tuesday Noon (also recorded and text versions available)</li>
+    <li>Project Ideas (Form) due Wednesday Noon</li>
+    <li>Project Submission due the following Monday (form and forum post)</li>
+  </ul>
+
+  <hr>
+
   {% for collection in site.collections %}
     {% if collection.docs.size > 0 %}
     <section id="posts">
-      <details {% if collection.default_open %}open{% endif %}>
+      <details open>
         <summary>
           <h3 class="home-page-heading">{{ collection.title }}</h3>
         </summary>
