@@ -94,7 +94,3 @@ Students will learn about
 ## Forum
 
 We will use the [forum.125summer.tech](https://forum.125summer.tech/) with some categories created for just this.
-
-### Credits
-
-- Eric S Raymond (<http://www.catb.org/~esr/hacker-emblem/glider.png>) for the favicon
