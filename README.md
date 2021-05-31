@@ -41,12 +41,12 @@ Schedule can be found [here](https://calendar.google.com/calendar/u/0/embed?heig
 * Week 3 (June 15): pyGame for a simple interactive game
   * Tools: CI/CD
 * Week 4 (June 22): web bots (beautifulsoup)
-  * Tools: Debugger
+  * Tools: Debugger, Browser Inspect Element
 
 ### Month 2: JavaScript and Typescript
 
 * Week 1 (June 29): Greasemonkey/Tampermonkey/Web Browser extension (JavaScript)
-  * Tools: Browser Inspect Element, Eslint
+  * Tools: Browser Dev Tools, Eslint
 * Week 2 (July 6): Express JS backend to do something simple w/ Docker
   * Tools: Chai automated testing, GitHub CI/CD
 * Week 3 (July 13): React frontend around some existing API
