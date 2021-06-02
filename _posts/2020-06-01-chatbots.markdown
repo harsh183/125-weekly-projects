@@ -10,7 +10,7 @@ toc: true
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
 
-[Code Repo](https://github.com/harsh183/discord-chatbot-workshop) - available post workshop
+[Code Repo](https://github.com/harsh183/discord-chatbot-workshop)
 
 We all started using online chatting applications more than ever before to communicate with our families, friends, and even classes and work with the pandemic. What if we could make cool bots for these chats?  Facebook bots for stores, Discord bots for your friends, or Slack bots for your clubs and jobs. The possibilities are endless.
 
