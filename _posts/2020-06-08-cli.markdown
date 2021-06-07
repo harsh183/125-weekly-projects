@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fancy CLIs
+title: Fancy Command Line Interfaces
 date: 2020-06-08
 comments: true
 external-url:
@@ -49,7 +49,7 @@ Note: I've done this on an Ubuntu `20.04` system. Your progress shouldn't be dra
 Create a file called `requirements.txt` and fill it with this. This is a common convention in Python projects for listing all the libraries required.
 
 ```js
-pyinquirer
+questionary
 pyfiglet
 plumbum
 pylint
@@ -67,11 +67,11 @@ The `-r` flag tells `pip` to look at `requirements.txt` and install everything i
 
 Let me explain how we're using each library.
 
-* `pyinquirer` give us fancy interactive menu interfaces.
-* `pyfiglet` provides ASCII art displays.
-* `plumbum` gives us a way of accepting input, displaying help information and calling existing system commands.
-* `pylint` is for style checking.
-* `pytest` is for simple testing.
+* [questionary](https://github.com/tmbo/questionary) give us fancy interactive menu interfaces.
+* [pyfiglet](https://github.com/pwaller/pyfiglet) provides ASCII art displays.
+* [plumbum](https://plumbum.readthedocs.io/en/latest/) gives us a way of accepting input, displaying help information and calling existing system commands.
+* [pylint](https://www.pylint.org/) is for style checking.
+* [pytest](https://docs.pytest.org/en/6.2.x/) is for simple testing.
 
 ### Get Started
 
@@ -82,7 +82,7 @@ We'll use `cli` from the `plumbum` library to create the base template for our c
 ```python
 from plumbum import cli
 
-class FancyGitAdd(cli.application):
+class FancyGitAdd(cli.Application):
     def main(self):
         print("Welcome to Fancy Git Add!")
 
@@ -106,6 +106,8 @@ Basically, without that, our tests will not work and give a screenful of nasty e
 $ pytest fgit.py
 [tests pass]
 ```
+
+(If it says pytest is not in the path you can do `python -m pytest fgit.py`)
 
 Which will tell us everything is good for now.
 
@@ -165,6 +167,7 @@ Note: One-character flags have a single dash `-` and are one letter long to be s
 The text output from `print` does look nice, but we want those fancy ASCII art displays. For this we're going to use `pyfiglet`
 
 ```python
+from plumbum import cli 
 from pyfiglet import Figlet
 
 def print_banner(text):
@@ -187,17 +190,6 @@ In general, it's good practice to extract out functions (like this one) so that 
 ## Collecting a List of Files
 
 One of the most common commands in the command line is `ls`, which lists all files in the current folder.
-
-Let's try it out to get a list of 5 items I have (your system might vary, but adjust accordingly):
-
-```js
-$ ls
-__pycache__  fgit.py  file3.txt  requirements.txt  test_folder
-```
-
-Lets use this as a chance to show off the red-green-refactor workflow (more details [here](/testing101)) with `pytest`.
-
-### Red
 
 I'm creating a folder called `test_folder` with two files: `file1.txt` and `file2.txt`. I'm also adding a `file3.txt` outside the folder. You can create whatever sample files you like.
 
@@ -222,6 +214,17 @@ $ tree
     ├── file1.txt
     └── file2.txt
 ```
+
+Let's try it out to get a list of 5 items I have (your system might vary, but adjust accordingly):
+
+```js
+$ ls
+__pycache__  fgit.py  file3.txt  requirements.txt  test_folder
+```
+
+Lets use this as a chance to show off the red-green-refactor workflow (more details in [testing 101](/testing101)) with `pytest`.
+
+### Red
 
 Now lets come up with a function `get_files()` which will return a `List` of the files in the given directory. We write a stub for that function and write a test `test_get_files()` to test it.
 
@@ -249,7 +252,7 @@ if __name__ == "__main__":
 
 def test_get_files():
     files = get_files()
-    assert len(files) == 5
+    assert len(files) == 5, "There should be enough files"
 ```
 
 Now let's run it with pytest:
@@ -289,7 +292,7 @@ def get_files():
 
 def test_get_files():
     files = get_files()
-    assert len(files) == 5
+    assert len(files) == 5, "There should be enough files"
 ```
 
 And the output snippet we get is:
@@ -316,7 +319,7 @@ def get_files():
 
 def test_get_files():
     files = get_files()
-    assert len(files) == 5
+    assert len(files) == 5, "There should be enough files"
 ```
 
 Now if we run this with `pytest`, the color will be green.
@@ -393,30 +396,29 @@ if __name__ == "__main__":
 
 def test_get_files():
     files = get_files()
-    assert len(files) == 5
+    assert len(files) == 5, "There should be enough files"
 ```
 
 Note: This is a simple test for teaching reasons. In real life you should write more robust tests since this could easily break if I have one more or one less file. We want to account for all edge cases and potential changes.
 
 ## Fancy Menu Selectors
 
-Now let's create a checkbox-like system that lets the user move up and down through the files. We'll use `PyInquirer` to ask. The format for checkbox questions is similar to this [example](https://github.com/CITGuru/PyInquirer/blob/master/examples/checkbox.py) from their documentation.
+Now let's create a checkbox-like system that lets the user move up and down through the files. We'll use `questionary` to ask. The format for checkbox questions is similar to this [example](https://questionary.readthedocs.io/en/stable/pages/types.html#checkbox) from their documentation.
 
-Here I will show another style of testing which I call "green-refactor". Sometimes creating a failing test first is quite tedious, so I create the feature and then add a test for it. Over time, you'll figure out your style of how to do things.
+Here I will show another style of testing which I call "green-refactor". Sometimes creating a failing test first is quite tedious, so I create the feature and then add a test for it. Over time, you'll figure out your style of how to do things. The important thing is creating tests as you move along.
 
 ### Green
 
 First we create a new function for generating the questions in the right format:
 
 ```python
-def generate_questions(files):
-    questions = [{
+def generate_question(files):
+    return [{
         'type': 'checkbox',
         'name': 'files',
         'message': 'What would you like to commit?',
         'choices': [{'name': file} for file in files],   
     }]
-    return questions
 ```
 
 For generating our `'choices'`, we use [Python List Comprehension](https://www.programiz.com/python-programming/list-comprehension), which is one of my favorite features from the language.
@@ -424,21 +426,20 @@ For generating our `'choices'`, we use [Python List Comprehension](https://www.p
 We add the import for `prompt`:
 
 ```python
-from PyInquirer import prompt
+from questionary import prompt
 ```
-
-Note: This might lead to a `pytest` warning complaining about some deprecation but don't worry about it. It's a specific issue with `PyInquirer`.
 
 In our `main` function, we slot this in and print to see if we got the right output.
 
 ```python
 def main(self):
-    print_banner("Git fancy add")
+    print_banner("Welcome to Fancy Git ")
     files = get_files()
-
-    questions = generate_questions(files)
-    answers = prompt(questions)
+        
+    question = generate_question(files)
+    answers = prompt(question)
     print(answers['files'])
+
 ```
 
 The output now shows the choices in an array.
@@ -451,12 +452,12 @@ The output now shows the choices in an array.
 Now let's write a test for this. We can put it at the bottom like the other one.
 
 ```python
-def test_generate_questions():
+def test_generate_question():
     files = ["best.rb", "good.kt", "small.py"]
-    questions = generate_questions(files)
-    assert len(questions) == 1 # one question
-    assert questions['type'] == 'checkbox' # has to be a checkbox
-    assert len(questions['choices']) == len(questions) # same size as files
+    question = generate_question(files)
+    assert len(question) == 1, "has to be one question"
+    assert question[0]['type'] == 'checkbox', "has to allow multiple selections"
+    assert len(question[0]['choices']) == len(files), "same number of choices as files"
 ```
 
 If we run the test (`$ pytest fgit.py`), it should pass.
@@ -476,18 +477,19 @@ def generate_questions(files):
     return questions
 ```
 
+For generating our `'choices'`, we use [Python List Comprehension](https://www.programiz.com/python-programming/list-comprehension), which is one of my favorite features from the language.
+
 If we run `pytest fgit.py`, we're still good.
 
 At this point our full file should be:
 
 ```python
+from plumbum import cli 
 from pyfiglet import Figlet
-from plumbum import cli
 from plumbum.cmd import ls
+from questionary import prompt
 
-from PyInquirer import prompt
-
-def print_banner(text):
+def print_banner(text: str):
     print(Figlet(font='slant').renderText(text))
 
 def get_files():
@@ -495,24 +497,23 @@ def get_files():
     files = ls_output.split("\n")
     return files
 
-def generate_questions(files):
-    questions = [{
+def generate_question(files):
+    return [{
         'type': 'checkbox',
         'name': 'files',
         'message': 'What would you like to commit?',
         'choices': [{'name': file.strip()} for file in files],   
     }]
-    return questions
+
 
 class FancyGitAdd(cli.Application):
     VERSION = "1.3"
-
     def main(self):
-        print_banner("Git fancy add")
+        print_banner("Welcome to Fancy Git ")
         files = get_files()
-
-        questions = generate_questions(files)
-        answers = prompt(questions)
+        
+        question = generate_question(files)
+        answers = prompt(question)
         print(answers['files'])
 
 if __name__ == "__main__":
@@ -522,17 +523,28 @@ if __name__ == "__main__":
 
 def test_get_files():
     files = get_files()
-    assert len(files) == 5
+    assert len(files) == 5, "There should be enough files"
 
-def test_generate_questions():
+def test_generate_question():
     files = ["best.rb", "good.kt", "small.py"]
-    questions = generate_questions(files)
-    assert len(questions) == 1 # one question
-
-    question = questions[0]
-    assert question['type'] == 'checkbox' # has to be a checkbox
-    assert len(question['choices']) == len(files) # same size as files
+    question = generate_question(files)
+    assert len(question) == 1, "has to be one question"
+    assert question[0]['type'] == 'checkbox', "has to allow multiple selections"
+    assert len(question[0]['choices']) == len(files), "same number of choices as files"
 ```
+
+### Note: Fancier Syntax
+
+This is based on [`inquirer.js`](https://github.com/SBoudrias/Inquirer.js/) dictionary syntax which is common in a lot of languages now. `questionary` also supports that syntax but it has it's own syntax which you might find nicer but it's also hard to test (in most cases that's okay). If I had to use that I'd use:
+
+```python3
+[...]
+files = get_files()
+question = questionary.select("What would you like to commit?", choices=files)
+to_add = question.ask()
+```
+
+Check out the [questionary documentaiton](https://questionary.readthedocs.io/en/stable/pages/types.html#) for more information.
 
 ## Calling Git Add
 
