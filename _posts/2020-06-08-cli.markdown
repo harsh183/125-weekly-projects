@@ -177,7 +177,7 @@ class FancyGitAdd(cli.Application):
     VERSION = "1.3"
 
     def main(self):
-        print_banner("Git fancy add")
+        print_banner("Git Fancy add")
 
 if __name__ == "__main__":
     FancyGitAdd()
@@ -242,7 +242,7 @@ class FancyGitAdd(cli.Application):
     VERSION = "1.3"
 
     def main(self):
-        print_banner("Git fancy add")
+        print_banner("Git Fancy add")
         files = get_files()
 
 if __name__ == "__main__":
@@ -297,7 +297,7 @@ def test_get_files():
 
 And the output snippet we get is:
 
-```txt
+```js
 start __pycache__
 fgit.py
 file3.txt
@@ -388,7 +388,7 @@ class FancyGitAdd(cli.Application):
     VERSION = "1.3"
 
     def main(self):
-        print_banner("Git fancy add")
+        print_banner("Git Fancy add")
         files = get_files()
 
 if __name__ == "__main__":
@@ -416,7 +416,7 @@ def generate_question(files):
     return [{
         'type': 'checkbox',
         'name': 'files',
-        'message': 'What would you like to commit?',
+        'message': 'What would you like to add?',
         'choices': [{'name': file} for file in files],   
     }]
 ```
@@ -433,7 +433,7 @@ In our `main` function, we slot this in and print to see if we got the right out
 
 ```python
 def main(self):
-    print_banner("Welcome to Fancy Git ")
+    print_banner("Git Fancy add")
     files = get_files()
         
     question = generate_question(files)
@@ -444,8 +444,8 @@ def main(self):
 
 The output now shows the choices in an array.
 
-```txt
-? What would you like to commit?  done (2 selections)
+```js
+? What would you like to add?  done (2 selections)
 ['file3.txt', 'requirements.txt']
 ```
 
@@ -471,7 +471,7 @@ def generate_questions(files):
     questions = [{
         'type': 'checkbox',
         'name': 'files',
-        'message': 'What would you like to commit?',
+        'message': 'What would you like to add?',
         'choices': [{'name': file.strip()} for file in files],   
     }]
     return questions
@@ -501,7 +501,7 @@ def generate_question(files):
     return [{
         'type': 'checkbox',
         'name': 'files',
-        'message': 'What would you like to commit?',
+        'message': 'What would you like to add?',
         'choices': [{'name': file.strip()} for file in files],   
     }]
 
@@ -509,7 +509,7 @@ def generate_question(files):
 class FancyGitAdd(cli.Application):
     VERSION = "1.3"
     def main(self):
-        print_banner("Welcome to Fancy Git ")
+        print_banner("Git Fancy add")
         files = get_files()
         
         question = generate_question(files)
@@ -537,14 +537,18 @@ def test_generate_question():
 
 This is based on [`inquirer.js`](https://github.com/SBoudrias/Inquirer.js/) dictionary syntax which is common in a lot of languages now. `questionary` also supports that syntax but it has it's own syntax which you might find nicer but it's also hard to test (in most cases that's okay). If I had to use that I'd use:
 
-```python3
+```python
 [...]
 files = get_files()
-question = questionary.select("What would you like to commit?", choices=files)
+question = questionary.select("What would you like to add?", choices=files)
 to_add = question.ask()
 ```
 
-Check out the [questionary documentaiton](https://questionary.readthedocs.io/en/stable/pages/types.html#) for more information.
+Check out the [questionary docs](https://questionary.readthedocs.io/en/stable/pages/types.html#) for more question types and fancy things you can do.
+
+### Exercise
+
+Filter the list of files to not have anything starting with `_`. Update your test case accordingly to `4` items since `__pycache__` will not be included. See this guide on [filter in python](https://www.geeksforgeeks.org/filter-in-python/).
 
 ## Calling Git Add
 
@@ -558,7 +562,7 @@ from plumbum.cmd import ls, git
 
 ```python
 def main(self):
-    print_banner("Git fancy add")
+    print_banner("Git Fancy add")
     files = get_files()
 
     questions = generate_questions(files)
@@ -577,7 +581,7 @@ $ python3 fgit.py
 \____/_/\__/  /_/  \__,_/_/ /_/\___/\__, /   \__,_/\__,_/\__,_/
                                    /____/
 
-? What would you like to commit?  [fgit.py]
+? What would you like to add?  [fgit.py]
 $ git status
 On branch main
 Your branch is up to date with 'origin/main'.
@@ -595,7 +599,6 @@ Normally I'd commit like this (ideally with a more helpful message):
 
 ```js
 $ git commit -m "add files"
-$
 ```
 
 Luckily for us, `plumbum` makes adding another flag relatively easy. If we use `cli.Flag`, the result will be attached to `self` and we can use it in our program.
@@ -606,14 +609,14 @@ class FancyGitAdd(cli.Application):
     commit = cli.Flag(['c', 'commit'], help="Commits the added files as well")
 
     def main(self):
-        print_banner("Git fancy add")
+        print_banner("Git Fancy add")
         files = get_files()
 
         questions = generate_questions(files)
         answers = prompt(questions)
         git('add', answers['files'])
         if self.commit:
-            git('commit', '-m', 'add files')
+            git('commit', '-m', 'updates')
 ```
 
 And when we run it, we can verify with `git log`:
@@ -627,13 +630,13 @@ $ python fgit.py -c
 \____/_/\__/  /_/  \__,_/_/ /_/\___/\__, /   \__,_/\__,_/\__,_/
                                    /____/
 
-? What would you like to commit?  [fgit.py]
+? What would you like to add?  [fgit.py]
 $ git log
-commit 7dd8feb673ae8a71f9a6d04ea5604336eda67b56 (HEAD -> main)
+commit ece48b181c8e88124dea8aa47001c6dc41786e64 (HEAD -> main)
 Author: Harsh Deep <>
-Date:   Tue May 18 21:13:16 2021 -0500
+Date:   Mon Jun 7 06:44:12 2021 -0500
 
-    add files
+    updates
 ```
 
 The help output will also show the input for the new option.
@@ -658,13 +661,12 @@ Switches:
 ## Final Code
 
 ```python
+from plumbum import cli 
 from pyfiglet import Figlet
-from plumbum import cli
 from plumbum.cmd import ls, git
+from questionary import prompt
 
-from PyInquirer import prompt
-
-def print_banner(text):
+def print_banner(text: str):
     print(Figlet(font='slant').renderText(text))
 
 def get_files():
@@ -672,28 +674,26 @@ def get_files():
     files = ls_output.split("\n")
     return files
 
-def generate_questions(files):
-    questions = [{
+def generate_question(files):
+    return [{
         'type': 'checkbox',
         'name': 'files',
-        'message': 'What would you like to commit?',
+        'message': 'What would you like to add?',
         'choices': [{'name': file.strip()} for file in files],   
     }]
-    return questions
 
 class FancyGitAdd(cli.Application):
     VERSION = "1.3"
     commit = cli.Flag(['c', 'commit'], help="Commits the added files as well")
-
     def main(self):
-        print_banner("Git fancy add")
+        print_banner("Git Fancy add")
         files = get_files()
-
-        questions = generate_questions(files)
-        answers = prompt(questions)
+        
+        question = generate_question(files)
+        answers = prompt(question)
         git('add', answers['files'])
         if self.commit:
-            git('commit', '-m', 'add files')
+            git('commit', '-m', 'updates')
 
 if __name__ == "__main__":
     FancyGitAdd()
@@ -702,16 +702,14 @@ if __name__ == "__main__":
 
 def test_get_files():
     files = get_files()
-    assert len(files) == 5
+    assert len(files) == 5, "There should be enough files"
 
-def test_generate_questions():
+def test_generate_question():
     files = ["best.rb", "good.kt", "small.py"]
-    questions = generate_questions(files)
-    assert len(questions) == 1 # one question
-
-    question = questions[0]
-    assert question['type'] == 'checkbox' # has to be a checkbox
-    assert len(question['choices']) == len(files) # same size as files
+    question = generate_question(files)
+    assert len(question) == 1, "has to be one question"
+    assert question[0]['type'] == 'checkbox', "has to allow multiple selections"
+    assert len(question[0]['choices']) == len(files), "same number of choices as files"
 ```
 
 Running `$pytest fgit.py` should have all tests passing. (Don't worry about warnings.)
@@ -720,13 +718,21 @@ Running `$pytest fgit.py` should have all tests passing. (Don't worry about warn
 
 * Add a optional command line flag (also called switch) called `-p`/`--push` to run `git push` at the end of the program.
 
-## Learn More
+## Learn More About Fancy CLIs
 
 * [Plumbum scripting](https://iscinumpy.gitlab.io/post/plumbum-scripting/) - Learn more about the library used to interact with the actual system programs.
 
 * [Building Beautiful Command Line Interfaces with Python](https://codeburst.io/building-beautiful-command-line-interfaces-with-python-26c7e1bb54df) - A good introduction to pretty command line libraries. Examples included!
 
 * [Python Command Line Apps](https://www.davidfischer.name/2017/01/python-command-line-apps/) - Some theory on the aspects of command line apps, as well as library recommendations.
+
+## Learn More Python Concepts
+
+* How to use APIs in Python [Beginner](https://www.dataquest.io/blog/python-api-tutorial/) (basic requests and responses) and then do [Intermediate](https://www.dataquest.io/blog/last-fm-api-python/) (headers, authentication, pagination, rate limiting, cache, combining API requests). **Recommended if you're planning to use your CLI to wrap around an API**
+
+* [Map, Filter, Reduce](https://stackabuse.com/map-filter-and-reduce-in-python-with-examples) and [List Comprehension](https://www.w3schools.com/python/python_lists_comprehension.asp) for doing more list based stuff in `python`
+
+* [os module](https://www.tutorialsteacher.com/python/os-module) in python to interact with the operating system
 
 ## Ethics
 
