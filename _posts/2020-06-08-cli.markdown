@@ -10,6 +10,8 @@ toc: true
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
 
+[Repo](https://125summer.tech/cli) and [Recording](https://youtu.be/oegtqOX1STU)
+
 You might have seen programmers everywhere using the command line for all sorts of daily tasks. It looks kind of unfriendly and complicated, right?
 
 How about we make things a little prettier and easier for people to use?
