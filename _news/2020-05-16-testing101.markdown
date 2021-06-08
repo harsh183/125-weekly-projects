@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: Testing 101 (with pytest)
@@ -204,7 +203,7 @@ def multiply(list):
 
 The output of test cases:
 
-```
+```js
 All tests passed
 ```
 
@@ -231,7 +230,7 @@ def multiply(list):
 
 When I run this code, I get
 
-```
+```js
 All tests passed
 ```
 
