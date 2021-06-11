@@ -96,7 +96,7 @@ We are not qualified to give specific advice on this, but this is something that
 
 ## Sleep, Food, and Quality of Life
 
-In general, try to keep your quality of life and health factors as good as practically possible. Trying to sacrifice those for productivity doesn't really work short-term and mostly doesn't work short-term either (even if you think it does). Sometimes, these issues are hard to fix, but even a 20% improvement in some quality of life factors can significantly affect your productivity. You don't need to be the pinnacle of health, but any progress there will also help your productive life.
+In general, try to keep your quality of life and health factors as good as practically possible. Trying to sacrifice those for productivity doesn't really work short-term and mostly doesn't work long-term either (even if you think it does). Sometimes, these issues are hard to fix, but even a 20% improvement in some quality of life factors can significantly affect your productivity. You don't need to be the pinnacle of health, but any progress there will also help your productive life.
 
 ## Perfectionism
 
