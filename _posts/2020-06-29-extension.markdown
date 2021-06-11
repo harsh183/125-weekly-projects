@@ -70,6 +70,10 @@ This part is optional, but if you want to publish it on the store:
 
 * [Techdirt - Facebook's Threat To NYU Researchers Is A Mistake, But It's The Inevitable Follow On To Overreaction To Cambridge Analytica](https://www.techdirt.com/articles/20201024/02131045571/facebooks-threat-to-nyu-researchers-is-mistake-inevitable-follow-to-overreaction-to-cambridge-analytica.shtml) - interesting article on the privacy and control over external browser extentions in a fight between NYU and Facebook.
 
+## Commercial Impact of Open Source
+
+At first FOSS (Free and Open Source Software) was starting out away and independent from companies and many of them like Microsoft were extremely against the idea of open source. However times have changed and now almost every major company is uses open source, and many large companies are also [contributors to open source software](https://www.forbes.com/sites/adrianbridgwater/2019/09/07/the-impact-of-the-tech-giants-on-open-source/?sh=30d5493bd277). Companies can often save money using open source software since they don't have to write as much software on their own, and there are often volunteers willing to maintain it the software. Having a large community reading the code and finding out bugs also leads to software that is more reliable and secure for businesses. Since FOSS lowers the cost for software, many companies now have a lower barrier to entry and this has lead to many new startups from developing countries that would not be possible a few decades ago.
+
 ## Ideas
 
 * Is there something about your browser that could be done better? Maybe something that annoys you?

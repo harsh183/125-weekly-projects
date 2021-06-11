@@ -51,6 +51,22 @@ pip install pygame
 
 * [What we still haven’t learned from Gamergate](https://www.vox.com/culture/2020/1/20/20808875/gamergate-lessons-cultural-impact-changes-harassment-laws) - the rise of gaming and gaming subcultures is a really cool way computer science has hit the world today, however, it also has had many issues with gender diversity in the past. Here's a hindsight look from a large scale issue from 2014 and what it led to after.
 
+## Open Source - Permissive vs Copyleft Licenses
+
+In open source licenses there are two _broad_ categories that most fall under called Permissive and Copyleft. 
+
+Permissive licenses include ones like `MIT` or `ApacheV2`. These basically say do _whatever_ with the code and if you add the same code over then you often have to include the license too. These are popular for small projects, when people don't care too much, and when they want their open source software to be good enough for commercial use. The workshop repos use this for example.
+
+Copyleft licenses are stronger, such as `GPLv3`, where they want your development of the software to also have the same freedoms the software was available under. Basically that means that your work has to also end up open source. This is often used by large projects like `linux` or by people who want to increase the spread of Open Source. This type of license also makes it hard for commercial use since most of the software is proprietary (i.e., not open source). The repo for the workshops site itself uses GPLv3 as the template uses GPLv3.
+
+For these weekly projects, use any license as long as it's _some_ open source license. 
+
+There is much debate on these two and these two links will be a good start to read more: 
+
+* [Open Source Stack Exchange - What's the difference between permissive and copyleft licenses?](https://opensource.stackexchange.com/questions/21/whats-the-difference-between-permissive-and-copyleft-licenses)
+
+* [Draw DeVault -  My personal journey from MIT to GPL](https://drewdevault.com/2019/06/13/My-journey-from-MIT-to-GPL.html)
+
 ## Ideas
 
 Feel free to come up with anything you want as long as it's chatbot related. Here are some ideas to help you get started, but feel free to come up with more. Don't worry if it's already been done or if someone else is doing it. The point is learning and fun. :)

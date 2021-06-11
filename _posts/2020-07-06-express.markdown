@@ -28,7 +28,11 @@ Hosted by: Monika Para
 
 ## Ethics
 
- - [MuleSoft Blog - Exploring the ethics of APIs](https://blogs.mulesoft.com/api-integration/strategy/ethics-of-apis/)
+- [MuleSoft Blog - Exploring the ethics of APIs](https://blogs.mulesoft.com/api-integration/strategy/ethics-of-apis/)
+
+## International Community of Open Source
+
+FOSS (Free and Open Source Software) initially started in the West Coast of the US, but grew to encompass projects and contributors from all over the world. A lot of the commercial software out there today is still mostly limited to a narrow set of countries, but open source software doesn't have to deal with immigration restrictions. Entire communities of software developers from Africa, South America, East Asia, East Europe and more are able to contribute to open source software making is a very global concept. Many country's are even starting [to make laws](https://fossbytes.com/world-open-source-map-which-countries-have-open-source-laws/) to boost open source contribution. Check out some of the [contribution data](https://hoffa.medium.com/github-top-countries-201608-13f642493773) here.
 
 ## Ideas
 

@@ -43,6 +43,12 @@ Hosted by: Harsh Deep
 
 - [Forbes - The Social Impact Of Bad Bots And What To Do About Them](https://www.forbes.com/sites/forbestechcouncil/2020/12/04/the-social-impact-of-bad-bots-and-what-to-do-about-them/?sh=55a7348b59e0) - Bots have the potential to be used in bad ways, for example influencing politics or harassment.
 
+## Social Impact of Open Source
+
+Open Source software has a large impact on the world today. Since it's free, it's accessible to people who can't afford it and help new startups grow out of communities who couldn't afford it in the past. Open source software also provides decentralized options with good security which allow for privacy and [worry authoritarian governments](https://www.vice.com/en/article/d3nndy/mozilla-wikimedia-decide-how-to-respond-to-kazakhstan-internet-surveillance). Many governments have also turned towards open source projects as a way of giving the results to the public, such as the [Indian Covid19 contact tracing app](https://github.com/nic-delhi/AarogyaSetu_Android).
+
+To learn more, check out: [Pfaff and David - Society and open source | Why open source software is better for society than proprietary closed source software](https://benpfaff.org/writings/anp/oss-is-better.html)
+
 ## Ideas
 
 ## Requirements
