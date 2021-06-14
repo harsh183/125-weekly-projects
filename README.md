@@ -38,10 +38,10 @@ Schedule can be found [here](https://calendar.google.com/calendar/u/0/embed?heig
   * Tools: Github, VSCode, pylint
 * Week 2 (June 8): Fancy command line interface
   * Tools: Command line, git
-* Week 3 (June 15): pyGame for a simple interactive game
-  * Tools: CI/CD
-* Week 4 (June 22): web bots (beautifulsoup)
+* Week 3 (June 15): web bots (beautifulsoup)
   * Tools: Debugger, Browser Inspect Element
+* Week 4 (June 22): pyGame for a simple interactive game
+  * Tools: CI/CD
 
 ### Month 2: JavaScript and Typescript
 
