@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Web Bots
-date: 2020-06-22
+date: 2020-06-15
 comments: true
 external-url:
 tag: Python
@@ -9,6 +9,8 @@ toc: true
 ---
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
+
+Note: `pygame` with Ahmed has been mvoed to June 22. Make sure to show up. He's a great presenter who can teach just about anything.
 
 Automation is fun! What if we could do fancy stuff through automation with the web browser?
 
