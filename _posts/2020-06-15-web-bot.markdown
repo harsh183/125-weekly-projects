@@ -377,13 +377,19 @@ if __name__ == "__main__":
 
 ### Actually downloading files
 
-Now that our code functions are set up nicely, let's create a loop for actually creating files. To create folders we use the built in `os` module's `mkdirs` to set it up. Let's create a folder per week. And to download the each file we're using `with open` with the mode `wb` to set up our downloads.
-
+Now that our code functions are set up nicely, let's create a loop for actually creating files. To create folders we use the built in `os` module's `mkdirs` to set it up. Let's create a folder per week. 
 ```python
 import os
 
-[...]
+for i, row in enumerate(rows):
+        week_num = i + 1
+        folder_name = f"week{week_num}"
+        os.makedirs(folder_name, exist_ok=True)
+```
 
+And to download the each file we're using `with open` with the mode `wb` (write bytes) to set up our downloads. Here we use `.content` to get the page as `bytes` (raw data) so that we can save this as is. We also add in prints to show when something is done. If it fails anywhere, we know where it failed.
+
+```python
 for i, row in enumerate(rows):
         week_num = i + 1
         folder_name = f"week{week_num}"
@@ -406,6 +412,8 @@ for i, row in enumerate(rows):
 ```
 
 ## Full Code
+
+All tests should be passing as well.
 
 ```python
 from requests import get
@@ -511,6 +519,12 @@ Open Source software has a large impact on the world today. Since it's free, it'
 To learn more, check out: [Pfaff and David - Society and open source | Why open source software is better for society than proprietary closed source software](https://benpfaff.org/writings/anp/oss-is-better.html)
 
 ## Ideas
+
+* Extract any information from a site you use: sports scores, class information, news sites, job postings etc. Make sure the page is publicly accessible and you're not creating too much load on the website.
+
+* You don't have to use `beautifulSoup`, feel free to use `Selenium` to interact dynamically with web sites (click, fill in forms, scroll) as well. See the linked workshop for more information. 
+
+* You can also use it to test something out if you already have a site. 
 
 ## Requirements
 
