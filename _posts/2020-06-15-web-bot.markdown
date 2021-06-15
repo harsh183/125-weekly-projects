@@ -242,6 +242,7 @@ Having the right length and text is a good sign. Now let's get the name:
 ```
 
 Similarly let's figure out how to get the title. We can use dictionary sytnax to get element attributes, here we use `['href']`. `string=` lets beautiful soup match on the actual link text.
+
 ```python
 (Pdb) slide_links = sample_card.find_all('li', string="slides") # check the link title
 (Pdb) len(slide_links)
@@ -378,6 +379,7 @@ if __name__ == "__main__":
 ### Actually downloading files
 
 Now that our code functions are set up nicely, let's create a loop for actually creating files. To create folders we use the built in `os` module's `mkdirs` to set it up. Let's create a folder per week. 
+
 ```python
 import os
 
