@@ -24,12 +24,383 @@ Hosted by: Harsh Deep
 
 [On the Subject of Talent](https://drawabox.com/article/talent) - this is advice for artists, but in my experience, a lot of good art advice also applies to programming. We are more alike than a lot of people realize.
 
+## Set up
+
+Fill out your requirements.txt file with this:
+
+```js
+bs4
+pytest
+pylint
+```
+
+And run 
+
+```js
+$ pip install -r requirements.txt
+```
+
+We'll be coding a web scraper that uses the structure in HTML files to collect data. You don't actually need to understand much html at all but if you've never seen it before I suggest a quick read through [What is HTML?](https://www.yourhtmlsource.com/starthere/whatishtml.html) and [My First Site](https://www.yourhtmlsource.com/myfirstsite/). 
+
 ## Workshop
 
-* cs 225 slide+notes downloader (though can be adapted to basically any course) - use similar approaches for any of your classes
-* we start at home page
-* we extract and find the lecture button url
-* we request that
+We'll be making a tool that scrapes the UIUC CS 225 website for all the slide URLs and downloading them all locally. You can adapt this kind for approach for getting content for pretty much any of your classes with ease.
+
+### Getting the page HTML
+
+First we start at the CS 225 [Homepage](https://courses.engr.illinois.edu/cs225/sp2021/) on the web browser and poke around till we find the page we're looking for. After that we import `get` from the built in `requests` library and use `.text` to get the page contents. Let's kick off `scrape.py`:
+
+```python
+from requests import get
+
+URL = "https://courses.engr.illinois.edu/cs225/sp2021/pages/lectures.html"
+page_html = get(URL).text
+print(page_html[0:200]) # get the first 200 chars
+```
+
+which prints out an html page:
+
+```js
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148919077-1"></script>
+  <script>
+```
+
+Generally each web page has three components
+
+* Content: via HTML. Content between nested tags `<tag></tag>` like this that tell the browser what is the structure of the page. Understanding the structure of the page is how we can extract our content.
+* Style: via CSS. There are style sheet rules that tell the browser how to display the page. Sometimes we use `class` to group a bunch of elements together and `id` to single out single elements. We don't really need to understand how CSS works too much here, but exploiting `class` and `id` structure is common in web scraping tasks.
+* Functionality: via JavaScript. This adds dynamic content to the page and all sorts of special functionality. For many pages this doesn't make too much of a difference content wise, but if you're working with a JS heavy page then check out `selenium` (my Selenium workshop slides are linked at the bottom of the page, take a look).
+
+In the old days, people coded all three by hand. Today almost all pages on the internet generate these three components via other programs (including this workshop site using `jekyll`). This kind of generation gives the page a strong structure that can be exploited to web scrape it. Fighting automation with more automation :)
+
+### Workflow
+
+The general workflow for pretty much any type of web automation is 
+
+1. Identify Pattern - for this we'll inspect element around the page till we can find some common aspects (generally looking for elements, classes, ids)
+
+2. Code Pattern - this is where BeautifulSoup comes in. We figure out how to pattern match what we need.
+
+3. Action. Sometimes we're clicking buttons, filling forms, or performing more sub-extraction. 
+
+### Extracting Features
+
+However, HTML is not something easy to parse using string `split()` and `trim()` like we normally do. For this we use a library called `BeautifulSoup`. It gives us lots of neat selectors to navigate around and extract parts of our html page.
+
+```python
+from requests import get
+from bs4 import BeautifulSoup
+
+URL = "https://courses.engr.illinois.edu/cs225/sp2021/pages/lectures.html" # common constant
+
+if __name__ == "__main__":
+    page_html = get(URL).text
+    page = BeautifulSoup(page_html, features="html.parser")
+
+    breakpoint()
+```
+
+I've added a `breakpoint()` at the end which creates an interactive console at the end of our program. This is generally quite useful for debugging and for any web bots I think it's a good workflow because you can figure out your next steps right away, and once you're sure you can add it back to the program. Having the main check makes sure `pytest` doesn't hit the debugger and actual code.
+
+### Get Row 
+
+The page has each week's lectures in one row. A good strategy for scaping would be getting each row, and then getting the slides for each week seperately.
+
+#### Identify Pattern
+
+Now let's open the browser and inspect element around. Afet some poking about we find that all the element rows have a `<div>` element with the class `lecture-row` that wraps it. 
+
+#### Code Pattern 
+
+Now let's try it out in our console. `pdb` is python debugger and here we can run one line at a time to see what it does. This is good for trying out things, and inspecting the state of existing stuff too. 
+
+```python
+$ python scrape.py
+--Return--
+> /home/harsh183/Experiments/225lecture/scrape.py(10)<module>()->None
+-> breakpoint()
+(Pdb)
+```
+
+Let's use `find_all` in beautful soup to match the pattern.
+
+```python
+(Pdb) rows = page.find_all('div', class_="lecture-row")
+(Pdb) len(rows)
+15
+```
+
+Usually I like using `len()` to check if my matching was successful. `15` corresponds to the number of weeks so we're good here. Now let's inspect the order using `.text` which shows the displayed web page text.
+
+```python
+(Pdb) rows[0].text
+'\n\n\n\nMon, 03 May\nAll Pairs Shortest Path (APSP) (Fall Dec 6)\n\nslides\nhandout\nTA lecture notes\n\n\n\n\n\n\n\nWed, 05 May\nReview\n\nslides\n\n\n\n\n\n\n\nThu, 06 May\nReading Day and Final Project\n\nexam details\n\n\n\n\n'
+(Pdb) rows[1].text
+'\n\n\n\nMon, 26 Apr\nEnd of MST and Single Source Shortest Path (SSSP) (Fall Dec 2)\n\nslides\nhandout\nTA lecture notes\n\n\n\n\n\n\n\nWed, 28 Apr\nSingle Source Shortest Path (SSSP) (Fall Dec 4)\n\nslides\nhandout\nTA lecture notes\n\n\n\n\n\n\n\nFri, 30 Apr\nExam 3\n\nexam details\n\n\n\n\n'
+(Pdb) rows[14].text
+'\n\n\n\nMon, 25 Jan\nIntroduction\n\nslides\nhandout\ncode\nTA lecture notes\n\n\n\n\n\n\n\nWed, 27 Jan\nClasses\n\nslides\nhandout\ncode\nTA lecture notes\n\n\n\n\n\n\n\nFri, 29 Jan\nPointers and Memory\n\nslides\nhandout\ncode\nTA lecture notes\n\n\n\n\n'
+```
+
+Looks like Beautiful Soup captured the rows as they appear on the page. But the page puts the lecture rows in reverse order. Let's try reversing it and seeing if it looks good.
+
+```python
+(Pdb) rows.reverse()
+(Pdb) rows[0].text
+'\n\n\n\nMon, 25 Jan\nIntroduction\n\nslides\nhandout\ncode\nTA lecture notes\n\n\n\n\n\n\n\nWed, 27 Jan\nClasses\n\nslides\nhandout\ncode\nTA lecture notes\n\n\n\n\n\n\n\nFri, 29 Jan\nPointers and Memory\n\nslides\nhandout\ncode\nTA 
+(Pdb) rows[14].text
+'\n\n\n\nMon, 03 May\nAll Pairs Shortest Path (APSP) (Fall Dec 6)\n\nslides\nhandout\nTA lecture notes\n\n\n\n\n\n\n\nWed, 05 May\nReview\n\nslides\n\n\n\n\n\n\n\nThu, 06 May\nReading Day and Final Project\n\nexam details\n\n\n\n\n'
+(Pdf) exit() # to leave
+```
+
+Since this looks good lets add it to our code. 
+
+```python
+def get_rows(page):
+    rows = page.find_all('div', class_="lecture-row")
+    rows.reverse() # to get the proper order
+    return rows
+```
+
+Let's add a test to make sure our functionality is working correctly as well. Having a function helps us since we can test the function. 
+
+```python
+def test_get_rows():
+    page = BeautifulSoup(get(URL).text, features="html.parser")
+    rows = get_rows(page)
+    assert len(rows) == 15, "There are 15 weeks of lectures"
+    assert "Introduction" in rows[0].text, "The first row has the intro lecture"
+```
+
+At this stage `pytest` should pass everything. Double check if it's not. The full program should be
+
+```python
+from requests import get
+from bs4 import BeautifulSoup
+
+URL = "https://courses.engr.illinois.edu/cs225/sp2021/pages/lectures.html"
+
+def get_rows(page):
+    rows = page.find_all('div', class_="lecture-row")
+    rows.reverse() # to get the proper order
+    return rows
+
+def test_extractors():
+    page = BeautifulSoup(get(URL).text, features="html.parser")
+    rows = get_rows(page)
+    assert len(rows) == 15, "There are 15 weeks of lectures"
+    assert "Introduction" in rows[0].text, "The first row has the intro lecture"
+
+if __name__ == "__main__":
+    page_html = get(URL).text
+
+    page = BeautifulSoup(page_html, features="html.parser")
+    rows = get_rows(page)
+    
+    breakpoint()
+```
+
+#### Action
+
+In this case, what we're looking for is within the same element. So now we can perform extractions on each row accordingly.
+
+### Getting Lecture Card Details
+
+Our plan is to save each file as `lecture_name.pdf`. For this we need to extract the lecture name and figure out the download link.
+
+#### Identify Pattern
+
+If we poke around using inspect element. Each card has a `div` with a class `card`. We find that at `h5` element has the name and the first item in a `ul` list with the class `lecture-links`. In some cases the lecture links are not present (University Break, Exams etc.) so we can check if the list is empty before trying to save stuff.
+
+#### Code Pattern
+
+Let's take a sample row with all valid links (Week 1) and see if we're able to extract things. First, let's get each day's card:
+
+```python
+$ python scrape.py
+(Pdb) first_row = rows[0] # row with everything we want
+(Pdb) cards = first_row.find_all('div', class_="card-body")
+(Pdb) len(cards)
+3
+(Pdb) [card.text for card in cards]
+['\nMon, 25 Jan\nIntroduction\n\nslides\nhandout\ncode\nTA lecture notes\n\n', '\nWed, 27 Jan\nClasses\n\nslides\nhandout\ncode\nTA lecture notes\n\n', '\nFri, 29 Jan\nPointers and Memory\n\nslides\nhandout\ncode\nTA lecture notes\n\n']
+```
+
+Having the right length and text is a good sign. Now let's get the name:
+
+```python
+(Pdb) sample_card = cards[1] # sample card with the right stuff
+(Pdb) sample_card.find('h5')
+<h5 class="card-title">Classes</h5>
+(Pdb) title = sample_card.find('h5').text
+(Pdb) title
+'Classes'
+```
+
+Similarly let's figure out how to get the title. We can use dictionary sytnax to get element attributes, here we use `['href']`. `string=` lets beautiful soup match on the actual link text.
+```python
+(Pdb) slide_links = sample_card.find_all('li', string="slides") # check the link title
+(Pdb) len(slide_links)
+1
+(Pdb) slide_links = sample_card.find_all('li', string="slides") # check the link title
+(Pdb) slide_links[0]['href']
+*** KeyError: 'href'
+(Pdb) slide_links[0].find('a')
+<a href="/cs225/sp2021/assets/lectures/slides/cs225sp21-02-classes-slides.pdf">slides</a>
+(Pdb) slide_links[0].find('a')['href']
+'/cs225/sp2021/assets/lectures/slides/cs225sp21-02-classes-slides.pdf'
+```
+
+Looks like we don't get the the base url, we can store it at the start of our program which we can just add.
+
+```python
+BASE_URL = "https://courses.engr.illinois.edu"
+```
+
+Next, let's check a point where there is no slides. Looks like checking if `slide_links` has a len of 0 or 1 can be a good way of checking if there is a slide link. In those cases we can skip.
+
+```python
+(Pdb) missing_row = rows[5]
+(Pdb) missing_row.text
+'\n\n\n\nMon, 22 Feb\nStacks and Queues\n\nslides\nhandout\ncode\nTA lecture notes\n\n\n\n\n\n\n\nWed, 24 Feb\niterators\n\nslides\nhandout\ncode\nTA lecture notes\n\n\n\n\n\n\n\nFri, 26 Feb\nIntro Trees\n\nslides\nhandout\ncode\nTA lecture notes\n\n\n\n\n'
+(Pdb) missing_card = missing_row.find_all('div', class_="card-body")[2]
+(Pdb) missing_card.text
+'\nFri, 05 Mar\nExam 1\n\nexam details\n\n'
+(Pdb) slide_links = missing_card.find_all('li', string="slides")
+(Pdb) len(slide_links)
+0
+```
+
+Now let's quickly code this in: 
+
+```python
+def get_row_info(row):
+    cards = row.find_all('div', class_="card-body")
+    return [get_card_info(card) for card in cards]
+
+def get_card_info(card):
+    title = card.find('h5').text
+    slide_links = card.find_all('li', string="slides")
+    download_link = None # in case there is nothing
+    if len(slide_links) > 0:
+        download_link = BASE_URL + slide_links[0].find('a')['href']
+
+    return title, download_link
+```
+
+and write some tests similar to what we were trying in our console:
+
+```python
+def test_extractors():
+    page = BeautifulSoup(get(URL).text, features="html.parser")
+    rows = get_rows(page)
+    assert len(rows) == 15, "There are 15 weeks of lectures"
+    assert "Introduction" in rows[0].text, "The first row has the intro lecture"
+
+    # normal row
+    third_row = rows[2]
+    third_week_info = get_row_info(third_row)
+    assert len(third_week_info) == 3, "Get all three lectures"
+    
+    sample_title, sample_url = third_week_info[0]
+    assert sample_title == "Overloading"
+    assert sample_url == "https://courses.engr.illinois.edu/cs225/sp2021/assets/lectures/slides/cs225sp21-07-overloading-slides.pdf"
+
+    # missing row
+    missing_row = rows[5]
+    missing_row_info = get_row_info(missing_row)
+    assert missing_row_info[2] == ("Exam 1", None), "Missing links get None"
+```
+
+All of this should pass. Writing tests as we go along as a good way to verify our web scraper is working as intended. 
+
+At this point your full code should be:
+
+```python
+from requests import get
+from bs4 import BeautifulSoup
+
+BASE_URL = "https://courses.engr.illinois.edu"
+URL = "https://courses.engr.illinois.edu/cs225/sp2021/pages/lectures.html"
+
+def get_rows(page):
+    rows = page.find_all('div', class_="lecture-row")
+    rows.reverse() # to get the proper order
+    return rows
+
+def get_row_info(row):
+    cards = row.find_all('div', class_="card-body")
+    return [get_card_info(card) for card in cards]
+
+def get_card_info(card):
+    title = card.find('h5').text
+    slide_links = card.find_all('li', string="slides")
+    download_link = None # in case there is nothing
+    if len(slide_links) > 0:
+        download_link = BASE_URL + slide_links[0].find('a')['href']
+
+    return title, download_link
+
+
+def test_extractors():
+    page = BeautifulSoup(get(URL).text, features="html.parser")
+    rows = get_rows(page)
+    assert len(rows) == 15, "There are 15 weeks of lectures"
+    assert "Introduction" in rows[0].text, "The first row has the intro lecture"
+
+    # normal row
+    third_row = rows[2]
+    third_week_info = get_row_info(third_row)
+    assert len(third_week_info) == 3, "Get all three lectures"
+    
+    sample_title, sample_url = third_week_info[0]
+    assert sample_title == "Overloading"
+    assert sample_url == "https://courses.engr.illinois.edu/cs225/sp2021/assets/lectures/slides/cs225sp21-07-overloading-slides.pdf"
+
+    # missing row
+    missing_row = rows[5]
+    missing_row_info = get_row_info(missing_row)
+    assert missing_row_info[2] == ("Exam 1", None), "Missing links get None"
+
+if __name__ == "__main__":
+    page_html = get(URL).text
+
+    page = BeautifulSoup(page_html, features="html.parser")
+    rows = get_rows(page)
+    
+    breakpoint()
+```
+
+### Actually downloading files
+
+Now that our code functions are set up nicely, let's create a loop for actually creating files. To create folders we use the built in `os` module's `mkdirs` to set it up. Let's create a folder per week. And to download the each file we're using `with open` with the mode `wb` to set up our downloads.
+
+```python
+for i, row in enumerate(rows):
+        week_num = i + 1
+        folder_name = f"week{week_num}"
+        os.makedirs(folder_name, exist_ok=True)
+
+        row_info = get_row_info(row)
+        for title, slide_url in row_info:
+            if slide_url is None:
+                continue
+            
+            file_name = f"{folder_name}/{title}.pdf"
+            print(file_name)
+            slide_content = get(slide_url).content
+            with open(file_name, "wb") as slide_file:
+                slide_file.write(slide_content)
+            print(f"Downloaded: {file_name}")
+        
+        print(f"Downloaded Week{week_num}")
+        print()
+```
+
 * for each week we create a folder called `week<n>` where n is 1.16
 * we get the date we save `<date>_slides.pdf` and `<date>_handout.pdf` where date is what we scraped
 
