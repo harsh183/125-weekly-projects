@@ -12,7 +12,7 @@ toc: true
 
 [Youtube Link](https://youtu.be/9FYlZ7eS-a8) and [Github repo](https://github.com/harsh183/lecture-slide-scrape)
 
-Note: `pygame` with Ahmed has been mvoed to June 22. Make sure to show up. He's a great presenter who can teach just about anything.
+Note: `pygame` with Ahmed has been moved to June 22. Make sure to show up. He's a great presenter who can teach just about anything.
 
 Automation is fun! What if we could do fancy stuff through automation with the web browser?
 
@@ -42,15 +42,15 @@ And run
 $ pip install -r requirements.txt
 ```
 
-We'll be coding a web scraper that uses the structure in HTML files to collect data. You don't actually need to understand much html at all but if you've never seen it before I suggest a quick read through [What is HTML?](https://www.yourhtmlsource.com/starthere/whatishtml.html) and [My First Site](https://www.yourhtmlsource.com/myfirstsite/). 
+We'll be coding a web scraper that uses the structure in HTML files to collect data. You don't actually need to understand much HTML at all, but if you've never seen it before, I suggest a quick read through [What is HTML?](https://www.yourhtmlsource.com/starthere/whatishtml.html) and [My First Site](https://www.yourhtmlsource.com/myfirstsite/). 
 
 ## Workshop
 
-We'll be making a tool that scrapes the UIUC CS 225 website for all the slide URLs and downloading them all locally. You can adapt this kind for approach for getting content for pretty much any of your classes with ease.
+We'll be making a tool that scrapes the UIUC CS 225 website for all the slide URLs and downloads them all locally. You can adapt this approach to scrape content for pretty much any of your classes with ease.
 
 ### Getting the page HTML
 
-First we start at the CS 225 [Homepage](https://courses.engr.illinois.edu/cs225/sp2021/) on the web browser and poke around till we find the page we're looking for. After that we import `get` from the built in `requests` library and use `.text` to get the page contents. Let's kick off `scrape.py`:
+First we start at the [CS 225 Homepage](https://courses.engr.illinois.edu/cs225/sp2021/) on the web browser and poke around until we find the page we're looking for. After that, we import `get` from the built-in `requests` library and use `.text` to get the page contents. Let's kick off `scrape.py`:
 
 ```python
 from requests import get
@@ -60,7 +60,7 @@ page_html = get(URL).text
 print(page_html[0:200]) # get the first 200 chars
 ```
 
-which prints out an html page:
+which prints out an HTML page:
 
 ```js
 <!DOCTYPE html>
@@ -72,17 +72,17 @@ which prints out an html page:
   <script>
 ```
 
-Generally each web page has three components
+Generally, each web page has three components:
 
 * Content: via HTML. Content between nested tags `<tag></tag>` like this that tell the browser what is the structure of the page. Understanding the structure of the page is how we can extract our content.
-* Style: via CSS. There are style sheet rules that tell the browser how to display the page. Sometimes we use `class` to group a bunch of elements together and `id` to single out single elements. We don't really need to understand how CSS works too much here, but exploiting `class` and `id` structure is common in web scraping tasks.
-* Functionality: via JavaScript. This adds dynamic content to the page and all sorts of special functionality. For many pages this doesn't make too much of a difference content wise, but if you're working with a JS heavy page then check out `selenium` (my Selenium workshop slides are linked at the bottom of the page, take a look).
+* Style: via CSS. There are style sheet rules that tell the browser how to display the page. Sometimes we use `class` to group a bunch of elements together and `id` to single out single elements. We don't really need to understand too much about how CSS works here, but exploiting `class` and `id` structure is common in web scraping tasks.
+* Functionality: via JavaScript. This adds dynamic content to the page and all sorts of special functionality. For many pages, this doesn't make too much of a difference content wise, but if you're working with a JS heavy page then check out `selenium` (my Selenium workshop slides are linked at the bottom of the page, take a look).
 
-In the old days, people coded all three by hand. Today almost all pages on the internet generate these three components via other programs (including this workshop site using `jekyll`). This kind of generation gives the page a strong structure that can be exploited to web scrape it. Fighting automation with more automation :)
+In the old days, people coded all three by hand. Today, almost all pages on the internet generate these three components via other programs (including this workshop site using `jekyll`). This automatic generation gives the page a strong structure that can be exploited to web scrape it. Fighting automation with more automation :)
 
 ### Workflow
 
-The general workflow for pretty much any type of web automation is 
+The general workflow for pretty much any type of web automation is:
 
 1. Identify Pattern - for this we'll inspect element around the page till we can find some common aspects (generally looking for elements, classes, ids)
 
@@ -92,7 +92,7 @@ The general workflow for pretty much any type of web automation is
 
 ### Extracting Features
 
-However, HTML is not something easy to parse using string `split()` and `trim()` like we normally do. For this we use a library called `BeautifulSoup`. It gives us lots of neat selectors to navigate around and extract parts of our html page.
+However, HTML is not easy to parse using the string functions `split()` and `trim()` like we normally do. Instead, we'll use a library called `BeautifulSoup`. It gives us lots of neat selectors to navigate around and extract parts of our html page.
 
 ```python
 from requests import get
@@ -107,19 +107,19 @@ if __name__ == "__main__":
     breakpoint()
 ```
 
-I've added a `breakpoint()` at the end which creates an interactive console at the end of our program. This is generally quite useful for debugging and for any web bots I think it's a good workflow because you can figure out your next steps right away, and once you're sure you can add it back to the program. Having the main check makes sure `pytest` doesn't hit the debugger and actual code.
+I've added a `breakpoint()` at the end, which creates an interactive console at the end of our program. This is generally quite useful for debugging. I think it's a good workflow for all web bots because you can figure out your next steps right away, and once you're sure you can add it back to the program. Having the `__main__` check makes sure `pytest` doesn't hit the debugger and actual code.
 
 ### Get Row 
 
-The page has each week's lectures in one row. A good strategy for scaping would be getting each row, and then getting the slides for each week seperately.
+The page has each week's lectures in one row. A good strategy for scraping would be retrieving each row, and then getting the slides for each week seperately.
 
 #### Identify Pattern
 
-Now let's open the browser and inspect element around. Afet some poking about we find that all the element rows have a `<div>` element with the class `lecture-row` that wraps it. 
+Now let's open the browser and inspect element. After some poking about, we find that all element rows have a `<div>` element with the class `lecture-row` that wraps it. 
 
 #### Code Pattern 
 
-Now let's try it out in our console. `pdb` is python debugger and here we can run one line at a time to see what it does. This is good for trying out things, and inspecting the state of existing stuff too. 
+Now let's try it out in our console. We'll use `pdb` (Python debugger) so that we can run one line at a time to see what it does. This is good for trying out things, and inspecting the state of existing stuff too. 
 
 ```python
 $ python scrape.py
@@ -129,7 +129,7 @@ $ python scrape.py
 (Pdb)
 ```
 
-Let's use `find_all` in beautful soup to match the pattern.
+Let's use `find_all` in BeautifulSoup to match the pattern.
 
 ```python
 (Pdb) rows = page.find_all('div', class_="lecture-row")
@@ -137,7 +137,7 @@ Let's use `find_all` in beautful soup to match the pattern.
 15
 ```
 
-Usually I like using `len()` to check if my matching was successful. `15` corresponds to the number of weeks so we're good here. Now let's inspect the order using `.text` which shows the displayed web page text.
+Usually I use `len()` to check if my matching was successful. `15` corresponds to the number of weeks so we're good here. Now let's inspect the order using `.text` which shows the displayed web page text.
 
 ```python
 (Pdb) rows[0].text
@@ -216,7 +216,7 @@ Our plan is to save each file as `lecture_name.pdf`. For this we need to extract
 
 #### Identify Pattern
 
-If we poke around using inspect element. Each card has a `div` with a class `card`. We find that at `h5` element has the name and the first item in a `ul` list with the class `lecture-links`. In some cases the lecture links are not present (University Break, Exams etc.) so we can check if the list is empty before trying to save stuff.
+Let's poke around using inspect element. Each card has a `div` with a class `card`. We find that at `h5` element has the name and the first item in a `ul` list with the class `lecture-links`. In some cases, the lecture links aren't present (university breaks, exams, etc.) so we can check if the list is empty before trying to save stuff.
 
 #### Code Pattern
 
@@ -243,7 +243,7 @@ Having the right length and text is a good sign. Now let's get the name:
 'Classes'
 ```
 
-Similarly let's figure out how to get the title. We can use dictionary sytnax to get element attributes, here we use `['href']`. `string=` lets beautiful soup match on the actual link text.
+Similarly, let's figure out how to get the title. We can use dictionary syntax to get element attributes, so here we use `['href']`. `string=` lets BeautifulSoup match on the actual link text.
 
 ```python
 (Pdb) slide_links = sample_card.find_all('li', string="slides") # check the link title
@@ -258,13 +258,13 @@ Similarly let's figure out how to get the title. We can use dictionary sytnax to
 '/cs225/sp2021/assets/lectures/slides/cs225sp21-02-classes-slides.pdf'
 ```
 
-Looks like we don't get the the base url, we can store it at the start of our program which we can just add.
+Looks like we didn't get the the base url, but we can just manually store it at the start of our program.
 
 ```python
 BASE_URL = "https://courses.engr.illinois.edu"
 ```
 
-Next, let's check a point where there is no slides. Looks like checking if `slide_links` has a len of 0 or 1 can be a good way of checking if there is a slide link. In those cases we can skip.
+Next, let's check a point where there are no slides. We can check if `slide_links` has a `len` of 0 or 1 in order to figure out whether there's a slide link. If not, we can skip it.
 
 ```python
 (Pdb) missing_row = rows[5]
@@ -319,9 +319,9 @@ def test_extractors():
     assert missing_row_info[2] == ("Exam 1", None), "Missing links get None"
 ```
 
-All of this should pass. Writing tests as we go along as a good way to verify our web scraper is working as intended. 
+All of this should pass. Writing tests as we go along as a good way to verify that our web scraper is working as intended. 
 
-At this point your full code should be:
+At this point, your full code should be:
 
 ```python
 from requests import get
@@ -391,7 +391,7 @@ for i, row in enumerate(rows):
         os.makedirs(folder_name, exist_ok=True)
 ```
 
-And to download the each file we're using `with open` with the mode `wb` (write bytes) to set up our downloads. Here we use `.content` to get the page as `bytes` (raw data) so that we can save this as is. We also add in prints to show when something is done. If it fails anywhere, we know where it failed.
+To download each file, we're using `with open` with the mode `wb` (write bytes) to set up our downloads. Here we use `.content` to get the page as `bytes` (raw data) so that we can save this as is. We also add in prints to show when something is done. If it fails anywhere, we know where it failed.
 
 ```python
 for i, row in enumerate(rows):
@@ -496,15 +496,15 @@ if __name__ == "__main__":
 
 ## Exercise 
 
-Currently we just use the name of the lecture as our file name, what if we could also include the date. Figure out how to extract that and add it.
+Currently we just use the name of the lecture as our file name. What if we could also include the date? Your job now is to figure out how to extract that and add it in.
 
 ## Learn more about Web Autmation
 
-* A few weeks ago I held a workshop on Web Bots as well where I covered `webbrowser` and `selenium`. I _highly_ reccomend those. [Slides](https://wacky-web-bots.netlify.app/dist/125.html), [Code](https://github.com/harsh183/sail21-whacky-web-bots/tree/main/workshop_code/cs125) and [Video](https://www.youtube.com/watch?v=07YsSpcDjHI).
+* A few weeks ago, I held a different workshop on Web Bots where I covered `webbrowser` and `selenium`. I _highly_ reccomend those. [Slides](https://wacky-web-bots.netlify.app/dist/125.html), [Code](https://github.com/harsh183/sail21-whacky-web-bots/tree/main/workshop_code/cs125) and [Video](https://www.youtube.com/watch?v=07YsSpcDjHI).
 
 * `scrapy` is a more serious framework for writing web scraping spiders in python. Take a look at a starter tutorial [here](https://docs.scrapy.org/en/latest/intro/tutorial.html)
 
-* Web bots are commonly used for testing. [pytest-selenium](https://pytest-selenium.readthedocs.io/en/latest/user_guide.html) combines `pytest` with `selenium`. Here is another guide on [beautifulsoup testing](https://www.tutorialspoint.com/python_web_scraping/python_web_scraping_testing_with_scrapers.htm) which combines it with `unittest`.
+* Web bots are commonly used for testing. [pytest-selenium](https://pytest-selenium.readthedocs.io/en/latest/user_guide.html) combines `pytest` with `selenium`. Here is another guide on [BeautifulSoup testing](https://www.tutorialspoint.com/python_web_scraping/python_web_scraping_testing_with_scrapers.htm) which combines it with `unittest`.
 
 ## Learn more Python
 
@@ -514,25 +514,25 @@ Currently we just use the name of the lecture as our file name, what if we could
 
 ## Ethics
 
-- [Forbes - The Social Impact Of Bad Bots And What To Do About Them](https://www.forbes.com/sites/forbestechcouncil/2020/12/04/the-social-impact-of-bad-bots-and-what-to-do-about-them/?sh=55a7348b59e0) - Bots have the potential to be used in bad ways, for example influencing politics or harassment.
+- [Forbes - The Social Impact Of Bad Bots And What To Do About Them](https://www.forbes.com/sites/forbestechcouncil/2020/12/04/the-social-impact-of-bad-bots-and-what-to-do-about-them/?sh=55a7348b59e0) - Bots have the potential to be used in bad ways, like harassment or influencing politics.
 
 ## Social Impact of Open Source
 
-Open Source software has a large impact on the world today. Since it's free, it's accessible to people who can't afford it and help new startups grow out of communities who couldn't afford it in the past. Open source software also provides decentralized options with good security which allow for privacy and [worry authoritarian governments](https://www.vice.com/en/article/d3nndy/mozilla-wikimedia-decide-how-to-respond-to-kazakhstan-internet-surveillance). Many governments have also turned towards open source projects as a way of giving the results to the public, such as the [Indian Covid19 contact tracing app](https://github.com/nic-delhi/AarogyaSetu_Android).
+Open Source software has a large impact on the world today. Since it's free, it's accessible to people who can't afford it, which can help new startups grow out of communities that couldn't afford it in the past. Open source software also provides decentralized options with good security which allow for privacy and [worry authoritarian governments](https://www.vice.com/en/article/d3nndy/mozilla-wikimedia-decide-how-to-respond-to-kazakhstan-internet-surveillance). Many governments have also turned towards open source projects as a way of giving the results to the public, such as the [Indian COVID-19 contact tracing app](https://github.com/nic-delhi/AarogyaSetu_Android).
 
 To learn more, check out: [Pfaff and David - Society and open source | Why open source software is better for society than proprietary closed source software](https://benpfaff.org/writings/anp/oss-is-better.html)
 
 ## Ideas
 
-* Extract any information from a site you use: sports scores, class information, news sites, job postings etc. Make sure the page is publicly accessible and you're not creating too much load on the website.
+* Extract information from a site you use: sports scores, class information, news sites, job postings, etc. Make sure the page is publicly accessible and you're not creating too much load on the website.
 
-* You don't have to use `beautifulSoup`, feel free to use `Selenium` to interact dynamically with web sites (click, fill in forms, scroll) as well. See the linked workshop for more information. 
+* You don't have to use `BeautifulSoup`. Feel free to use `Selenium` to interact dynamically with websites (click, fill in forms, scroll) as well. See the linked workshop for more information. 
 
 * You can also use it to test something out if you already have a site. 
 
 ## Requirements
 
-* You should show it off in your README.md file, with animations/video and an explanation of the game.
+* You should show it off in your README.md file, with animations/video and an explanation of the web bot.
 
 * Has to use a Open Source license via a `LICENSE` file
 
