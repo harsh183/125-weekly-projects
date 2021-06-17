@@ -216,7 +216,7 @@ Our plan is to save each file as `lecture_name.pdf`. For this we need to extract
 
 #### Identify Pattern
 
-Let's poke around using inspect element. Each card has a `div` with a class `card`. We find that at `h5` element has the name and the first item in a `ul` list with the class `lecture-links`. In some cases, the lecture links aren't present (university breaks, exams, etc.) so we can check if the list is empty before trying to save stuff.
+Let's poke around using inspect element. Each card has a `div` with a class `card`. We find that the `h5` element has the lecture title. And the lecture links is a list item with the content `slides`. In some cases, the lecture links aren't present (university breaks, exams, etc.) so we can check if the list is empty before trying to save stuff.
 
 #### Code Pattern
 
