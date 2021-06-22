@@ -10,9 +10,9 @@ toc: true
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD033 MD040 -->
 
-Many people got into CS by playing video games and wanting to make more. Even if you didn't, learning how to make something simple and fun is quite rewarding, not to mention nice to show off to other people.
+Many people got into CS by playing video games and wanting to make more. But, even if you didn't, learning how to make something simple and fun is quite rewarding, not to mention nice to show off to other people.
 
-Note: If you're using WSL/WSL2 this won't work due to windowing issues so make sure your install of python is local. 
+**Note:** If you're using WSL/WSL2, this won't work due to windowing issues so ensure your install of python is local. 
 
 ```python
 print("Hello pygame!")
@@ -26,16 +26,16 @@ Hosted by: Harsh Deep
 
 ## Install
 
-```bash
+```js
 pip install pygame
 ```
 
 ## Workshop
 **Starter:** https://github.com/ranchncarrots/sumOfCodeGameStarterCode <br>
 
-First we will import the following. We'll be using them later. <br>
+First, we will import the following. We'll be using these libraries as we go along.  <br>
 
-```js
+```python
 import sys, pygame, random
 ```
 
@@ -45,7 +45,7 @@ Now we can begin coding! Every pygame script begins with the following line:
 pygame.init()
 ```
 
-This initializes the libary and sets up everything we need to do. We can then:
+This initializes the library and sets up everything we need to do. We can then:
 
 ```python
 size = width, height = 500, 500
@@ -53,9 +53,9 @@ size = width, height = 500, 500
 screen = pygame.display.set_mode(size)
 ```
 
-Here we are declaring our width height and size variables. We are then using a built in pygame function to create our screen. <br></br>
+Here we are declaring our width, height, and size variables. We are then use these values in a built-in pygame function to create our screen.  <br>
 
-Every game has what is called a game loop. This loop goes on for the lifespan of the game and is where we put all of our game logic.
+Every game has what is called a game loop. It's an infinite loop goes on for the game's lifespan and is where we put all of our game logic.
 
 ```python
 clock = pygame.time.Clock()
@@ -65,16 +65,19 @@ while 1:
     pygame.display.flip()
 ```
 
-Here weve done the following. We have set our tick rate to 60 fps using the built in pygame function. We then fill our screen with black(this will become more clear later), and update the display. However at this point you should be unable to see a window on your screen. That is because we are yet to handle the event queue:
+Here we've done the following. We have set our tick rate to 60 fps using the built-in pygame function. We then fill our screen with black(this will become clearer later) and update the display. However, at this point, you should be unable to see a window on your screen. That is because we are yet to handle the event queue:
 
 ```python
 for event in pygame.event.get():
   if event.type == pygame.QUIT: sys.exit()
 ```
 
-The event queue is simply a queue of all the events that have occured in your game. We can loop through these and determine if we care about any of these events. Here we only care if the event is quit in which case we dip.
+The event queue is simply a queue of all the events that have occurred in your game from the computer system. We can loop through these and determine if we care about any of these events. Here we only care if the event is 'QUIT' (Control+C on your keyboard) in which case we dip.
+
 ### Setting up Main Character
+
 We will use OOP to work with defining or characters. Handily pygames also lets us extend a sprite class that provides us with some useful functionality. We will
+
 ```python
 class MainCharacter(pygame.sprite.Sprite):
     def __init__(self):
@@ -87,22 +90,34 @@ class MainCharacter(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (250,250)
 ```
+
 Each sprite requires it has an image and a rect so that pygame can draw it out. We also have defined self.rect.center so the sprite can start in the middle.<br>
-### Putting the Main Character in a group <br>
-In pygame groups are used to 'group' similar characters so we can operate on them all at once. To define a group before you game loop put:
-```
+
+### Putting the Main Character in a group 
+
+<br>
+
+In pygame, groups are used to 'group' similar characters to operate on them all at once. To define a group before you game loop, put:
+
+```python
 main = MainCharacter()
 
 main_sprite = pygame.sprite.Group()
 main_sprite.add(main)
 ```
-Once our mainCharacter is in a group we can also draw it out. Insert ``main_sprite.draw(screen)`` inside of your loop. You should now see an image in the center of your screen.
-### Handling keyboard input.
+
+Once our `mainCharacter` is in a group, we can also draw it out. Insert ``main_sprite.draw(screen)`` inside of your loop. You should now see an image in the center of your screen.
+
+### Handling keyboard input
+
 Introduce a speed array at the top:
+
 ```python
 speed = [0,0]
 ```
-We will use this to handle moving with the keyboard, inserting the following in your game loop
+
+We will use this to handle moving with the keyboard, inserting the following in your game loop:
+
 ```python
 key = pygame.key.get_pressed()
 
@@ -119,7 +134,9 @@ key = pygame.key.get_pressed()
         if (speed[1] < 20):
             speed[1] += 1.5
 ```
-``pygame.key.get_pressed`` returns a dictionary with whether or not that key has been pressed. We can then handle the case for each key. However notice once you click it does not slow down. Lets introduce some slow down behavior:
+
+`pygame.key.get_pressed` returns a dictionary with whether or not that key has been pressed. We can then handle the case for each key. However notice once you click it does not slow down. Lets introduce some slow down behavior:
+
 ```python
     if (speed[0] > 0):
         speed[0] -= .5
@@ -132,14 +149,18 @@ key = pygame.key.get_pressed()
     elif (speed[1] < 0):
         speed[1] += .5
 ```
-Now you should be slowing down after you release the key. But we can go off screen. To fix that we will:
+
+Now you should be slowing down after you release the key. But we can go off screen. To fix that we add a bounce at the boundaries of the screen:
+
 ```python
     if main.rect.left < 0 or main.rect.right > width:
         speed[0] = -speed[0] * 1.5
     if main.rect.top < 0 or main.rect.bottom > height:
         speed[1] = -speed[1] * 1.5
 ```
+
 ### Bad Guy Class
+
 ```python
 class Corona(pygame.sprite.Sprite):
     def __init__(self):
@@ -169,19 +190,24 @@ class Corona(pygame.sprite.Sprite):
         if (self.badSpeed[1] < -6):
             self.badSpeed[1] += .5
 ```
-The only thing that should look relatively unfamiliar here is the inclusion of an update method. This is because it is inherited from the sprite class and we can call update on an entire group, and it will run that update method for each indivisual sprite. We are also using random.uniform() to introduce directional variation in our bad guys.<br>
 
-We can then add them to a group 
+The only thing that should look relatively unfamiliar here is the inclusion of an update method. This is because it is inherited from the sprite class, and we can call update on an entire group. It will run that update method for each individual  sprite. We are also using `random.uniform()` to introduce directional variation in our bad guys. <br>
+
+We can then add them to a group:
+
 ```python
 badSprites = pygame.sprite.Group()
 
 for i in range(0, 3):
     badSprites.add(Corona())
 ```
+
 If we introduce the line ``badSprites.update()`` inside of our game loop followed by a ``badSprites.draw(screen)`` we should see them hopping around the screen.
 
 ### Handling Collisions
-Augment or main character class to handle lives. There are many ways of doing this I chose:
+
+Augment or main character class to handle lives. There are many ways of doing this, I chose:
+
 ```python
 class MainCharacter(pygame.sprite.Sprite):
     def __init__(self):
@@ -201,8 +227,10 @@ class MainCharacter(pygame.sprite.Sprite):
 
         if (self.totalLives <= 0):
             sys.exit()
- ```
- We can then insert the following into our game loop:
+```
+
+We can then insert the following into our game loop:
+
 ```python
     collisions = pygame.sprite.spritecollideany(main, badSprites)
 
@@ -210,15 +238,20 @@ class MainCharacter(pygame.sprite.Sprite):
         if (pygame.time.get_ticks() - main.lastHit > 1000):
             main_sprite.update()
 ```
-``pygame.sprite.spritecollideany(main, badSprites)`` returns either None or a sprite name that collided. If its not None we know there is a collision and if it has been outside of the grace period of the last hit we go ahead and call update to deduct a life. 
+
+`pygame.sprite.spritecollideany(main, badSprites)` returns either None or a sprite name that collided. If it's not `None`, we know there is a collision and if it has been outside of the grace period of the last hit, we go ahead and call update to deduct a life. 
+
 ### Using text to display lives
+
 Here we just have some more syntactical sugar. Insert into your game loop:
+
 ```python
     myFont = pygame.font.SysFont("Times New Roman", 18)
     numsLivesDraw = myFont.render(str(main.totalLives), 1, (250, 250, 250))
     screen.blit(numsLivesDraw, (30,30))
 ```
-In line one we are declaring the lines we want to use. In line two we declare the rendering we want to use. In line 3 we can just blit it on to the screen.
+
+In line 3, we are declaring the lines we want to use. In line 2, we declare the rendering we wish to use. Then, in line 3, we can just blit it onto the screen.
 
 ## Learn more
 
@@ -230,15 +263,15 @@ In line one we are declaring the lines we want to use. In line two we declare th
 
 ## Ethics
 
-* [What we still haven’t learned from Gamergate](https://www.vox.com/culture/2020/1/20/20808875/gamergate-lessons-cultural-impact-changes-harassment-laws) - the rise of gaming and gaming subcultures is a really cool way computer science has hit the world today, however, it also has had many issues with gender diversity. Here's a hindsight look from a large scale issue from 2014 and what it led to after.
+* [What we still haven’t learned from Gamergate](https://www.vox.com/culture/2020/1/20/20808875/gamergate-lessons-cultural-impact-changes-harassment-laws) - the rise of gaming and gaming subcultures is a really cool way computer science has hit the world today, however, it also has had many issues with gender diversity. Here's a hindsight look from a large scale issue from 2014 and it's long term impact.
 
 ## Open Source - Permissive vs Copyleft Licenses
 
-In open source licenses there are two _broad_ categories that most fall under called Permissive and Copyleft. 
+There are two _broad_ categories in open-source licenses that most fall under called Permissive and Copyleft. 
 
-Permissive licenses include ones like `MIT` or `ApacheV2`. These basically say do _whatever_ with the code and if you add the same code over then you often have to include the license too. These are popular for small projects, when people don't care too much, and when they want their open source software to be good enough for commercial use. The workshop repos use this for example.
+Permissive licenses include ones like `MIT` or `ApacheV2`. These basically say do _whatever_ with the code, and if you add the same code over, you often have to include the license. These are popular for small projects when people don't care too much and want their open-source software to be good enough for commercial use. The workshop repos use this, for example.
 
-Copyleft licenses are stronger, such as `GPLv3`, where they want your development of the software to also have the same freedoms the software was available under. Basically that means that your work has to also end up open source. This is often used by large projects like `linux` or by people who want to increase the spread of Open Source. This type of license also makes it hard for commercial use since most of the software is proprietary (i.e., not open source). The repo for the workshops site itself uses GPLv3 as the template uses GPLv3.
+Copyleft licenses are stronger, such as `GPLv3`, where they want future software development to also have the same freedoms the software was available under. Basically, that means that your work has to also end up open source. This is often used by large projects like `Linux` or by people who want to increase the spread of Open Source. However, this type of license makes it hard for commercial use since most of the software is proprietary (i.e., not open source). The repo for the workshops site itself uses GPLv3 as the template uses GPLv3.
 
 For these weekly projects, use any license as long as it's _some_ open source license. 
 
@@ -260,7 +293,8 @@ Feel free to come up with anything you want as long as it's chatbot related. Her
 
 * Have fun with images and custom backgrounds too, for example a main character can have your profile picture or something.
 
-<!-- TODO: add more -->
+* Try to add some humor to it. Often a simple game becomes a lot more fun if you add something unique or some type of inside joke to it. 
+
 ## Requirements
 
 * It should use `pygame`.
