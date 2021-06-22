@@ -12,6 +12,8 @@ toc: true
 
 Many people got into CS by playing video games and wanting to make more. Even if you didn't, learning how to make something simple and fun is quite rewarding, not to mention nice to show off to other people.
 
+Note: If you're using WSL/WSL2 this won't work due to windowing issues so make sure your install of python is local. 
+
 ```python
 print("Hello pygame!")
 ```
