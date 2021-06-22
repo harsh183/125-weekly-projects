@@ -106,7 +106,37 @@ main_sprite = pygame.sprite.Group()
 main_sprite.add(main)
 ```
 
-Once our `mainCharacter` is in a group, we can also draw it out. Insert ``main_sprite.draw(screen)`` inside of your loop. You should now see an image in the center of your screen.
+Once our `mainCharacter` is in a group, we can also draw it out. Insert ``main_sprite.draw(screen)`` inside of your loop. You should now see an image in the center of your screen. <br>
+
+At this point your coulde should look like:
+```python
+import sys, pygame, random, os
+
+pygame.init()
+
+size = width, height = 500, 500
+screen = pygame.display.set_mode(size)
+speed = [0, 0]
+class MainCharacter(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        # image
+        # rect
+        self.image = pygame.image.load("panda.jpg")
+        self.image = pygame.transform.scale(self.image, (50, 50))
+
+        self.rect = self.image.get_rect()
+        self.rect.center = (250,250)
+main = MainCharacter()
+
+main_sprite = pygame.sprite.Group()
+main_sprite.add(main)
+clock = pygame.time.Clock()
+while 1:
+    clock.tick(60)
+    screen.fill((0, 0, 0))
+    pygame.display.flip()
+```
 
 ### Handling keyboard input
 
