@@ -24,21 +24,14 @@ Hosted by: Harsh Deep
 
 * Comic: [IRA GLASS: Advice for beginners](http://www.zenpencils.com/comic/90-ira-glass-advice-for-beginners/)
 
-## Setup
-
-* First get pygame
+## Install
 
 ```js
-$ pip install pygame
-```
-
-* now git clone the starter repo [repo](https://github.com/ranchncarrots/sumOfCodeGameStarterCode).  <br>
-
-```js
-$ git clone git@github.com:ranchncarrots/sumOfCodeGameStarterCode.git
+pip install pygame
 ```
 
 ## Workshop
+**Starter:** https://github.com/ranchncarrots/sumOfCodeGameStarterCode <br>
 
 First, we will import the following. We'll be using these libraries as we go along.  <br>
 
@@ -116,7 +109,6 @@ main_sprite.add(main)
 Once our `mainCharacter` is in a group, we can also draw it out. Insert ``main_sprite.draw(screen)`` inside of your loop. You should now see an image in the center of your screen. <br>
 
 At this point your coulde should look like:
-
 ```python
 import sys, pygame, random, os
 
@@ -143,6 +135,7 @@ clock = pygame.time.Clock()
 while 1:
     clock.tick(60)
     screen.fill((0, 0, 0))
+    main_sprite.draw(screen)
     pygame.display.flip()
 ```
 
@@ -195,8 +188,78 @@ Now you should be slowing down after you release the key. But we can go off scre
         speed[0] = -speed[0] * 1.5
     if main.rect.top < 0 or main.rect.bottom > height:
         speed[1] = -speed[1] * 1.5
-```
+        
+        
+    main.rect = main.rect.move(speed)
 
+``` 
+<br>
+Your code should now look something like:
+```python
+```python
+import sys, pygame, random, os
+
+pygame.init()
+
+size = width, height = 500, 500
+screen = pygame.display.set_mode(size)
+speed = [0, 0]
+class MainCharacter(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        # image
+        # rect
+        self.image = pygame.image.load("panda.jpg")
+        self.image = pygame.transform.scale(self.image, (50, 50))
+
+        self.rect = self.image.get_rect()
+        self.rect.center = (250,250)
+main = MainCharacter()
+
+main_sprite = pygame.sprite.Group()
+main_sprite.add(main)
+clock = pygame.time.Clock()
+while 1:
+    clock.tick(60)
+    
+    key = pygame.key.get_pressed()
+
+    if (key[pygame.K_a]):
+        if (speed[0] > -20):
+            speed[0] -= 1.5
+    if (key[pygame.K_d]):
+        if (speed[0] < 20):
+            speed[0] += 1.5
+    if (key[pygame.K_w]):
+        if (speed[1] > -20):
+            speed[1] -= 1.5
+    if (key[pygame.K_s]):
+        if (speed[1] < 20):
+            speed[1] += 1.5
+
+     if (speed[0] > 0):
+        speed[0] -= .5
+    elif (speed[0] < 0):
+        speed[0] += .5
+
+
+    if (speed[1] > 0):
+        speed[1] -= .5
+    elif (speed[1] < 0):
+        speed[1] += .5
+        
+    if main.rect.left < 0 or main.rect.right > width:
+        speed[0] = -speed[0] * 1.5
+    if main.rect.top < 0 or main.rect.bottom > height:
+        speed[1] = -speed[1] * 1.5
+        
+    main.rect = main.rect.move(speed)
+
+    
+    screen.fill((0, 0, 0))
+    main_sprite.draw(screen)
+    pygame.display.flip()
+```
 ### Bad Guy Class
 
 ```python
@@ -291,7 +354,6 @@ Here we just have some more syntactical sugar. Insert into your game loop:
 
 In line 3, we are declaring the lines we want to use. In line 2, we declare the rendering we wish to use. Then, in line 3, we can just blit it onto the screen.
 At the end your code should look like:
-
 ```python
 import sys, pygame, random, os
 
