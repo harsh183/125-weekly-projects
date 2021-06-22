@@ -116,6 +116,7 @@ main_sprite.add(main)
 Once our `mainCharacter` is in a group, we can also draw it out. Insert ``main_sprite.draw(screen)`` inside of your loop. You should now see an image in the center of your screen. <br>
 
 At this point your coulde should look like:
+
 ```python
 import sys, pygame, random, os
 
@@ -290,6 +291,7 @@ Here we just have some more syntactical sugar. Insert into your game loop:
 
 In line 3, we are declaring the lines we want to use. In line 2, we declare the rendering we wish to use. Then, in line 3, we can just blit it onto the screen.
 At the end your code should look like:
+
 ```python
 import sys, pygame, random, os
 
