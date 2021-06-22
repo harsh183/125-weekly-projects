@@ -252,6 +252,135 @@ Here we just have some more syntactical sugar. Insert into your game loop:
 ```
 
 In line 3, we are declaring the lines we want to use. In line 2, we declare the rendering we wish to use. Then, in line 3, we can just blit it onto the screen.
+At the end your code should look like:
+```python
+import sys, pygame, random, os
+
+pygame.init()
+
+size = width, height = 500, 500
+base_path = os.path.dirname(__file__)
+print(os.path.join(base_path, "pandas.jpg"))
+
+screen = pygame.display.set_mode(size)
+speed = [0, 0]
+
+class MainCharacter(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        # image
+        # rect
+        self.image = pygame.image.load(os.path.join(base_path, "panda.jpg"))
+        self.image = pygame.transform.scale(self.image, (50, 50))
+
+        self.rect = self.image.get_rect()
+        self.rect.center = (250,250)
+        self.totalLives = 5
+        self.lastHit = 0
+    def update(self):
+        self.lastHit = pygame.time.get_ticks()
+        self.totalLives -= 1
+
+        if (self.totalLives <= 0):
+            sys.exit()
+
+class Corona(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load(os.path.join(base_path, "panda.jpg"))
+        self.image = pygame.transform.scale(self.image, (10, 10))
+        self.rect = self.image.get_rect()
+        self.badSpeed = [3, 3]
+        self.rect.center = (random.randint(0,500), random.randint(0,500))
+    def update(self):
+        self.rect = self.rect.move(self.badSpeed)
+
+        if self.rect.left < 0 or self.rect.right > width:
+            self.badSpeed[0] = -self.badSpeed[0] * 1.5
+            self.badSpeed[1] = self.badSpeed[1] * random.uniform(.5, 1.1)
+        if self.rect.top < 0 or self.rect.bottom > height:
+            self.badSpeed[1] = -self.badSpeed[1] * 1.5
+            self.badSpeed[0] = self.badSpeed[0] * random.uniform(.5, 1.1)
+
+        if (self.badSpeed[0] > 6):
+            self.badSpeed[0] -= .5
+        if (self.badSpeed[0] < -6):
+            self.badSpeed[0] += .5
+
+        if (self.badSpeed[1] > 6):
+            self.badSpeed[1] -= .5
+        if (self.badSpeed[1] < -6):
+            self.badSpeed[1] += .5
+
+main = MainCharacter()
+
+main_sprite = pygame.sprite.Group()
+main_sprite.add(main)
+
+badSprites = pygame.sprite.Group()
+
+for i in range(0, 3):
+    badSprites.add(Corona())
+clock = pygame.time.Clock()
+while 1:
+    clock.tick(60)
+
+    key = pygame.key.get_pressed()
+
+    if (key[pygame.K_a]):
+        if (speed[0] > -20):
+            speed[0] -= 1.5
+    if (key[pygame.K_d]):
+        if (speed[0] < 20):
+            speed[0] += 1.5
+    if (key[pygame.K_w]):
+        if (speed[1] > -20):
+            speed[1] -= 1.5
+    if (key[pygame.K_s]):
+        if (speed[1] < 20):
+            speed[1] += 1.5
+
+
+    if (speed[0] > 0):
+        speed[0] -= .5
+    elif (speed[0] < 0):
+        speed[0] += .5
+
+
+    if (speed[1] > 0):
+        speed[1] -= .5
+    elif (speed[1] < 0):
+        speed[1] += .5
+
+    if main.rect.left < 0 or main.rect.right > width:
+        speed[0] = -speed[0] * 1.5
+    if main.rect.top < 0 or main.rect.bottom > height:
+        speed[1] = -speed[1] * 1.5
+
+    main.rect = main.rect.move(speed)
+    badSprites.update()
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: sys.exit()
+    collisions = pygame.sprite.spritecollideany(main, badSprites)
+
+    if (collisions != None):
+        if (pygame.time.get_ticks() - main.lastHit > 1000):
+            main_sprite.update()
+
+    print(pygame.time.get_ticks())
+    screen.fill((0, 0, 0))
+    main_sprite.draw(screen)
+    badSprites.draw(screen)
+
+    myFont = pygame.font.SysFont("Times New Roman", 18)
+    numsLivesDraw = myFont.render(str(main.totalLives), True, (250, 250, 250))
+    screen.blit(numsLivesDraw, (30,30))
+
+
+
+    pygame.display.flip()
+  ```
 
 ## Learn more
 
