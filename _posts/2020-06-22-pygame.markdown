@@ -31,6 +31,7 @@ pip install pygame
 ```
 
 ## Workshop
+**Starter:** https://github.com/ranchncarrots/sumOfCodeGameStarterCode <br>
 
 First we will import the following. We'll be using them later. <br>
 
