@@ -24,14 +24,21 @@ Hosted by: Harsh Deep
 
 * Comic: [IRA GLASS: Advice for beginners](http://www.zenpencils.com/comic/90-ira-glass-advice-for-beginners/)
 
-## Install
+## Setup
+
+* First get pygame
 
 ```js
-pip install pygame
+$ pip install pygame
+```
+
+* now git clone the starter repo [repo](https://github.com/ranchncarrots/sumOfCodeGameStarterCode).  <br>
+
+```js
+$ git clone git@github.com:ranchncarrots/sumOfCodeGameStarterCode.git
 ```
 
 ## Workshop
-**Starter:** https://github.com/ranchncarrots/sumOfCodeGameStarterCode <br>
 
 First, we will import the following. We'll be using these libraries as we go along.  <br>
 
