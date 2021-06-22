@@ -210,7 +210,15 @@ class MainCharacter(pygame.sprite.Sprite):
         if (pygame.time.get_ticks() - main.lastHit > 1000):
             main_sprite.update()
 ```
-``pygame.sprite.spritecollideany(main, badSprites)`` returns either None or a sprite name that collided. If its not None we know there is a collision and if it has been outside of the grace period of the last hit we go ahead and call update to deduct a life.
+``pygame.sprite.spritecollideany(main, badSprites)`` returns either None or a sprite name that collided. If its not None we know there is a collision and if it has been outside of the grace period of the last hit we go ahead and call update to deduct a life. 
+### Using text to display lives
+Here we just have some more syntactical sugar. Insert into your game loop:
+```python
+    myFont = pygame.font.SysFont("Times New Roman", 18)
+    numsLivesDraw = myFont.render(str(main.totalLives), 1, (250, 250, 250))
+    screen.blit(numsLivesDraw, (30,30))
+```
+In line one we are declaring the lines we want to use. In line two we declare the rendering we want to use. In line 3 we can just blit it on to the screen.
 
 ## Learn more
 
