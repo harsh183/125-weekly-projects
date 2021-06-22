@@ -195,7 +195,7 @@ Now you should be slowing down after you release the key. But we can go off scre
 ``` 
 <br>
 Your code should now look something like:
-```python
+
 ```python
 import sys, pygame, random, os
 
