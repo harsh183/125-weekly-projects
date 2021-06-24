@@ -10,6 +10,8 @@ toc: true
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD033 MD040 -->
 
+[Recording](https://youtu.be/RyPzWvs6XLg)
+
 Many people got into CS by playing video games and wanting to make more. But, even if you didn't, learning how to make something simple and fun is quite rewarding, not to mention nice to show off to other people.
 
 **Note:** If you're using WSL/WSL2, this won't work due to windowing issues so ensure your install of python is local. 
