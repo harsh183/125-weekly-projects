@@ -229,7 +229,32 @@ Add a third term `Fall/Summer/Spring/Winter` to find a course's term as well. Fo
 
 ### Part 2 Linking the location displays to Google Maps
 
-If we play around with the dev console
+If we play around with the dev console we realize that the page is a table. We retrieve the rows through 
+
+```js
+const rows = document.getElementsByTagName("tr");
+```
+
+We can filter the rows to just get the info rows that we want, seeing that the start is from `uid` leading to
+
+```js
+rowArr = Array.from(rows);
+infoRows = rowArr.filter(row => row.id.startsWith("uid"));
+```
+
+Once we have the rows, we can poke around to get the column via `app-meeting` and pick the right one. Using `.text` we can get the text that we're going into enter into the google Maps url.
+
+```js
+infoRows[3].getElementsByClassName("app-meeting")[4].textContent 
+```
+
+If we look at the Google Maps API [documentation](https://developers.google.com/maps/documentation/urls/get-started#search-action) to get the pattern `https://www.google.com/maps/search/?api=1&query=WHAT_WE_WANT`. We generate a url like "https://www.google.com/maps/search/3039+Campus+Instructional+Facility+UIUC+USA". Then we use `.innerHTML` to wrap it into an `<a>` element like:
+
+```js
+infoRows[3].getElementsByClassName("app-meeting")[4].innerHTML = `<a target="blank" href="${"https://www.google.com/maps/search/3039+Campus+Instructional+Facility+UIUC+USA"}">${p}</a>`
+```
+
+Putting it all together we get:
 
 ```js
 function addLocations(rows) {
@@ -250,29 +275,17 @@ const rows = document.getElementsByTagName("tr");
 addLocations(rows);
 ```
 
-* We retrieve the rows through `const rows = document.getElementsByTagName("tr");`
-
-* We can filter the rows to just get the info rows that we want, seeing that the start is from `uid` leading to
-
-  ```js
-  rowArr = Array.from(rows);
-  infoRows = rowArr.filter(row => row.id.startsWith("uid"));
-  infoRows[3].getElementsByClassName("app-meeting")[4].textContent /
-  ```
-
-* We look at the Google Maps API [documentation](https://developers.google.com/maps/documentation/urls/get-started#search-action) to get the pattern `https://www.google.com/maps/search/?api=1&query=WHAT_WE_WANT`
-
-* We generate a url like "https://www.google.com/maps/search/3039+Campus+Instructional+Facility+UIUC+USA". Now, let's create a function to do this.
-
-* use `.innerHTML` like
-
-  ```js
-  infoRows[3].getElementsByClassName("app-meeting")[4].innerHTML = `<a target="blank" href="${"https://www.google.com/maps/search/3039+Campus+Instructional+Facility+UIUC+USA"}">${p}</a>`
-  ```
-
 #### Exercise
 
 Add some if condition to make sure we only create map urls for valid addresses (multiple approaches are possible)
+
+#### Final Code
+
+At this point everything should work and your final code looks like
+
+```js
+
+```
 
 ### Converting to a web browser extention
 
