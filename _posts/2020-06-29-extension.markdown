@@ -26,6 +26,12 @@ Comic: [CHRIS HADFIELD: An astronaut’s advice](http://www.zenpencils.com/comic
 
 ## Workshop
 
+### Setup
+
+1. I'm assuming Chrome but all this should work on Firefox or any other browsers. In any case, make sure you have a modern updated web browser installed. If you can read this article... you're good.
+
+2. Get a user script manager, these let you add javascript onto certain pages and we'll use this to prototype first. If you're only making something for yourself or a few friends, this is likely all you need. For Firefox/Chrome a good choice is [TamperMonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo/related?hl=en). 
+
 ### Part 1 Direct Course Search
 
 * [Direct Course Search](https://gist.github.com/harsh183/4505b4870fb9a003abe5193e0f7b9c71) - do this, but simpler (string strip and then substring)
