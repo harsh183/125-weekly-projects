@@ -33,7 +33,8 @@ pip install pygame
 ```
 
 ## Workshop
-**Starter:** https://github.com/ranchncarrots/sumOfCodeGameStarterCode <br>
+
+**Starter:** [code](https://github.com/ranchncarrots/sumOfCodeGameStarterCode) <br>
 
 First, we will import the following. We'll be using these libraries as we go along.  <br>
 
@@ -111,6 +112,7 @@ main_sprite.add(main)
 Once our `mainCharacter` is in a group, we can also draw it out. Insert ``main_sprite.draw(screen)`` inside of your loop. You should now see an image in the center of your screen. <br>
 
 At this point your coulde should look like:
+
 ```python
 import sys, pygame, random, os
 
@@ -195,6 +197,7 @@ Now you should be slowing down after you release the key. But we can go off scre
     main.rect = main.rect.move(speed)
 
 ``` 
+
 <br>
 Your code should now look something like:
 
@@ -262,6 +265,7 @@ while 1:
     main_sprite.draw(screen)
     pygame.display.flip()
 ```
+
 ### Bad Guy Class
 
 ```python
@@ -356,6 +360,7 @@ Here we just have some more syntactical sugar. Insert into your game loop:
 
 In line 3, we are declaring the lines we want to use. In line 2, we declare the rendering we wish to use. Then, in line 3, we can just blit it onto the screen.
 At the end your code should look like:
+
 ```python
 import sys, pygame, random, os
 
