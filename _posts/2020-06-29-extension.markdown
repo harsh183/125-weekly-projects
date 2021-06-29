@@ -10,6 +10,8 @@ toc: true
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
 
+[Youtube Video](https://youtu.be/boO8ob3qOp0)
+
 Web browsers are among the applications we use the most, but they're not always the best experience. What if we could improve them? 
 
 To first learn `TypeScript`, we'll start from `JavaScript`. This is the langauge of the web and it was created with the purpose of scripting browsers _directly_. Learned well, `js` is an incredibly powerful tool you can do a lot with. Especially in an era where almost every application we use is a website.
