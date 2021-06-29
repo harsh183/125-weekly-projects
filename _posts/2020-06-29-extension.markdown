@@ -229,6 +229,8 @@ Add a third term `Fall/Summer/Spring/Winter` to find a course's term as well. Fo
 
 ### Part 2 Linking the location displays to Google Maps
 
+If we play around with the dev console
+
 ```js
 function addLocations(rows) {
     if (rows.length === 0) {
