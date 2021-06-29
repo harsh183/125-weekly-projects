@@ -41,5 +41,5 @@ FOSS (Free and Open Source Software) initially started in the West Coast of the 
 * You should show it off in your README.md file, with animations/video and an explanation of the game.
 <!-- Game? -->
 * Has to use a Open Source license via a `LICENSE` file
-
+  
 Contributors: Harsh, Maaheen
