@@ -383,6 +383,8 @@ If you're going to publish make sure your code is good and versioned well. It's 
 
 * TamperMonkey - [documentation](https://www.tampermonkey.net/documentation.php)
 
+* Chrome Browser Extensions - [official intro tutorial](https://developer.chrome.com/docs/extensions/mv3/getstarted/) and [thoughtbot](https://thoughtbot.com/blog/how-to-make-a-chrome-extension) tutorial.
+
 * Event Listeners - [addEventListener](https://www.w3schools.com/jsref/met_element_addeventlistener.asp) and [long list of HTML events](https://www.w3schools.com/jsref/dom_obj_event.asp).
 
 * JS DOM Selectors - [intro tutorial](https://www.tutorialrepublic.com/javascript-tutorial/javascript-dom-selectors.php). DOM stands for Docment Object Model which represents the html tree for the file we were messing with.
