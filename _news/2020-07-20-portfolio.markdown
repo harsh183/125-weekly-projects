@@ -16,8 +16,6 @@ Time to bring together all the things we've done so far and start setting up our
 console.log("Hello portfolio");
 ```
 
-Hosted by: Monika Para
-
 ## Motivation
 
 Comic: [JOHN GREEN: Make gifts for people](http://www.zenpencils.com/comic/119-john-green-make-gifts-for-people/)
