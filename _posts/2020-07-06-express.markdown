@@ -79,9 +79,11 @@ Include the following code before running your server
 
 ```js 
 const bodyParser = require('body-parser'); 
-app.use(bodyParser.json()); ``
+app.use(bodyParser.json()); 
+```
 
-``  // initialize array of things that make you happy
+```js  
+  // initialize array of things that make you happy
   // @TODO: reformat in JSON
   const happyArr = [{
     id: 1,
@@ -95,16 +97,21 @@ app.use(bodyParser.json()); ``
     id: 3,
     title: 'boba'}
   ];
-`` ``
+``` 
+
+```js
   // GET request for values that make you happy 
   app.get('/happiness', function(req, res) {
     return res.send(happyArr);
   });
-  ``
-  Now that you have made your own JSON object and URL, you can navigate to ``http://localhost:3000/happiness`` 
+```
+
+Now that you have made your own JSON object and URL, you can navigate to ``http://localhost:3000/happiness`` 
   
 ## GET Request by ID
-``// GET request for happy item by id
+
+```js
+  // GET request for happy item by id
   app.get('/happiness/:id', (req, res) => {
   const happy = happyArr.find(g => g.id === parseInt(req.params.id));
   if (!happy) {
@@ -112,9 +119,11 @@ app.use(bodyParser.json()); ``
   }
   res.send(happy);
   });
-``
+```
+
 ## POST Request
-``
+
+```js
   // POST request to add an item on Postman
   app.post('/happiness', function(req, res) {
       const happy = {
@@ -124,10 +133,11 @@ app.use(bodyParser.json()); ``
     happyArr.push(happy);
     res.send(happy);
   });
-``
+```
 
 ## DELETE Request
-``
+
+```js
 // DELETE request to delete a field on Postman
   app.delete('/happiness/:id', function(req, res) {
   const happy = happyArr.find(g => g.id === parseInt(req.params.id));
@@ -138,9 +148,10 @@ app.use(bodyParser.json()); ``
   happyArr.splice(index, 1);
   res.send(happy);
 });
-``
+```
 
 ## Seeing Your Requests on Postman
+
 Insert your target URL on Postman 
 
 ## Motivation
