@@ -20,18 +20,6 @@ console.log("Hello portfolio");
 
 Comic: [JOHN GREEN: Make gifts for people](http://www.zenpencils.com/comic/119-john-green-make-gifts-for-people/)
 
-## Setup
-
-1. Install and set up [Postman](http://postman.com/). This lets us interact with and test our web API, and is one of the most popular tools for Bakcend Developers today.
-
-2. Install NodeJS either via a [package manager](https://nodejs.org/en/download/package-manager/) (OSX, Linux, WSL) or [installer](https://nodejs.org/en/download/). To verify this installed right run `$ node --version` and `$ npm --version` and if both work, you're good.
-
-3. Clone the starter [repo](https://github.com/mpara0/express-workshop) with `$ git clone git@github.com:mpara0/express-workshop.git`
-
-4. `$ cd express-workshop` and run `$ npm install`. This should install `express.js` which is the framework we're using to create our backend. 
-
-## Workshop
-
 ## Learn more
 
 ## Ideas

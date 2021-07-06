@@ -24,6 +24,18 @@ Hosted by: Monika Para
 
 [Hackers and Painters](http://www.paulgraham.com/hp.html) - A bit old, but perhaps my favorite essay of all time on the nature of CS and how we work. This essay portrays computer science as creative work rather than the typical connection to applied math, science or engineering. It's a long essay but definitely worth revisiting every few months. Also, it was written by one of the most iconic people in the tech startup space for starting YCombinator, Paul Graham.
 
+## Setup
+
+1. Install and set up [Postman](http://postman.com/). This lets us interact with and test our web API, and is one of the most popular tools for Bakcend Developers today.
+
+2. Install NodeJS either via a [package manager](https://nodejs.org/en/download/package-manager/) (OSX, Linux, WSL) or [installer](https://nodejs.org/en/download/). To verify this installed right run `$ node --version` and `$ npm --version` and if both work, you're good.
+
+3. Clone the starter [repo](https://github.com/mpara0/express-workshop) with `$ git clone git@github.com:mpara0/express-workshop.git`
+
+4. `$ cd express-workshop` and run `$ npm install`. This should install `express.js` which is the framework we're using to create our backend. 
+
+## Workshop
+
 ## Learn more
 
 ## Ethics
