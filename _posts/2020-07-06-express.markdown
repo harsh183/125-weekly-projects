@@ -18,7 +18,12 @@ Now, let's create something simple with `Express` to show a basic backend servic
 console.log("Hello express");
 ```
 
+## Motivation
+
+[Hackers and Painters](http://www.paulgraham.com/hp.html) - A bit old, but perhaps my favorite essay of all time on the nature of CS and how we work. This essay portrays computer science as creative work rather than the typical connection to applied math, science or engineering. It's a long essay but definitely worth revisiting every few months. Also, it was written by one of the most iconic people in the tech startup space for starting YCombinator, Paul Graham.
+
 Hosted by: Monika Para
+
 ## Installation
 
 For this tutorial, we will need to have the following installed on your device
@@ -144,6 +149,7 @@ The following code snippet above allows you to access the individual id of a GET
 ## POST Request
 
 The following code snippet will allow you add more queries into your JSON Object
+
 ```js
   // POST request to add an item on Postman
   app.post('/happiness', function(req, res) {
@@ -155,19 +161,22 @@ The following code snippet will allow you add more queries into your JSON Object
     res.send(happy);
   });
 ```
+
 However since this is a POST request, you need to navigate to ``Postman`` to your workspace section and include ``http://localhost:3000/happiness/`` as the URL. On the right you will see a drop down different web requests, click ``POST`` then click ``Body -> Raw -> JSON`` in order to create a JSON entry. For our example, we will include Mommy Pig as an entry of what makes us happy. Simply put,
 
-```
+```js
 {
     "id": 4,
     "title": "mommy pig"
 }
 ```
-Hit send, refresh the browser and you should see an entry of Mommy Pig show up to the server 🐷. If it doesn't hit ``CTRL + C `` to kill the server on your terminal and ``node app.js`` to reboot it again since sometimes Express doesn't always get updates to the server in a timely manner.
+
+Hit send, refresh the browser and you should see an entry of Mommy Pig show up to the server 🐷. If it doesn't hit `CTRL + C` to kill the server on your terminal and ``node app.js`` to reboot it again since sometimes Express doesn't always get updates to the server in a timely manner.
 
 ## DELETE Request
 
 The following code snippet will allow you to delete an entry of your JSON Object
+
 ```js
 // DELETE request to delete a field on Postman
   app.delete('/happiness/:id', function(req, res) {
@@ -180,20 +189,18 @@ The following code snippet will allow you to delete an entry of your JSON Object
   res.send(happy);
 });
 ```
+
 Just like our PUT Request, we want to go back to Postman and be able to delete an entry. The process is the same with the exception that you have to navigate to the specific ID you created to delete the entry on Postman. So say you wanted to delete Mommy Pig, you would have to go to ``http://localhost:3000/happiness/4`` to delete her 
 
 ## PUT Requests
+
 PUT requests allow you to update an entry to your object. However for this tutorial, we haven't covered how to make edits as you would often need to use some sort of database or Middleware to handle such request. As an extension, we recommend you learning how to use MongoDB with your Express App or learning about [JOI](https://www.npmjs.com/package/joi) to include in your project if you want to work further with PUT requests  
 
 ## Seeing Your Requests on Postman
 
 Insert your target URL on Postman 
 
-This [tutorial](https://www.guru99.com/postman-tutorial.html) will help you navigate through Postman with managing your requests
-
-## Motivation
-
-[Hackers and Painters](http://www.paulgraham.com/hp.html) - A bit old, but perhaps my favorite essay of all time on the nature of CS and how we work. This essay portrays computer science as creative work rather than the typical connection to applied math, science or engineering. It's a long essay but definitely worth revisiting every few months. Also, it was written by one of the most iconic people in the tech startup space for starting YCombinator, Paul Graham.
+This [tutorial](https://www.guru99.com/postman-tutorial.html) will help you navigate through Postman with managing your requests. This is good for trying things out and developing iteratively. You can even create automated tests for your API on postman.
 
 ## Learn more
 
@@ -212,12 +219,14 @@ FOSS (Free and Open Source Software) initially started in the West Coast of the 
 
 ## Ideas
 
-- Build a Soccer API that gives information about a team player's name, number, total points, and team the belong to
+- Build an API to return information about some dataset or service.
+
+- Combine a database like PostgreSQL/Mongo DB 
 
 ## Requirements
 
-* You should show it off in your README.md file, with animations/video and an explanation of the game.
-<!-- Game? -->
+* You should show it off in your README.md file, with animations/video and an explanation of the backend. Make sure to include install
+
 * Has to use a Open Source license via a `LICENSE` file
   
 Contributors: Harsh, Maaheen
