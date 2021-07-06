@@ -19,6 +19,105 @@ console.log("Hello express");
 ```
 
 Hosted by: Monika Para
+## Installation
+For this tutorial, we will need to have the following installed on your device
+- [NodeJS](https://nodejs.org/en/). Check to see if you have the latest version installed on your device by typing ``node -v`` on your terminal
+- [Postman](https://www.postman.com/downloads/) This will help us visualize the API requests we make. Make an account using either your UIUC Login or GMail you used to make your Github account 
+
+## Setting Up Your Project
+``mkdir express-api``
+``cd express-api``
+``npm init``
+`` npm install --save express``
+``npm install express body-parser morgan``
+
+## Making Your First Express Server
+``// Creating a web server in express
+  var express = require("express");
+  var app = express(); 
+  // runs express server by running 'node app.js' on terminal
+  app.listen(3000, () => {
+    console.log("Server running on http://localhost:3000");
+  });
+  // homepage GET request
+  app.get("/", (req, res) => {
+     res.send("Hello, Express!"); 
+  });``
+ 
+ Once you have the following code in your ``app.js`` file, run ``node app.js`` and you should get a message on your terminal saying ``Server running on http://localhost:3000`` Navigate to that URL and you have made your first Express server - congratulations!
+ 
+## Understanding CRUD
+Create 
+Read 
+Update
+Delete
+
+## Making Your First GET Request
+Include the following code before running your server
+`` const bodyParser = require('body-parser'); 
+app.use(bodyParser.json()); ``
+
+``  // initialize array of things that make you happy
+  // @TODO: reformat in JSON
+  const happyArr = [{
+    id: 1,
+    title: 'suzie sheep'
+  },
+  {
+    id: 2,
+    title: 'peppa pig'
+  },
+  {
+    id: 3,
+    title: 'boba'}
+  ];
+`` ``
+  // GET request for values that make you happy 
+  app.get('/happiness', function(req, res) {
+    return res.send(happyArr);
+  });
+  ``
+  Now that you have made your own JSON object and URL, you can navigate to ``http://localhost:3000/happiness`` 
+  
+## GET Request by ID
+``// GET request for happy item by id
+  app.get('/happiness/:id', (req, res) => {
+  const happy = happyArr.find(g => g.id === parseInt(req.params.id));
+  if (!happy) {
+    return res.status(404).send('The value with the given ID was not found :(');
+  }
+  res.send(happy);
+  });
+``
+## POST Request
+``
+  // POST request to add an item on Postman
+  app.post('/happiness', function(req, res) {
+      const happy = {
+        id: happyArr.length + 1,
+        title: req.body.title
+      }
+    happyArr.push(happy);
+    res.send(happy);
+  });
+``
+
+## DELETE Request
+``
+// DELETE request to delete a field on Postman
+  app.delete('/happiness/:id', function(req, res) {
+  const happy = happyArr.find(g => g.id === parseInt(req.params.id));
+  if (!happy) {
+    return res.status(404).send('The value with the given ID was not found, sad');
+  }
+  const index = happyArr.indexOf(happy);
+  happyArr.splice(index, 1);
+  res.send(happy);
+});
+``
+
+## Seeing Your Requests on Postman
+Insert your target URL on Postman 
 
 ## Motivation
 
@@ -37,6 +136,10 @@ Hosted by: Monika Para
 ## Workshop
 
 ## Learn more
+- [What is CRUD](https://www.codecademy.com/articles/what-is-crud)
+- [RapidAPI](https://rapidapi.com/blog/nodejs-express-rest-api-example/)
+- [Build A Simple Express API](https://medium.com/@onejohi/building-a-simple-rest-api-with-nodejs-and-express-da6273ed7ca9)
+- [APIs using MongoDB](https://medium.com/@dinyangetoh/how-to-build-simple-restful-api-with-nodejs-expressjs-and-mongodb-99348012925d)
 
 ## Ethics
 
@@ -47,7 +150,7 @@ Hosted by: Monika Para
 FOSS (Free and Open Source Software) initially started in the West Coast of the US, but grew to encompass projects and contributors from all over the world. A lot of the commercial software out there today is still mostly limited to a narrow set of countries, but open source software doesn't have to deal with immigration restrictions. Entire communities of software developers from Africa, South America, East Asia, East Europe and more are able to contribute to open source software making is a very global concept. Many country's are even starting [to make laws](https://fossbytes.com/world-open-source-map-which-countries-have-open-source-laws/) to boost open source contribution. Check out some of the [contribution data](https://hoffa.medium.com/github-top-countries-201608-13f642493773) here.
 
 ## Ideas
-
+- Build a Soccer API that gives information about a team player's name, number, total points, and team the belong to
 ## Requirements
 
 * You should show it off in your README.md file, with animations/video and an explanation of the game.
