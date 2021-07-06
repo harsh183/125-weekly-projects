@@ -19,12 +19,113 @@ console.log("Hello express");
 ```
 
 Hosted by: Monika Para
+## Installation
+For this tutorial, we will need to have the following installed on your device
+- [NodeJS](https://nodejs.org/en/). Check to see if you have the latest version installed on your device by typing ``node -v`` on your terminal
+- [Postman](https://www.postman.com/downloads/) This will help us visualize the API requests we make
+
+## Setting Up Your Project
+``mkdir express-api``
+``cd express-api``
+``npm init``
+``npm install express body-parser morgan``
+
+## Making Your First Express Server
+``// Creating a web server in express
+  var express = require("express");
+  var app = express(); 
+  // runs express server by running 'node app.js' on terminal
+  app.listen(3000, () => {
+    console.log("Server running on http://localhost:3000");
+  });
+  // homepage GET request
+  app.get("/", (req, res) => {
+     res.send("Hello, Express!"); 
+  });``
+ 
+ Once you have the following code in your ``app.js`` file, run ``node app.js`` and you should get a message on your terminal saying ``Server running on http://localhost:3000`` Navigate to that URL and you have made your first Express server - congratulations!
+ 
+## Understanding CRUD
+Create 
+Read 
+Update
+Delete
+
+## Making Your First GET Request
+Include the following code before running your server
+`` const bodyParser = require('body-parser'); 
+app.use(bodyParser.json()); ``
+
+``  // initialize array of things that make you happy
+  // @TODO: reformat in JSON
+  const happyArr = [{
+    id: 1,
+    title: 'suzie sheep'
+  },
+  {
+    id: 2,
+    title: 'peppa pig'
+  },
+  {
+    id: 3,
+    title: 'boba'}
+  ];
+
+  // GET request for values that make you happy 
+  app.get('/happiness', function(req, res) {
+    return res.send(happyArr);
+  });
+  ``
+  Now that you have made your own JSON object and URL, you can navigate to ``http://localhost:3000/happiness`` 
+  
+## GET Request by ID
+``// GET request for happy item by id
+  app.get('/happiness/:id', (req, res) => {
+  const happy = happyArr.find(g => g.id === parseInt(req.params.id));
+  if (!happy) {
+    return res.status(404).send('The value with the given ID was not found :(');
+  }
+  res.send(happy);
+  });
+``
+## POST Request
+``
+  // POST request to add an item on Postman
+  app.post('/happiness', function(req, res) {
+      const happy = {
+        id: happyArr.length + 1,
+        title: req.body.title
+      }
+    happyArr.push(happy);
+    res.send(happy);
+  });
+``
+
+## DELETE Request
+``
+// DELETE request to delete a field on Postman
+  app.delete('/happiness/:id', function(req, res) {
+  const happy = happyArr.find(g => g.id === parseInt(req.params.id));
+  if (!happy) {
+    return res.status(404).send('The value with the given ID was not found, sad');
+  }
+  const index = happyArr.indexOf(happy);
+  happyArr.splice(index, 1);
+  res.send(happy);
+});
+``
+
+## Seeing Your Requests on Postman
+Insert your target URL on Postman 
 
 ## Motivation
 
 [Hackers and Painters](http://www.paulgraham.com/hp.html) - A bit old, but perhaps my favorite essay of all time on the nature of CS and how we work. This essay portrays computer science as creative work rather than the typical connection to applied math, science or engineering. It's a long essay but definitely worth revisiting every few months. Also, it was written by one of the most iconic people in the tech startup space for starting YCombinator, Paul Graham.
 
 ## Learn more
+- [RapidAPI](https://rapidapi.com/blog/nodejs-express-rest-api-example/)
+- [Build A Simple Express API](https://medium.com/@onejohi/building-a-simple-rest-api-with-nodejs-and-express-da6273ed7ca9)
+- [APIs using MongoDB](https://medium.com/@dinyangetoh/how-to-build-simple-restful-api-with-nodejs-expressjs-and-mongodb-99348012925d)
 
 ## Ethics
 
