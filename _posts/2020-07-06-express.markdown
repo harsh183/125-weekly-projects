@@ -10,6 +10,8 @@ toc: true
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
 
+[Recording](https://youtu.be/tW-4lpw9mo4)
+
 Any website has two parts: a frontend and a backend. The backend handles our logic and data storage and communciates via URLs, but instead of sending web pages, it only sends data.
 
 Now, let's create something simple with `Express` to show a basic backend service in action.
