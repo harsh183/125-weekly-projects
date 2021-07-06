@@ -28,6 +28,7 @@ For this tutorial, we will need to have the following installed on your device
 ``mkdir express-api``
 ``cd express-api``
 ``npm init``
+`` npm install --save express``
 ``npm install express body-parser morgan``
 
 ## Making Your First Express Server
