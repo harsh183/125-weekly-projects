@@ -123,6 +123,7 @@ Insert your target URL on Postman
 [Hackers and Painters](http://www.paulgraham.com/hp.html) - A bit old, but perhaps my favorite essay of all time on the nature of CS and how we work. This essay portrays computer science as creative work rather than the typical connection to applied math, science or engineering. It's a long essay but definitely worth revisiting every few months. Also, it was written by one of the most iconic people in the tech startup space for starting YCombinator, Paul Graham.
 
 ## Learn more
+- [What is CRUD](https://www.codecademy.com/articles/what-is-crud)
 - [RapidAPI](https://rapidapi.com/blog/nodejs-express-rest-api-example/)
 - [Build A Simple Express API](https://medium.com/@onejohi/building-a-simple-rest-api-with-nodejs-and-express-da6273ed7ca9)
 - [APIs using MongoDB](https://medium.com/@dinyangetoh/how-to-build-simple-restful-api-with-nodejs-expressjs-and-mongodb-99348012925d)
