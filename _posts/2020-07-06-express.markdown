@@ -48,6 +48,14 @@ $ npm install --save express
 $ npm install express body-parser morgan``
 ```
 
+Make sure to create a `.gitingore` file with the following content
+
+```js
+node_modules
+```
+
+This prevents us from pushing all our library code to `git` which makes our project sizes much smaller.
+
 ## Making Your First Express Server
 
 ```js
