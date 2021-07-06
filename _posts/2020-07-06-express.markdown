@@ -22,7 +22,7 @@ Hosted by: Monika Para
 ## Installation
 For this tutorial, we will need to have the following installed on your device
 - [NodeJS](https://nodejs.org/en/). Check to see if you have the latest version installed on your device by typing ``node -v`` on your terminal
-- [Postman](https://www.postman.com/downloads/) This will help us visualize the API requests we make
+- [Postman](https://www.postman.com/downloads/) This will help us visualize the API requests we make. Make an account using either your UIUC Login or GMail you used to make your Github account 
 
 ## Setting Up Your Project
 ``mkdir express-api``
