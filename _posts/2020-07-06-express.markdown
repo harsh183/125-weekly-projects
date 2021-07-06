@@ -20,19 +20,38 @@ console.log("Hello express");
 
 Hosted by: Monika Para
 ## Installation
+
 For this tutorial, we will need to have the following installed on your device
+
 - [NodeJS](https://nodejs.org/en/). Check to see if you have the latest version installed on your device by typing ``node -v`` on your terminal
 - [Postman](https://www.postman.com/downloads/) This will help us visualize the API requests we make. Make an account using either your UIUC Login or GMail you used to make your Github account 
 
 ## Setting Up Your Project
-``mkdir express-api``
-``cd express-api``
-``npm init``
-`` npm install --save express``
-``npm install express body-parser morgan``
+
+First, we create a folder for the project 
+
+```js
+$ mkdir express-api
+$ cd express-api
+```
+
+Then we use `npm` to start setting up the initial boilerplate of the project.
+
+```js
+$ npm init
+```
+
+After this we set up `expressJS`. This is the framework that actually allows us to make a simple backend by just passing a few functions around.
+
+```js 
+$ npm install --save express
+$ npm install express body-parser morgan``
+```
 
 ## Making Your First Express Server
-``// Creating a web server in express
+
+```js
+// Creating a web server in express
   var express = require("express");
   var app = express(); 
   // runs express server by running 'node app.js' on terminal
@@ -42,10 +61,12 @@ For this tutorial, we will need to have the following installed on your device
   // homepage GET request
   app.get("/", (req, res) => {
      res.send("Hello, Express!"); 
-  });``
+  });
+```
  
  Once you have the following code in your ``app.js`` file, run ``node app.js`` and you should get a message on your terminal saying ``Server running on http://localhost:3000`` Navigate to that URL and you have made your first Express server - congratulations!
- 
+
+
 ## Understanding CRUD
 Create 
 Read 
