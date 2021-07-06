@@ -66,16 +66,19 @@ $ npm install express body-parser morgan``
  
  Once you have the following code in your ``app.js`` file, run ``node app.js`` and you should get a message on your terminal saying ``Server running on http://localhost:3000`` Navigate to that URL and you have made your first Express server - congratulations!
 
-
 ## Understanding CRUD
+
 Create 
 Read 
 Update
 Delete
 
 ## Making Your First GET Request
+
 Include the following code before running your server
-`` const bodyParser = require('body-parser'); 
+
+```js 
+const bodyParser = require('body-parser'); 
 app.use(bodyParser.json()); ``
 
 ``  // initialize array of things that make you happy
