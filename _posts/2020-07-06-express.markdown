@@ -103,7 +103,6 @@ app.use(bodyParser.json());
 
 ```js  
   // initialize array of things that make you happy
-  // @TODO: reformat in JSON
   const happyArr = [{
     id: 1,
     title: 'suzie sheep'
@@ -125,6 +124,7 @@ app.use(bodyParser.json());
   });
 ```
 
+This code allows you to create a simple JSON object on things that make you happy and shows our GET request when you navigate to the ``/happiness`` URL on our Express server. 
 Now that you have made your own JSON object and URL, you can navigate to ``http://localhost:3000/happiness`` 
   
 ## GET Request by ID
@@ -139,9 +139,11 @@ Now that you have made your own JSON object and URL, you can navigate to ``http:
   res.send(happy);
   });
 ```
+The following code snippet above allows you to access the individual id of a GET request. If you navigate to ``http://localhost:3000/happiness/1`` on your browser, you should be able to see ``{ id: 1, title: 'suzie sheep'}``. However, if you replace ``1`` with a ``4`` in the URL you get an error that the ID has not been found. How can we add an entry so we don't get that error? By making a POST request.
 
 ## POST Request
 
+The following code snippet will allow you add more queries into your JSON Object
 ```js
   // POST request to add an item on Postman
   app.post('/happiness', function(req, res) {
@@ -153,9 +155,19 @@ Now that you have made your own JSON object and URL, you can navigate to ``http:
     res.send(happy);
   });
 ```
+However since this is a POST request, you need to navigate to ``Postman`` to your workspace section and include ``http://localhost:3000/happiness/`` as the URL. On the right you will see a drop down different web requests, click ``POST`` then click ``Body -> Raw -> JSON`` in order to create a JSON entry. For our example, we will include Mommy Pig as an entry of what makes us happy. Simply put,
+
+```
+{
+    "id": 4,
+    "title": "mommy pig"
+}
+```
+Hit send, refresh the browser and you should see an entry of Mommy Pig show up to the server 🐷. If it doesn't hit ``CTRL + C `` to kill the server on your terminal and ``node app.js`` to reboot it again since sometimes Express doesn't always get updates to the server in a timely manner.
 
 ## DELETE Request
 
+The following code snippet will allow you to delete an entry of your JSON Object
 ```js
 // DELETE request to delete a field on Postman
   app.delete('/happiness/:id', function(req, res) {
@@ -168,10 +180,16 @@ Now that you have made your own JSON object and URL, you can navigate to ``http:
   res.send(happy);
 });
 ```
+Just like our PUT Request, we want to go back to Postman and be able to delete an entry. The process is the same with the exception that you have to navigate to the specific ID you created to delete the entry on Postman. So say you wanted to delete Mommy Pig, you would have to go to ``http://localhost:3000/happiness/4`` to delete her 
+
+## PUT Requests
+PUT requests allow you to update an entry to your object. However for this tutorial, we haven't covered how to make edits as you would often need to use some sort of database or Middleware to handle such request. As an extension, we recommend you learning how to use MongoDB with your Express App or learning about [JOI](https://www.npmjs.com/package/joi) to include in your project if you want to work further with PUT requests  
 
 ## Seeing Your Requests on Postman
 
 Insert your target URL on Postman 
+
+This [tutorial](https://www.guru99.com/postman-tutorial.html) will help you navigate through Postman with managing your requests
 
 ## Motivation
 
