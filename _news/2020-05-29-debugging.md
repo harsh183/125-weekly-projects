@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Debugging 
-date: 2021-05-29
+date: 2020-05-29
 comments: true
 external-url:
 tag: Tools
