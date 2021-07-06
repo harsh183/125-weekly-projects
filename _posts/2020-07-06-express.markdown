@@ -58,28 +58,39 @@ This prevents us from pushing all our library code to `git` which makes our proj
 
 ## Making Your First Express Server
 
+First we import `express` and create our first web server.
+
 ```js
 // Creating a web server in express
-  var express = require("express");
-  var app = express(); 
-  // runs express server by running 'node app.js' on terminal
-  app.listen(3000, () => {
+var express = require("express");
+var app = express(); 
+// runs express server by running 'node app.js' on terminal
+app.listen(3000, () => {
     console.log("Server running on http://localhost:3000");
-  });
-  // homepage GET request
-  app.get("/", (req, res) => {
-     res.send("Hello, Express!"); 
-  });
+});
+```
+
+Once you have the following code in your `app.js` file, run `node app.js` and you should get a message on your terminal saying `Server running on http://localhost:3000` Navigate to that URL and you have made your first Express server - congratulations!
+
+But if you try this, you get an error saying your API has no requests set up. Let's create our first API action:
+
+```js
+// homepage GET request
+app.get("/", (req, res) => {
+    res.send("Hello, Express!"); 
+});
 ```
  
- Once you have the following code in your ``app.js`` file, run ``node app.js`` and you should get a message on your terminal saying ``Server running on http://localhost:3000`` Navigate to that URL and you have made your first Express server - congratulations!
+Now if you rerun it and go to `localhost:3000`, now it should say `Hello, Express!`. Yay! Now the setup is done and the fun part begins. 
 
 ## Understanding CRUD
 
-Create 
-Read 
-Update
-Delete
+CRUD is probably one of the most important concepts in backend development. This acronym refers to the 4 broad actions we do with any web backend. Let's consider this with Reddit, but you'll quickly realize this works for any site.
+
+* Create - Create new data. For example: creating a reddit post 
+* Read - Look up existing data. For example: looking at a post 
+* Update - Update data that already exists. For example: adding an edit to fix a typo.
+* Delete - Remove existing data. For example: removing a post
 
 ## Making Your First GET Request
 
@@ -166,19 +177,8 @@ Insert your target URL on Postman
 
 [Hackers and Painters](http://www.paulgraham.com/hp.html) - A bit old, but perhaps my favorite essay of all time on the nature of CS and how we work. This essay portrays computer science as creative work rather than the typical connection to applied math, science or engineering. It's a long essay but definitely worth revisiting every few months. Also, it was written by one of the most iconic people in the tech startup space for starting YCombinator, Paul Graham.
 
-## Setup
-
-1. Install and set up [Postman](http://postman.com/). This lets us interact with and test our web API, and is one of the most popular tools for Bakcend Developers today.
-
-2. Install NodeJS either via a [package manager](https://nodejs.org/en/download/package-manager/) (OSX, Linux, WSL) or [installer](https://nodejs.org/en/download/). To verify this installed right run `$ node --version` and `$ npm --version` and if both work, you're good.
-
-3. Clone the starter [repo](https://github.com/mpara0/express-workshop) with `$ git clone git@github.com:mpara0/express-workshop.git`
-
-4. `$ cd express-workshop` and run `$ npm install`. This should install `express.js` which is the framework we're using to create our backend. 
-
-## Workshop
-
 ## Learn more
+
 - [What is CRUD](https://www.codecademy.com/articles/what-is-crud)
 - [RapidAPI](https://rapidapi.com/blog/nodejs-express-rest-api-example/)
 - [Build A Simple Express API](https://medium.com/@onejohi/building-a-simple-rest-api-with-nodejs-and-express-da6273ed7ca9)
