@@ -10,6 +10,8 @@ toc: true
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
 
+[Recording](https://youtu.be/tW-4lpw9mo4)
+
 Any website has two parts: a frontend and a backend. The backend handles our logic and data storage and communciates via URLs, but instead of sending web pages, it only sends data.
 
 Now, let's create something simple with `Express` to show a basic backend service in action.
@@ -18,13 +20,196 @@ Now, let's create something simple with `Express` to show a basic backend servic
 console.log("Hello express");
 ```
 
-Hosted by: Monika Para
-
 ## Motivation
 
 [Hackers and Painters](http://www.paulgraham.com/hp.html) - A bit old, but perhaps my favorite essay of all time on the nature of CS and how we work. This essay portrays computer science as creative work rather than the typical connection to applied math, science or engineering. It's a long essay but definitely worth revisiting every few months. Also, it was written by one of the most iconic people in the tech startup space for starting YCombinator, Paul Graham.
 
+Hosted by: Monika Para
+
+## Installation
+
+For this tutorial, we will need to have the following installed on your device
+
+- [NodeJS](https://nodejs.org/en/). Check to see if you have the latest version installed on your device by typing ``node -v`` on your terminal
+- [Postman](https://www.postman.com/downloads/) This will help us visualize the API requests we make. Make an account using either your UIUC Login or GMail you used to make your Github account 
+
+## Setting Up Your Project
+
+First, we create a folder for the project 
+
+```js
+$ mkdir express-api
+$ cd express-api
+```
+
+Then we use `npm` to start setting up the initial boilerplate of the project.
+
+```js
+$ npm init
+```
+
+After this we set up `expressJS`. This is the framework that actually allows us to make a simple backend by just passing a few functions around.
+
+```js 
+$ npm install --save express
+$ npm install express body-parser morgan``
+```
+
+Make sure to create a `.gitingore` file with the following content
+
+```js
+node_modules
+```
+
+This prevents us from pushing all our library code to `git` which makes our project sizes much smaller.
+
+## Making Your First Express Server
+
+First we import `express` and create our first web server.
+
+```js
+// Creating a web server in express
+var express = require("express");
+var app = express(); 
+// runs express server by running 'node app.js' on terminal
+app.listen(3000, () => {
+    console.log("Server running on http://localhost:3000");
+});
+```
+
+Once you have the following code in your `app.js` file, run `node app.js` and you should get a message on your terminal saying `Server running on http://localhost:3000` Navigate to that URL and you have made your first Express server - congratulations!
+
+But if you try this, you get an error saying your API has no requests set up. Let's create our first API action:
+
+```js
+// homepage GET request
+app.get("/", (req, res) => {
+    res.send("Hello, Express!"); 
+});
+```
+ 
+Now if you rerun it and go to `localhost:3000`, now it should say `Hello, Express!`. Yay! Now the setup is done and the fun part begins. 
+
+## Understanding CRUD
+
+CRUD is probably one of the most important concepts in backend development. This acronym refers to the 4 broad actions we do with any web backend. Let's consider this with Reddit, but you'll quickly realize this works for any site.
+
+* Create - Create new data. For example: creating a reddit post 
+* Read - Look up existing data. For example: looking at a post 
+* Update - Update data that already exists. For example: adding an edit to fix a typo.
+* Delete - Remove existing data. For example: removing a post
+
+## Making Your First GET Request
+
+Include the following code before running your server
+
+```js 
+const bodyParser = require('body-parser'); 
+app.use(bodyParser.json()); 
+```
+
+```js  
+  // initialize array of things that make you happy
+  const happyArr = [{
+    id: 1,
+    title: 'suzie sheep'
+  },
+  {
+    id: 2,
+    title: 'peppa pig'
+  },
+  {
+    id: 3,
+    title: 'boba'}
+  ];
+``` 
+
+```js
+  // GET request for values that make you happy 
+  app.get('/happiness', function(req, res) {
+    return res.send(happyArr);
+  });
+```
+
+This code allows you to create a simple JSON object on things that make you happy and shows our GET request when you navigate to the ``/happiness`` URL on our Express server. 
+Now that you have made your own JSON object and URL, you can navigate to ``http://localhost:3000/happiness`` 
+  
+## GET Request by ID
+
+```js
+  // GET request for happy item by id
+  app.get('/happiness/:id', (req, res) => {
+  const happy = happyArr.find(g => g.id === parseInt(req.params.id));
+  if (!happy) {
+    return res.status(404).send('The value with the given ID was not found :(');
+  }
+  res.send(happy);
+  });
+```
+The following code snippet above allows you to access the individual id of a GET request. If you navigate to ``http://localhost:3000/happiness/1`` on your browser, you should be able to see ``{ id: 1, title: 'suzie sheep'}``. However, if you replace ``1`` with a ``4`` in the URL you get an error that the ID has not been found. How can we add an entry so we don't get that error? By making a POST request.
+
+## POST Request
+
+The following code snippet will allow you add more queries into your JSON Object
+
+```js
+  // POST request to add an item on Postman
+  app.post('/happiness', function(req, res) {
+      const happy = {
+        id: happyArr.length + 1,
+        title: req.body.title
+      }
+    happyArr.push(happy);
+    res.send(happy);
+  });
+```
+
+However since this is a POST request, you need to navigate to ``Postman`` to your workspace section and include ``http://localhost:3000/happiness/`` as the URL. On the right you will see a drop down different web requests, click ``POST`` then click ``Body -> Raw -> JSON`` in order to create a JSON entry. For our example, we will include Mommy Pig as an entry of what makes us happy. Simply put,
+
+```js
+{
+    "id": 4,
+    "title": "mommy pig"
+}
+```
+
+Hit send, refresh the browser and you should see an entry of Mommy Pig show up to the server 🐷. If it doesn't hit `CTRL + C` to kill the server on your terminal and ``node app.js`` to reboot it again since sometimes Express doesn't always get updates to the server in a timely manner.
+
+## DELETE Request
+
+The following code snippet will allow you to delete an entry of your JSON Object
+
+```js
+// DELETE request to delete a field on Postman
+  app.delete('/happiness/:id', function(req, res) {
+  const happy = happyArr.find(g => g.id === parseInt(req.params.id));
+  if (!happy) {
+    return res.status(404).send('The value with the given ID was not found, sad');
+  }
+  const index = happyArr.indexOf(happy);
+  happyArr.splice(index, 1);
+  res.send(happy);
+});
+```
+
+Just like our PUT Request, we want to go back to Postman and be able to delete an entry. The process is the same with the exception that you have to navigate to the specific ID you created to delete the entry on Postman. So say you wanted to delete Mommy Pig, you would have to go to ``http://localhost:3000/happiness/4`` to delete her 
+
+## PUT Requests
+
+PUT requests allow you to update an entry to your object. However for this tutorial, we haven't covered how to make edits as you would often need to use some sort of database or Middleware to handle such request. As an extension, we recommend you learning how to use MongoDB with your Express App or learning about [JOI](https://www.npmjs.com/package/joi) to include in your project if you want to work further with PUT requests  
+
+## Seeing Your Requests on Postman
+
+Insert your target URL on Postman 
+
+This [tutorial](https://www.guru99.com/postman-tutorial.html) will help you navigate through Postman with managing your requests. This is good for trying things out and developing iteratively. You can even create automated tests for your API on postman.
+
 ## Learn more
+
+- [What is CRUD](https://www.codecademy.com/articles/what-is-crud)
+- [RapidAPI](https://rapidapi.com/blog/nodejs-express-rest-api-example/)
+- [Build A Simple Express API](https://medium.com/@onejohi/building-a-simple-rest-api-with-nodejs-and-express-da6273ed7ca9)
+- [APIs using MongoDB](https://medium.com/@dinyangetoh/how-to-build-simple-restful-api-with-nodejs-expressjs-and-mongodb-99348012925d)
 
 ## Ethics
 
@@ -36,10 +221,14 @@ FOSS (Free and Open Source Software) initially started in the West Coast of the 
 
 ## Ideas
 
+- Build an API to return information about some dataset or service.
+
+- Combine a database like PostgreSQL/Mongo DB 
+
 ## Requirements
 
-* You should show it off in your README.md file, with animations/video and an explanation of the game.
-<!-- Game? -->
-* Has to use a Open Source license via a `LICENSE` file
+* You should show it off in your README.md file, with animations/video and an explanation of the backend. Make sure to include install
 
+* Has to use a Open Source license via a `LICENSE` file
+  
 Contributors: Harsh, Maaheen
