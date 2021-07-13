@@ -24,6 +24,14 @@ Hosted by: Harsh Deep
 
 > at least half of the time you spend drawing must be devoted to drawing purely for its own sake. Not to learn, not to improve, not to develop your skills, not even to apply what you've already learned. There are no restrictions on medium, no specific techniques you must use, no subject matter you must focus on.
 
+## Setup
+
+All you need is [NodeJS](https://nodejs.org/en/). Check to see if you have the latest version installed on your device by typing ``node -v`` on your terminal. This will let us install everything we need.
+
+## Workshop
+
+
+
 ## Learn more
 
 * General web development - [Freecodemcamp](https://www.freecodecamp.org/learn), this covers html, css, js, frameworks like react, data visualization and a lot more. It's a very extensive cirriculum which will teach a _lot_.
