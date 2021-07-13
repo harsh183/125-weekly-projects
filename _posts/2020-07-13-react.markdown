@@ -554,7 +554,7 @@ Now let's finish off the functionality by actually taking the courses into accou
 
 If you did everything right. Now the GPA display on the bottom should change based on any single form value change. Good for people trying to calculate things instantly. Our core functionality now works!
 
-We're done with our Course component, at this point your `Course.jsx` file should be:
+We're done with our Course component functionality, at this point your `Course.jsx` file should be:
 
 ```js
 import React from 'react';
@@ -661,9 +661,77 @@ Now let's add the `axios` function for dealing with this:
 
 Now if you add any courses it will update the cat picture each time :)
 
+### Styling
+
+Frontend isn't just creating elements and giving it functionality, but also making it presentable and usable. We can achieve this via `css`. CSS is a format for web sites where we give a collection of rules for our content. React makes style sheets easy to include in our application through imports.
+
+It's not something you need to memorize, but something I just google all the time. The basic thing to understand
+
+* `class` in html points to a collection of html elements, in css we can set rules based on `.className` to target those.
+
+* `id` in html points to a _unique_ html element, in css we can set rules based on `#idName` to target it.
+
+* We can target html element types in css by just putting their tag name as is. For example if I wanted to target paragraphs
+
+The template code in `App.js` includes this line:
+
+```js
+import './App.css';
+```
+
+which adds the styles from the file into the app. Let's try changing the background color to Illini Blue in `App.css`
+
+```css
+.App-header {
+  background-color: #13294b; /* uiuc blue */
+  ...
+```
+
+Similarly we can create `css` files for all our components. 
+
+Let's make it for `Course` where we change the delete button to red.
+
+We create the new `Course.css`:
+
+```css
+.delete-course {
+    color: red;
+}
+```
+
+and import it:
+
+```js
+import './Course.css'
+```
+
+As we already set up the class earlier in the form, now this rule applies to all delete course objects.
+
+Similarly let's add some element and id styling to `Calc.jsx`:
+
+```css
+input {
+    width: 4em;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+  
+#gpa-display {
+    color: #E84A27;
+}
+```
+
+and import it
+
+```js
+import './Calc.css'
+```
+
+Now everything should look a bit nicer. Of course, your real project will need far more extensive sytyling to look nice, so make sure to check out the bottom links on learning html+css as well. 
+
 ### Final Code
 
-You can find the final code on [Github](https://github.com/harsh183/gpa-cat-calc).
+You can find the final code on [Github](https://github.com/harsh183/gpa-cat-calc). Great job getting this far.
 
 ## Learn more
 
