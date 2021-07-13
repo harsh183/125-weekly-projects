@@ -127,8 +127,11 @@ return (
 If you check it on the browser, you should see two number fields. But we want it to actually do things, we have to attach the form elements to our state. React allows us to do this by creating a `useState` hook which provides us with a way to access and set our component's state. 
 
 ```js
-const [hours, setHours] = useState(0);
-const [gpa, setGpa] = useState(0);
+import React, { useState } from 'react';
+[...]
+function Calc() {
+    const [hours, setHours] = useState(0);
+    const [gpa, setGpa] = useState(0);
 ```
 
 The first part acts as a getter and the second part is a setter. As long as we use the setters, we'll always get a nice live UI. The value in the brackets of `useState` is the default starter value for these.
@@ -163,7 +166,7 @@ function Calc() {
             <h1>Get your GPA</h1>
 
             <label htmlFor="gpa">Enter your GPA so far:</label>
-            <input type="number" id="gpa" onChange={e => setGpa(e.target.value)}></input>
+            <input type="number" id="gpa" onChange={e => setGpa(parseInt(e.target.value))}></input>
             <br />
 
             <label htmlFor="hours">Enter your credit hours so far:</label>
@@ -280,7 +283,7 @@ If you load it up in your browser, you'll see a generated table with all our sam
 
 ### Adding and Removing
 
-This is great, but not everyone takes the same exact courses. What we need is allowing people to add their own and remove existing courses. For this we just have to create functions that can add and remove to form elements. We'll use js map/filter to our advantage. 
+This is great, but not everyone takes the same exact courses. What we need is allowing people to add their own and remove existing courses. For this we just have to create functions that can add and remove to form elements. We'll use js map/filter to our advantage. The `...` splat operator is also very useful while working on react applications, since it lets us spread out existing contents of data really nicely.
 
 ```js
     const addCourse = (courseName) => {
@@ -390,29 +393,193 @@ export default Course;
 and `Calc.jsx` should be:
 
 ```js
+import React, { useState } from 'react';
+
+import Course from './Course'
+
+function Calc() {
+    const [hours, setHours] = useState(0);
+    const [gpa, setGpa] = useState(0);
+    const [newCourse, setNewCourse] = useState("");
+
+    const [courses, setCourses] = useState([
+        {
+            name: "CS 125",
+            hours: 4,
+            qualityPoints: 4,
+        },
+        {
+            name: "Calc 2",
+            hours: 3,
+            qualityPoints: 4
+        },
+        {
+            name: "Calc 3",
+            hours: 3,
+            qualityPoints: 4
+        }
+    ]);
+
+    const uiucGrades = {
+        'A+': 4.0,
+        'A':  4.0,
+        'A-': 3.67,
+        'B+': 3.33,
+        'B':  3.00,
+        'B-': 2.67,
+        'C+': 2.33,
+        'C':  2.00,
+        'C-': 1.67,
+        'D+': 1.33,
+        'D':  1.00,
+        'D-': 0.67, 
+        'F': 0.00
+    }
+
+    const calculateGpa = (hours, gpa) => {
+        let totalHours = hours;
+        let totalPoints = hours * gpa;
+        const newGpa = (totalPoints / totalHours).toPrecision(3);
+        return newGpa;
+    };
+
+    const addCourse = (courseName) => {
+        setCourses([...courses, {name: courseName, hours: 3, qualityPoints: 4}]);
+    };
+
+    const removeCourse = (courseName) => {
+        const newCourses = courses.filter(course => course.name !== courseName)
+        setCourses(newCourses);
+    };
+
+    const handleAddForm = (e) => {
+        e.preventDefault();
+        addCourse(newCourse);
+        setNewCourse("");
+    }
+
+    return (
+        <div>
+            <h1>Get your GPA</h1>
+
+            <label htmlFor="gpa">Enter your GPA so far:</label>
+            <input type="number" id="gpa" onChange={e => setGpa(parseInt(e.target.value))}></input>
+            <br />
+
+            <label htmlFor="hours">Enter your credit hours so far:</label>
+            <input type="number" id="hours" onChange={e => setHours(parseInt(e.target.value))}></input>
+            <br />
+
+            <table>
+                {courses.map(course => 
+                    <Course course={course} 
+                    possibleGrades={uiucGrades} 
+                    handleRemove={removeCourse}
+                    />
+                )}
+            </table>
+
+            <form onSubmit={handleAddForm}>
+                <label htmlFor="courseName">New Course:</label>
+                <input type="text" id="courseName" value={newCourse} onChange={e => setNewCourse(e.target.value)}></input>
+            </form>
+
+            <h2>Your new GPA is {calculateGpa(hours, gpa)}</h2>
+        </div>
+    );
+}
+
+export default Calc;
+```
+
+### Factoring in current Courses into GPA
+
+Now that we can add and remove courses, let's have the form elements update our state as well. Because the courses array is part of `Calc`'s state, we provide our `Course` component with functions for modifying the array. Similar to `add` and `remove`, we keep immutability in mind:
+
+```js
+    const updatePoints = (courseName, newPoints) => {
+        const newCourses = courses.map(course => 
+            course.name === courseName ? {...course, qualityPoints: newPoints} : course
+        );
+        setCourses(newCourses);
+    };
+
+    const updateHours = (courseName, newHours) => {
+        const newCourses = courses.map(course => 
+            course.name === courseName ? {...course, hours: newHours} : course
+        );
+        setCourses(newCourses);
+    };
+    ... 
+                <Course course={course} 
+                    possibleGrades={uiucGrades} 
+                    handleRemove={removeCourse}
+                    handleHourUpdate={updateHours} 
+                    handlePointUpdate={updatePoints}
+                />
+```
+
+Like earlier, we use the `courseName` as an id and then only change what we need. React is quite smart and will only update the parts of the UI that changed. Like remove, we pass the functions down to the `Course` component.
+
+In the `Course` component let's attach it to form elements and accept it as a prop.
+
+```jsx
+const Course = ({course, possibleGrades, handleRemove, handlePointUpdate, handleHourUpdate}) => {
+    ...
+                <input type="number" name="hours" value={course.hours} 
+                    onChange={e => handleHourUpdate(course.name, parseInt(e.target.value))}></input>
+                ...
+                <select name="grade" 
+                    onChange={e => handlePointUpdate(course.name, possibleGrades[e.target.value])}>
+                    {possibleLetters.map(letter =>
+                        <option value={letter}>{letter}</option>
+                    )}
+                </select>
+```
+
+Now let's finish off the functionality by actually taking the courses into account for the gpa calculation. In `Calc.jsx` add the for loop to account for current GPAs:
+
+```js
+    const calculateGpa = (hours, gpa) => {
+        let totalHours = hours;
+        let totalPoints = hours * gpa;
+        for (let i = 0; i < courses.length; i++) {
+            totalHours += courses[i].hours;
+            totalPoints += courses[i].hours * courses[i].qualityPoints;
+        }
+        const newGpa = (totalPoints / totalHours).toPrecision(3);
+        return newGpa;
+    };
+```
+
+If you did everything right. Now the GPA display on the bottom should change based on any single form value change. Good for people trying to calculate things instantly. Our core functionality now works!
+
+We're done with our Course component, at this point your `Course.jsx` file should be:
+
+```js
 import React from 'react';
 
-const Course = ({course, possibleGrades, handleRemove}) => {
+const Course = ({course, possibleGrades, handlePointUpdate, handleHourUpdate, handleRemove}) => {
     const possibleLetters = Object.keys(possibleGrades);
     return (
         <tr>
             <td><strong>{course.name}</strong></td>
+            
             <td>
                 <label htmlFor="hours">Hours:</label>
                 <input type="number" name="hours" value={course.hours} 
-                    ></input>
+                    onChange={e => handleHourUpdate(course.name, parseInt(e.target.value))}></input>
             </td>
                 
             <td>    
                 <label htmlFor="grade">Grade: </label>
                 <select name="grade" 
-                    >
+                    onChange={e => handlePointUpdate(course.name, possibleGrades[e.target.value])}>
                     {possibleLetters.map(letter =>
                         <option value={letter}>{letter}</option>
                     )}
                 </select>
             </td>
-
             <td>
                 <button class="delete-course" onClick={e => handleRemove(course.name)}>X</button>
             </td>
@@ -423,6 +590,81 @@ const Course = ({course, possibleGrades, handleRemove}) => {
 export default Course;
 ```
 
+### Side effects
+
+Sometimes, the changes of our UI can't be captured by state and event functions. This is where `useEffect` comes in. This can be used for UI state, animations, sending logs, API requests and more. Here we're going to change the the title of the browser to reflect the calculated gpa.
+
+In `Calc.jsx`, first we import it:
+
+```js
+import React, { useState, useEffect } from 'react';
+```
+
+Now we write our effect function:
+
+```js
+    useEffect(() => {
+        document.title = `Current GPA: ${calculateGpa(hours, gpa, courses)}`
+    }, [hours, gpa, courses]);
+
+    return (...)
+```
+
+The syntax is giving in a function, and then an array of state dependencies. This tells react to run this effect code during the render cycle when any of these variables has a change. If we now check our browser, the heading should have our gpa and it will also update accordingly. Effects are called after the state updates have happened, so take take not to use `setState` inside an effect to prevent infinite loops.
+
+React Hooks (useState and useEffect here) are really interesting and in depth topics, and I suggest going through the _Learn more_ links at the bottom to understand it well. If this kind of state management seems to start to get tricky, check out [Redux](https://redux.js.org/tutorials/fundamentals/part-1-overview) which provides a really neat way to deal with state.
+
+Exercise for the reader: Try to figure out how to memoize the calculateGpa function so that we don't run it twice.
+
+### Cat API
+
+Another fun thing to add is cat pictures. Looking at grades can be quite stressful, so we're going to add a cat pic every time someone adds a course. 
+
+First let's install `axios`, a good async API request library:
+
+```js
+$ yarn add axios
+```
+
+We'll be making use of [CatAPI](https://docs.thecatapi.com/) with the route `https://api.thecatapi.com/v1/images/search`. We'll pick the first result and extract the `url` from it. In your actual application, you can make use of far more complex functionality. 
+
+First let's create a state:
+
+```js
+// towards the start of the fn
+const [catPic, setCatPic] = useState(""); // default pic
+```
+
+and an image element in the end:
+
+```js
+<img src={catPic} alt="cute kitty" height="200"></img>
+```
+
+Now let's add the `axios` function for dealing with this:
+
+```js
+    const updateCatPic = () => {
+        axios.get("https://api.thecatapi.com/v1/images/search")
+            .then(response => {
+                setCatPic(response.data[0].url)
+            })
+    }
+
+    const handleAddForm = (e) => {
+        e.preventDefault();
+        addCourse(newCourse);
+        setNewCourse("");
+        updateCatPic();
+    }
+```
+
+Now if you add any courses it will update the cat picture each time :)
+
+### Final Code
+
+You can find the final code on [Github](https://github.com/harsh183/gpa-cat-calc).
+
 ## Learn more
 
 * General web development - [Freecodemcamp](https://www.freecodecamp.org/learn), this covers html, css, js, frameworks like react, data visualization and a lot more. It's a very extensive cirriculum which will teach a _lot_.
@@ -430,6 +672,8 @@ export default Course;
 * General react [Offical intro](https://reactjs.org/tutorial/tutorial.html#making-an-interactive-component). This also covers react `class` syntax that is regarded as old, but seen a lot in practice. For this workshop, I tried to focus on what's relevant.
 
 * React Hooks - [Official intro](https://reactjs.org/docs/hooks-intro.html), [Simple Todo list tutorial](https://www.educative.io/blog/react-hooks-tutorial-todo-list), [Educative Course series](https://www.educative.io/courses/road-to-react-with-hooks)
+
+* Redux - [Official intro](https://redux.js.org/tutorials/fundamentals/part-1-overview) and the Educative course series has quite a good dive into it.
 
 * Interacting with web APIs with `axios` - [digital ocean tutorial](https://www.digitalocean.com/community/tutorials/react-axios-react)
 
