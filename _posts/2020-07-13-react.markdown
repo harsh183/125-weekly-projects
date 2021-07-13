@@ -30,7 +30,101 @@ All you need is [NodeJS](https://nodejs.org/en/). Check to see if you have the l
 
 ## Workshop
 
+We'll be making a more live/interactive version of uiuc's [gpa calculator](https://secure.registrar.illinois.edu/gpacalculator/). With some changing cat pics from a public API.
 
+### Starter template
+
+One of the things `nodejs` includes is `npx`, which lets us set up depencies and templates quite well. We'll start off with creating the really popular `create-react-app` template.
+
+```js
+$ npx create-react-app gpa-cat-calc
+```
+
+This will take a while to run depending on your system, but this sets up our react app quite nicely.
+
+Once it's done, we can start VSCode and the local dev server and we're ready to go:
+
+```js
+$ cd gpa-cat-calc
+$ code .
+$ yarn start
+```
+
+`yarn` is a tool that handles our build commands, servers, tasks and dependency management. We'll be using it to start our server and add libraries as we need.
+
+Go to `localhost:3000` on your browser to make sure it works. 
+
+### Our first component - Calculator
+
+React is a framework that is meant for creating complex and real-time frameworks in a nice way. In the past we used to generate and render web pages on the backend side completely, since there wasn't much need for interactivity/real time usages and browser's didn't have much processing capability. It was created by `Facebook` for their need of managing complex frontends with many interactive components. 
+
+The way we manage it is via creating _Components_ that build up our application. Each Component is like a standalone element that takes some arguments to get created, and has it's independent state variables and functionality. If you're used to object oriented programming, you'll find most of the ideas map quite well.
+
+Let's create our first one for showing the main calculator interface. In the `src/` folder, create `Calc.jsx`:
+
+```js
+import React from 'react';
+
+function Calc() {
+    return (
+        <div>
+            <h1>Get your GPA</h1>
+        </div>
+    );
+}
+
+export default Calc;
+```
+
+`jsx` is a special type of javascript that blends both html code and js, creating really seamless templating. To create a react component, all we have to do is create a `function` with the name of the component and it should return _a single html element_ representing our UI element. Since we can usually only return one element, it's common to wrap everything inside a `<div>`
+
+The `export default` is to allow our component to be included in other files, and now let's take advantage of that to include it in `App.js`. Let's also remove a lot of the starter UI code they've inlcuded so that we can focus on our own elements.
+
+```js
+import logo from './logo.svg';
+import './App.css';
+import Calc from './Calc'
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Calc />
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+This file is our entry component of our entire frontend, and we'll include all our components within it. The way we could just add it by `<Calc />` is my favorite part of react, the components we create basically become _custom_ HTML elements. And we can nest and compose them any way we like. This type of custom elements allows us to create abstraction and manage complexities of large UIs
+
+`App.js` is rendered properly by `index.js` but you don't have to worry too much about that (feel free to take a look later if you want, it's not too complicated).
+
+If we check our browser, we should see our new component rendered properly.
+
+### Form Elements
+
+Having headings and composable content is great, but we want our _frontend_ to actually do things. Otherwise we don't really need to use something fancy like `React`. 
+
+```js
+return (
+        <div>
+            <h1>Get your GPA</h1>
+
+            <label htmlFor="gpa">Enter your GPA so far:</label>
+            <input type="number" id="gpa"></input>
+            <br />
+
+            <label htmlFor="hours">Enter your credit hours so far:</label>
+            <input type="number" id="hours"></input>
+            <br />
+        </div>
+    );
+```
+
+If you check it on the browser, you should see two number fields.
 
 ## Learn more
 
