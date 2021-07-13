@@ -16,7 +16,7 @@ Now we complete two halves of a whole using `React` to create a basic frontend.
 console.log("Hello React");
 ```
 
-Hosted by: Jackie Chan
+Hosted by: Harsh Deep
 
 ## Motivation
 
@@ -26,7 +26,27 @@ Hosted by: Jackie Chan
 
 ## Learn more
 
+* General web development - [Freecodemcamp](https://www.freecodecamp.org/learn), this covers html, css, js, frameworks like react, data visualization and a lot more. It's a very extensive cirriculum which will teach a _lot_.
+
+* General react [Offical intro](https://reactjs.org/tutorial/tutorial.html#making-an-interactive-component). This also covers react `class` syntax that is regarded as old, but seen a lot in practice. For this workshop, I tried to focus on what's relevant.
+
+* React Hooks - [Official intro](https://reactjs.org/docs/hooks-intro.html), [Simple Todo list tutorial](https://www.educative.io/blog/react-hooks-tutorial-todo-list), [Educative Course series](https://www.educative.io/courses/road-to-react-with-hooks)
+
+* Interacting with web APIs with `axios` - [digital ocean tutorial](https://www.digitalocean.com/community/tutorials/react-axios-react)
+
+* TypeScript - [Typescript in 5 minutes from OOP](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-oop.htmlb), [TypeScript from scratch](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html), and [React with Typescript - educative](https://www.educative.io/blog/react-and-typescript)
+
 ## Ideas
+
+* Some interesting frontend that has some dynamic content. 
+
+* Try to make it in a way that the user never has to reload. 
+
+* Hook in some API and do something interesting.
+
+* Create something that has live update mechanisms. That's always interesting to work with.
+
+* See if you can add Typescript in interesting ways. This is more 
 
 ## Requirements
 
