@@ -10,6 +10,8 @@ toc: true
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
 
+[Recording](https://youtu.be/2F2MazRF64Y) | [Github](https://github.com/harsh183/gpa-cat-calc)
+
 Now we complete two halves of a whole using `React` to create a basic frontend.
 
 ```ts
