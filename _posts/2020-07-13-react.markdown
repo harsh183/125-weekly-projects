@@ -735,7 +735,7 @@ You can find the final code on [Github](https://github.com/harsh183/gpa-cat-calc
 
 ## Learn more
 
-* General web development - [Freecodemcamp](https://www.freecodecamp.org/learn), this covers html, css, js, frameworks like react, data visualization and a lot more. It's a very extensive cirriculum which will teach a _lot_.
+* General web development - [Freecodecamp](https://www.freecodecamp.org/learn), this covers html, css, js, frameworks like react, data visualization and a lot more. It's a very extensive cirriculum which will teach a _lot_.
 
 * General react [Offical intro](https://reactjs.org/tutorial/tutorial.html#making-an-interactive-component). This also covers react `class` syntax that is regarded as old, but seen a lot in practice. For this workshop, I tried to focus on what's relevant.
 
