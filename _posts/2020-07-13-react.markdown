@@ -747,7 +747,7 @@ You can find the final code on [Github](https://github.com/harsh183/gpa-cat-calc
 
 * Interacting with web APIs with `axios` - [digital ocean tutorial](https://www.digitalocean.com/community/tutorials/react-axios-react)
 
-* TypeScript - [Typescript in 5 minutes from OOP](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-oop.htmlb), [TypeScript from scratch](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html), and [React with Typescript - educative](https://www.educative.io/blog/react-and-typescript)
+* TypeScript - [Typescript in 5 minutes from OOP](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-oop.html), [TypeScript from scratch](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html), and [React with Typescript - educative](https://www.educative.io/blog/react-and-typescript)
 
 ## Ideas
 
