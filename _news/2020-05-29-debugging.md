@@ -35,7 +35,9 @@ toc: true
 ## Using the debugger to test your code
 
 - A great way to go about seeing why your code isn't doing what you want it to do is to test your code. Let's use that in conjunction with the debugger.
+
 - The below code works but doesn't produce the result we want. We have a function named `order` that takes in 3 values. We use the function `main` to test the code. To the test the code, we can either input the code each time we run the python file (or python cell) (see the commented out code) or we can manually write in a test case. I put the test case(s) in `main` function and ran the `main` function.
+
 ```python
 def order(value1,value2,value3):
 """"This function takes in 3 values and orders them.
@@ -62,6 +64,7 @@ def main():
 order(6,7,1)
 main()
 ```
+
 - `order(6,7,1)` outputs `1 7 6` instead of what we want `1 6 7`  but it's kind of hard to trace through the code to see where we went wrong so we can use the debugger to see which statements in the code we are using.
 - If you have typed this into a python cell (using #%%), Click "debug cell" and then click the step into (down arrow) button to step into each line of code. This helps us trace through the code and help us look at which line goes wrong.
 - If you have typed this into a python file, you need to add breakpoints into your code. A good place to add a breakpoint is at the line `def order(value1,value2,value3):` and then click the drop down Run > Start Debugging or F5 and use the Step Into button.
