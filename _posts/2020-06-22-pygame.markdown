@@ -33,9 +33,10 @@ pip install pygame
 ```
 
 ## Workshop
-**Starter:** https://github.com/ranchncarrots/sumOfCodeGameStarterCode <br>
 
-First, we will import the following. We'll be using these libraries as we go along.  <br>
+[**Starter:**](https://github.com/ranchncarrots/sumOfCodeGameStarterCode) 
+
+First, we will import the following. We'll be using these libraries as we go along.  
 
 ```python
 import sys, pygame, random
@@ -200,8 +201,8 @@ Now the main character should slow down after the player releases the key. But w
         
         
     main.rect = main.rect.move(speed)
-
 ``` 
+
 <br>
 Your code should now look something like:
 
@@ -271,6 +272,7 @@ while 1:
     main_sprite.draw(screen)
     pygame.display.flip()
 ```
+
 ### Bad Guy Class
 
 ```python
@@ -367,6 +369,7 @@ Here we just have some more syntactical sugar. Insert into your game loop:
 In line 2, we declare how we want to render the text. In line 3, we're actually adding it to the screen by blitting it.
 
 And we're done! The overall code should look like:
+
 ```python
 import sys, pygame, random, os
 

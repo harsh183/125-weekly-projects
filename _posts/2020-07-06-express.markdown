@@ -4,7 +4,7 @@ title: Backends
 date: 2020-07-06
 comments: true
 external-url:
-tag: TypeScript
+tag: JavaScript
 toc: true
 ---
 
