@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Final Portfolio 
-date: 2020-07-20
+title: Branding
+date: 2020-07-23
 comments: true
 external-url:
 tag: TypeScript
@@ -10,10 +10,10 @@ toc: true
 
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
 
-Time to bring together all the things we've done so far and start setting up our final portfolio to show off to friends, family, companies and to our future selves.
+Time to bring together all the things we've done so far and learn how to brand and present what we've done. This can be for yourself to look back at, for friends and family, and even for people who want to hire you.
 
-```ts
-console.log("Hello portfolio");
+```js
+console.log("Hello, World! See what I've made.");
 ```
 
 ## Motivation
