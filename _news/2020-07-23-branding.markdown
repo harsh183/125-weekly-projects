@@ -20,14 +20,12 @@ console.log("Hello, World! See what I've made.");
 
 Comic: [JOHN GREEN: Make gifts for people](http://www.zenpencils.com/comic/119-john-green-make-gifts-for-people/)
 
-## Learn more
+## Resume
 
-## Ideas
+## Portfolio
 
-## Requirements
+## Github
 
-* You should show it off in your README.md file, with animations/video and an explanation of the game.
+## LinkedIn
 
-* Has to use a Open Source license via a `LICENSE` file
-
-Contributors: Harsh, Maaheen
+Contributors: Monika, Harsh, Maaheen
