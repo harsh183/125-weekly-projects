@@ -14,7 +14,7 @@ A lot of thought went into how this initiative came up, and here are some of the
 
 Feel free to reuse any thing from here. You're welcome to reach out for specific advice as well. 
 
-<!-- Markdown lint? Choice of text editors? Youtube? Zoom? Google Calendar? Outreach? -->
+<!-- Markdown lint? Choice of text editors? Youtube? Zoom? Google Calendar? Outreach? Tools we focused on teaching? Development Workshops -->
 
 ## Structure 
 
@@ -50,13 +50,33 @@ We picked the topics based on:
 * good programming library/api support - we had to be able to make something interesting looking within an hour, and a days effort could produce an intersting project 
 * low entry barriers - the students had _only_ finished some level of introductory computer science
 * excitement/flashy factor - we had to make things that had novelty like chat bots or browser extensions
-* usefulness - the topics 
+* usefulness - what people learned could be used to make lots of practical topics since many students don't realize they already had the skills to make something useful
+* something we wanted to learn more about - teaching is the best way to learn 
+* not too focused on by core cs sequences - core cs classes are unlikely to cover how to make a chat bot or browser extension (for good reason though)
 
-### Programming Languages
+### Python
 
-### Tools
+We picked Python because
 
-## Development Workshops
+* The first year programming sequence at UIUC covered Java and C++ already - we wanted something new
+* It's one of the most popular programming languages today for teaching and making quick projects
+* While it's also heavily used in industry and academia for all kinds of use cases
+* Python has firmly established itself as a jack of all trades langauge - this means one langauge can be used to combine all sorts of areas
+* Succint syntax with all sorts of syntax sugar like list comprehensions which is great for prototpying and learning quickly
+* Large set of packages available via `pip` that can allow students to build interesting things quickly.
+
+### JavaScript
+
+Likewise JavaScript:
+
+* Not covered in classes too much. There is a strong amount of academic elitism against it too, but it's a very useful langauge for creating projects linked to the web.
+* It's very popular today for all sorts of frontend and backend web related use cases, but it's rapidly expanding outside that too.
+* Heavily used in industry 
+* It's a good early exposure to concurrent and functional programming.
+* While it's not as terse as Python, it's still got many neat syntax aspects
+* `npm` gives access to a very large set of packages that let people build interesting things.
+
+We also considered putting in TypeScript, but it added on more friction on starting out and isn't too useful for prototype projects. It is quite useful as projects grow, so it was included in the bottom links.
 
 ## Website 
 
