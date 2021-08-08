@@ -16,16 +16,96 @@ Time to bring together all the things we've done so far and learn how to brand a
 console.log("Hello, World! See what I've made.");
 ```
 
+Hosted by: Monika Para
+
 ## Motivation
 
 Comic: [JOHN GREEN: Make gifts for people](http://www.zenpencils.com/comic/119-john-green-make-gifts-for-people/)
 
+## Slides
+
+The slides presented can be found on [Google Slides](https://docs.google.com/presentation/d/18wXPTgFFUEXXrfrd1s4wzhNz1descj25JfHJMWevGMg/edit?usp=sharing). UIUC login required. Below we'll share a few links and pointers.
+
 ## Resume
 
-## Portfolio
+* Always use black and white for your resume. Blue is fine too. Any flashy color is a no.
+
+* Make it on Word Doc or flowcv.io
+
+* When you list relevant coursework, do not put **irrelevant** courses.
+
+* Quantify impact and specify tools where possible
+
+* Save your file as "FirstName-LastName-Resume.pdf."
+
+* [How to Write a Rockstar Resume - Kristina Hu](https://kristina.substack.com/p/how-to-write-a-rockstar-resume-free)
+
+### General Format to follow
+
+1. Header
+2. Education
+3. Experiences
+4. Projects
+5. Skills
+
+* Check out this example [template](https://drive.google.com/file/d/1tDdjZMFJFqp0CnYoECQn0AechdkP_xb6/view).
+
+## LinkedIn
+
+* Think of it as your resume but on social media
+
+* Include any activities, experiences, awards, projects, etc. on there that you feel are relevant that won't be able to fit into your resume
+
+* Make custom LinkedIn URL
+
+* Beat the Algorithm: follow company recruiters and use your connections
+
+* Example Linkedin [template](https://www.linkedin.com/in/wonsulting-wendy/).
+
+### What you should focus on
+
+1. The Headline - The single most important thing people look at in a profile. Don't make it dull. Keep it short and sweet
+Good to include Role @ Company or Major @ Illinois (i.e. ECE @ Illinois; SPIN Intern @ NCSA)
+LAST RESORT: "Student at University of Illinois"
+
+2. Experience
+
+3. Education - Focus primarily on college over high school experiences
+
+4. Projects or anything that speaks best to you (research, an article you wrote, etc.)
+
+## Personal Website
+
+* Recruiters _may_, or _may not_ care about this as much, but it's worth making one to establish your credibility. 
+
+* Get a custom domain (.com, .me, .tech) instead of a subdomain like (.github.io or .netlify.app).
+
+* Keep a minimal UI with a focus on content.
+
+* Mention your name, projects, hyperlinks to socials, and your resume.
+
+* Helpful [examples](https://dev.to/jatinrao/20-developer-portfolios-for-inspiration-2k06).
 
 ## Github
 
-## LinkedIn
+* Make sure to write good `README` files.
+  - [Art of README - hacker girl](https://github.com/hackergrrl/art-of-readme)
+  - [The importance of a Good README](https://daviskeene.com/blog/posts/?post=importance-of-readme) - Written by an ex-125 CA 
+
+* Don't forget to include open-source licenses on your files. Just put MIT or GPLv3 if you're not too sure what to put.
+
+* Mention tech stacks and short descriptions of your projects.
+
+* Create an intro text file for your account.
+
+* **Never** share code that you shouldn't be sharing, like class assignments. This can get you academic integrity violations and looks like a red flag to employers.
+
+## Ideas for more projects/learning
+
+* [Ideas for Programmers Looking Beyond Web Development - Carol Chen](https://carolchen.me/blog/tech/past-webdev/) - From a good friend I trust on programming feedback.
+
+* [Freecodecamp](https://www.freecodecamp.org/) - Huge pathway made of short coding challenges and projects on every major web dev project. 
+
+* [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) - Good approach to learning python through automating all sorts of daily-life things.
 
 Contributors: Monika, Harsh, Maaheen
