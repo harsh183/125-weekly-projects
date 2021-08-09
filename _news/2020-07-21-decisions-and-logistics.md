@@ -14,7 +14,7 @@ A lot of thought went into how this initiative came up, and here are some of the
 
 Feel free to reuse any thing from here. You're welcome to reach out for specific advice as well. 
 
-<!-- Markdown lint? Choice of text editors? Youtube? Zoom? Google Calendar? Outreach? Tools we focused on teaching? Development Workshops -->
+<!-- Markdown lint? Choice of text editors? Youtube? Zoom? Google Calendar? Outreach? Tools we focused on teaching? -->
 
 ## Structure 
 
@@ -53,6 +53,7 @@ We picked the topics based on:
 * usefulness - what people learned could be used to make lots of practical topics since many students don't realize they already had the skills to make something useful
 * something we wanted to learn more about - teaching is the best way to learn 
 * not too focused on by core cs sequences - core cs classes are unlikely to cover how to make a chat bot or browser extension (for good reason though)
+* fun
 
 ### Python
 
@@ -76,7 +77,15 @@ Likewise JavaScript:
 * While it's not as terse as Python, it's still got many neat syntax aspects
 * `npm` gives access to a very large set of packages that let people build interesting things.
 
-We also considered putting in TypeScript, but it added on more friction on starting out and isn't too useful for prototype projects. It is quite useful as projects grow, so it was included in the bottom links.
+We also considered putting in TypeScript, but it added on more friction on starting out and isn't too useful for prototype projects. It is quite useful as projects grow, so it was included in the bottom links.\
+
+## Professional Workshops
+
+We also felt that there were a few soft skill sessions that classes didn't focus on but are very useful for students.
+
+* Imposter Syndrome - It's extremely widespread in Computer Science students yet it's rarely mentioned in class. It's a surprisingly universal feeling, yet rarely acknowledged and we wanted to shed some light on that.
+* Exploring CS @ Illinois programs - Hearing from older students in various CS and CS + X majors at UIUC about their experiences navigating through college.
+* Branding - Many students here are excellent at technical skills and doing interesting projects, but make basic mistakes while presenting themselves on the internet professionally. We wanted to give our set of tips and personalized feedback.
 
 ## Website 
 
