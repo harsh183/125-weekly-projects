@@ -14,7 +14,7 @@ A lot of thought went into how this initiative came up, and here are some of the
 
 Feel free to reuse any thing from here. You're welcome to reach out for specific advice as well. 
 
-<!-- Markdown lint? Choice of text editors? Youtube? Zoom? Google Calendar? Outreach? Tools we focused on teaching? -->
+<!-- Markdown lint? Youtube? Zoom? Google Calendar? Outreach?  -->
 
 ## Structure 
 
@@ -77,7 +77,37 @@ Likewise JavaScript:
 * While it's not as terse as Python, it's still got many neat syntax aspects
 * `npm` gives access to a very large set of packages that let people build interesting things.
 
-We also considered putting in TypeScript, but it added on more friction on starting out and isn't too useful for prototype projects. It is quite useful as projects grow, so it was included in the bottom links.\
+We also considered putting in TypeScript, but it added on more friction on starting out and isn't too useful for prototype projects. It is quite useful as projects grow, so it was included in the bottom links.
+
+## Tools
+
+We carefully considered the tools we wanted to cover and not during the program. Some things we initially planned but later ended up not deciding on too. The tradeoffs were based on how useful is it for students to know, and trimming down things so that we don't overwhelm people at once.
+
+### What we did 
+
+* Version control via `git` - is pretty useful for progress tracking, cloud sharing and fixing screwups of side projects. It also allowed people to upload their projects on places like `Github` or `sr.ht`
+
+* `pylint` and `eslint` - these style checkers are good for a lot of basic code smells and ensuring quality. We didn't strictly check if people were using them, but they were useful to many people.
+
+* `vscode` - it's a good editor that isn't as complex as many IDEs like Visual Studio or IntelliJ, but not as cutdown as text editors like editors like `nano` or `vim`. It has pretty solid `python` and `js` tooling and many students were likely to already have it.
+
+* Interactive debuggers like python's built in `breakpoint()` - people were familiar with `print` statement debugging, but showing people how to use interactive debuggers in interpreted languages is quite useful and aids teaching stuff like web bots.
+
+* Automated testing via `pytest` - students had seen automated testing in their classes before via assignments, and here we showed them it wasn't that hard to get started with just using built in `asserts`. 
+
+* Web API testing via Postman - when writing backend APIs, we showed people how to use postman to figure out how APIs were being used and how to set up the ins and outs of the requests correctly. 
+
+* Linux/Unix style command line - it's really common in modern development, yet many students didn't have much of an exposure to it yet. It also made for some interesting command line app building later on. 
+
+### What we considered, but didn't do
+
+* Text based editors like `vim` - honestly cool to learn and does teach some habits, but it can be initmidating for people and not critical to learn
+
+* Continous Integration/Deployment - this could have been useful for automatically checking style and test cases, but it's varying configuration and could take more time than it was worth for projects at this stage
+
+* Automated Frontend/Backend `js` testing - while this was quite possible, doing this would take away time from focusing on the more challenging `js` content.
+
+* TypeScript - it's very cool and combines the best of the Java/Haskell and JavaScript worlds, and has massive momentum today, but it was also not critical and distracted away from the frameworks we were focusing on.
 
 ## Professional Workshops
 
