@@ -26,21 +26,21 @@ Comic: [JOHN GREEN: Make gifts for people](http://www.zenpencils.com/comic/119-j
 
 The slides presented can be found on [Google Slides](https://docs.google.com/presentation/d/18wXPTgFFUEXXrfrd1s4wzhNz1descj25JfHJMWevGMg/edit?usp=sharing). UIUC login required. Below we'll share a few links and pointers.
 
-## Resume
+## Some Guidelines
 
 * Always use black and white for your resume. Blue is fine too. Any flashy color is a no.
 
-* Make it on Word Doc or flowcv.io
+* Make it in a WorddDoc or flowcv.io.
 
 * When you list relevant coursework, do not put **irrelevant** courses.
 
-* Quantify impact and specify tools where possible
+* Quantify impact and specify tools where possible.
 
 * Save your file as "FirstName-LastName-Resume.pdf."
 
 * [How to Write a Rockstar Resume - Kristina Hu](https://kristina.substack.com/p/how-to-write-a-rockstar-resume-free)
 
-### General Format to follow
+### General Format to Follow
 
 1. Header
 2. Education
@@ -48,35 +48,35 @@ The slides presented can be found on [Google Slides](https://docs.google.com/pre
 4. Projects
 5. Skills
 
-* Check out this example [template](https://drive.google.com/file/d/1tDdjZMFJFqp0CnYoECQn0AechdkP_xb6/view).
+* Check out [this example template](https://drive.google.com/file/d/1tDdjZMFJFqp0CnYoECQn0AechdkP_xb6/view).
 
 ## LinkedIn
 
-* Think of it as your resume but on social media
+* Think of it as your resume but on social media.
 
-* Include any activities, experiences, awards, projects, etc. on there that you feel are relevant that won't be able to fit into your resume
+* Include any activities, experiences, awards, projects, etc. on there that you feel are relevant that won't be able to fit into your resume.
 
-* Make custom LinkedIn URL
+* Make a custom LinkedIn URL.
 
-* Beat the Algorithm: follow company recruiters and use your connections
+* Beat the algorithm: follow company recruiters and use your connections.
 
-* Example Linkedin [template](https://www.linkedin.com/in/wonsulting-wendy/).
+* [Example Linkedin template](https://www.linkedin.com/in/wonsulting-wendy/).
 
 ### What you should focus on
 
-1. The Headline - The single most important thing people look at in a profile. Don't make it dull. Keep it short and sweet
-Good to include Role @ Company or Major @ Illinois (i.e. ECE @ Illinois; SPIN Intern @ NCSA)
-LAST RESORT: "Student at University of Illinois"
+1. The Headline - The single most important thing people look at in a profile. Don't make it dull. Keep it short and sweet.
+Good to include Role @ Company or Major @ Illinois (e.g. ECE @ Illinois; SPIN Intern @ NCSA)
+LAST RESORT: "Student at University of Illinois".
 
 2. Experience
 
-3. Education - Focus primarily on college over high school experiences
+3. Education - Focus primarily on college over high school experiences.
 
-4. Projects or anything that speaks best to you (research, an article you wrote, etc.)
+4. Projects or anything that speaks best to you (research, an article you wrote, etc.).
 
 ## Personal Website
 
-* Recruiters _may_, or _may not_ care about this as much, but it's worth making one to establish your credibility. 
+* Recruiters _may_ or _may not_ care about this as much, but it's worth making one to establish your credibility. 
 
 * Get a custom domain (.com, .me, .tech) instead of a subdomain like (.github.io or .netlify.app).
 
@@ -84,12 +84,12 @@ LAST RESORT: "Student at University of Illinois"
 
 * Mention your name, projects, hyperlinks to socials, and your resume.
 
-* Helpful [examples](https://dev.to/jatinrao/20-developer-portfolios-for-inspiration-2k06).
+* [Helpful examples](https://dev.to/jatinrao/20-developer-portfolios-for-inspiration-2k06).
 
 ## Github
 
 * Make sure to write good `README` files.
-  - [Art of README - hacker girl](https://github.com/hackergrrl/art-of-readme)
+  - [Art of README - hackergrrl](https://github.com/hackergrrl/art-of-readme)
   - [The importance of a Good README](https://daviskeene.com/blog/posts/?post=importance-of-readme) - Written by an ex-125 CA 
 
 * Don't forget to include open-source licenses on your files. Just put MIT or GPLv3 if you're not too sure what to put.

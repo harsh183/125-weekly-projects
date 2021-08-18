@@ -13,7 +13,7 @@ toc: true
 ## Why debugging is important
 
 - Usually, we want to debug when we expect our code to act in some way but it acts in a different way instead.
-  - Author's Note: This article is still a work in progress but I wanted to get this up before June 1st so hopefully this could be of help to some people. I am hoping to expand on the topics written.
+  - Author's Note: This article is still a work in progress, but I wanted to get this up before June 1st, so hopefully this could be of help. I am hoping to expand on the topics written.
 
 ## How to use print statements to debug
 
